@@ -209,9 +209,8 @@
 
   </style>
 
-  <!-- SPLASH SCREEN PRE-CHECK (Prevents blinking on refresh) -->
+  <!-- SPLASH SCREEN PRE-CHECK -->
   <script>
-    // Zindagi me sirf ek baar (LocalStorage check)
     if (localStorage.getItem('instavibe_welcomed_ever')) {
       document.write('<style>#splashScreen { display: none !important; }</style>');
     }
@@ -362,6 +361,22 @@
       </div>
     </main>
 
+    <!-- ==============================================
+         ABOUT US / INFO VIEW
+         ============================================== -->
+    <main id="view-about" class="view-page">
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 30px 20px; text-align: center; margin-top: 10px;">
+        <div style="font-size: 60px; margin-bottom: 20px;">🇮🇳</div>
+        <h2 style="font-weight: 900; font-size: 24px; margin-bottom: 15px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
+        <p style="color:#cbd5e1; font-size:14px; line-height:1.7; margin-bottom:25px;">India's largest free ecosystem for Instagram Aesthetics. Humara mission hai har Indian creator ko premium bio templates, rangdar hindi quotes, aur unicode fonts totally free mein provide karna.</p>
+        
+        <div style="background:rgba(0,0,0,0.4); border-radius:16px; padding:20px; text-align:left; border:1px solid rgba(255,255,255,0.05); margin-bottom:20px;">
+          <div style="font-size:12px; color:#94a3b8; font-weight:800; margin-bottom:5px;">DEVELOPER EMAIL</div>
+          <div style="font-size:16px; font-weight:900; color:#fff; margin-bottom:15px;">pintu959546@gmail.com</div>
+        </div>
+      </div>
+    </main>
+
   </div> <!-- End App Container -->
 
   <!-- ==============================================
@@ -374,7 +389,8 @@
     <div class="nav-tab" id="tab-categories" onclick="switchPage('categories')">
       <span class="nav-icon">🗂️</span><span>Categories</span>
     </div>
-    <div class="nav-tab" onclick="document.getElementById('footer-section').scrollIntoView({behavior: 'smooth'})">
+    <!-- CORRECTED INFO TAB FIX -->
+    <div class="nav-tab" id="tab-about" onclick="switchPage('about')">
       <span class="nav-icon">ℹ️</span><span>Info</span>
     </div>
   </nav>
@@ -392,7 +408,7 @@
   </div>
 
   <!-- ==============================================
-       LEGAL MODALS (Privacy, Terms, About, Contact)
+       LEGAL MODALS (Privacy, Terms, Contact)
        ============================================== -->
   <div class="modal-veil" id="legalModal">
     <div class="modal-box">
@@ -418,22 +434,19 @@
       const splash = document.getElementById('splashScreen');
       if (!splash) return;
 
-      // Zindagi mein sirf ek baar welcome dikhega
       if (!localStorage.getItem('instavibe_welcomed_ever')) {
         const textEl = document.getElementById('splashText');
         const subEl = document.getElementById('splashSub');
         const fullText = "Welcome to InstaVibe Ultimate";
         let idx = 0;
         
-        // Typing Effect (takes around ~2.8 seconds total)
         splashInterval = setInterval(() => {
           textEl.innerText = fullText.substring(0, idx + 1);
           idx++;
           if (idx >= fullText.length) {
             clearInterval(splashInterval);
-            subEl.style.opacity = '1'; // Fade in subtitle
+            subEl.style.opacity = '1'; 
             
-            // Hold for 1 second, then fade out
             splashTimeout1 = setTimeout(() => {
               dismissSplash();
             }, 1000);
@@ -442,12 +455,10 @@
 
         localStorage.setItem('instavibe_welcomed_ever', 'true');
       } else {
-        // If already visited, hide instantly
         splash.style.display = 'none';
       }
     };
 
-    // User can tap anywhere to skip animation
     window.dismissSplash = function() {
       const splash = document.getElementById('splashScreen');
       if(splash && splash.style.display !== 'none') {
@@ -455,7 +466,6 @@
         clearTimeout(splashTimeout1);
         clearTimeout(splashTimeout2);
         
-        // Quick fill if user taps before typing ends
         const textEl = document.getElementById('splashText');
         if(textEl && textEl.innerText.length < "Welcome to InstaVibe Ultimate".length) {
           textEl.innerText = "Welcome to InstaVibe Ultimate";
@@ -489,7 +499,6 @@
     };
 
     function switchPage(pageId) {
-      // Fix Double Click Bug on Categories
       if(pageId === 'categories') {
         backToCategories();
       }
@@ -508,7 +517,6 @@
     // ----------------------------------------
     const masterBiosObj = [];
 
-    // 120 3-Line Aura / Deep / Vibes (Hindi + English Mix with distinct emojis)
     const auraLine1 = ["Unmatched Aura ⚜️", "Walking in the shadows 🌘", "Born to conquer 🦅", "Not your average mindset 🧠", "Crafting my own reality 🌌", "Living beyond limits 🪐", "Silent but violent 🗡️", "Supreme Entity 👑"];
     const auraLine2 = ["शेर की खामोशी से जंगल काँपता है 🦁", "वक्त का इंतजार कर, तबाही मचेगी ⏳", "हमसे उलझना मौत को दावत देना है ☠️", "अकेला हूँ, पर खुद में एक सेना हूँ 🛡️", "हमारी पहचान नाम से नहीं, खौफ से है 🌪️", "बुरे वक्त में भी नवाबी शौक रखते हैं 🍷", "दुनियादारी से दूर, अपनी धुन में मस्त 🎧"];
     const auraLine3 = ["100% Unstoppable ⚔️", "Rule breaker 🩸", "No limits 🚀", "Forever Hustling 💼", "Savage Blood 💀", "Pure Gold 🏆", "Untouchable Vibe 🧿"];
@@ -520,19 +528,16 @@
        masterBiosObj.push({ category: 'boys', text: `${l1}\\n${l2}\\n${l3}`, isAura: true });
     }
     
-    // Arrays for Boys / Attitude (Hindi + Eng - Classic)
     const bPre = ["महाकाल का दीवाना 🔱", "नवाबों का शहर 👑", "ब्राह्मण शेर 🦁", "यादव सरकार 🔥", "क्षत्रिय रक्त 🩸", "देसी बालक 😎", "बदमाश छोरा 💣", "जिद्दी परिंदा 🦅", "🌟 Shining Star", "🔥 Attitude King", "💎 Desi Swag", "🚀 Hustler"];
     const bMid = ["बाप के सामने अय्याशी नहीं 🚫", "शेर जब शिकार करता है 🦁", "अपनी मर्जी का मालिक 💯", "दुश्मनों की महफिल में 🔥", "हम बुरे ही ठीक हैं 😎", "Living life on my terms ♠️", "Zero fake friends 🎭", "Hustle Hard & Stay Humble 💼"];
     const bSuf = ["जय श्री राम 🚩", "हर हर महादेव 🙏", "सिंगल और खुश ✌️", "जलने वाले जलते रहें 🔥", "Hit the follow button 📲", "No DMs without business 🚫"];
 
-    // 4-5 Lines Premium Professional & Motivation Bios
     const l1 = ["🌟 Dreamer & Achiever", "🔥 Hustle Mode: ON", "💎 Creating my own legacy", "✈️ Exploring the unseen", "🎯 Focused on goals", "👑 King of my own world", "✨ Manifesting magic"];
     const l2 = ["👔 Professional Overthinker", "📸 Capturing moments", "☕ Coffee & Code", "🎧 Music is my therapy", "📈 Always leveling up", "📚 Student of Life", "🎨 Art in my veins"];
     const l3 = ["🚫 Zero time for drama", "💯 Keep it 100% real", "💪 Building an empire", "✨ Manifesting greatness", "✌️ Peace & Positivity", "🚀 Sky is the limit", "💡 Creative Mind"];
     const l4 = ["📍 Living in the moment", "🌍 World citizen", "🖤 Heart of gold", "🔥 Unstoppable force", "🚀 Born to stand out", "💸 Working on my dreams", "🌟 Future Billionaire"];
     const l5 = ["👇 Check out my journey", "📩 DM for collaborations", "🔗 Links below", "Welcome to my VIP world 👑", "Hit Follow to join the squad 📲", "Stay tuned for greatness ✨"];
 
-    // Arrays for Sad / Poetry / Shayari (4-5 liners Hindi)
     const sadShayari = [
       "खामोशियाँ बेवजह नहीं होतीं,\nकुछ दर्द आवाज़ छीन लिया करते हैं,\nजिन्हें हम अपनी रूह मान बैठे थे,\nवो ही आज हमें तन्हा छोड़ चले गए 🥀",
       "मोहब्बत का शौक किसे था,\nतुम पास आते गए और हमें आदत हो गई,\nअब आलम ये है कि तुम्हारे बिना,\nये साँसें भी बोझ सी लगने लगी हैं ❤️",
@@ -541,7 +546,6 @@
       "तेरा नाम था आज किसी अजनबी की जुबान पे,\nबात तो जरा सी थी पर दिल ने बुरा मान लिया,\nयाद आ गए वो पुराने लम्हे सारे के सारे,\nजिन्हें भुलाने में हमने सदियों का सफर काट लिया 💔"
     ];
 
-    // Arrays for Rangdar/Bhaigiri (4-5 liners Hindi)
     const attitudeRangdar = [
       "महाकाल का आशीर्वाद है इसलिए चुप हैं,\nवरना औकात दिखाना अच्छे से जानते हैं,\nशहर में नाम हमारा भी गूंजता है शेरों की तरह,\nफालतू में भौंकने वाले कुत्तों से हम नहीं डरते 🔥",
       "दहशत आँखों में होनी चाहिए,\nहथियार तो बच्चों के पास भी होते हैं,\nजो हमसे उलझने की सोचते हैं,\nउनका इतिहास हम मिट्टी में मिला देते हैं 👑",
@@ -549,31 +553,26 @@
       "हम वो खामोश समंदर हैं,\nजिसके सीने में तूफान पलता है,\nहमसे टकराने की भूल मत करना,\nहमारा नाम सुनते ही अच्छे अच्छों का पसीना निकलता है 💣"
     ];
 
-    // Add 4-5 line Rangdar & Poetry
     for(let i=0; i<400; i++) {
       masterBiosObj.push({ category: 'sad', text: sadShayari[i % sadShayari.length].replace(/\n/g, '\\n') });
       masterBiosObj.push({ category: 'boys', text: attitudeRangdar[i % attitudeRangdar.length].replace(/\n/g, '\\n') });
     }
 
-    // Add Standard Combinations
     for(let i=0; i<1500; i++) {
       masterBiosObj.push({ category: 'boys', text: `${bPre[i%bPre.length]}\\n${bMid[i%bMid.length]}\\n${bSuf[i%bSuf.length]}` });
       masterBiosObj.push({ category: 'girls', text: `🦋 Aesthetic Queen 🌸\\n✨ Too glam to give a damn 💅\\n☕ Coffee lover #${i}` });
     }
 
-    // Add 4-5 Line VIP Professional Bios
     for(let i=0; i<2000; i++) {
       let text = `${l1[i%l1.length]}\\n${l2[(i*2)%l2.length]}\\n${l3[(i*3)%l3.length]}\\n${l4[(i*4)%l4.length]}\\n${l5[(i*5)%l5.length]}`;
       masterBiosObj.push({ category: 'vip', text: text });
     }
 
-    // Add Mahakal & Love
     for(let i=0; i<800; i++) {
       masterBiosObj.push({ category: 'mahakal', text: `🔱 जय श्री महाकाल 🙏\\nभस्म आरती लवर 🕉️\\nकाल भी उसका क्या करे जो भक्त हो महाकाल का 💀\\nबम बम भोले 🙏`});
       masterBiosObj.push({ category: 'love', text: `❤️ Love is Life\\nMy heart beats for you 🥰\\nYou are my everything 🌍\\nForever Mine 💍`});
     }
 
-    // Aura bios first, shuffle the rest
     const auraBios = masterBiosObj.filter(b => b.isAura);
     const restBios = masterBiosObj.filter(b => !b.isAura).sort(() => Math.random() - 0.5);
     const mixedHomeFeed = [...auraBios, ...restBios];
@@ -652,7 +651,6 @@
         let tags = ["FREE BIO", "TOP VIRAL", "TRENDING 🔥", "NEW ✨", "VIP STYLE 👑"];
         let randTag = tags[Math.floor(Math.random() * tags.length)];
 
-        // Highlight Aura Bios
         let auraBorder = mixedHomeFeed[i].isAura ? 'border-color: #fbbf24; box-shadow: 0 5px 20px rgba(245,158,11,0.2);' : '';
 
         htmlChunk += `
@@ -714,7 +712,7 @@
     }
 
     // ----------------------------------------
-    // 7. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
+    // 7. 10 MEGA TOOLS MODAL LOGIC
     // ----------------------------------------
     const liveStatusBarHTML = `
       <div class="live-status-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; background: rgba(16,185,129,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
@@ -868,6 +866,18 @@
         runZalgo();
         return;
       }
+      else if(toolType === 'ai') {
+        title.innerText = "🤖 AI Bio Generator";
+        html = `
+          <p style="font-size:13px; color:#94a3b8; margin-bottom:15px;">Enter your niche/category (e.g. Gamer, Student, Trader)</p>
+          <input type="text" id="aiIn" class="modal-input" placeholder="e.g. Trader...">
+          <button class="btn-copy" style="background:#10b981; border:none; margin-bottom:15px;" onclick="runAI()">✨ Generate Prompt Bio</button>
+          <div id="aiRes" style="display:none; background:rgba(16,185,129,0.1); padding:16px; border-radius:14px; border:1px solid #10b981; color:#10b981; font-weight:800; white-space:pre-line;"></div>
+        `;
+        body.innerHTML = html;
+        document.getElementById('toolsModal').style.display = 'flex';
+        return;
+      }
 
       body.innerHTML = html;
       document.getElementById('toolsModal').style.display = 'flex';
@@ -918,7 +928,6 @@
       document.getElementById('zOut').innerText = val.split('').map(c => c + z[Math.floor(Math.random()*z.length)]).join('');
     };
 
-    // Quick Bio Modal Features
     let currentQuickBioRaw = "";
     window.rollNextQuickBio = function() {
       const pick = masterBiosObj[Math.floor(Math.random() * masterBiosObj.length)].text;
@@ -953,7 +962,7 @@
     }
 
     // ----------------------------------------
-    // 8. LEGAL MODALS (Privacy, Terms, Contact)
+    // 8. LEGAL MODALS (Fixed)
     // ----------------------------------------
     window.openPolicyModal = function(type) {
       const title = document.getElementById('legalModalTitle');
