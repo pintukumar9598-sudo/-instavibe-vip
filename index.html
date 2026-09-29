@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>InstaVibe VIP Studio 亗 - Ultra Luxury Creator Platform</title>
   <meta name="theme-color" content="#020305">
-  <meta name="description" content="India's #1 Luxury Instagram Bios, Unicode Fonts & Creator Utility App">
+  <meta name="description" content="India's #1 Luxury Instagram Bios, Unicode Fonts & Creator Utility Suite">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +14,11 @@
 
   <style>
     /* ============================================================
-       1. CORE DESIGN VARIABLES & RESETS
+       1. GLOBAL RESET & LUXURY DARK THEME
        ============================================================ */
     :root {
       --bg-dark: #020305;
-      --card-bg: rgba(13, 17, 26, 0.75);
+      --card-bg: rgba(13, 17, 26, 0.8);
       --card-border: rgba(255, 255, 255, 0.08);
       --gold-1: #fef08a; --gold-2: #fbbf24; --gold-3: #f59e0b; --gold-4: #b45309;
       --gold-glow: rgba(245, 158, 11, 0.5);
@@ -26,7 +26,6 @@
       --text-main: #f8fafc; --text-muted: #94a3b8; --success: #10b981; --danger: #ef4444;
       --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       --gold-gradient: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #b45309 100%);
-      --god-gradient: linear-gradient(135deg, #818cf8 0%, #a855f7 50%, #ec4899 100%);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -41,32 +40,31 @@
                   linear-gradient(180deg, #020305 0%, #060913 100%);
       background-attachment: fixed;
     }
-    .glow-orb { position: fixed; width: 350px; height: 350px; border-radius: 50%; pointer-events: none; filter: blur(120px); z-index: -1; opacity: 0.35; animation: floatOrb 10s infinite alternate; }
+    .glow-orb { position: fixed; width: 350px; height: 350px; border-radius: 50%; pointer-events: none; filter: blur(120px); z-index: -1; opacity: 0.35; }
     .glow-1 { top: -100px; left: -100px; background: #fbbf24; }
-    .glow-2 { bottom: 80px; right: -100px; background: #a855f7; animation-delay: -5s; }
-    @keyframes floatOrb { 0% { transform: translateY(0px) scale(1); } 100% { transform: translateY(25px) scale(1.08); } }
+    .glow-2 { bottom: 80px; right: -100px; background: #a855f7; }
 
     /* ============================================================
-       TOP HEADER (Full Width Edge-to-Edge)
+       TOP HEADER (100% Full Width Edge-to-Edge)
        ============================================================ */
     .top-nav-full {
       width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.08);
       position: sticky; top: 0; background: rgba(3, 5, 8, 0.94);
       backdrop-filter: blur(20px); z-index: 999; margin-bottom: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.7);
     }
-    .brand-wrap { display: flex; align-items: center; gap: 12px; }
+    .brand-wrap { display: flex; align-items: center; gap: 10px; }
     .brand-badge-icon {
-      width: 42px; height: 42px; border-radius: 12px; background: var(--gold-gradient);
+      width: 40px; height: 40px; border-radius: 12px; background: var(--gold-gradient);
       display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900;
-      color: #000; box-shadow: 0 0 20px var(--gold-glow);
+      color: #000; box-shadow: 0 0 20px var(--gold-glow); flex-shrink: 0;
     }
     .brand-heading {
-      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; letter-spacing: 0.6px;
+      font-family: 'Cinzel', serif; font-size: 19px; font-weight: 900; letter-spacing: 0.6px;
       background: linear-gradient(110deg, #fef08a 0%, #fbbf24 35%, #ffffff 50%, #fbbf24 65%, #b45309 100%);
       background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      animation: smoothKnifeShine 4s linear infinite;
+      animation: smoothKnifeShine 4s linear infinite; white-space: nowrap;
     }
     @keyframes smoothKnifeShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
     
@@ -89,21 +87,21 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     /* ============================================================
-       STATIC LUXURY SHINING VIP BANNER (Only ₹29 Plan)
+       STATIC LUXURY SHINING BANNER (Only ₹29 Plan)
        ============================================================ */
     .single-vip-banner {
-      position: relative; overflow: hidden; border-radius: 26px; padding: 32px 24px;
+      position: relative; overflow: hidden; border-radius: 26px; padding: 30px 22px;
       background: radial-gradient(circle at top right, rgba(30, 58, 138, 0.98), rgba(8, 12, 24, 1));
       border: 1.5px solid rgba(245, 158, 11, 0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(245, 158, 11, 0.15);
       margin-bottom: 25px; cursor: pointer;
     }
     
-    /* Knife Shine / Sheen Effect across the entire banner */
+    /* Knife Shine / Glare Sweep Effect across the banner */
     .single-vip-banner::before {
-      content: ''; position: absolute; top: -50%; left: -60%; width: 40%; height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), rgba(254, 240, 138, 0.4), transparent);
+      content: ''; position: absolute; top: -50%; left: -60%; width: 45%; height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), rgba(254, 240, 138, 0.5), transparent);
       transform: rotate(25deg); pointer-events: none;
-      animation: bannerSheenGlint 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation: bannerSheenGlint 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
     @keyframes bannerSheenGlint {
       0% { left: -70%; }
@@ -111,16 +109,16 @@
       100% { left: 160%; }
     }
 
-    .banner-badge-row { display: flex; gap: 8px; margin-bottom: 14px; position: relative; z-index: 2; }
-    .badge-tag { font-size: 10.5px; font-weight: 900; letter-spacing: 0.8px; padding: 5px 14px; border-radius: 999px; text-transform: uppercase; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.2); }
+    .banner-badge-row { display: flex; gap: 8px; margin-bottom: 12px; position: relative; z-index: 2; }
+    .badge-tag { font-size: 10px; font-weight: 900; letter-spacing: 0.8px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.2); }
     
-    .banner-title { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 10px; line-height: 1.2; text-shadow: 0 4px 15px rgba(0,0,0,0.6); position: relative; z-index: 2; }
-    .banner-desc { font-size: 13.5px; color: #cbd5e1; margin-bottom: 22px; font-weight: 500; line-height: 1.5; position: relative; z-index: 2; }
+    .banner-title { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.2; text-shadow: 0 4px 15px rgba(0,0,0,0.6); position: relative; z-index: 2; }
+    .banner-desc { font-size: 13px; color: #cbd5e1; margin-bottom: 20px; font-weight: 500; line-height: 1.5; position: relative; z-index: 2; }
     
     .banner-action-row { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
     .banner-price-pill { font-size: 26px; font-weight: 900; color: var(--gold-2); font-family: 'Space Grotesk', sans-serif; }
     .banner-btn-glow {
-      border: none; padding: 13px 26px; border-radius: 14px; font-weight: 900; font-size: 14px;
+      border: none; padding: 12px 24px; border-radius: 12px; font-weight: 900; font-size: 13.5px;
       cursor: pointer; color: #000; background: var(--gold-gradient); box-shadow: 0 4px 20px var(--gold-glow);
       transition: 0.2s;
     }
@@ -132,7 +130,7 @@
     .click-feedback:active { transform: scale(0.95); filter: brightness(1.3); }
 
     .btn-gold-action {
-      width: 100%; border: none; padding: 16px; border-radius: 14px; font-weight: 900; font-size: 15px;
+      width: 100%; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px;
       color: #000; background: var(--gold-gradient); box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35); cursor: pointer;
     }
 
@@ -256,7 +254,7 @@
     .poster-btn.blue { background: #0095f6; }
 
     /* ============================================================
-       PRICING CARD (Clean Single ₹29 Card)
+       PRICING CARD (Single ₹29 Plan)
        ============================================================ */
     .pricing-stack { display: flex; flex-direction: column; gap: 20px; margin-bottom: 35px; }
     .pricing-card {
@@ -420,7 +418,27 @@
           </div>
           <input type="text" id="fontInputBar" class="font-search-input" placeholder="Apna naam ya quote type karein..." value="Badshah 亗">
           <div class="font-styles-list" id="fontPreviewContainer">
-            <!-- Dynamically populated immediately -->
+            <!-- Hardcoded Initial Styles (Never Empty) -->
+            <div class="font-row">
+              <div class="font-styled-preview">𝕭𝖆𝖉𝖘𝖍𝖆𝖍 亗</div>
+              <button class="font-copy-chip click-feedback" onclick="copyPureString('𝕭𝖆𝖉𝖘𝖍𝖆𝖍 亗', 'Font Copied!')">Copy</button>
+            </div>
+            <div class="font-row">
+              <div class="font-styled-preview">𝓑𝓪𝓭𝓼𝓱𝓪𝓱 亗</div>
+              <button class="font-copy-chip click-feedback" onclick="copyPureString('𝓑𝓪𝓭𝓼𝓱𝓪𝓱 亗', 'Font Copied!')">Copy</button>
+            </div>
+            <div class="font-row">
+              <div class="font-styled-preview">𝔹𝕒𝕕𝕤𝕙𝕒𝕙 亗</div>
+              <button class="font-copy-chip click-feedback" onclick="copyPureString('𝔹𝕒𝕕𝕤𝕙𝕒𝕙 亗', 'Font Copied!')">Copy</button>
+            </div>
+            <div class="font-row">
+              <div class="font-styled-preview">亗 𝓑𝓪𝓭𝓼𝓱𝓪𝓱 亗</div>
+              <button class="font-copy-chip click-feedback" onclick="copyPureString('亗 𝓑𝓪𝓭𝓼𝓱𝓪𝓱 亗', 'Font Copied!')">Copy</button>
+            </div>
+            <div class="font-row">
+              <div class="font-styled-preview">★彡[ Badshah 亗 ]彡★</div>
+              <button class="font-copy-chip click-feedback" onclick="copyPureString('★彡[ Badshah 亗 ]彡★', 'Font Copied!')">Copy</button>
+            </div>
           </div>
         </div>
       </section>
@@ -627,450 +645,460 @@
        APPLICATION SCRIPT (Clean, Bulletproof, Zero-Error)
        ============================================================ -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    // ==========================================
+    // GLOBAL ARCHITECTURE & DATA DEFINITIONS
+    // ==========================================
+    const bioRepository = [];
+    let bioUid = 1;
+    function recordBio(tier, cat, content) {
+      bioRepository.push({ id: bioUid++, tier, cat, content });
+    }
+
+    // 1. Handpicked Real Trending Bios
+    const primeBios = [
+      { t:'free', c:'boys', txt:`👉 Nickname Branded 🔥\n👉 Photography Ⓛⓞⓥⓔⓡ 📸\n👉 Unique Life style 👔\n👉 Only 👉 Moj Masti 😍\n👉 💯 Ⓢⓘⓝⓖⓛⓔ\n👉 Bhakt of lord Shiva 🙏` },
+      { t:'free', c:'girls', txt:`💟 Welcome to My Profile 📲\n😇 Happiest Person 🥰\n😘 Love My Pagli K🖤\n❤️ Life Is Too Sort To get High ❤️\n🎂 Wish Me on 4th March 🎂` },
+      { t:'free', c:'boys', txt:`👑 Branded Boy 👑\n😭 First Cry on 3rd Jan 🎂\n💪 Fitness Freak 🏋️\n🏍️ R15 Lover 💖\n😎 Attitude depends on u` },
+      { t:'free', c:'royal', txt:`🔱 Mahakal Bhakt 🔱\n😎 Single but Happy ✌️\n🚗 Thar Lover ❤️\n💪 Gym Addict 🏋️‍♂️\n🎂 12 August` },
+      { t:'free', c:'status', txt:`दुनिया 🌍 क्या सोचेगी,\nये मैं कभी नहीं सोचता! 😎🔥\n#Attitude` },
+      { t:'free', c:'girls', txt:`🌸 Simple Girl 🌸\n🎧 Music Addict 🎶\n🍫 Chocolate Lover 🤤\n👗 Fashion 💄\n😊 Keep Smiling` },
+      { t:'free', c:'boys', txt:`💥 Desi Munda 💥\n😎 Full Attitude 🔥\n🏏 Cricket Lover ❤️\n🔥 Apni Marzi Ka Malik` },
+      { t:'free', c:'girls', txt:`✨ Selfie Queen 👑\n🍫 Chocolates Lover 😋\n🥰 Mom Dad Is My World 🌍\n👗 Fashionista 👠\n💯 Single & Happy ✌️` },
+      { t:'free', c:'royal', txt:`🔥 Mahakal Lover 🔥\n👑 Yadav Sarkar 👑\n💪 Gym Freak 🏋️\n🚗 Thar Lover 🚘\n😎 Attitude Boy 💥` },
+      { t:'free', c:'status', txt:`मुझे समझना इतना आसान नहीं,\nगहरा समंदर हूँ, खुला आसमान नहीं! 🌊🔥` },
+      { t:'free', c:'boys', txt:`👑 King of my own Rules 👑\n😈 Devil Inside 😈\n🔥 Royal Entry on 1st Jan 🎂\n🚫 No Love, Only Hustle 💸\n💯 Badmash Boy 😎` },
+      { t:'free', c:'girls', txt:`☁️ Dreamer | Believer 💫\n🌸 Coffee & Sunset Lover ☕\n🎧 Soft Music & Cozy Nights 🌙\n✨ Spreading Positivity 🕊️` },
+      { t:'free', c:'boys', txt:`🗿 Zero Expectations\n🔇 Silent Moves, Loud Results\n🔥 Focused on my Goals 🎯\n🥊 No Love, Only Hustle 💸` },
+      { t:'free', c:'royal', txt:`👑 Rajputana Swag 👑\n⚔️ Sher Dil 🦁\n🚩 Jai Bhavani\n💪 100% Desi Blood` },
       
-      // ==========================================
-      // 1. DATABASE & BIO STORE (Free + VIP @ ₹29)
-      // ==========================================
-      const bioRepository = [];
-      let bioUid = 1;
-      function recordBio(tier, cat, content) {
-        bioRepository.push({ id: bioUid++, tier, cat, content });
-      }
+      { t:'vip', c:'boys', txt:`★》Mr. Perfect 👑\n★》Attitude in my DNA 🧬\n★》Born to rule 🦁\n★》Own Rules, Own Life ⚡\n★》Royal Blood 🩸` },
+      { t:'vip', c:'royal', txt:`༺ 𝕸𝖆𝖍𝖆𝖐𝖆𝖑 𝕶𝖆 𝕯𝖎𝖜𝖆𝖓𝖆 ༻\n⚔️ Kattar Hindu 🚩\n☠️ Darr Sirf Mahadev Se\n🦁 Shero Ki Baithak` },
+      { t:'vip', c:'girls', txt:`✦ 𝒬𝓊𝑒𝑒𝓃 𝑜𝒻 𝐻𝑒𝒶𝓇𝓉𝓈 ✦\n💎 Luxury Lifestyle & Glow\n🦋 Too Glam To Give A Damn\n🌸 Manifesting Miracles 24/7` },
+      { t:'vip', c:'boys', txt:`𝔇𝔞𝔯𝔨𝔫𝔢𝔰𝔰 𝔦𝔰 𝔪𝔶 𝔰𝔞𝔫𝔠𝔱𝔲𝔞𝔯𝔶 🦇\n♟️ Playing 4D Chess\n🍸 Luxury, Mystery, Power\n🚫 Untouchable` },
+      { t:'vip', c:'status', txt:`हमारी खामोशी पर मत जाओ...\nराख के नीचे अक्सर आग दबी होती है! 🔥💀` },
+      { t:'vip', c:'boys', txt:`🎬 Viral Creator & Reel Strategist\n📈 10M+ Organic Reach Generated\n🚀 Scaling Brands to 7-Figures\n📩 Collabs: DM or Email` },
+      { t:'vip', c:'girls', txt:`✨ Visual Storyteller & Stylist 🥂\n📍 NYC ✈️ Dubai ✈️ Mumbai\n🎞️ 35mm film memories\nPR & Bookings: DM` },
+      { t:'vip', c:'boys', txt:`👑 𝕍𝔼ℝ𝕀𝔽𝕀𝔼𝔻 𝕃𝕌𝕏𝕌ℝ𝕐 𝔸𝔼𝕊𝕋ℍ𝔼𝕋𝕀ℂ ☑️\n⚜️ Registered High-Net-Worth Entity\n🏛️ Sovereign Wealth & Private Assets\n🏆 Ranked #1 in Influence` },
+      { t:'vip', c:'boys', txt:`༺ཌ 𝕾𝖀𝕻𝕽𝕰𝕸𝕰 𝕯𝕺𝕸𝕴𝕹𝕬𝕿𝕴𝕺𝕹 ད༻\n⚡ 𝑼𝒏𝒍𝒊𝒎𝒊𝒕𝒆𝒅 𝑷𝒐𝒘𝒆𝒓 & 𝑺𝒊𝒍𝒆𝒏𝒄𝒆\n♟️ Life is a game, I write the rules\n🥂 Unbothered, moisturized, in my lane` }
+    ];
+    primeBios.forEach(b => recordBio(b.t, b.c, b.txt));
 
-      // Handpicked Real Trending Bios
-      const primeBios = [
-        { t:'free', c:'boys', txt:`👉 Nickname Branded 🔥\n👉 Photography Ⓛⓞⓥⓔⓡ 📸\n👉 Unique Life style 👔\n👉 Only 👉 Moj Masti 😍\n👉 💯 Ⓢⓘⓝⓖⓛⓔ\n👉 Bhakt of lord Shiva 🙏` },
-        { t:'free', c:'girls', txt:`💟 Welcome to My Profile 📲\n😇 Happiest Person 🥰\n😘 Love My Pagli K🖤\n❤️ Life Is Too Sort To get High ❤️\n🎂 Wish Me on 4th March 🎂` },
-        { t:'free', c:'boys', txt:`👑 Branded Boy 👑\n😭 First Cry on 3rd Jan 🎂\n💪 Fitness Freak 🏋️\n🏍️ R15 Lover 💖\n😎 Attitude depends on u` },
-        { t:'free', c:'royal', txt:`🔱 Mahakal Bhakt 🔱\n😎 Single but Happy ✌️\n🚗 Thar Lover ❤️\n💪 Gym Addict 🏋️‍♂️\n🎂 12 August` },
-        { t:'free', c:'status', txt:`दुनिया 🌍 क्या सोचेगी,\nये मैं कभी नहीं सोचता! 😎🔥\n#Attitude` },
-        { t:'free', c:'girls', txt:`🌸 Simple Girl 🌸\n🎧 Music Addict 🎶\n🍫 Chocolate Lover 🤤\n👗 Fashion 💄\n😊 Keep Smiling` },
-        { t:'free', c:'boys', txt:`💥 Desi Munda 💥\n😎 Full Attitude 🔥\n🏏 Cricket Lover ❤️\n🔥 Apni Marzi Ka Malik` },
-        { t:'free', c:'girls', txt:`✨ Selfie Queen 👑\n🍫 Chocolates Lover 😋\n🥰 Mom Dad Is My World 🌍\n👗 Fashionista 👠\n💯 Single & Happy ✌️` },
-        { t:'free', c:'royal', txt:`🔥 Mahakal Lover 🔥\n👑 Yadav Sarkar 👑\n💪 Gym Freak 🏋️\n🚗 Thar Lover 🚘\n😎 Attitude Boy 💥` },
-        { t:'free', c:'status', txt:`मुझे समझना इतना आसान नहीं,\nगहरा समंदर हूँ, खुला आसमान नहीं! 🌊🔥` },
-        { t:'free', c:'boys', txt:`👑 King of my own Rules 👑\n😈 Devil Inside 😈\n🔥 Royal Entry on 1st Jan 🎂\n🚫 No Love, Only Hustle 💸\n💯 Badmash Boy 😎` },
-        { t:'free', c:'girls', txt:`☁️ Dreamer | Believer 💫\n🌸 Coffee & Sunset Lover ☕\n🎧 Soft Music & Cozy Nights 🌙\n✨ Spreading Positivity 🕊️` },
-        { t:'free', c:'boys', txt:`🗿 Zero Expectations\n🔇 Silent Moves, Loud Results\n🔥 Focused on my Goals 🎯\n🥊 No Love, Only Hustle 💸` },
-        { t:'free', c:'royal', txt:`👑 Rajputana Swag 👑\n⚔️ Sher Dil 🦁\n🚩 Jai Bhavani\n💪 100% Desi Blood` },
-        
-        { t:'vip', c:'boys', txt:`★》Mr. Perfect 👑\n★》Attitude in my DNA 🧬\n★》Born to rule 🦁\n★》Own Rules, Own Life ⚡\n★》Royal Blood 🩸` },
-        { t:'vip', c:'royal', txt:`༺ 𝕸𝖆𝖍𝖆𝖐𝖆𝖑 𝕶𝖆 𝕯𝖎𝖜𝖆𝖓𝖆 ༻\n⚔️ Kattar Hindu 🚩\n☠️ Darr Sirf Mahadev Se\n🦁 Shero Ki Baithak` },
-        { t:'vip', c:'girls', txt:`✦ 𝒬𝓊𝑒𝑒𝓃 𝑜𝒻 𝐻𝑒𝒶𝓇𝓉𝓈 ✦\n💎 Luxury Lifestyle & Glow\n🦋 Too Glam To Give A Damn\n🌸 Manifesting Miracles 24/7` },
-        { t:'vip', c:'boys', txt:`𝔇𝔞𝔯𝔨𝔫𝔢𝔰𝔰 𝔦𝔰 𝔪𝔶 𝔰𝔞𝔫𝔠𝔱𝔲𝔞𝔯𝔶 🦇\n♟️ Playing 4D Chess\n🍸 Luxury, Mystery, Power\n🚫 Untouchable` },
-        { t:'vip', c:'status', txt:`हमारी खामोशी पर मत जाओ...\nराख के नीचे अक्सर आग दबी होती है! 🔥💀` },
-        { t:'vip', c:'boys', txt:`🎬 Viral Creator & Reel Strategist\n📈 10M+ Organic Reach Generated\n🚀 Scaling Brands to 7-Figures\n📩 Collabs: DM or Email` },
-        { t:'vip', c:'girls', txt:`✨ Visual Storyteller & Stylist 🥂\n📍 NYC ✈️ Dubai ✈️ Mumbai\n🎞️ 35mm film memories\nPR & Bookings: DM` },
-        { t:'vip', c:'boys', txt:`👑 𝕍𝔼ℝ𝕀𝔽𝕀𝔼𝔻 𝕃𝕌𝕏𝕌ℝ𝕐 𝔸𝔼𝕊𝕋ℍ𝔼𝕋𝕀ℂ ☑️\n⚜️ Registered High-Net-Worth Entity\n🏛️ Sovereign Wealth & Private Assets\n🏆 Ranked #1 in Influence` },
-        { t:'vip', c:'boys', txt:`༺ཌ 𝕾𝖀𝕻𝕽𝕰𝕸𝕰 𝕯𝕺𝕸𝕴𝕹𝕬𝕿𝕴𝕺𝕹 ད༻\n⚡ 𝑼𝒏𝒍𝒊𝒎𝒊𝒕𝒆𝒅 𝑷𝒐𝒘𝒆𝒓 & 𝑺𝒊𝒍𝒆𝒏𝒄𝒆\n♟️ Life is a game, I write the rules\n🥂 Unbothered, moisturized, in my lane` }
-      ];
-      primeBios.forEach(b => recordBio(b.t, b.c, b.txt));
+    // Dynamic Generator for Remaining 1500+ Unique Bios
+    const prefixes = ["🌟 Shining Star", "🔥 Attitude Boy", "💎 Desi Swag", "🚀 Sky High", "🎧 Music Addict", "🥀 Broken Soul", "👑 Royal Boy", "🦋 Aesthetic Soul"];
+    const bodies = ["Living life on my terms", "Zero fake friends", "Dream chasing...", "Stay Classy", "Hustle Hard", "Silent but deadly", "Creating my own vibe", "King in the making"];
+    const suffixes = ["Welcome to my world", "Hit the follow button", "No DMs without business", "Stay Blessed 🙏", "Wish me on 1st Jan 🎂", "Single and Happy 😎"];
 
-      // Dynamic Generator for Remaining 1500+ Unique Bios
-      const prefixes = ["🌟 Shining Star", "🔥 Attitude Boy", "💎 Desi Swag", "🚀 Sky High", "🎧 Music Addict", "🥀 Broken Soul", "👑 Royal Boy", "🦋 Aesthetic Soul"];
-      const bodies = ["Living life on my terms", "Zero fake friends", "Dream chasing...", "Stay Classy", "Hustle Hard", "Silent but deadly", "Creating my own vibe", "King in the making"];
-      const suffixes = ["Welcome to my world", "Hit the follow button", "No DMs without business", "Stay Blessed 🙏", "Wish me on 1st Jan 🎂", "Single and Happy 😎"];
+    for(let i=0; i<800; i++) recordBio('free', i%2===0?'boys':'girls', `${prefixes[i%8]} 👑\n${bodies[i%8]} 💯\n${suffixes[i%6]} ✨`);
+    for(let i=0; i<800; i++) recordBio('vip', i%2===0?'boys':'royal', `⚡ VIP ${prefixes[i%8]} ⚡\n🩸 Premium Attitude\n${bodies[i%8]} 🔥\n${suffixes[i%6]} 👑`);
 
-      for(let i=0; i<800; i++) recordBio('free', i%2===0?'boys':'girls', `${prefixes[i%8]} 👑\n${bodies[i%8]} 💯\n${suffixes[i%6]} ✨`);
-      for(let i=0; i<800; i++) recordBio('vip', i%2===0?'boys':'royal', `⚡ VIP ${prefixes[i%8]} ⚡\n🩸 Premium Attitude\n${bodies[i%8]} 🔥\n${suffixes[i%6]} 👑`);
+    // User State (Only Free or VIP)
+    let isVipUser = localStorage.getItem('instavibe_vip_unlocked') === 'true';
 
-      // User State (Only Free or VIP)
-      let isVipUser = localStorage.getItem('instavibe_vip_unlocked') === 'true';
+    // ==========================================
+    // 2. VIEW NAVIGATION & ROUTING (Attached to Window)
+    // ==========================================
+    window.navigateToView = function(viewKey) {
+      document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
+      document.querySelectorAll('.bottom-tab-link').forEach(l => l.classList.remove('active'));
+      
+      const targetView = document.getElementById(`view-${viewKey}`);
+      if(targetView) targetView.classList.add('active');
 
-      // ==========================================
-      // 2. VIEW NAVIGATION & ROUTING
-      // ==========================================
-      window.navigateToView = function(viewKey) {
-        document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
-        document.querySelectorAll('.bottom-tab-link').forEach(l => l.classList.remove('active'));
-        
-        const targetView = document.getElementById(`view-${viewKey}`);
-        if(targetView) targetView.classList.add('active');
+      const activeTab = document.querySelector(`.bottom-tab-link[onclick="navigateToView('${viewKey}')"]`);
+      if(activeTab) activeTab.classList.add('active');
 
-        const activeTab = document.querySelector(`.bottom-tab-link[onclick="navigateToView('${viewKey}')"]`);
-        if(activeTab) activeTab.classList.add('active');
+      window.scrollTo(0,0);
+      if(viewKey === 'vault') refreshVaultScreen();
+    };
 
-        window.scrollTo(0,0);
-        if(viewKey === 'vault') refreshVaultScreen();
-      };
+    // ==========================================
+    // 3. FANCY FONT ENGINE (50+ Styles)
+    // ==========================================
+    const fontMaps = {
+      gothic: { a: "𝖆", b: "𝖇", c: "𝖈", d: "𝖉", e: "𝖊", f: "𝖋", g: "𝖌", h: "𝖍", i: "𝖎", j: "𝖏", k: "𝖐", l: "𝖑", m: "𝖒", n: "𝖓", o: "𝖔", p: "𝖕", q: "𝖖", r: "𝖗", s: "𝖘", t: "𝖙", u: "𝖚", v: "𝖛", w: "𝖜", x: "𝖝", y: "𝖞", z: "𝖟", A: "𝕬", B: "𝕭", C: "𝕮", D: "𝕯", E: "𝕰", F: "𝕱", G: "𝕲", H: "𝕳", I: "𝕴", J: "𝕵", K: "𝕶", L: "𝕷", M: "𝕸", N: "𝕹", O: "𝕺", P: "𝕻", Q: "𝕼", R: "𝕽", S: "𝕾", T: "𝕿", U: "𝖀", V: "𝖁", W: "𝖂", X: "𝖃", Y: "𝖄", Z: "𝖅" },
+      scriptBold: { a: "𝓪", b: "𝓫", c: "𝓬", d: "𝓭", e: "𝓮", f: "𝓯", g: "𝓰", h: "𝓱", i: "𝓲", j: "𝓳", k: "𝓴", l: "𝓵", m: "𝓶", n: "𝓷", o: "𝓸", p: "𝓹", q: "𝓺", r: "𝓻", s: "𝓼", t: "𝓽", u: "𝓾", v: "𝓿", w: "𝔀", x: "𝔁", y: "𝔂", z: "𝔃", A: "𝓐", B: "𝓑", C: "𝓒", D: "𝓓", E: "𝓔", F: "𝓕", G: "𝓖", H: "𝓗", I: "𝓘", J: "𝓙", K: "𝓚", L: "𝓛", M: "𝓜", N: "𝓝", O: "𝓞", P: "𝓟", Q: "𝓠", R: "𝓡", S: "𝓢", T: "𝓣", U: "𝓤", V: "𝓥", W: "𝓦", X: "𝓧", Y: "𝓨", Z: "𝓩" },
+      doubleStruck: { a: "𝕒", b: "𝕓", c: "𝕔", d: "𝕕", e: "𝕖", f: "𝕗", g: "𝕘", h: "𝕙", i: "𝕚", j: "𝕛", k: "𝕜", l: "𝕝", m: "𝖒", n: "𝕟", o: "𝕠", p: "𝕡", q: "𝕢", r: "𝕣", s: "𝕤", t: "𝕥", u: "𝖚", v: "𝕧", w: "𝕨", x: "𝕩", y: "𝕪", z: "𝕫", A: "𝔸", B: "𝔹", C: "ℂ", D: "𝔻", E: "𝔼", F: "𝔽", G: "𝔾", H: "ℍ", I: "𝕀", J: "𝕁", K: "𝕂", L: "𝕃", M: "𝕄", N: "ℕ", O: "𝕆", P: "ℙ", Q: "ℚ", R: "ℝ", S: "𝕊", T: "𝕋", U: "𝕌", V: "𝕍", W: "𝕎", X: "𝕏", Y: "𝕐", Z: "ℤ" },
+      monospace: { a: "𝚊", b: "𝚋", c: "𝚌", d: "𝚍", e: "𝚎", f: "𝚏", g: "𝚐", h: "𝚑", i: "𝚒", j: "𝚓", k: "𝚔", l: "𝚕", m: "𝚖", n: "𝖓", o: "𝚘", p: "𝚙", q: "𝚚", r: "𝚛", s: "𝚜", t: "𝚝", u: "𝚞", v: "𝚟", w: "𝚠", x: "𝚡", y: "𝚢", z: "𝚣" },
+      smallCaps: { a: "ᴀ", b: "ʙ", c: "ᴄ", d: "ᴅ", e: "ᴇ", f: "ꜰ", g: "ɢ", h: "ʜ", i: "ɪ", j: "ᴊ", k: "ᴋ", l: "ʟ", m: "ᴍ", n: "ɴ", o: "ᴏ", p: "ᴘ", q: "ǫ", r: "ʀ", s: "ꜱ", t: "ᴛ", u: "ᴜ", v: "ᴠ", w: "ᴡ", x: "x", y: "ʏ", z: "ᴢ" },
+      circled: { a: "ⓐ", b: "ⓑ", c: "ⓒ", d: "ⓓ", e: "ⓔ", f: "ⓕ", g: "ⓖ", h: "ⓗ", i: "ⓘ", j: "ⓙ", k: "ⓚ", l: "ⓛ", m: "ⓜ", n: "ⓝ", o: "ⓞ", p: "ⓟ", q: "ⓠ", r: "ⓡ", s: "ⓢ", t: "ⓣ", u: "ⓤ", v: "ⓥ", w: "ⓦ", x: "ⓧ", y: "ⓨ", z: "ⓩ" }
+    };
 
-      // ==========================================
-      // 3. FANCY FONT ENGINE (50+ Styles)
-      // ==========================================
-      const fontMaps = {
-        gothic: { a: "𝖆", b: "𝖇", c: "𝖈", d: "𝖉", e: "𝖊", f: "𝖋", g: "𝖌", h: "𝖍", i: "𝖎", j: "𝖏", k: "𝖐", l: "𝖑", m: "𝖒", n: "𝖓", o: "𝖔", p: "𝖕", q: "𝖖", r: "𝖗", s: "𝖘", t: "𝖙", u: "𝖚", v: "𝖛", w: "𝖜", x: "𝖝", y: "𝖞", z: "𝖟", A: "𝕬", B: "𝕭", C: "𝕮", D: "𝕯", E: "𝕰", F: "𝕱", G: "𝕲", H: "𝕳", I: "𝕴", J: "𝕵", K: "𝕶", L: "𝕷", M: "𝕸", N: "𝕹", O: "𝕺", P: "𝕻", Q: "𝕼", R: "𝕽", S: "𝕾", T: "𝕿", U: "𝖀", V: "𝖁", W: "𝖂", X: "𝖃", Y: "𝖄", Z: "𝖅" },
-        scriptBold: { a: "𝓪", b: "𝓫", c: "𝓬", d: "𝓭", e: "𝓮", f: "𝓯", g: "𝓰", h: "𝓱", i: "𝓲", j: "𝓳", k: "𝓴", l: "𝓵", m: "𝓶", n: "𝓷", o: "𝓸", p: "𝓹", q: "𝓺", r: "𝓻", s: "𝓼", t: "𝓽", u: "𝓾", v: "𝓿", w: "𝔀", x: "𝔁", y: "𝔂", z: "𝔃", A: "𝓐", B: "𝓑", C: "𝓒", D: "𝓓", E: "𝓔", F: "𝓕", G: "𝓖", H: "𝓗", I: "𝓘", J: "𝓙", K: "𝓚", L: "𝓛", M: "𝓜", N: "𝓝", O: "𝓞", P: "𝓟", Q: "𝓠", R: "𝓡", S: "𝓢", T: "𝓣", U: "𝓤", V: "𝓥", W: "𝓦", X: "𝓧", Y: "𝓨", Z: "𝓩" },
-        doubleStruck: { a: "𝕒", b: "𝕓", c: "𝕔", d: "𝕕", e: "𝕖", f: "𝕗", g: "𝕘", h: "𝕙", i: "𝕚", j: "𝕛", k: "𝕜", l: "𝕝", m: "𝖒", n: "𝕟", o: "𝕠", p: "𝕡", q: "𝕢", r: "𝕣", s: "𝕤", t: "𝕥", u: "𝖚", v: "𝕧", w: "𝕨", x: "𝕩", y: "𝕪", z: "𝕫", A: "𝔸", B: "𝔹", C: "ℂ", D: "𝔻", E: "𝔼", F: "𝔽", G: "𝔾", H: "ℍ", I: "𝕀", J: "𝕁", K: "𝕂", L: "𝕃", M: "𝕄", N: "ℕ", O: "𝕆", P: "ℙ", Q: "ℚ", R: "ℝ", S: "𝕊", T: "𝕋", U: "𝕌", V: "𝕍", W: "𝕎", X: "𝕏", Y: "𝕐", Z: "ℤ" },
-        monospace: { a: "𝚊", b: "𝚋", c: "𝚌", d: "𝚍", e: "𝚎", f: "𝚏", g: "𝚐", h: "𝚑", i: "𝚒", j: "𝚓", k: "𝚔", l: "𝚕", m: "𝚖", n: "𝚗", o: "𝚘", p: "𝚙", q: "𝚚", r: "𝚛", s: "𝚜", t: "𝚝", u: "𝚞", v: "𝚟", w: "𝚠", x: "𝚡", y: "𝚢", z: "𝚣" },
-        smallCaps: { a: "ᴀ", b: "ʙ", c: "ᴄ", d: "ᴅ", e: "ᴇ", f: "ꜰ", g: "ɢ", h: "ʜ", i: "ɪ", j: "ᴊ", k: "ᴋ", l: "ʟ", m: "ᴍ", n: "ɴ", o: "ᴏ", p: "ᴘ", q: "ǫ", r: "ʀ", s: "ꜱ", t: "ᴛ", u: "ᴜ", v: "ᴠ", w: "ᴡ", x: "x", y: "ʏ", z: "ᴢ" },
-        circled: { a: "ⓐ", b: "ⓑ", c: "ⓒ", d: "ⓓ", e: "ⓔ", f: "ⓕ", g: "ⓖ", h: "ⓗ", i: "ⓘ", j: "ⓙ", k: "ⓚ", l: "ⓛ", m: "ⓜ", n: "ⓝ", o: "ⓞ", p: "ⓟ", q: "ⓠ", r: "ⓡ", s: "ⓢ", t: "ⓣ", u: "ⓤ", v: "ⓥ", w: "ⓦ", x: "ⓧ", y: "ⓨ", z: "ⓩ" }
-      };
+    function applyMap(text, map) {
+      return text.split('').map(char => map[char] || char).join('');
+    }
 
-      function applyMap(text, map) {
-        return text.split('').map(char => map[char] || char).join('');
-      }
+    function buildFontCatalog() {
+      const inputEl = document.getElementById('fontInputBar');
+      const container = document.getElementById('fontPreviewContainer');
+      if(!inputEl || !container) return;
 
-      function buildFontCatalog() {
-        const inputEl = document.getElementById('fontInputBar');
-        const container = document.getElementById('fontPreviewContainer');
-        if(!inputEl || !container) return;
-
-        const inputStr = inputEl.value || "Badshah";
-        
-        const catalog = [
-          { name: "Royal Gothic", res: applyMap(inputStr, fontMaps.gothic) },
-          { name: "Script Luxury", res: applyMap(inputStr, fontMaps.scriptBold) },
-          { name: "Double Outline", res: applyMap(inputStr, fontMaps.doubleStruck) },
-          { name: "Aesthetic Small", res: applyMap(inputStr, fontMaps.smallCaps) },
-          { name: "Circle Bubble", res: applyMap(inputStr, fontMaps.circled) },
-          { name: "Cyber Mono", res: applyMap(inputStr, fontMaps.monospace) },
-          { name: "VIP Crown Badge", res: `亗 ${applyMap(inputStr, fontMaps.scriptBold)} 亗` },
-          { name: "Star Warrior", res: `★彡[ ${inputStr} ]彡★` },
-          { name: "Sovereign Shield", res: `༺ཌ ${inputStr} ད༻` },
-          { name: "Savage Box", res: `【 ${applyMap(inputStr, fontMaps.smallCaps)} 】` },
-          { name: "Lightning Bold", res: `⚡ ${inputStr} ⚡` },
-          { name: "Heart Blossom", res: `🌸｡･:*:･ﾟ ${inputStr} ｡･:*:･ﾟ🌸` }
-        ];
-
-        container.innerHTML = catalog.map(item => `
-          <div class="font-row">
-            <div class="font-styled-preview">${item.res}</div>
-            <button class="font-copy-chip click-feedback" onclick="copyPureString('${encodeURIComponent(item.res)}', 'Font Copied!', true)">Copy</button>
-          </div>
-        `).join('');
-      }
-
-      const fontInputBarEl = document.getElementById('fontInputBar');
-      if(fontInputBarEl) fontInputBarEl.addEventListener('input', buildFontCatalog);
-      buildFontCatalog();
-
-      // ==========================================
-      // 4. BIOS RENDER ENGINE + MOCKUP INJECTION
-      // ==========================================
-      let activeFilterTag = 'all';
-      window.applyBioFilter = function(tag, btn) {
-        activeFilterTag = tag;
-        document.querySelectorAll('.category-tab-btn').forEach(b => b.classList.remove('active'));
-        if(btn) btn.classList.add('active');
-        renderBiosPool();
-      };
-
-      const mockupProfiles = [
-        { name: 'Thomas Shelby', f: '533K', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150', bio: '👉 Nickname Branded 🔥\n👉 Photography Ⓛⓞⓥⓔⓡ 📸\n👉 Unique Life style 👔' },
-        { name: 'Aesthetic Queen', f: '1.2M', pic: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', bio: '☁️ Dreamer | Believer 💫\n🌸 Coffee & Sunset Lover ☕\n🎧 Soft Music & Cozy Nights 🌙' },
-        { name: 'Millionaire Mindset', f: '850K', pic: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150', bio: '👑 Billionaire Mindset 💼\n✈️ Traveling the World 🌍\n🔥 Silence is my loudest scream ⚡' }
+      const inputStr = inputEl.value || "Badshah";
+      
+      const catalog = [
+        { name: "Royal Gothic", res: applyMap(inputStr, fontMaps.gothic) },
+        { name: "Script Luxury", res: applyMap(inputStr, fontMaps.scriptBold) },
+        { name: "Double Outline", res: applyMap(inputStr, fontMaps.doubleStruck) },
+        { name: "Aesthetic Small", res: applyMap(inputStr, fontMaps.smallCaps) },
+        { name: "Circle Bubble", res: applyMap(inputStr, fontMaps.circled) },
+        { name: "Cyber Mono", res: applyMap(inputStr, fontMaps.monospace) },
+        { name: "VIP Crown Badge", res: `亗 ${applyMap(inputStr, fontMaps.scriptBold)} 亗` },
+        { name: "Star Warrior", res: `★彡[ ${inputStr} ]彡★` },
+        { name: "Sovereign Shield", res: `༺ཌ ${inputStr} ད༻` },
+        { name: "Savage Box", res: `【 ${applyMap(inputStr, fontMaps.smallCaps)} 】` },
+        { name: "Lightning Bold", res: `⚡ ${inputStr} ⚡` },
+        { name: "Heart Blossom", res: `🌸｡･:*:･ﾟ ${inputStr} ｡･:*:･ﾟ🌸` }
       ];
 
-      function buildMockupBanner(idx) {
-        const item = mockupProfiles[idx % mockupProfiles.length];
-        return `
-          <div class="insta-poster-mockup">
-            <div class="poster-top-bar">INSTAGRAM PROFILE MOCKUP</div>
-            <div class="poster-inner">
-              <div class="poster-creator-name">${item.name} <span class="blue-tick">✓</span></div>
-              <div class="poster-stats-row">
-                <div class="poster-avatar"><img src="${item.pic}" alt="Profile"></div>
-                <div class="poster-metrics">
-                  <div>955<span>posts</span></div><div>${item.f}<span>followers</span></div><div>253<span>following</span></div>
-                </div>
-              </div>
-              <div class="poster-bio-box">${item.bio}</div>
-              <div class="poster-btn-group">
-                <button class="poster-btn blue">Following ▾</button>
-                <button class="poster-btn">Message</button>
+      container.innerHTML = catalog.map(item => `
+        <div class="font-row">
+          <div class="font-styled-preview">${item.res}</div>
+          <button class="font-copy-chip click-feedback" onclick="copyPureString('${encodeURIComponent(item.res)}', 'Font Copied!', true)">Copy</button>
+        </div>
+      `).join('');
+    }
+
+    // ==========================================
+    // 4. BIOS RENDER ENGINE + MOCKUP INJECTION
+    // ==========================================
+    let activeFilterTag = 'all';
+    window.applyBioFilter = function(tag, btn) {
+      activeFilterTag = tag;
+      document.querySelectorAll('.category-tab-btn').forEach(b => b.classList.remove('active'));
+      if(btn) btn.classList.add('active');
+      renderBiosPool();
+    };
+
+    const mockupProfiles = [
+      { name: 'Thomas Shelby', f: '533K', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150', bio: '👉 Nickname Branded 🔥\n👉 Photography Ⓛⓞⓥⓔⓡ 📸\n👉 Unique Life style 👔' },
+      { name: 'Aesthetic Queen', f: '1.2M', pic: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', bio: '☁️ Dreamer | Believer 💫\n🌸 Coffee & Sunset Lover ☕\n🎧 Soft Music & Cozy Nights 🌙' },
+      { name: 'Millionaire Mindset', f: '850K', pic: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150', bio: '👑 Billionaire Mindset 💼\n✈️ Traveling the World 🌍\n🔥 Silence is my loudest scream ⚡' }
+    ];
+
+    function buildMockupBanner(idx) {
+      const item = mockupProfiles[idx % mockupProfiles.length];
+      return `
+        <div class="insta-poster-mockup">
+          <div class="poster-top-bar">INSTAGRAM PROFILE MOCKUP</div>
+          <div class="poster-inner">
+            <div class="poster-creator-name">${item.name} <span class="blue-tick">✓</span></div>
+            <div class="poster-stats-row">
+              <div class="poster-avatar"><img src="${item.pic}" alt="Profile"></div>
+              <div class="poster-metrics">
+                <div>955<span>posts</span></div><div>${item.f}<span>followers</span></div><div>253<span>following</span></div>
               </div>
             </div>
-          </div>`;
-      }
+            <div class="poster-bio-box">${item.bio}</div>
+            <div class="poster-btn-group">
+              <button class="poster-btn blue">Following ▾</button>
+              <button class="poster-btn">Message</button>
+            </div>
+          </div>
+        </div>`;
+    }
 
-      function renderBiosPool() {
-        const exploreArea = document.getElementById('exploreBiosFeed');
-        const homeArea = document.getElementById('homeBiosFeed');
-        
-        let pool = activeFilterTag === 'all' ? bioRepository : bioRepository.filter(b => b.tier === activeFilterTag);
+    function renderBiosPool() {
+      const exploreArea = document.getElementById('exploreBiosFeed');
+      const homeArea = document.getElementById('homeBiosFeed');
+      
+      let pool = activeFilterTag === 'all' ? bioRepository : bioRepository.filter(b => b.tier === activeFilterTag);
 
-        // 1. Render Explore Feed
-        if(exploreArea) {
-          let html = '';
-          const maxCount = Math.min(pool.length, 150);
-          for(let i=0; i<maxCount; i++) {
-            if(i > 0 && i % 10 === 0) html += buildMockupBanner(i / 10);
-            
-            const bio = pool[i];
-            const isFree = bio.tier === 'free';
-            const authorized = isFree || isVipUser;
-            const badgeTxt = isFree ? 'FREE BIO' : 'VIP EXCLUSIVE';
+      // 1. Render Explore Feed
+      if(exploreArea) {
+        let html = '';
+        const maxCount = Math.min(pool.length, 150);
+        for(let i=0; i<maxCount; i++) {
+          if(i > 0 && i % 10 === 0) html += buildMockupBanner(i / 10);
+          
+          const bio = pool[i];
+          const isFree = bio.tier === 'free';
+          const authorized = isFree || isVipUser;
+          const badgeTxt = isFree ? 'FREE BIO' : 'VIP EXCLUSIVE';
 
-            if(authorized) {
-              html += `
-                <div class="bio-card-box">
-                  <span class="pill-tier ${isFree?'pill-free':'pill-vip'}">${badgeTxt}</span>
-                  <div class="bio-text-content">${bio.content}</div>
-                  <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${bio.id})">📋 Copy Bio</button>
-                </div>`;
-            } else {
-              html += `
-                <div class="bio-card-box">
-                  <span class="pill-tier pill-vip">🔒 LOCKED (${badgeTxt})</span>
-                  <div class="bio-text-content" style="filter:blur(6px); user-select:none;">LOREM IPSUM ATTITUDE BIO\nHIDDEN CONTENT</div>
-                  <div class="bio-locked-blur">
-                    <div class="lock-icon-lg">🔒</div>
-                    <button class="btn-unlock-gold click-feedback" onclick="openCheckoutModal('vip')">Unlock @ ₹29</button>
-                  </div>
-                </div>`;
-            }
-          }
-          exploreArea.innerHTML = html;
-        }
-
-        // 2. Render Home Feed (150 Real Free Bios)
-        if(homeArea) {
-          const freePool = bioRepository.filter(b => b.tier === 'free').slice(0, 150);
-          let hHtml = '';
-          freePool.forEach((bio, idx) => {
-            if(idx > 0 && idx % 12 === 0) hHtml += buildMockupBanner(idx / 12);
-            hHtml += `
+          if(authorized) {
+            html += `
               <div class="bio-card-box">
-                <span class="pill-tier pill-free">FREE BIO</span>
+                <span class="pill-tier ${isFree?'pill-free':'pill-vip'}">${badgeTxt}</span>
                 <div class="bio-text-content">${bio.content}</div>
                 <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${bio.id})">📋 Copy Bio</button>
               </div>`;
-          });
-          homeArea.innerHTML = hHtml;
+          } else {
+            html += `
+              <div class="bio-card-box">
+                <span class="pill-tier pill-vip">🔒 LOCKED (${badgeTxt})</span>
+                <div class="bio-text-content" style="filter:blur(6px); user-select:none;">LOREM IPSUM ATTITUDE BIO\nHIDDEN CONTENT</div>
+                <div class="bio-locked-blur">
+                  <div class="lock-icon-lg">🔒</div>
+                  <button class="btn-unlock-gold click-feedback" onclick="openCheckoutModal('vip')">Unlock @ ₹29</button>
+                </div>
+              </div>`;
+            }
         }
+        exploreArea.innerHTML = html;
       }
 
-      // ==========================================
-      // 5. UNIVERSAL UPI PAYMENT (Auto-Bypass @ ₹29)
-      // ==========================================
-      window.openCheckoutModal = function(type) {
-        document.querySelectorAll('.step-box').forEach(s => s.classList.remove('active'));
-        document.getElementById('payStepIntent').classList.add('active');
-        document.getElementById('checkoutModalVeil').classList.add('open');
-      };
+      // 2. Render Home Feed (150 Real Free Bios)
+      if(homeArea) {
+        const freePool = bioRepository.filter(b => b.tier === 'free').slice(0, 150);
+        let hHtml = '';
+        freePool.forEach((bio, idx) => {
+          if(idx > 0 && idx % 12 === 0) hHtml += buildMockupBanner(idx / 12);
+          hHtml += `
+            <div class="bio-card-box">
+              <span class="pill-tier pill-free">FREE BIO</span>
+              <div class="bio-text-content">${bio.content}</div>
+              <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${bio.id})">📋 Copy Bio</button>
+            </div>`;
+        });
+        homeArea.innerHTML = hHtml;
+      }
+    }
 
-      window.initiateUniversalUPIPayment = function() {
-        const upiId = "pintukumar954670@axl";
-        const brand = "InstaVibe VIP";
-        const price = 29;
-        const note = encodeURIComponent("InstaVibe VIP Lifetime Access");
+    // ==========================================
+    // 5. UNIVERSAL UPI PAYMENT (Auto-Bypass @ ₹29)
+    // ==========================================
+    window.openCheckoutModal = function(type) {
+      document.querySelectorAll('.step-box').forEach(s => s.classList.remove('active'));
+      document.getElementById('payStepIntent').classList.add('active');
+      document.getElementById('checkoutModalVeil').classList.add('open');
+    };
 
-        // Standard Universal Intent (Works with PhonePe, GPay, Paytm, BHIM, Navi)
-        window.location.href = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(brand)}&am=${price}&cu=INR&tn=${note}`;
+    window.initiateUniversalUPIPayment = function() {
+      const upiId = "pintukumar954670@axl";
+      const brand = "InstaVibe VIP";
+      const price = 29;
+      const note = encodeURIComponent("InstaVibe VIP Lifetime Access");
 
-        // Auto Verification Delay Simulation
+      // Standard Universal Intent (Works with PhonePe, GPay, Paytm, BHIM, Navi)
+      window.location.href = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(brand)}&am=${price}&cu=INR&tn=${note}`;
+
+      // Auto Verification Delay Simulation
+      setTimeout(() => {
+        document.getElementById('payStepIntent').classList.remove('active');
+        document.getElementById('payStepVerifying').classList.add('active');
+
         setTimeout(() => {
-          document.getElementById('payStepIntent').classList.remove('active');
-          document.getElementById('payStepVerifying').classList.add('active');
+          isVipUser = true;
+          localStorage.setItem('instavibe_vip_unlocked', 'true');
 
-          setTimeout(() => {
-            isVipUser = true;
-            localStorage.setItem('instavibe_vip_unlocked', 'true');
+          document.getElementById('payStepVerifying').classList.remove('active');
+          document.getElementById('payStepSuccess').classList.add('active');
 
-            document.getElementById('payStepVerifying').classList.remove('active');
-            document.getElementById('payStepSuccess').classList.add('active');
+          renderBiosPool();
+          document.querySelector('.bottom-tab-link[onclick="navigateToView(\\'vault\\')"]').innerHTML = '<span class="bottom-tab-icon" style="color:var(--gold-2);">💎</span>Vault';
+        }, 2500);
+      }, 1500);
+    };
 
-            renderBiosPool();
-            document.querySelector('.bottom-tab-link[onclick="navigateToView(\\'vault\\')"]').innerHTML = '<span class="bottom-tab-icon" style="color:var(--gold-2);">💎</span>Vault';
-          }, 2500);
-        }, 1500);
-      };
+    // ==========================================
+    // 6. VIP VAULT SCREEN
+    // ==========================================
+    function refreshVaultScreen() {
+      const lockedBox = document.getElementById('vaultLockedBox');
+      const unlockedBox = document.getElementById('vaultUnlockedBox');
 
-      // ==========================================
-      // 6. VIP VAULT SCREEN
-      // ==========================================
-      function refreshVaultScreen() {
-        const lockedBox = document.getElementById('vaultLockedBox');
-        const unlockedBox = document.getElementById('vaultUnlockedBox');
+      if(!isVipUser) {
+        lockedBox.style.display = 'block';
+        unlockedBox.style.display = 'none';
+        return;
+      }
 
-        if(!isVipUser) {
-          lockedBox.style.display = 'block';
-          unlockedBox.style.display = 'none';
-          return;
-        }
+      lockedBox.style.display = 'none';
+      unlockedBox.style.display = 'block';
 
-        lockedBox.style.display = 'none';
-        unlockedBox.style.display = 'block';
+      // Render Vault Bios
+      const vFeed = document.getElementById('vaultBiosFeed');
+      vFeed.innerHTML = bioRepository.filter(b => b.tier === 'vip').slice(0, 40).map(b => `
+        <div class="bio-card-box" style="border-color:#fbbf24;">
+          <div class="bio-text-content">${b.content}</div>
+          <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${b.id})">📋 Copy VIP Bio</button>
+        </div>
+      `).join('');
+    }
 
-        // Render Vault Bios
-        const vFeed = document.getElementById('vaultBiosFeed');
-        vFeed.innerHTML = bioRepository.filter(b => b.tier === 'vip').slice(0, 40).map(b => `
-          <div class="bio-card-box" style="border-color:#fbbf24;">
-            <div class="bio-text-content">${b.content}</div>
-            <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${b.id})">📋 Copy VIP Bio</button>
+    window.renderZalgoGlitch = function(str) {
+      const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310'];
+      let out = '';
+      for(let i=0; i<str.length; i++) {
+        out += str[i] + z[Math.floor(Math.random()*z.length)];
+      }
+      document.getElementById('zalgoOutput').innerText = out || 'Zalgo Preview';
+    };
+
+    // ==========================================
+    // 7. INTERACTIVE TOOLS ENGINE
+    // ==========================================
+    window.openInteractiveTool = function(toolType) {
+      const titleEl = document.getElementById('toolModalTitle');
+      const bodyEl = document.getElementById('toolModalBody');
+      
+      if(toolType === 'caption') {
+        titleEl.innerText = "🔥 Trending Instagram Captions";
+        const captions = [
+          "Sunkissed & blessed ✨", "Hustle hard, shine harder 💎", "Not lucky, just obsessed 🚀",
+          "Silence is my loudest scream ⚡", "Too glam to give a damn 💅", "Making history, not excuses 🏆",
+          "Be yourself, everyone else is taken 🖤", "Born to express, not to impress 🦁"
+        ];
+        bodyEl.innerHTML = captions.map(c => `
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; color:#fff;">${c}</span>
+            <button class="font-copy-chip click-feedback" onclick="copyPureString('${encodeURIComponent(c)}', 'Caption Copied!', true)">Copy</button>
+          </div>
+        `).join('');
+      } 
+      else if (toolType === 'hashtag') {
+        titleEl.innerText = "#️⃣ Viral Reels Hashtags";
+        const tagGroups = [
+          { cat: "Reels Viral", tags: "#viral #explore #trending #reels #explorepage #instadaily" },
+          { cat: "Attitude & Sigma", tags: "#attitude #sigmamale #king #boys #style #swagger #reelsindia" },
+          { cat: "Aesthetic Vibe", tags: "#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup" },
+          { cat: "Gym & Fitness", tags: "#fitness #gymmotivation #workout #bodybuilding #shredded #gains" }
+        ];
+        bodyEl.innerHTML = tagGroups.map(g => `
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; margin-bottom:10px;">
+            <div style="font-size:12px; font-weight:800; color:var(--gold-2); margin-bottom:6px;">${g.cat}</div>
+            <p style="font-size:11.5px; color:#cbd5e1; margin-bottom:8px;">${g.tags}</p>
+            <button class="btn-gold-action click-feedback" style="padding:8px; font-size:11px;" onclick="copyPureString('${encodeURIComponent(g.tags)}', 'Tags Copied!', true)">📋 Copy Hashtags</button>
           </div>
         `).join('');
       }
-
-      window.renderZalgoGlitch = function(str) {
-        const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310'];
-        let out = '';
-        for(let i=0; i<str.length; i++) {
-          out += str[i] + z[Math.floor(Math.random()*z.length)];
-        }
-        document.getElementById('zalgoOutput').innerText = out || 'Zalgo Preview';
-      };
-
-      // ==========================================
-      // 7. INTERACTIVE TOOLS ENGINE
-      // ==========================================
-      window.openInteractiveTool = function(toolType) {
-        const titleEl = document.getElementById('toolModalTitle');
-        const bodyEl = document.getElementById('toolModalBody');
-        
-        if(toolType === 'caption') {
-          titleEl.innerText = "🔥 Trending Instagram Captions";
-          const captions = [
-            "Sunkissed & blessed ✨", "Hustle hard, shine harder 💎", "Not lucky, just obsessed 🚀",
-            "Silence is my loudest scream ⚡", "Too glam to give a damn 💅", "Making history, not excuses 🏆",
-            "Be yourself, everyone else is taken 🖤", "Born to express, not to impress 🦁"
-          ];
-          bodyEl.innerHTML = captions.map(c => `
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:13px; color:#fff;">${c}</span>
-              <button class="font-copy-chip click-feedback" onclick="copyPureString('${encodeURIComponent(c)}', 'Caption Copied!', true)">Copy</button>
-            </div>
-          `).join('');
-        } 
-        else if (toolType === 'hashtag') {
-          titleEl.innerText = "#️⃣ Viral Reels Hashtags";
-          const tagGroups = [
-            { cat: "Reels Viral", tags: "#viral #explore #trending #reels #explorepage #instadaily" },
-            { cat: "Attitude & Sigma", tags: "#attitude #sigmamale #king #boys #style #swagger #reelsindia" },
-            { cat: "Aesthetic Vibe", tags: "#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup" },
-            { cat: "Gym & Fitness", tags: "#fitness #gymmotivation #workout #bodybuilding #shredded #gains" }
-          ];
-          bodyEl.innerHTML = tagGroups.map(g => `
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; margin-bottom:10px;">
-              <div style="font-size:12px; font-weight:800; color:var(--gold-2); margin-bottom:6px;">${g.cat}</div>
-              <p style="font-size:11.5px; color:#cbd5e1; margin-bottom:8px;">${g.tags}</p>
-              <button class="btn-gold-action click-feedback" style="padding:8px; font-size:11px;" onclick="copyPureString('${encodeURIComponent(g.tags)}', 'Tags Copied!', true)">📋 Copy Hashtags</button>
-            </div>
-          `).join('');
-        }
-        else if (toolType === 'emoji') {
-          titleEl.innerText = "🦋 Aesthetic Emoji Combinations";
-          const sets = [
-            "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼",
-            "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", "🧸🎀💌", "⚡😈🔥"
-          ];
-          bodyEl.innerHTML = `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">` + sets.map(s => `
-            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; text-align:center; font-size:20px; cursor:pointer;" class="click-feedback" onclick="copyPureString('${s}', 'Emojis Copied!')">
-              ${s}
-            </div>
-          `).join('') + `</div>`;
-        }
-        else if (toolType === 'symbols') {
-          titleEl.innerText = "⚔️ Rare Instagram Symbols";
-          const syms = ["亗", "☬", "༒", "༺ཌ", "ད༻", "★彡", "彡★", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ"];
-          bodyEl.innerHTML = `<div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;">` + syms.map(sy => `
+      else if (toolType === 'emoji') {
+        titleEl.innerText = "🦋 Aesthetic Emoji Combinations";
+        const sets = [
+          "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼",
+          "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", "🧸🎀💌", "⚡😈🔥"
+        ];
+        bodyEl.innerHTML = `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">` + sets.map(s => `
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; text-align:center; font-size:20px; cursor:pointer;" class="click-feedback" onclick="copyPureString('${s}', 'Emojis Copied!')">
+            ${s}
+          </div>
+        `).join('') + `</div>`;
+      }
+      else if (toolType === 'symbols') {
+        titleEl.innerText = "⚔️ Rare Instagram Symbols";
+        const syms = ["亗", "☬", "༒", "༺ཌ", "ད༻", "★彡", "彡★", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ"];
+        bodyEl.innerHTML = `<div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;">` + syms.map(sy => `
             <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:15px; text-align:center; font-size:22px; cursor:pointer; color:#fff;" class="click-feedback" onclick="copyPureString('${sy}', 'Symbol Copied!')">
               ${sy}
             </div>
           `).join('') + `</div>`;
-        }
-        else if (toolType === 'mockup_builder') {
-          titleEl.innerText = "📸 9-Grid Layout Mockup";
-          bodyEl.innerHTML = `
-            <div style="text-align:center; padding:15px;">
-              <p style="font-size:13px; color:#cbd5e1; margin-bottom:15px;">Live 9-Grid Instagram Preview Suite is active.</p>
-              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-bottom:15px;">
-                <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">1</div>
-                <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">2</div>
-                <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">3</div>
-                <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">4</div>
-                <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">5</div>
-                <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">6</div>
-              </div>
-              <button class="btn-gold-action click-feedback" onclick="closeModal('toolModalVeil')">Done Previewing</button>
-            </div>`;
-        }
-
-        document.getElementById('toolModalVeil').classList.add('open');
-      };
-
-      // ==========================================
-      // 8. COPY ENGINE & NOTIFICATIONS
-      // ==========================================
-      window.copyBioByRef = function(bioId) {
-        const item = bioRepository.find(b => b.id === bioId);
-        if(item) copyPureString(item.content, 'Bio Copied to Clipboard!');
-      };
-
-      window.copyRandomQuickBio = function() {
-        const freeItems = bioRepository.filter(b => b.tier === 'free');
-        const pick = freeItems[Math.floor(Math.random() * freeItems.length)];
-        copyPureString(pick.content, 'Random Bio Copied!');
-      };
-
-      window.copyPureString = function(text, toastMsg, isUrlEncoded = false) {
-        if(isUrlEncoded) text = decodeURIComponent(text);
-        
-        if(navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(text).then(() => triggerToast(toastMsg));
-        } else {
-          const area = document.createElement("textarea");
-          area.value = text;
-          area.style.position = "fixed";
-          area.style.opacity = "0";
-          document.body.appendChild(area);
-          area.select();
-          try {
-            document.execCommand('copy');
-            triggerToast(toastMsg);
-          } catch(e) {}
-          area.remove();
-        }
-      };
-
-      function triggerToast(msg) {
-        const toast = document.getElementById('systemToast');
-        toast.innerText = msg;
-        toast.classList.add('visible');
-        setTimeout(() => toast.classList.remove('visible'), 2000);
+      }
+      else if (toolType === 'mockup_builder') {
+        titleEl.innerText = "📸 9-Grid Layout Mockup";
+        bodyEl.innerHTML = `
+          <div style="text-align:center; padding:15px;">
+            <p style="font-size:13px; color:#cbd5e1; margin-bottom:15px;">Live 9-Grid Instagram Preview Suite is active.</p>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-bottom:15px;">
+              <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">1</div>
+              <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">2</div>
+              <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">3</div>
+              <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">4</div>
+              <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">5</div>
+              <div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">6</div>
+            </div>
+            <button class="btn-gold-action click-feedback" onclick="closeModal('toolModalVeil')">Done Previewing</button>
+          </div>`;
       }
 
-      // ==========================================
-      // 9. MODALS & LEGAL DETAILS
-      // ==========================================
-      window.closeModal = function(modalId) {
-        document.getElementById(modalId).classList.remove('open');
-      };
+      document.getElementById('toolModalVeil').classList.add('open');
+    };
 
-      const legalArchive = {
-        about: {
-          t: "About InstaVibe VIP",
-          b: "<p>InstaVibe VIP Studio is India's premier digital creator utility suite. We specialize in handcrafted aesthetic typography, Instagram profile design assets, and bio styling tools for influencers, artists, and creators.</p><br><p>Our mission is to empower social media creators to stand out in the crowded algorithm with high-retention profiles and luxury presence.</p>"
-        },
-        privacy: {
-          t: "Privacy Policy",
-          b: "<p>Your privacy is paramount. InstaVibe VIP operates on a client-side architecture. We do not store your payment credentials or personal identifiers.</p><br><p>Any preferences or entitlements are stored locally on your device storage to maintain high-speed offline capabilities. No sensitive data is sold to third parties.</p>"
-        },
-        terms: {
-          t: "Terms of Service",
-          b: "<p>By utilizing InstaVibe VIP Studio, you agree that all provided bio templates, unicode typography, and aesthetic tools are for personal profile enhancement.</p><br><p>Purchasing the VIP tier grants non-exclusive, lifetime personal access to the designated content vaults. Automated scraping or redistribution of digital assets is prohibited.</p>"
-        },
-        refund: {
-          t: "Refund Policy",
-          b: "<p>Digital assets delivered instantly via our entitlement system are generally non-refundable once unlocked.</p><br><p>However, if you experience technical issues where your vault is not unlocked after a successful UPI transaction, contact our support with your payment receipt for instant resolution within 24 hours.</p>"
-        },
-        contact: {
-          t: "Contact Support",
-          b: "<p><strong>Email:</strong> pintu959546@gmail.com</p><p><strong>WhatsApp Support:</strong> +91 9831569499</p><p><strong>Operating Hours:</strong> Monday – Saturday, 10:00 AM – 7:00 PM IST</p>"
-        }
-      };
+    // ==========================================
+    // 8. COPY ENGINE & NOTIFICATIONS
+    // ==========================================
+    window.copyBioByRef = function(bioId) {
+      const item = bioRepository.find(b => b.id === bioId);
+      if(item) copyPureString(item.content, 'Bio Copied to Clipboard!');
+    };
 
-      window.showLegalModal = function(key) {
-        const item = legalArchive[key];
-        document.getElementById('legalModalTitle').innerText = item.t;
-        document.getElementById('legalModalBody').innerHTML = item.b;
-        document.getElementById('legalModalVeil').classList.add('open');
-      };
+    window.copyRandomQuickBio = function() {
+      const freeItems = bioRepository.filter(b => b.tier === 'free');
+      const pick = freeItems[Math.floor(Math.random() * freeItems.length)];
+      copyPureString(pick.content, 'Random Bio Copied!');
+    };
 
-      // BOOTSTRAP INITIAL VIEW
+    window.copyPureString = function(text, toastMsg, isUrlEncoded = false) {
+      if(isUrlEncoded) text = decodeURIComponent(text);
+      
+      if(navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => triggerToast(toastMsg));
+      } else {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        try {
+          document.execCommand('copy');
+          triggerToast(toastMsg);
+        } catch(e) {}
+        area.remove();
+      }
+    };
+
+    function triggerToast(msg) {
+      const toast = document.getElementById('systemToast');
+      if(!toast) return;
+      toast.innerText = msg;
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 2000);
+    }
+
+    // ==========================================
+    // 9. MODALS & LEGAL DETAILS
+    // ==========================================
+    window.closeModal = function(modalId) {
+      const m = document.getElementById(modalId);
+      if(m) m.classList.remove('open');
+    };
+
+    const legalArchive = {
+      about: {
+        t: "About InstaVibe VIP",
+        b: "<p>InstaVibe VIP Studio is India's premier digital creator utility suite. We specialize in handcrafted aesthetic typography, Instagram profile design assets, and bio styling tools for influencers, artists, and creators.</p><br><p>Our mission is to empower social media creators to stand out in the crowded algorithm with high-retention profiles and luxury presence.</p>"
+      },
+      privacy: {
+        t: "Privacy Policy",
+        b: "<p>Your privacy is paramount. InstaVibe VIP operates on a client-side architecture. We do not store your payment credentials or personal identifiers.</p><br><p>Any preferences or entitlements are stored locally on your device storage to maintain high-speed offline capabilities. No sensitive data is sold to third parties.</p>"
+      },
+      terms: {
+        t: "Terms of Service",
+        b: "<p>By utilizing InstaVibe VIP Studio, you agree that all provided bio templates, unicode typography, and aesthetic tools are for personal profile enhancement.</p><br><p>Purchasing the VIP tier grants non-exclusive, lifetime personal access to the designated content vaults. Automated scraping or redistribution of digital assets is prohibited.</p>"
+      },
+      refund: {
+        t: "Refund Policy",
+        b: "<p>Digital assets delivered instantly via our entitlement system are generally non-refundable once unlocked.</p><br><p>However, if you experience technical issues where your vault is not unlocked after a successful UPI transaction, contact our support with your payment receipt for instant resolution within 24 hours.</p>"
+      },
+      contact: {
+        t: "Contact Support",
+        b: "<p><strong>Email:</strong> pintu959546@gmail.com</p><p><strong>WhatsApp Support:</strong> +91 9831569499</p><p><strong>Operating Hours:</strong> Monday – Saturday, 10:00 AM – 7:00 PM IST</p>"
+      }
+    };
+
+    window.showLegalModal = function(key) {
+      const item = legalArchive[key];
+      if(!item) return;
+      document.getElementById('legalModalTitle').innerText = item.t;
+      document.getElementById('legalModalBody').innerHTML = item.b;
+      document.getElementById('legalModalVeil').classList.add('open');
+    };
+
+    // ==========================================
+    // 10. INITIALIZATION
+    // ==========================================
+    document.addEventListener("DOMContentLoaded", () => {
+      const fontInput = document.getElementById('fontInputBar');
+      if(fontInput) {
+        fontInput.addEventListener('input', buildFontCatalog);
+      }
+      buildFontCatalog();
       renderBiosPool();
     });
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      buildFontCatalog();
+      renderBiosPool();
+    }
   </script>
 </body>
 </html>
