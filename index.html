@@ -7,286 +7,835 @@
   <meta name="theme-color" content="#020305">
   <meta name="description" content="India's #1 Luxury Instagram Bios, Unicode Fonts & Creator Utility Suite">
 
-  <!-- Typography -->
+  <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================
-       1. GLOBAL RESET & LUXURY DARK THEME
+       1. GLOBAL RESET & LUXURY DESIGN SYSTEM
        ============================================================ */
     :root {
       --bg-dark: #020305;
-      --card-bg: rgba(13, 17, 26, 0.8);
+      --card-bg: rgba(13, 17, 26, 0.78);
       --card-border: rgba(255, 255, 255, 0.08);
-      --gold-1: #fef08a; --gold-2: #fbbf24; --gold-3: #f59e0b; --gold-4: #b45309;
+      --gold-1: #fef08a;
+      --gold-2: #fbbf24;
+      --gold-3: #f59e0b;
+      --gold-4: #b45309;
       --gold-glow: rgba(245, 158, 11, 0.5);
-      --neon-cyan: #06b6d4; --neon-pink: #ec4899; --neon-purple: #a855f7;
-      --text-main: #f8fafc; --text-muted: #94a3b8; --success: #10b981; --danger: #ef4444;
+      --neon-cyan: #06b6d4;
+      --neon-pink: #ec4899;
+      --neon-purple: #a855f7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --danger: #ef4444;
       --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       --gold-gradient: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #b45309 100%);
+      --god-gradient: linear-gradient(135deg, #818cf8 0%, #a855f7 50%, #ec4899 100%);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; padding-bottom: 110px; scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-    /* Ultra Advanced Glassmorphism Ambience */
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      padding-bottom: 110px;
+      scroll-behavior: smooth;
+    }
+
+    /* Ambient Dynamic Moving Canvas */
     .bg-glass {
-      position: fixed; inset: 0; z-index: -2;
-      background: radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.14) 0%, transparent 40%),
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: radial-gradient(circle at 10% 18%, rgba(245, 158, 11, 0.14) 0%, transparent 42%),
                   radial-gradient(circle at 90% 45%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
                   radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.09) 0%, transparent 50%),
                   linear-gradient(180deg, #020305 0%, #060913 100%);
       background-attachment: fixed;
     }
-    .glow-orb { position: fixed; width: 350px; height: 350px; border-radius: 50%; pointer-events: none; filter: blur(120px); z-index: -1; opacity: 0.35; }
+
+    .glow-orb {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(130px);
+      z-index: -1;
+      opacity: 0.35;
+      animation: floatOrb 11s infinite alternate;
+    }
     .glow-1 { top: -100px; left: -100px; background: #fbbf24; }
-    .glow-2 { bottom: 80px; right: -100px; background: #a855f7; }
+    .glow-2 { bottom: 80px; right: -100px; background: #a855f7; animation-delay: -5.5s; }
+
+    @keyframes floatOrb {
+      0% { transform: translateY(0px) scale(1); }
+      100% { transform: translateY(30px) scale(1.1); }
+    }
 
     /* ============================================================
-       TOP HEADER (100% Full Width Edge-to-Edge)
+       2. TOP APP BAR (Full Width Edge-to-Edge Touch)
        ============================================================ */
     .top-nav-full {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: sticky; top: 0; background: rgba(3, 5, 8, 0.94);
-      backdrop-filter: blur(20px); z-index: 999; margin-bottom: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(3, 5, 8, 0.94);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     }
-    .brand-wrap { display: flex; align-items: center; gap: 10px; }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .brand-badge-icon {
-      width: 40px; height: 40px; border-radius: 12px; background: var(--gold-gradient);
-      display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900;
-      color: #000; box-shadow: 0 0 20px var(--gold-glow); flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--gold-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      color: #000;
+      box-shadow: 0 0 20px var(--gold-glow);
+      flex-shrink: 0;
     }
+
     .brand-heading {
-      font-family: 'Cinzel', serif; font-size: 19px; font-weight: 900; letter-spacing: 0.6px;
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
       background: linear-gradient(110deg, #fef08a 0%, #fbbf24 35%, #ffffff 50%, #fbbf24 65%, #b45309 100%);
-      background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      animation: smoothKnifeShine 4s linear infinite; white-space: nowrap;
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: smoothKnifeShine 4s linear infinite;
+      white-space: nowrap;
     }
-    @keyframes smoothKnifeShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
-    
+
+    @keyframes smoothKnifeShine {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+
     .nav-vault-chip {
-      background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold-3);
-      padding: 8px 16px; color: var(--gold-2); border-radius: 12px; font-weight: 800;
-      font-size: 13px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--gold-3);
+      padding: 8px 16px;
+      color: var(--gold-2);
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s, background 0.2s;
     }
     .nav-vault-chip:active { transform: scale(0.95); }
 
-    .app-container { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 0 14px; }
-
-    /* Trust Ticker */
-    .live-trust-bar {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 9px 18px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.28);
-      border-radius: 999px; margin-bottom: 20px; font-size: 12px; color: #34d399; font-weight: 800;
+    .app-container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 14px;
     }
-    .live-dot-pulse { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981; animation: blink 1.2s infinite; }
+
+    /* Live Trust Ticker */
+    .live-trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      border-radius: 999px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: #34d399;
+      font-weight: 800;
+    }
+
+    .live-dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: blink 1.2s infinite;
+    }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     /* ============================================================
-       STATIC LUXURY SHINING BANNER (Only ₹29 Plan)
+       3. STATIC LUXURY SHINING VIP BANNER (₹29 SINGLE PLAN)
        ============================================================ */
     .single-vip-banner {
-      position: relative; overflow: hidden; border-radius: 26px; padding: 30px 22px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      padding: 30px 22px;
       background: radial-gradient(circle at top right, rgba(30, 58, 138, 0.98), rgba(8, 12, 24, 1));
-      border: 1.5px solid rgba(245, 158, 11, 0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(245, 158, 11, 0.15);
-      margin-bottom: 25px; cursor: pointer;
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.15);
+      margin-bottom: 25px;
+      cursor: pointer;
     }
-    
-    /* Knife Shine / Glare Sweep Effect across the banner */
+
+    /* Continuous Diagonal Sheen Sweep Glare */
     .single-vip-banner::before {
-      content: ''; position: absolute; top: -50%; left: -60%; width: 45%; height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), rgba(254, 240, 138, 0.5), transparent);
-      transform: rotate(25deg); pointer-events: none;
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 45%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), rgba(254, 240, 138, 0.45), transparent);
+      transform: rotate(25deg);
+      pointer-events: none;
       animation: bannerSheenGlint 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
+
     @keyframes bannerSheenGlint {
       0% { left: -70%; }
       35% { left: 160%; }
       100% { left: 160%; }
     }
 
-    .banner-badge-row { display: flex; gap: 8px; margin-bottom: 12px; position: relative; z-index: 2; }
-    .badge-tag { font-size: 10px; font-weight: 900; letter-spacing: 0.8px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.2); }
-    
-    .banner-title { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.2; text-shadow: 0 4px 15px rgba(0,0,0,0.6); position: relative; z-index: 2; }
-    .banner-desc { font-size: 13px; color: #cbd5e1; margin-bottom: 20px; font-weight: 500; line-height: 1.5; position: relative; z-index: 2; }
-    
-    .banner-action-row { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
-    .banner-price-pill { font-size: 26px; font-weight: 900; color: var(--gold-2); font-family: 'Space Grotesk', sans-serif; }
-    .banner-btn-glow {
-      border: none; padding: 12px 24px; border-radius: 12px; font-weight: 900; font-size: 13.5px;
-      cursor: pointer; color: #000; background: var(--gold-gradient); box-shadow: 0 4px 20px var(--gold-glow);
-      transition: 0.2s;
+    .banner-badge-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ============================================================
-       BUTTONS & GLOW FEEDBACK
-       ============================================================ */
-    .click-feedback { transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
-    .click-feedback:active { transform: scale(0.95); filter: brightness(1.3); }
+    .badge-tag {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .banner-title {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-desc {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+      font-weight: 500;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-price-pill {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--gold-2);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .banner-btn-glow {
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 13.5px;
+      cursor: pointer;
+      color: #000;
+      background: var(--gold-gradient);
+      box-shadow: 0 4px 20px var(--gold-glow);
+      transition: transform 0.2s;
+    }
+
+    /* Micro-Interactions */
+    .click-feedback {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .click-feedback:active {
+      transform: scale(0.95);
+      filter: brightness(1.3);
+    }
 
     .btn-gold-action {
-      width: 100%; border: none; padding: 15px; border-radius: 14px; font-weight: 900; font-size: 15px;
-      color: #000; background: var(--gold-gradient); box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35); cursor: pointer;
+      width: 100%;
+      border: none;
+      padding: 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 15px;
+      color: #000;
+      background: var(--gold-gradient);
+      box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35);
+      cursor: pointer;
+      transition: transform 0.2s;
     }
 
     /* ============================================================
-       CREATOR TOOLS GRID (8 Options)
+       4. CREATOR TOOLS GRID
        ============================================================ */
-    .tools-hub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 30px; }
-    .tool-tile {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px; padding: 16px 6px; display: flex; flex-direction: column; align-items: center;
-      text-align: center; cursor: pointer; transition: 0.25s; backdrop-filter: blur(12px);
+    .tools-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 30px;
     }
-    .tool-tile:hover, .tool-tile:active { border-color: var(--gold-2); background: rgba(245,158,11,0.08); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(245,158,11,0.15); }
-    .tool-emoji-icon { font-size: 26px; margin-bottom: 6px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
-    .tool-name-txt { font-size: 11px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 3px; }
-    .tool-sub-txt { font-size: 9px; color: var(--text-muted); font-weight: 600; }
+
+    .tool-tile {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 16px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s, background 0.25s;
+      backdrop-filter: blur(12px);
+    }
+
+    .tool-tile:hover, .tool-tile:active {
+      border-color: var(--gold-2);
+      background: rgba(245, 158, 11, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15);
+    }
+
+    .tool-emoji-icon {
+      font-size: 26px;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    }
+
+    .tool-name-txt {
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .tool-sub-txt {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
 
     /* ============================================================
-       FANCY FONT CONVERTER STUDIO
+       5. FANCY FONT CONVERTER STUDIO
        ============================================================ */
     .font-studio-card {
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 22px; padding: 20px; margin-bottom: 35px; backdrop-filter: blur(16px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 35px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
-    .font-studio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .font-studio-title { font-size: 16px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 8px; }
-    .font-studio-badge { font-size: 10px; background: rgba(6, 182, 212, 0.15); color: var(--neon-cyan); border: 1px solid rgba(6, 182, 212, 0.35); padding: 4px 8px; border-radius: 6px; font-weight: 900; }
-    
-    .font-search-input {
-      width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 13px; color: #fff; font-size: 15px; font-weight: 700; outline: none; margin-bottom: 14px;
-      transition: 0.25s;
-    }
-    .font-search-input:focus { border-color: var(--gold-2); box-shadow: 0 0 16px rgba(245,158,11,0.25); }
 
-    .font-styles-list { display: grid; gap: 9px; max-height: 260px; overflow-y: auto; padding-right: 4px; }
-    .font-row {
-      display: flex; justify-content: space-between; align-items: center; padding: 12px 14px;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+    .font-studio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
     }
-    .font-styled-preview { font-size: 14.5px; color: #f8fafc; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 75%; }
+
+    .font-studio-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .font-studio-badge {
+      font-size: 10px;
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--neon-cyan);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 900;
+    }
+
+    .font-search-input {
+      width: 100%;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 13px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      outline: none;
+      margin-bottom: 14px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .font-search-input:focus {
+      border-color: var(--gold-2);
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+    }
+
+    .font-styles-list {
+      display: grid;
+      gap: 9px;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .font-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+    }
+
+    .font-styled-preview {
+      font-size: 14.5px;
+      color: #f8fafc;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 75%;
+    }
+
     .font-copy-chip {
-      background: rgba(245, 158, 11, 0.12); color: var(--gold-2); border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 900; cursor: pointer;
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--gold-2);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
     }
 
     /* ============================================================
-       TABS & BIOS RENDER CARDS
+       6. TABS & BIOS FEED
        ============================================================ */
     .tabs-sticky-bar {
-      position: sticky; top: 72px; z-index: 50; background: rgba(3, 5, 8, 0.95);
-      backdrop-filter: blur(20px); padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      margin-bottom: 18px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+      position: sticky;
+      top: 72px;
+      z-index: 50;
+      background: rgba(3, 5, 8, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 18px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
     .tabs-sticky-bar::-webkit-scrollbar { display: none; }
-    .category-tab-btn {
-      padding: 9px 20px; border-radius: 999px; font-size: 12px; font-weight: 900;
-      white-space: nowrap; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.04);
-      color: #94a3b8; cursor: pointer; transition: 0.2s; letter-spacing: 0.5px;
-    }
-    .category-tab-btn.active { background: var(--gold-gradient); color: #000; border-color: transparent; box-shadow: 0 3px 15px var(--gold-glow); }
 
-    .bios-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
+    .category-tab-btn {
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .category-tab-btn.active {
+      background: var(--gold-gradient);
+      color: #000;
+      border-color: transparent;
+      box-shadow: 0 3px 15px var(--gold-glow);
+    }
+
+    .bios-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
     .bio-card-box {
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
-      padding: 18px; position: relative; box-shadow: 0 8px 25px rgba(0,0,0,0.5); backdrop-filter: blur(12px);
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 18px;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
     }
+
     .bio-text-content {
-      font-size: 14px; line-height: 1.7; color: #f1f5f9; white-space: pre-line;
-      background: rgba(0, 0, 0, 0.4); padding: 14px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05);
-      margin: 12px 0; font-weight: 600;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #f1f5f9;
+      white-space: pre-line;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin: 12px 0;
+      font-weight: 600;
     }
-    
-    .pill-tier { font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 2px;}
-    .pill-free { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
-    .pill-vip { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid var(--gold-3); }
+
+    .pill-tier {
+      font-size: 10px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .pill-free {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+    }
+    .pill-vip {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid var(--gold-3);
+    }
 
     .btn-copy-bio {
-      width: 100%; padding: 13px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer; transition: 0.2s;
+      width: 100%;
+      padding: 13px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
     }
-    .btn-copy-bio:active { background: var(--gold-gradient); color: #000; border-color: transparent; }
+    .btn-copy-bio:active {
+      background: var(--gold-gradient);
+      color: #000;
+      border-color: transparent;
+    }
 
     /* Blur Lock Overlay */
     .bio-locked-blur {
-      position: absolute; inset: 0; background: rgba(8, 12, 22, 0.82); backdrop-filter: blur(10px);
-      border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 10; border: 1px solid rgba(255,255,255,0.08);
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 12, 22, 0.82);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .lock-icon-lg { font-size: 34px; margin-bottom: 12px; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8)); }
+
+    .lock-icon-lg {
+      font-size: 34px;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.8));
+    }
+
     .btn-unlock-gold {
-      background: var(--gold-gradient); border: none; padding: 11px 26px; border-radius: 12px;
-      font-weight: 900; font-size: 13px; cursor: pointer; color: #000; box-shadow: 0 5px 20px var(--gold-glow);
+      background: var(--gold-gradient);
+      border: none;
+      padding: 11px 26px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor: pointer;
+      color: #000;
+      box-shadow: 0 5px 20px var(--gold-glow);
     }
 
     /* ============================================================
-       INSTAGRAM MOCKUP POSTERS
+       7. HYPER-REALISTIC INSTAGRAM MOCKUP POSTERS
        ============================================================ */
     .insta-poster-mockup {
-      background: #000; border: 1px solid rgba(255,255,255,0.15); border-radius: 22px;
-      margin: 24px 0; box-shadow: 0 15px 40px rgba(0,0,0,0.8); overflow: hidden;
+      background: #000;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      margin: 26px 0;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
+      overflow: hidden;
     }
+
     .poster-top-bar {
-      background: linear-gradient(90deg, #ec4899, #f59e0b); padding: 7px;
-      text-align: center; color: #fff; font-size: 10px; font-weight: 900; letter-spacing: 1px;
+      background: linear-gradient(90deg, #ec4899, #f59e0b);
+      padding: 8px;
+      text-align: center;
+      color: #fff;
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
     }
-    .poster-inner { padding: 20px 18px; }
-    .poster-creator-name { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 5px; }
-    .blue-tick { width: 15px; height: 15px; background: #38bdf8; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 9px; font-weight: 900; }
-    
-    .poster-stats-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .poster-avatar { width: 75px; height: 75px; border-radius: 50%; background: var(--insta-gradient); padding: 2.5px; flex-shrink: 0; }
-    .poster-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #000; object-fit: cover; }
-    .poster-metrics { display: flex; gap: 16px; text-align: center; color: #fff; font-weight: 800; font-size: 16px; width: 100%; justify-content: space-around; }
-    .poster-metrics span { display: block; font-size: 10.5px; color: #94a3b8; font-weight: 600; text-transform: lowercase; margin-top: 2px; }
-    
-    .poster-bio-box { font-size: 13.5px; line-height: 1.6; color: #f8fafc; white-space: pre-line; margin-bottom: 14px; font-weight: 500; }
-    .poster-btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .poster-btn { background: #262626; color: #fff; padding: 8px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-align: center; border: none; }
+
+    .poster-inner { padding: 22px 20px; }
+
+    .poster-creator-name {
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blue-tick {
+      width: 16px;
+      height: 16px;
+      background: #38bdf8;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 9.5px;
+      font-weight: 900;
+    }
+
+    .poster-stats-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .poster-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--insta-gradient);
+      padding: 3px;
+      flex-shrink: 0;
+    }
+
+    .poster-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid #000;
+      object-fit: cover;
+    }
+
+    .poster-metrics {
+      display: flex;
+      gap: 16px;
+      text-align: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 17px;
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    .poster-metrics span {
+      display: block;
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: lowercase;
+      margin-top: 2px;
+    }
+
+    .poster-bio-box {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #f8fafc;
+      white-space: pre-line;
+      margin-bottom: 16px;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .poster-btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .poster-btn {
+      background: #262626;
+      color: #fff;
+      padding: 9px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      border: none;
+    }
     .poster-btn.blue { background: #0095f6; }
 
     /* ============================================================
-       PRICING CARD (Single ₹29 Plan)
+       8. PRICING VIEW (Single ₹29 VIP Plan)
        ============================================================ */
-    .pricing-stack { display: flex; flex-direction: column; gap: 20px; margin-bottom: 35px; }
-    .pricing-card {
-      background: var(--card-bg); border: 2px solid var(--gold-3); border-radius: 26px;
-      padding: 30px 22px; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 30px rgba(245, 158, 11, 0.2); backdrop-filter: blur(14px);
+    .pricing-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 35px;
     }
-    .pricing-badge-strip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 11px; font-weight: 900; margin-bottom: 18px; text-transform: uppercase; background: var(--gold-gradient); color: #000; box-shadow: 0 4px 15px var(--gold-glow); }
-    .pricing-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 2px solid var(--gold-3);
+      border-radius: 26px;
+      padding: 30px 22px;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.2);
+      backdrop-filter: blur(14px);
+    }
+
+    .pricing-badge-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      background: var(--gold-gradient);
+      color: #000;
+      box-shadow: 0 4px 15px var(--gold-glow);
+    }
+
+    .pricing-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
     .plan-name-title { font-size: 22px; font-weight: 900; color: #fff; }
     .plan-price-num { font-size: 38px; font-weight: 900; color: var(--gold-2); font-family: 'Space Grotesk', sans-serif; }
-    .plan-perks { list-style: none; margin: 18px 0 26px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #cbd5e1; font-weight: 600; }
+
+    .plan-perks {
+      list-style: none;
+      margin: 18px 0 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
     .plan-perks span { color: var(--success); font-size: 18px; margin-right: 6px; }
 
     /* ============================================================
-       MODALS & DIALOGS
+       9. MODALS & POPUPS
        ============================================================ */
     .modal-veil {
-      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(16px);
-      z-index: 2000; display: none; align-items: center; justify-content: center; padding: 18px;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(16px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
     }
     .modal-veil.open { display: flex; }
+
     .modal-dialog {
-      background: #0d1220; border: 1px solid var(--gold-glow); border-radius: 26px;
-      width: 100%; max-width: 440px; margin: auto; padding: 26px 20px; position: relative;
-      animation: modalSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 20px 60px rgba(0,0,0,0.9);
-      max-height: 88vh; overflow-y: auto;
+      background: #0d1220;
+      border: 1px solid var(--gold-glow);
+      border-radius: 26px;
+      width: 100%;
+      max-width: 440px;
+      margin: auto;
+      padding: 26px 20px;
+      position: relative;
+      animation: modalSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      max-height: 88vh;
+      overflow-y: auto;
     }
     @keyframes modalSlide { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
     .modal-close-btn {
-      position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 34px; height: 34px; border-radius: 50%;
-      cursor: pointer; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .step-box { display: none; width: 100%; }
@@ -295,50 +844,127 @@
     /* FAQ Section */
     .faq-accordion { margin: 30px 0; }
     .faq-item {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; margin-bottom: 10px; overflow: hidden;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      overflow: hidden;
     }
-    .faq-q { padding: 15px; font-weight: 800; font-size: 13.5px; color: #fff; cursor: pointer; display: flex; justify-content: space-between; }
-    .faq-a { padding: 0 15px 15px; font-size: 12.5px; color: var(--text-muted); line-height: 1.6; display: none; }
+
+    .faq-q {
+      padding: 15px;
+      font-weight: 800;
+      font-size: 13.5px;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .faq-a {
+      padding: 0 15px 15px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
     .faq-item.open .faq-a { display: block; }
 
     /* Toast Notification */
     .system-toast-bubble {
-      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
-      background: #fff; color: #000; padding: 13px 26px; border-radius: 99px;
-      font-size: 13px; font-weight: 900; opacity: 0; transition: 0.25s ease;
-      z-index: 5000; pointer-events: none; box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      color: #000;
+      padding: 13px 26px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 900;
+      opacity: 0;
+      transition: 0.25s ease;
+      z-index: 5000;
+      pointer-events: none;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
     }
-    .system-toast-bubble.visible { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+    .system-toast-bubble.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-10px);
+    }
 
     /* Fixed Bottom Navigation */
     .bottom-app-bar {
-      position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(6,9,16,0.98);
-      backdrop-filter: blur(20px); display: flex; justify-content: space-around;
-      padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,0.08);
-      z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.7);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(6, 9, 16, 0.98);
+      backdrop-filter: blur(20px);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 1000;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
     }
+
     .bottom-tab-link {
-      display: flex; flex-direction: column; align-items: center; gap: 4px;
-      color: var(--text-muted); font-size: 10px; font-weight: 800; cursor: pointer; text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
       transition: 0.2s;
     }
-    .bottom-tab-link.active { color: var(--gold-2); transform: translateY(-3px); }
+    .bottom-tab-link.active {
+      color: var(--gold-2);
+      transform: translateY(-3px);
+    }
     .bottom-tab-icon { font-size: 20px; }
 
     .view-container { display: none; }
-    .view-container.active { display: block; animation: viewIn 0.3s ease; }
-    @keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .view-container.active {
+      display: block;
+      animation: viewIn 0.3s ease;
+    }
+    @keyframes viewIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* Footer */
-    footer { text-align: center; padding: 35px 10px 40px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; font-size: 12px; color: #64748b; }
-    .footer-links-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
-    .footer-links-row a { color: #cbd5e1; text-decoration: none; font-weight: 700; cursor: pointer; font-size: 12.5px; }
+    footer {
+      text-align: center;
+      padding: 35px 10px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 40px;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .footer-links-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .footer-links-row a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12.5px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Background Ambience -->
+  <!-- Ambient Moving Glow Canvas -->
   <div class="bg-glass"></div>
   <div class="glow-orb glow-1"></div>
   <div class="glow-orb glow-2"></div>
@@ -418,7 +1044,7 @@
           </div>
           <input type="text" id="fontInputBar" class="font-search-input" placeholder="Apna naam ya quote type karein..." value="Badshah 亗">
           <div class="font-styles-list" id="fontPreviewContainer">
-            <!-- Hardcoded Initial Styles (Never Empty) -->
+            <!-- Fallback Static List for Instant Display -->
             <div class="font-row">
               <div class="font-styled-preview">𝕭𝖆𝖉𝖘𝖍𝖆𝖍 亗</div>
               <button class="font-copy-chip click-feedback" onclick="copyPureString('𝕭𝖆𝖉𝖘𝖍𝖆𝖍 亗', 'Font Copied!')">Copy</button>
@@ -443,13 +1069,13 @@
         </div>
       </section>
 
-      <!-- HOME 150+ FREE BIOS FEED -->
+      <!-- HOME 200+ FREE BIOS FEED -->
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 style="font-size: 18px; font-weight:900; color: #fff;">🔥 150+ Top Free Bios</h3>
+        <h3 style="font-size: 18px; font-weight:900; color: #fff;">🔥 200+ Trending Free Bios</h3>
         <span style="font-size:11px; color:var(--gold-2); font-weight:800;">1-Click Copy</span>
       </div>
       <div class="bios-feed" id="homeBiosFeed">
-        <!-- Rendered by JS -->
+        <!-- Rendered instantly by JS -->
       </div>
       <button class="btn-gold-action click-feedback" onclick="navigateToView('explore')">Explore All 1500+ Bios & Vault →</button>
 
@@ -646,15 +1272,16 @@
        ============================================================ -->
   <script>
     // ==========================================
-    // GLOBAL ARCHITECTURE & DATA DEFINITIONS
+    // 1. DATABASE & DUMMY POSTERS ARCHITECTURE
     // ==========================================
     const bioRepository = [];
     let bioUid = 1;
+
     function recordBio(tier, cat, content) {
       bioRepository.push({ id: bioUid++, tier, cat, content });
     }
 
-    // 1. Handpicked Real Trending Bios
+    // Handpicked Top Quality Bios (Boys, Girls, Royal, Attitude, Sigma, Aesthetic)
     const primeBios = [
       { t:'free', c:'boys', txt:`👉 Nickname Branded 🔥\n👉 Photography Ⓛⓞⓥⓔⓡ 📸\n👉 Unique Life style 👔\n👉 Only 👉 Moj Masti 😍\n👉 💯 Ⓢⓘⓝⓖⓛⓔ\n👉 Bhakt of lord Shiva 🙏` },
       { t:'free', c:'girls', txt:`💟 Welcome to My Profile 📲\n😇 Happiest Person 🥰\n😘 Love My Pagli K🖤\n❤️ Life Is Too Sort To get High ❤️\n🎂 Wish Me on 4th March 🎂` },
@@ -670,7 +1297,14 @@
       { t:'free', c:'girls', txt:`☁️ Dreamer | Believer 💫\n🌸 Coffee & Sunset Lover ☕\n🎧 Soft Music & Cozy Nights 🌙\n✨ Spreading Positivity 🕊️` },
       { t:'free', c:'boys', txt:`🗿 Zero Expectations\n🔇 Silent Moves, Loud Results\n🔥 Focused on my Goals 🎯\n🥊 No Love, Only Hustle 💸` },
       { t:'free', c:'royal', txt:`👑 Rajputana Swag 👑\n⚔️ Sher Dil 🦁\n🚩 Jai Bhavani\n💪 100% Desi Blood` },
-      
+      { t:'free', c:'boys', txt:`🖤 Black Heart, Pure Intentions\n💀 Darr mujhe unse nahi, rab se lagta hai\n🏎️ Speed in my Veins\n🥃 Single & Self-Made` },
+      { t:'free', c:'girls', txt:`🍯 Honey dipped in confidence\n📸 Aesthetic feed curator\n👠 Walk like you own the room\n🌸 Manifesting my dream life` },
+      { t:'free', c:'status', txt:`हमसे उलझने से पहले सोच लेना,\nहमारा नाम ही काफी है तुम्हारी पहचान मिटाने के लिए! 🔥🦁` },
+      { t:'free', c:'boys', txt:`🦁 Silent Hunter 🎯\n♟️ Always 3 Steps Ahead\n🚫 No drama, No Fake friends\n💯 Real is Rare` },
+      { t:'free', c:'girls', txt:`🦋 Wings of Fire\n💄 Lip gloss & Big dreams\n☕ Caffeine dependent lifeform\n✨ Golden hour enthusiast` },
+      { t:'free', c:'royal', txt:`🔱 जय श्री महाकाल 🔱\n🚩 धर्मो रक्षति रक्षितः\n⚔️ क्षत्रिय धर्म पालन\n🦁 ठाठ नवाबी, शौक खराबी` },
+
+      // VIP Exclusive Samples
       { t:'vip', c:'boys', txt:`★》Mr. Perfect 👑\n★》Attitude in my DNA 🧬\n★》Born to rule 🦁\n★》Own Rules, Own Life ⚡\n★》Royal Blood 🩸` },
       { t:'vip', c:'royal', txt:`༺ 𝕸𝖆𝖍𝖆𝖐𝖆𝖑 𝕶𝖆 𝕯𝖎𝖜𝖆𝖓𝖆 ༻\n⚔️ Kattar Hindu 🚩\n☠️ Darr Sirf Mahadev Se\n🦁 Shero Ki Baithak` },
       { t:'vip', c:'girls', txt:`✦ 𝒬𝓊𝑒𝑒𝓃 𝑜𝒻 𝐻𝑒𝒶𝓇𝓉𝓈 ✦\n💎 Luxury Lifestyle & Glow\n🦋 Too Glam To Give A Damn\n🌸 Manifesting Miracles 24/7` },
@@ -683,32 +1317,158 @@
     ];
     primeBios.forEach(b => recordBio(b.t, b.c, b.txt));
 
-    // Dynamic Generator for Remaining 1500+ Unique Bios
-    const prefixes = ["🌟 Shining Star", "🔥 Attitude Boy", "💎 Desi Swag", "🚀 Sky High", "🎧 Music Addict", "🥀 Broken Soul", "👑 Royal Boy", "🦋 Aesthetic Soul"];
-    const bodies = ["Living life on my terms", "Zero fake friends", "Dream chasing...", "Stay Classy", "Hustle Hard", "Silent but deadly", "Creating my own vibe", "King in the making"];
-    const suffixes = ["Welcome to my world", "Hit the follow button", "No DMs without business", "Stay Blessed 🙏", "Wish me on 1st Jan 🎂", "Single and Happy 😎"];
+    // Dynamic Generator to feed 220+ Free Bios & 1500+ VIPs smoothly
+    const prefixes = [
+      "🌟 Shining Star", "🔥 Attitude Boy", "💎 Desi Swag", "🚀 Sky High",
+      "🎧 Music Addict", "🥀 Broken Soul", "👑 Royal Boy", "🦋 Aesthetic Soul",
+      "⚡ Thunder Spirit", "🦁 Lion Heart", "🍷 Classic Gentleman", "🌸 Soft Dreamer"
+    ];
+    const bodies = [
+      "Living life on my terms", "Zero fake friends", "Dream chasing...", "Stay Classy",
+      "Hustle Hard & Stay Humble", "Silent moves, loud results", "Creating my own vibe", "King in the making",
+      "Outworking everyone in the room", "Faith over fear always", "Making parents proud 24/7", "Obsessed with progress"
+    ];
+    const suffixes = [
+      "Welcome to my world ✨", "Hit the follow button 📲", "No DMs without business 🚫",
+      "Stay Blessed & Humble 🙏", "Wish me on 1st Jan 🎂", "Single, happy & focused 😎",
+      "Too busy building an empire 🏛️", "Living in my own fairytale 🏰"
+    ];
 
-    for(let i=0; i<800; i++) recordBio('free', i%2===0?'boys':'girls', `${prefixes[i%8]} 👑\n${bodies[i%8]} 💯\n${suffixes[i%6]} ✨`);
-    for(let i=0; i<800; i++) recordBio('vip', i%2===0?'boys':'royal', `⚡ VIP ${prefixes[i%8]} ⚡\n🩸 Premium Attitude\n${bodies[i%8]} 🔥\n${suffixes[i%6]} 👑`);
+    // Build 220+ Free Bios for Home Feed
+    for (let i = 0; i < 220; i++) {
+      const p = prefixes[i % prefixes.length];
+      const b = bodies[(i * 3) % bodies.length];
+      const s = suffixes[(i * 5) % suffixes.length];
+      recordBio('free', i % 2 === 0 ? 'boys' : 'girls', `${p} 👑\n${b} 💯\n${s}`);
+    }
 
-    // User State (Only Free or VIP)
+    // Build 1200+ VIP Bios
+    for (let i = 0; i < 1200; i++) {
+      const p = prefixes[i % prefixes.length];
+      const b = bodies[(i * 2) % bodies.length];
+      const s = suffixes[(i * 3) % suffixes.length];
+      recordBio('vip', i % 2 === 0 ? 'boys' : 'royal', `⚡ VIP ${p} ⚡\n🩸 Royal Attitude Clan\n${b} 🔥\n${s}`);
+    }
+
+    // 8 Realistic Dummy Mockup Profiles
+    const dummyMockupPosters = [
+      {
+        name: 'Viraj Thakur',
+        handle: '@viraj_thakur_',
+        followers: '842K',
+        posts: '312',
+        following: '189',
+        pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=160&auto=format&fit=crop&q=80',
+        bio: '👑 Rajputana Blood 🩸\n🚩 Kattar Mahakal Bhakt 🔱\n🚗 Thar & Fortuner Lover ❤️\n💪 Gym Addict | Single & Happy ✌️\n📍 Jaipur, Rajasthan'
+      },
+      {
+        name: 'Siya Rathore',
+        handle: '@aesthetic_siya',
+        followers: '1.5M',
+        posts: '450',
+        following: '230',
+        pic: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&auto=format&fit=crop&q=80',
+        bio: '☁️ Dreamer | Believer 💫\n🌸 Coffee, Sunset & 35mm Film ☕\n🎧 Soft Indie Music & Poetry Nights 🌙\n✨ Spreading kindness & aesthetics 🕊️\n💌 PR: siya@creatorhub.in'
+      },
+      {
+        name: 'Aryan Shelby',
+        handle: '@sigma_shelby_vibes',
+        followers: '620K',
+        posts: '184',
+        following: '98',
+        pic: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80',
+        bio: '🗿 Zero Expectations | Master of Discipline\n🔇 Silent Moves, Loudest Results\n🎯 Focused on 8-Figure Goals\n🥊 No Love, Only Hustle 💸\n♟️ Rule #1: Never be in a rush'
+      },
+      {
+        name: 'Devadatta Mahadev',
+        handle: '@mahakal_bhakt_official',
+        followers: '1.1M',
+        posts: '620',
+        following: '12',
+        pic: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80',
+        bio: '🔱 उज्जैन के राजाधिराज महाकाल 🙏\n🚩 सनातन धर्म ही सर्वोच्च है\n🦁 शेर की तरह जीना पसंद है\n☠️ मौत का खौफ नहीं, महाकाल का साथ है'
+      },
+      {
+        name: 'Rohan Mehra',
+        handle: '@luxury_hustler_club',
+        followers: '980K',
+        posts: '290',
+        following: '145',
+        pic: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&auto=format&fit=crop&q=80',
+        bio: '💼 Building Dynasties, Not Resumes\n⌚ Patek on wrist, vision in mind 🍾\n✈️ NYC ✈️ Dubai ✈️ Mumbai\n📈 Scaled 50+ Ecom brands to $10M+\n📲 Free Bio Guide in bio link ⬇️'
+      },
+      {
+        name: 'Ananya Verma',
+        handle: '@queen_ananya_xo',
+        followers: '740K',
+        posts: '512',
+        following: '310',
+        pic: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&auto=format&fit=crop&q=80',
+        bio: '✦ 𝒬𝓊𝑒𝑒𝓃 𝑜𝒻 𝐻𝑒𝒶𝓇𝓉𝓈 ✦\n💎 Luxury Lifestyle, Makeup & Fashion 💄\n🦋 Too Glam To Give A Damn\n🌸 Manifesting my dream penthouse 24/7\n👠 Walk like you own the ground'
+      },
+      {
+        name: 'Kabir Singh Rider',
+        handle: '@dark_devil_rider',
+        followers: '515K',
+        posts: '220',
+        following: '85',
+        pic: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=160&auto=format&fit=crop&q=80',
+        bio: '🏍️ ZX-10R & R15 V4 Lover 🔥\n🖤 Black Heart, Dangerous Mind\n💀 Darr rab ke siwa kisi se nahi\n🛣️ Highway is my runway\n💣 Born to stand out'
+      },
+      {
+        name: 'Maya Sen',
+        handle: '@wanderlust_maya',
+        followers: '1.8M',
+        posts: '780',
+        following: '410',
+        pic: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=160&auto=format&fit=crop&q=80',
+        bio: '✈️ 32 Countries & Counting 🌍\n📸 Visual Storyteller & National Geographic Featured\n🎞️ Memories filmed on analog 35mm\n🥂 Live simply, travel richly'
+      }
+    ];
+
+    // Helper to generate Instagram Mockup Poster HTML
+    function buildMockupPosterHTML(index) {
+      const p = dummyMockupPosters[index % dummyMockupPosters.length];
+      return `
+        <div class="insta-poster-mockup">
+          <div class="poster-top-bar">🔥 INSTAGRAM VERIFIED PROFILE LAYOUT</div>
+          <div class="poster-inner">
+            <div class="poster-creator-name">${p.name} <span class="blue-tick">✓</span></div>
+            <div class="poster-stats-row">
+              <div class="poster-avatar"><img src="${p.pic}" alt="Profile Pic"></div>
+              <div class="poster-metrics">
+                <div>${p.posts}<span>posts</span></div>
+                <div>${p.followers}<span>followers</span></div>
+                <div>${p.following}<span>following</span></div>
+              </div>
+            </div>
+            <div class="poster-bio-box">${p.bio}</div>
+            <div class="poster-btn-group">
+              <button class="poster-btn blue">Following ▾</button>
+              <button class="poster-btn">Message</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // User State
     let isVipUser = localStorage.getItem('instavibe_vip_unlocked') === 'true';
 
     // ==========================================
-    // 2. VIEW NAVIGATION & ROUTING (Attached to Window)
+    // 2. VIEW NAVIGATION & ROUTING
     // ==========================================
     window.navigateToView = function(viewKey) {
       document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
       document.querySelectorAll('.bottom-tab-link').forEach(l => l.classList.remove('active'));
       
       const targetView = document.getElementById(`view-${viewKey}`);
-      if(targetView) targetView.classList.add('active');
+      if (targetView) targetView.classList.add('active');
 
       const activeTab = document.querySelector(`.bottom-tab-link[onclick="navigateToView('${viewKey}')"]`);
-      if(activeTab) activeTab.classList.add('active');
+      if (activeTab) activeTab.classList.add('active');
 
-      window.scrollTo(0,0);
-      if(viewKey === 'vault') refreshVaultScreen();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (viewKey === 'vault') refreshVaultScreen();
     };
 
     // ==========================================
@@ -716,9 +1476,9 @@
     // ==========================================
     const fontMaps = {
       gothic: { a: "𝖆", b: "𝖇", c: "𝖈", d: "𝖉", e: "𝖊", f: "𝖋", g: "𝖌", h: "𝖍", i: "𝖎", j: "𝖏", k: "𝖐", l: "𝖑", m: "𝖒", n: "𝖓", o: "𝖔", p: "𝖕", q: "𝖖", r: "𝖗", s: "𝖘", t: "𝖙", u: "𝖚", v: "𝖛", w: "𝖜", x: "𝖝", y: "𝖞", z: "𝖟", A: "𝕬", B: "𝕭", C: "𝕮", D: "𝕯", E: "𝕰", F: "𝕱", G: "𝕲", H: "𝕳", I: "𝕴", J: "𝕵", K: "𝕶", L: "𝕷", M: "𝕸", N: "𝕹", O: "𝕺", P: "𝕻", Q: "𝕼", R: "𝕽", S: "𝕾", T: "𝕿", U: "𝖀", V: "𝖁", W: "𝖂", X: "𝖃", Y: "𝖄", Z: "𝖅" },
-      scriptBold: { a: "𝓪", b: "𝓫", c: "𝓬", d: "𝓭", e: "𝓮", f: "𝓯", g: "𝓰", h: "𝓱", i: "𝓲", j: "𝓳", k: "𝓴", l: "𝓵", m: "𝓶", n: "𝓷", o: "𝓸", p: "𝓹", q: "𝓺", r: "𝓻", s: "𝓼", t: "𝓽", u: "𝓾", v: "𝓿", w: "𝔀", x: "𝔁", y: "𝔂", z: "𝔃", A: "𝓐", B: "𝓑", C: "𝓒", D: "𝓓", E: "𝓔", F: "𝓕", G: "𝓖", H: "𝓗", I: "𝓘", J: "𝓙", K: "𝓚", L: "𝓛", M: "𝓜", N: "𝓝", O: "𝓞", P: "𝓟", Q: "𝓠", R: "𝓡", S: "𝓢", T: "𝓣", U: "𝓤", V: "𝓥", W: "𝓦", X: "𝓧", Y: "𝓨", Z: "𝓩" },
-      doubleStruck: { a: "𝕒", b: "𝕓", c: "𝕔", d: "𝕕", e: "𝕖", f: "𝕗", g: "𝕘", h: "𝕙", i: "𝕚", j: "𝕛", k: "𝕜", l: "𝕝", m: "𝖒", n: "𝕟", o: "𝕠", p: "𝕡", q: "𝕢", r: "𝕣", s: "𝕤", t: "𝕥", u: "𝖚", v: "𝕧", w: "𝕨", x: "𝕩", y: "𝕪", z: "𝕫", A: "𝔸", B: "𝔹", C: "ℂ", D: "𝔻", E: "𝔼", F: "𝔽", G: "𝔾", H: "ℍ", I: "𝕀", J: "𝕁", K: "𝕂", L: "𝕃", M: "𝕄", N: "ℕ", O: "𝕆", P: "ℙ", Q: "ℚ", R: "ℝ", S: "𝕊", T: "𝕋", U: "𝕌", V: "𝕍", W: "𝕎", X: "𝕏", Y: "𝕐", Z: "ℤ" },
-      monospace: { a: "𝚊", b: "𝚋", c: "𝚌", d: "𝚍", e: "𝚎", f: "𝚏", g: "𝚐", h: "𝚑", i: "𝚒", j: "𝚓", k: "𝚔", l: "𝚕", m: "𝚖", n: "𝖓", o: "𝚘", p: "𝚙", q: "𝚚", r: "𝚛", s: "𝚜", t: "𝚝", u: "𝚞", v: "𝚟", w: "𝚠", x: "𝚡", y: "𝚢", z: "𝚣" },
+      scriptBold: { a: "𝓪", b: "𝓫", c: "𝓬", d: "𝓭", e: "𝓮", f: "𝓯", g: "𝓰", h: "𝓱", i: "𝓲", j: "𝓳", k: "", l: "𝓵", m: "𝓶", n: "𝓷", o: "𝓸", p: "𝓹", q: "𝓺", r: "𝓻", s: "𝓼", t: "𝓽", u: "𝓾", v: "𝓿", w: "𝔀", x: "𝔁", y: "𝔂", z: "𝔃", A: "𝓐", B: "𝓑", C: "𝓒", D: "𝓓", E: "𝓔", F: "𝓕", G: "𝓖", H: "𝓗", I: "𝓘", J: "𝓙", K: "𝓚", L: "𝓛", M: "𝓜", N: "𝓝", O: "𝓞", P: "𝓟", Q: "𝓠", R: "𝓡", S: "𝓢", T: "𝓣", U: "𝓤", V: "𝓥", W: "𝓦", X: "𝓧", Y: "𝓨", Z: "𝓩" },
+      doubleStruck: { a: "𝕒", b: "𝕓", c: "𝕔", d: "𝕕", e: "𝕖", f: "𝕗", g: "𝕘", h: "𝕙", i: "𝕚", j: "𝕛", k: "𝕜", l: "𝕝", m: "𝕞", n: "𝕟", o: "𝕠", p: "𝕡", q: "𝕢", r: "𝕣", s: "𝕤", t: "𝕥", u: "𝖚", v: "𝕧", w: "𝕨", x: "𝕩", y: "𝕪", z: "𝕫", A: "𝔸", B: "𝔹", C: "ℂ", D: "𝔻", E: "𝔼", F: "𝔽", G: "𝔾", H: "ℍ", I: "𝕀", J: "𝕁", K: "𝕂", L: "𝕃", M: "𝕄", N: "ℕ", O: "𝕆", P: "ℙ", Q: "ℚ", R: "ℝ", S: "𝕊", T: "𝕋", U: "𝕌", V: "𝕍", W: "𝕎", X: "𝕏", Y: "𝕐", Z: "ℤ" },
+      monospace: { a: "𝚊", b: "𝚋", c: "𝚌", d: "𝚍", e: "𝚎", f: "𝚏", g: "𝚐", h: "𝚑", i: "𝚒", j: "𝚓", k: "𝚔", l: "𝚕", m: "𝚖", n: "𝚗", o: "𝚘", p: "𝚙", q: "𝚚", r: "𝚛", s: "𝚜", t: "𝚝", u: "𝚞", v: "𝚟", w: "𝚠", x: "𝚡", y: "𝚢", z: "𝚣" },
       smallCaps: { a: "ᴀ", b: "ʙ", c: "ᴄ", d: "ᴅ", e: "ᴇ", f: "ꜰ", g: "ɢ", h: "ʜ", i: "ɪ", j: "ᴊ", k: "ᴋ", l: "ʟ", m: "ᴍ", n: "ɴ", o: "ᴏ", p: "ᴘ", q: "ǫ", r: "ʀ", s: "ꜱ", t: "ᴛ", u: "ᴜ", v: "ᴠ", w: "ᴡ", x: "x", y: "ʏ", z: "ᴢ" },
       circled: { a: "ⓐ", b: "ⓑ", c: "ⓒ", d: "ⓓ", e: "ⓔ", f: "ⓕ", g: "ⓖ", h: "ⓗ", i: "ⓘ", j: "ⓙ", k: "ⓚ", l: "ⓛ", m: "ⓜ", n: "ⓝ", o: "ⓞ", p: "ⓟ", q: "ⓠ", r: "ⓡ", s: "ⓢ", t: "ⓣ", u: "ⓤ", v: "ⓥ", w: "ⓦ", x: "ⓧ", y: "ⓨ", z: "ⓩ" }
     };
@@ -730,10 +1490,10 @@
     function buildFontCatalog() {
       const inputEl = document.getElementById('fontInputBar');
       const container = document.getElementById('fontPreviewContainer');
-      if(!inputEl || !container) return;
+      if (!inputEl || !container) return;
 
       const inputStr = inputEl.value || "Badshah";
-      
+
       const catalog = [
         { name: "Royal Gothic", res: applyMap(inputStr, fontMaps.gothic) },
         { name: "Script Luxury", res: applyMap(inputStr, fontMaps.scriptBold) },
@@ -757,67 +1517,47 @@
       `).join('');
     }
 
+    const fontInputBarEl = document.getElementById('fontInputBar');
+    if (fontInputBarEl) fontInputBarEl.addEventListener('input', buildFontCatalog);
+    buildFontCatalog();
+
     // ==========================================
-    // 4. BIOS RENDER ENGINE + MOCKUP INJECTION
+    // 4. BIOS RENDER ENGINE (200+ Bios + Posters)
     // ==========================================
     let activeFilterTag = 'all';
     window.applyBioFilter = function(tag, btn) {
       activeFilterTag = tag;
       document.querySelectorAll('.category-tab-btn').forEach(b => b.classList.remove('active'));
-      if(btn) btn.classList.add('active');
+      if (btn) btn.classList.add('active');
       renderBiosPool();
     };
-
-    const mockupProfiles = [
-      { name: 'Thomas Shelby', f: '533K', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150', bio: '👉 Nickname Branded 🔥\n👉 Photography Ⓛⓞⓥⓔⓡ 📸\n👉 Unique Life style 👔' },
-      { name: 'Aesthetic Queen', f: '1.2M', pic: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150', bio: '☁️ Dreamer | Believer 💫\n🌸 Coffee & Sunset Lover ☕\n🎧 Soft Music & Cozy Nights 🌙' },
-      { name: 'Millionaire Mindset', f: '850K', pic: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150', bio: '👑 Billionaire Mindset 💼\n✈️ Traveling the World 🌍\n🔥 Silence is my loudest scream ⚡' }
-    ];
-
-    function buildMockupBanner(idx) {
-      const item = mockupProfiles[idx % mockupProfiles.length];
-      return `
-        <div class="insta-poster-mockup">
-          <div class="poster-top-bar">INSTAGRAM PROFILE MOCKUP</div>
-          <div class="poster-inner">
-            <div class="poster-creator-name">${item.name} <span class="blue-tick">✓</span></div>
-            <div class="poster-stats-row">
-              <div class="poster-avatar"><img src="${item.pic}" alt="Profile"></div>
-              <div class="poster-metrics">
-                <div>955<span>posts</span></div><div>${item.f}<span>followers</span></div><div>253<span>following</span></div>
-              </div>
-            </div>
-            <div class="poster-bio-box">${item.bio}</div>
-            <div class="poster-btn-group">
-              <button class="poster-btn blue">Following ▾</button>
-              <button class="poster-btn">Message</button>
-            </div>
-          </div>
-        </div>`;
-    }
 
     function renderBiosPool() {
       const exploreArea = document.getElementById('exploreBiosFeed');
       const homeArea = document.getElementById('homeBiosFeed');
-      
+
       let pool = activeFilterTag === 'all' ? bioRepository : bioRepository.filter(b => b.tier === activeFilterTag);
 
-      // 1. Render Explore Feed
-      if(exploreArea) {
+      // 1. Render Explore Feed (With dummy posters every 20-25 bios)
+      if (exploreArea) {
         let html = '';
-        const maxCount = Math.min(pool.length, 150);
-        for(let i=0; i<maxCount; i++) {
-          if(i > 0 && i % 10 === 0) html += buildMockupBanner(i / 10);
-          
+        let posterCounter = 0;
+        const maxCount = Math.min(pool.length, 180);
+
+        for (let i = 0; i < maxCount; i++) {
+          if (i > 0 && i % 20 === 0) {
+            html += buildMockupPosterHTML(posterCounter++);
+          }
+
           const bio = pool[i];
           const isFree = bio.tier === 'free';
           const authorized = isFree || isVipUser;
           const badgeTxt = isFree ? 'FREE BIO' : 'VIP EXCLUSIVE';
 
-          if(authorized) {
+          if (authorized) {
             html += `
               <div class="bio-card-box">
-                <span class="pill-tier ${isFree?'pill-free':'pill-vip'}">${badgeTxt}</span>
+                <span class="pill-tier ${isFree ? 'pill-free' : 'pill-vip'}">${badgeTxt}</span>
                 <div class="bio-text-content">${bio.content}</div>
                 <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${bio.id})">📋 Copy Bio</button>
               </div>`;
@@ -831,24 +1571,31 @@
                   <button class="btn-unlock-gold click-feedback" onclick="openCheckoutModal('vip')">Unlock @ ₹29</button>
                 </div>
               </div>`;
-            }
+          }
         }
         exploreArea.innerHTML = html;
       }
 
-      // 2. Render Home Feed (150 Real Free Bios)
-      if(homeArea) {
-        const freePool = bioRepository.filter(b => b.tier === 'free').slice(0, 150);
+      // 2. Render Home Feed (200+ Free Bios with posters every 20-25 items)
+      if (homeArea) {
+        const freePool = bioRepository.filter(b => b.tier === 'free');
         let hHtml = '';
-        freePool.forEach((bio, idx) => {
-          if(idx > 0 && idx % 12 === 0) hHtml += buildMockupBanner(idx / 12);
+        let posterCounter = 0;
+        const totalHomeBios = Math.min(freePool.length, 220); // 200+ loaded
+
+        for (let idx = 0; idx < totalHomeBios; idx++) {
+          if (idx > 0 && idx % 22 === 0) {
+            hHtml += buildMockupPosterHTML(posterCounter++);
+          }
+
+          const bio = freePool[idx];
           hHtml += `
             <div class="bio-card-box">
               <span class="pill-tier pill-free">FREE BIO</span>
               <div class="bio-text-content">${bio.content}</div>
               <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${bio.id})">📋 Copy Bio</button>
             </div>`;
-        });
+        }
         homeArea.innerHTML = hHtml;
       }
     }
@@ -896,7 +1643,7 @@
       const lockedBox = document.getElementById('vaultLockedBox');
       const unlockedBox = document.getElementById('vaultUnlockedBox');
 
-      if(!isVipUser) {
+      if (!isVipUser) {
         lockedBox.style.display = 'block';
         unlockedBox.style.display = 'none';
         return;
@@ -907,7 +1654,7 @@
 
       // Render Vault Bios
       const vFeed = document.getElementById('vaultBiosFeed');
-      vFeed.innerHTML = bioRepository.filter(b => b.tier === 'vip').slice(0, 40).map(b => `
+      vFeed.innerHTML = bioRepository.filter(b => b.tier === 'vip').slice(0, 50).map(b => `
         <div class="bio-card-box" style="border-color:#fbbf24;">
           <div class="bio-text-content">${b.content}</div>
           <button class="btn-copy-bio click-feedback" onclick="copyBioByRef(${b.id})">📋 Copy VIP Bio</button>
@@ -918,8 +1665,8 @@
     window.renderZalgoGlitch = function(str) {
       const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310'];
       let out = '';
-      for(let i=0; i<str.length; i++) {
-        out += str[i] + z[Math.floor(Math.random()*z.length)];
+      for (let i = 0; i < str.length; i++) {
+        out += str[i] + z[Math.floor(Math.random() * z.length)];
       }
       document.getElementById('zalgoOutput').innerText = out || 'Zalgo Preview';
     };
@@ -930,8 +1677,8 @@
     window.openInteractiveTool = function(toolType) {
       const titleEl = document.getElementById('toolModalTitle');
       const bodyEl = document.getElementById('toolModalBody');
-      
-      if(toolType === 'caption') {
+
+      if (toolType === 'caption') {
         titleEl.innerText = "🔥 Trending Instagram Captions";
         const captions = [
           "Sunkissed & blessed ✨", "Hustle hard, shine harder 💎", "Not lucky, just obsessed 🚀",
@@ -977,10 +1724,10 @@
         titleEl.innerText = "⚔️ Rare Instagram Symbols";
         const syms = ["亗", "☬", "༒", "༺ཌ", "ད༻", "★彡", "彡★", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ"];
         bodyEl.innerHTML = `<div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;">` + syms.map(sy => `
-            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:15px; text-align:center; font-size:22px; cursor:pointer; color:#fff;" class="click-feedback" onclick="copyPureString('${sy}', 'Symbol Copied!')">
-              ${sy}
-            </div>
-          `).join('') + `</div>`;
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:15px; text-align:center; font-size:22px; cursor:pointer; color:#fff;" class="click-feedback" onclick="copyPureString('${sy}', 'Symbol Copied!')">
+            ${sy}
+          </div>
+        `).join('') + `</div>`;
       }
       else if (toolType === 'mockup_builder') {
         titleEl.innerText = "📸 9-Grid Layout Mockup";
@@ -1007,7 +1754,7 @@
     // ==========================================
     window.copyBioByRef = function(bioId) {
       const item = bioRepository.find(b => b.id === bioId);
-      if(item) copyPureString(item.content, 'Bio Copied to Clipboard!');
+      if (item) copyPureString(item.content, 'Bio Copied to Clipboard!');
     };
 
     window.copyRandomQuickBio = function() {
@@ -1017,9 +1764,9 @@
     };
 
     window.copyPureString = function(text, toastMsg, isUrlEncoded = false) {
-      if(isUrlEncoded) text = decodeURIComponent(text);
-      
-      if(navigator.clipboard && window.isSecureContext) {
+      if (isUrlEncoded) text = decodeURIComponent(text);
+
+      if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(() => triggerToast(toastMsg));
       } else {
         const area = document.createElement("textarea");
@@ -1031,14 +1778,14 @@
         try {
           document.execCommand('copy');
           triggerToast(toastMsg);
-        } catch(e) {}
+        } catch (e) {}
         area.remove();
       }
     };
 
     function triggerToast(msg) {
       const toast = document.getElementById('systemToast');
-      if(!toast) return;
+      if (!toast) return;
       toast.innerText = msg;
       toast.classList.add('visible');
       setTimeout(() => toast.classList.remove('visible'), 2000);
@@ -1049,7 +1796,7 @@
     // ==========================================
     window.closeModal = function(modalId) {
       const m = document.getElementById(modalId);
-      if(m) m.classList.remove('open');
+      if (m) m.classList.remove('open');
     };
 
     const legalArchive = {
@@ -1077,28 +1824,14 @@
 
     window.showLegalModal = function(key) {
       const item = legalArchive[key];
-      if(!item) return;
+      if (!item) return;
       document.getElementById('legalModalTitle').innerText = item.t;
       document.getElementById('legalModalBody').innerHTML = item.b;
       document.getElementById('legalModalVeil').classList.add('open');
     };
 
-    // ==========================================
-    // 10. INITIALIZATION
-    // ==========================================
-    document.addEventListener("DOMContentLoaded", () => {
-      const fontInput = document.getElementById('fontInputBar');
-      if(fontInput) {
-        fontInput.addEventListener('input', buildFontCatalog);
-      }
-      buildFontCatalog();
-      renderBiosPool();
-    });
-
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-      buildFontCatalog();
-      renderBiosPool();
-    }
+    // BOOTSTRAP INITIAL VIEW
+    renderBiosPool();
   </script>
 </body>
 </html>
