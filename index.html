@@ -1,1208 +1,697 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>InstaVibe VIP Studio 亗 - Ultra Luxury Creator Platform</title>
-  <meta name="theme-color" content="#020305">
-  <meta name="description" content="India's #1 Luxury Instagram Bios, Unicode Fonts & Creator Utility App">
+  <meta name="theme-color" content="#030508">
+  <meta name="description" content="India's Premium Suite for Instagram Bios, Fancy Fonts, Captions & Creator Tools.">
+
+  <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       1. GLOBAL RESET & CORE VARIABLES
+       ========================================================================== */
     :root {
-      --bg-dark: #020305;
-      --card-bg: rgba(13, 17, 26, 0.78);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --gold-1: #fef08a;
-      --gold-2: #fbbf24;
-      --gold-3: #f59e0b;
-      --gold-4: #b45309;
-      --gold-glow: rgba(245, 158, 11, 0.5);
-      --neon-cyan: #06b6d4;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --success: #10b981;
-      --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      --gold-gradient: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #b45309 100%);
-      --nav-h: 72px;
+      --bg-main: #030508;
+      --card-bg: rgba(15, 20, 30, 0.85);
+      --gold-mid: #fbbf24;
+      --gold-dark: #b45309;
+      --gold-glow: rgba(245, 158, 11, 0.4);
+      --gold-grad: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #b45309 100%);
+      --neon-cyan: #06b6d4; --neon-pink: #ec4899; --neon-purple: #a855f7;
+      --success: #10b981; --danger: #ef4444;
+      --text-main: #f8fafc; --text-muted: #94a3b8;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-    html, body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
-    body { padding-bottom: 110px; }
+    body { background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; padding-bottom: 110px; scroll-behavior: smooth; }
 
-    .bg-glass {
+    /* Ultra-Smooth Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-main); }
+    ::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.4); border-radius: 10px; }
+
+    /* Background Ambience */
+    .bg-ambience {
       position: fixed; inset: 0; z-index: -2;
-      background: radial-gradient(circle at 12% 18%, rgba(245, 158, 11, 0.14) 0%, transparent 40%),
-                  radial-gradient(circle at 88% 45%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
-                  radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.09) 0%, transparent 50%),
-                  linear-gradient(180deg, #020305 0%, #060913 100%);
-      pointer-events: none;
+      background: radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
     }
-    .glow-orb {
-      position: fixed; width: 380px; height: 380px; border-radius: 50%;
-      pointer-events: none; filter: blur(130px); z-index: -1; opacity: 0.3;
-    }
-    .glow-1 { top: -120px; left: -120px; background: #fbbf24; }
-    .glow-2 { bottom: 80px; right: -120px; background: #a855f7; }
+    .glow-sphere { position: fixed; width: 400px; height: 400px; border-radius: 50%; pointer-events: none; filter: blur(140px); z-index: -1; opacity: 0.3; }
+    .glow-sphere-1 { top: -100px; left: -100px; background: var(--gold-mid); }
+    .glow-sphere-2 { bottom: 100px; right: -100px; background: var(--neon-purple); }
 
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.4); }
-    ::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.3); border-radius: 10px; }
+    /* ==========================================================================
+       2. HEADER & LAYOUT
+       ========================================================================== */
+    .header-master {
+      width: 100%; position: sticky; top: 0; left: 0; right: 0; background: rgba(3, 5, 8, 0.96);
+      backdrop-filter: blur(20px); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); z-index: 1000; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    }
+    .brand-group { display: flex; align-items: center; gap: 12px; }
+    .brand-emblem {
+      width: 44px; height: 44px; border-radius: 14px; background: var(--gold-grad);
+      display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900;
+      color: #000; box-shadow: 0 0 20px var(--gold-glow);
+    }
+    .brand-title {
+      font-family: 'Cinzel', serif; font-size: 21px; font-weight: 900; letter-spacing: 0.5px;
+      background: linear-gradient(110deg, #fef08a, #fbbf24, #fff, #fbbf24, #b45309);
+      background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: textShine 4s linear infinite;
+    }
+    @keyframes textShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+    
+    .btn-vault-access {
+      background: rgba(245, 158, 11, 0.12); border: 1px solid var(--gold-mid); color: var(--gold-mid);
+      padding: 9px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer; transition: 0.2s;
+    }
+    .btn-vault-access:active { transform: scale(0.95); background: var(--gold-grad); color: #000; }
 
-    /* ===== TOP NAV ===== */
-    .top-nav-full {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      position: sticky; top: 0; height: var(--nav-h);
-      background: rgba(3, 5, 8, 0.94); backdrop-filter: blur(20px);
-      z-index: 999; margin-bottom: 18px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    }
-    .brand-wrap { display: flex; align-items: center; gap: 12px; }
-    .brand-badge-icon {
-      width: 42px; height: 42px; border-radius: 12px; background: var(--gold-gradient);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 900; color: #000;
-      box-shadow: 0 0 20px var(--gold-glow); flex-shrink: 0;
-    }
-    .brand-heading {
-      font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; letter-spacing: 0.6px;
-      background: linear-gradient(110deg, #fef08a 0%, #fbbf24 35%, #ffffff 50%, #fbbf24 65%, #b45309 100%);
-      background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent; animation: smoothKnifeShine 4s linear infinite;
-      white-space: nowrap;
-    }
-    @keyframes smoothKnifeShine {
-      0% { background-position: 200% center; }
-      100% { background-position: -200% center; }
-    }
-    .nav-vault-chip {
-      background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold-3);
-      padding: 8px 16px; color: var(--gold-2); border-radius: 12px;
-      font-weight: 800; font-size: 13px; cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
-    }
-    .nav-vault-chip:active { transform: scale(0.95); }
+    .main-container { max-width: 600px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 10; }
 
-    .app-container { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 0 14px; }
-
-    .live-trust-bar {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 9px 18px; background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.28); border-radius: 999px;
-      margin-bottom: 20px; font-size: 12px; color: #34d399; font-weight: 800;
+    /* ==========================================================================
+       3. VIP STATE ENGINE (100% Glitch-Free Mechanism)
+       ========================================================================== */
+    .premium-content { filter: blur(7px); user-select: none; pointer-events: none; }
+    .locked-overlay {
+      position: absolute; inset: 0; background: rgba(8, 10, 15, 0.75); backdrop-filter: blur(5px);
+      border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;
     }
-    .live-dot-pulse { width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: blink 1.2s infinite; }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .unlocked-btn-show { display: none; }
+    .pricing-hide-on-vip { display: block; }
+    .pricing-show-on-vip { display: none; }
 
-    /* ===== VIP BANNER ===== */
-    .single-vip-banner {
-      position: relative; overflow: hidden; border-radius: 26px; padding: 30px 22px;
-      background: radial-gradient(circle at top right, rgba(30, 58, 138, 0.98), rgba(8, 12, 24, 1));
-      border: 1.5px solid rgba(245, 158, 11, 0.4);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-      margin-bottom: 25px; cursor: pointer;
+    /* WHEN USER BUYS VIP, THIS CLASS ACTIVATES MAGICALLY */
+    body.vip-active .premium-content { filter: blur(0px) !important; user-select: auto !important; pointer-events: auto !important; }
+    body.vip-active .locked-overlay { display: none !important; }
+    body.vip-active .unlocked-btn-show { display: block !important; }
+    body.vip-active .pricing-hide-on-vip { display: none !important; }
+    body.vip-active .pricing-show-on-vip { display: block !important; }
+
+    /* ==========================================================================
+       4. CAROUSEL / SHINING BANNER
+       ========================================================================== */
+    .hero-vip-banner {
+      background: radial-gradient(circle at top right, #1e3a8a, #080c18); border: 1.5px solid rgba(245, 158, 11, 0.5);
+      border-radius: 24px; padding: 30px 22px; margin: 20px 0 30px; position: relative; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); cursor: pointer;
     }
-    .single-vip-banner::before {
+    .hero-vip-banner::before {
       content: ''; position: absolute; top: -50%; left: -60%; width: 45%; height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), rgba(254, 240, 138, 0.45), transparent);
-      transform: rotate(25deg); pointer-events: none;
-      animation: bannerSheenGlint 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), rgba(254, 240, 138, 0.5), transparent);
+      transform: rotate(25deg); animation: sweepingGlare 3.5s infinite;
     }
-    @keyframes bannerSheenGlint {
-      0% { left: -70%; } 35% { left: 160%; } 100% { left: 160%; }
-    }
-    .banner-badge-row { display: flex; gap: 8px; margin-bottom: 12px; position: relative; z-index: 2; }
-    .badge-tag {
-      font-size: 10px; font-weight: 900; letter-spacing: 0.8px; padding: 4px 12px;
-      border-radius: 999px; text-transform: uppercase;
-      background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .banner-title {
-      font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; color: #fff;
-      margin-bottom: 8px; line-height: 1.2; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-      position: relative; z-index: 2;
-    }
-    .banner-desc {
-      font-size: 13px; color: #cbd5e1; margin-bottom: 20px; font-weight: 500;
-      line-height: 1.5; position: relative; z-index: 2;
-    }
-    .banner-action-row { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
-    .banner-price-pill { font-size: 26px; font-weight: 900; color: var(--gold-2); font-family: 'Space Grotesk', sans-serif; }
-    .banner-btn-glow {
-      border: none; padding: 12px 24px; border-radius: 12px; font-weight: 900; font-size: 13.5px;
-      cursor: pointer; color: #000; background: var(--gold-gradient);
-      box-shadow: 0 4px 20px var(--gold-glow);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    @keyframes sweepingGlare { 0% {left:-80%;} 35% {left:160%;} 100% {left:160%;} }
+    .hero-tag { font-size: 10px; font-weight: 900; padding: 5px 12px; border-radius: 99px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: #60a5fa; margin-right: 8px;}
+    .hero-tag.alert { background: var(--danger); color: #fff; border: none; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% {transform:scale(1);} 50% {transform:scale(1.05);} }
+    .btn-premium-gold { border: none; padding: 16px 26px; border-radius: 14px; font-weight: 900; font-size: 16px; cursor: pointer; color: #000; background: var(--gold-grad); box-shadow: 0 6px 25px var(--gold-glow); transition: 0.2s; width: 100%; }
+    .btn-premium-gold:active { transform: scale(0.96); }
 
-    .click-feedback { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s; cursor: pointer; }
-    .click-feedback:active { transform: scale(0.95); filter: brightness(1.3); }
+    /* ==========================================================================
+       5. BIOS FEED STYLING
+       ========================================================================== */
+    .section-title { font-size: 20px; font-weight: 900; margin: 35px 0 18px; color: #fff; display: flex; justify-content: space-between; align-items: center;}
+    .bio-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 20px; margin-bottom: 20px; position: relative; box-shadow: 0 10px 35px rgba(0,0,0,0.6); }
+    .bio-badge { font-size: 11px; font-weight: 900; padding: 5px 14px; border-radius: 8px; margin-bottom: 14px; display: inline-block; letter-spacing: 0.5px; }
+    .bio-badge.free { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+    .bio-badge.vip { background: rgba(245, 158, 11, 0.15); color: var(--gold-mid); border: 1px solid var(--gold-mid); }
+    
+    .bio-box { background: rgba(0, 0, 0, 0.45); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 16px; font-size: 15px; line-height: 1.7; font-weight: 600; white-space: pre-line; }
+    
+    .btn-copy { width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: #fff; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.2s; }
+    .btn-copy:active { background: var(--gold-grad); color: #000; border-color: transparent; }
 
-    .btn-gold-action {
-      width: 100%; border: none; padding: 16px; border-radius: 14px; font-weight: 900;
-      font-size: 15px; color: #000; background: var(--gold-gradient);
-      box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35); cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    /* HIGH-END MOCKUP POSTER */
+    .mockup-poster { background: linear-gradient(145deg, #0d121c, #05070a); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; margin: 30px 0; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+    .poster-head { background: linear-gradient(90deg, #ec4899, #f59e0b); color: #fff; text-align: center; padding: 8px; font-size: 11px; font-weight: 900; letter-spacing: 1px;}
+    .poster-body { padding: 22px; }
+    .m-name { font-size: 17px; font-weight: 900; display: flex; align-items: center; gap: 6px; margin-bottom: 18px; }
+    .m-tick { background: #38bdf8; width: 15px; height: 15px; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center; color:#fff; }
+    .m-stats-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    
+    /* Instagram Gradient Ring Effect */
+    .m-pfp-ring { background: var(--insta-gradient); padding: 3px; border-radius: 50%; display: inline-block; }
+    .m-pfp-inner { background: #000; padding: 2px; border-radius: 50%; }
+    .m-pfp-inner img { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; display: block;}
+    
+    .m-stats { display: flex; gap: 20px; font-size: 18px; font-weight: 900; text-align: center; width: 100%; justify-content: space-evenly; }
+    .m-stats span { display: block; font-size: 12px; font-weight: 600; color: #94a3b8; margin-top: 4px;}
+    
+    .m-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+    .m-btn { background: #262626; border: none; padding: 10px; border-radius: 10px; color: #fff; font-weight: 800; font-size: 13.5px; }
+    .m-btn.blue { background: #0095f6; }
 
-    /* ===== TOOLS GRID ===== */
-    .tools-hub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 30px; }
-    .tool-tile {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px; padding: 16px 6px; display: flex; flex-direction: column;
-      align-items: center; text-align: center; cursor: pointer;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s, background 0.25s;
-    }
-    .tool-tile:active { border-color: var(--gold-2); background: rgba(245, 158, 11, 0.08); transform: translateY(-2px); }
-    .tool-emoji-icon { font-size: 26px; margin-bottom: 6px; }
-    .tool-name-txt { font-size: 11px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 3px; }
-    .tool-sub-txt { font-size: 9px; color: var(--text-muted); font-weight: 600; }
+    /* ==========================================================================
+       6. DEDICATED TOOLS TAB UI
+       ========================================================================== */
+    .tool-section-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 20px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);}
+    .tool-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 16px; font-weight: 800; outline: none; margin-bottom: 16px; box-shadow: inset 0 4px 15px rgba(0,0,0,0.5);}
+    .tool-input:focus { border-color: var(--gold-mid); }
+    
+    .tool-list-item { background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
+    .tool-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .tool-grid-item { background: rgba(0,0,0,0.4); padding: 20px 10px; border-radius: 14px; text-align: center; font-size: 26px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: 0.2s;}
+    .tool-grid-item:active { background: rgba(245,158,11,0.15); border-color: var(--gold-mid); transform: scale(0.95);}
 
-    /* ===== FONT STUDIO ===== */
-    .font-studio-card {
-      background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 22px; padding: 20px; margin-bottom: 35px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    /* ==========================================================================
+       7. BOTTOM NAVIGATION & MODALS
+       ========================================================================== */
+    .bottom-nav {
+      position: fixed; bottom: 0; width: 100%; background: rgba(6, 9, 16, 0.98); backdrop-filter: blur(20px);
+      display: flex; justify-content: space-around; padding: 14px 0 20px; border-top: 1px solid rgba(255,255,255,0.08); z-index: 1000;
     }
-    .font-studio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .font-studio-title { font-size: 16px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 8px; }
-    .font-studio-badge {
-      font-size: 10px; background: rgba(6, 182, 212, 0.15); color: var(--neon-cyan);
-      border: 1px solid rgba(6, 182, 212, 0.35); padding: 4px 8px; border-radius: 6px; font-weight: 900;
-    }
-    .font-search-input {
-      width: 100%; padding: 15px; background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 13px;
-      color: #fff; font-size: 15px; font-weight: 700; outline: none;
-      margin-bottom: 14px; transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .font-search-input:focus { border-color: var(--gold-2); box-shadow: 0 0 16px rgba(245, 158, 11, 0.25); }
-    .font-styles-list { display: grid; gap: 9px; max-height: 260px; overflow-y: auto; padding-right: 4px; }
-    .font-row {
-      display: flex; justify-content: space-between; align-items: center; padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-    }
-    .font-styled-preview {
-      font-size: 14.5px; color: #f8fafc; font-weight: 600; overflow: hidden;
-      text-overflow: ellipsis; white-space: nowrap; max-width: 75%;
-    }
-    .font-copy-chip {
-      background: rgba(245, 158, 11, 0.12); color: var(--gold-2);
-      border: 1px solid rgba(245, 158, 11, 0.35); padding: 6px 12px;
-      border-radius: 8px; font-size: 11px; font-weight: 900; cursor: pointer;
-    }
+    .nav-tab { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #64748b; font-size: 10.5px; font-weight: 800; cursor: pointer; transition: 0.2s; text-transform: uppercase; }
+    .nav-tab.active { color: var(--gold-mid); transform: translateY(-4px); }
+    .nav-icon { font-size: 24px; margin-bottom: 2px;}
 
-    /* ===== TABS ===== */
-    .tabs-sticky-bar {
-      position: sticky; top: var(--nav-h); z-index: 50;
-      background: rgba(3, 5, 8, 0.95); backdrop-filter: blur(20px);
-      padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      margin-bottom: 18px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
-    }
-    .tabs-sticky-bar::-webkit-scrollbar { display: none; }
-    .category-tab-btn {
-      padding: 9px 20px; border-radius: 999px; font-size: 12px; font-weight: 900;
-      white-space: nowrap; border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.04); color: #94a3b8; cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); letter-spacing: 0.5px;
-    }
-    .category-tab-btn.active {
-      background: var(--gold-gradient); color: #000; border-color: transparent;
-      box-shadow: 0 3px 15px var(--gold-glow);
-    }
+    .page-view { display: none; padding-bottom: 40px; animation: fade 0.3s ease; }
+    .page-view.active { display: block; }
+    @keyframes fade { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
 
-    /* ===== BIO CARDS ===== */
-    .bios-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
-    .bio-card-box {
-      background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px; padding: 18px; position: relative;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-      content-visibility: auto;
-      contain-intrinsic-size: auto 220px;
-    }
-    .bio-text-content {
-      font-size: 14px; line-height: 1.7; color: #f1f5f9; white-space: pre-line;
-      background: rgba(0, 0, 0, 0.4); padding: 14px; border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.05); margin: 12px 0; font-weight: 600;
-    }
-    .pill-tier {
-      font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 6px;
-      text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 2px;
-    }
-    .pill-free { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
-    .pill-vip { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid var(--gold-3); }
-    .btn-copy-bio {
-      width: 100%; padding: 13px; background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; color: #fff;
-      font-size: 13.5px; font-weight: 800; cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-copy-bio:active { background: var(--gold-gradient); color: #000; border-color: transparent; }
-    .bio-locked-blur {
-      position: absolute; inset: 0; background: rgba(8, 12, 22, 0.82);
-      backdrop-filter: blur(8px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;
-    }
-    .lock-icon-lg { font-size: 34px; margin-bottom: 12px; }
-    .btn-unlock-gold {
-      background: var(--gold-gradient); border: none; padding: 11px 26px; border-radius: 12px;
-      font-weight: 900; font-size: 13px; cursor: pointer; color: #000;
-      box-shadow: 0 5px 20px var(--gold-glow);
-    }
-    .feed-loader {
-      text-align: center; padding: 16px; color: var(--text-muted);
-      font-size: 12px; font-weight: 700;
-    }
+    .modal-veil { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-dialog { background: #0d1220; border: 1px solid var(--gold-mid); border-radius: 28px; width: 100%; max-width: 450px; padding: 30px 24px; position: relative; text-align: center; max-height:85vh; overflow-y:auto;}
+    .modal-close { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-weight: 900; cursor: pointer; border:1px solid rgba(255,255,255,0.2);}
 
-    /* ===== INSTA POSTER ===== */
-    .insta-poster-mockup {
-      background: #000; border: 1.5px solid rgba(255, 255, 255, 0.15);
-      border-radius: 24px; margin: 10px 0; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
-      overflow: hidden; content-visibility: auto; contain-intrinsic-size: auto 420px;
-    }
-    .poster-top-bar {
-      background: linear-gradient(90deg, #ec4899, #f59e0b); padding: 8px; text-align: center;
-      color: #fff; font-size: 10.5px; font-weight: 900; letter-spacing: 1.2px; text-transform: uppercase;
-    }
-    .poster-inner { padding: 22px 20px; }
-    .poster-creator-name { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 18px; display: flex; align-items: center; gap: 6px; }
-    .blue-tick {
-      width: 16px; height: 16px; background: #38bdf8; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 9.5px; font-weight: 900;
-    }
-    .poster-stats-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-    .poster-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--insta-gradient); padding: 3px; flex-shrink: 0; }
-    .poster-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #000; object-fit: cover; }
-    .poster-metrics { display: flex; gap: 16px; text-align: center; color: #fff; font-weight: 900; font-size: 17px; width: 100%; justify-content: space-around; }
-    .poster-metrics span { display: block; font-size: 11px; color: #94a3b8; font-weight: 600; text-transform: lowercase; margin-top: 2px; }
-    .poster-bio-box {
-      font-size: 14px; line-height: 1.65; color: #f8fafc; white-space: pre-line;
-      margin-bottom: 16px; font-weight: 500; background: rgba(255, 255, 255, 0.04);
-      padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .poster-btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .poster-btn { background: #262626; color: #fff; padding: 9px; border-radius: 9px; font-size: 13px; font-weight: 800; text-align: center; border: none; }
-    .poster-btn.blue { background: #0095f6; }
+    .toast-box { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 14px 28px; border-radius: 99px; font-weight: 900; font-size: 14px; opacity: 0; pointer-events: none; transition: 0.3s; z-index: 5000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .toast-box.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
 
-    /* ===== PRICING ===== */
-    .pricing-stack { display: flex; flex-direction: column; gap: 20px; margin-bottom: 35px; }
-    .pricing-card {
-      background: var(--card-bg); border: 2px solid var(--gold-3); border-radius: 26px;
-      padding: 30px 22px; position: relative;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.2);
-    }
-    .pricing-badge-strip {
-      display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;
-      border-radius: 999px; font-size: 11px; font-weight: 900; margin-bottom: 18px;
-      text-transform: uppercase; background: var(--gold-gradient); color: #000;
-      box-shadow: 0 4px 15px var(--gold-glow);
-    }
-    .pricing-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-    .plan-name-title { font-size: 22px; font-weight: 900; color: #fff; }
-    .plan-price-num { font-size: 38px; font-weight: 900; color: var(--gold-2); font-family: 'Space Grotesk', sans-serif; }
-    .plan-perks { list-style: none; margin: 18px 0 26px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #cbd5e1; font-weight: 600; }
-    .plan-perks span { color: var(--success); font-size: 18px; margin-right: 6px; }
-
-    /* ===== MODALS ===== */
-    .modal-veil {
-      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(16px);
-      z-index: 2000; display: none; align-items: center; justify-content: center; padding: 18px;
-    }
-    .modal-veil.open { display: flex; }
-    .modal-dialog {
-      background: #0d1220; border: 1px solid var(--gold-glow); border-radius: 26px;
-      width: 100%; max-width: 440px; margin: auto; padding: 26px 20px; position: relative;
-      animation: modalSlide 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-      max-height: 88vh; overflow-y: auto;
-    }
-    @keyframes modalSlide { from { transform: translateY(35px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .modal-close-btn {
-      position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; width: 34px; height: 34px;
-      border-radius: 50%; cursor: pointer; font-weight: 900; font-size: 14px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .step-box { display: none; width: 100%; }
-    .step-box.active { display: block; }
-
-    /* ===== FAQ ===== */
-    .faq-accordion { margin: 30px 0; }
-    .faq-item {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 14px; margin-bottom: 10px; overflow: hidden;
-    }
-    .faq-q { padding: 15px; font-weight: 800; font-size: 13.5px; color: #fff; cursor: pointer; display: flex; justify-content: space-between; }
-    .faq-a { padding: 0 15px 15px; font-size: 12.5px; color: var(--text-muted); line-height: 1.6; display: none; }
-    .faq-item.open .faq-a { display: block; }
-
-    /* ===== TOAST ===== */
-    .system-toast-bubble {
-      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
-      background: #fff; color: #000; padding: 13px 26px; border-radius: 99px;
-      font-size: 13px; font-weight: 900; opacity: 0;
-      transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 5000; pointer-events: none; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
-    }
-    .system-toast-bubble.visible { opacity: 1; transform: translateX(-50%) translateY(-10px); }
-
-    /* ===== BOTTOM NAV ===== */
-    .bottom-app-bar {
-      position: fixed; bottom: 0; left: 0; width: 100%;
-      background: rgba(6, 9, 16, 0.98); backdrop-filter: blur(20px);
-      display: flex; justify-content: space-around;
-      padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
-      border-top: 1px solid rgba(255, 255, 255, 0.08); z-index: 1000;
-      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
-    }
-    .bottom-tab-link {
-      display: flex; flex-direction: column; align-items: center; gap: 4px;
-      color: var(--text-muted); font-size: 10px; font-weight: 800; cursor: pointer;
-      text-decoration: none; transition: color 0.2s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .bottom-tab-link.active { color: var(--gold-2); transform: translateY(-3px); }
-    .bottom-tab-icon { font-size: 20px; }
-
-    .view-container { display: none; }
-    .view-container.active { display: block; animation: viewIn 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
-    @keyframes viewIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    footer { text-align: center; padding: 35px 10px 40px; border-top: 1px solid rgba(255, 255, 255, 0.06); margin-top: 40px; font-size: 12px; color: #64748b; }
-    .footer-links-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
-    .footer-links-row a { color: #cbd5e1; text-decoration: none; font-weight: 700; cursor: pointer; font-size: 12.5px; }
-
-    /* Reduce motion for smoother low-end experience */
-    @media (prefers-reduced-motion: reduce) {
-      .single-vip-banner::before, .brand-heading { animation: none; }
-    }
+    /* Footer */
+    footer { text-align: center; padding: 40px 10px 60px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; color: #64748b; font-size: 13px;}
+    .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-links span { color: #cbd5e1; font-weight: 800; cursor: pointer; font-size: 13.5px; text-decoration: underline; text-decoration-color: transparent; transition: 0.2s;}
+    .footer-links span:hover { color: var(--gold-mid); text-decoration-color: var(--gold-mid);}
   </style>
 </head>
 <body>
-  <div class="bg-glass"></div>
-  <div class="glow-orb glow-1"></div>
-  <div class="glow-orb glow-2"></div>
 
-  <header class="top-nav-full">
-    <div class="brand-wrap">
-      <div class="brand-badge-icon">亗</div>
-      <div class="brand-heading">InstaVibe VIP</div>
+  <div class="bg-ambience"></div>
+  <div class="glow-sphere glow-sphere-1"></div>
+  <div class="glow-sphere glow-sphere-2"></div>
+
+  <!-- FULL WIDTH HEADER -->
+  <header class="header-master">
+    <div class="brand-group">
+      <div class="brand-emblem">亗</div>
+      <div class="brand-title">InstaVibe VIP</div>
     </div>
-    <div>
-      <button class="nav-vault-chip click-feedback" onclick="navigateToView('vault')">💎 My Vault</button>
-    </div>
+    <button class="btn-vault-access" onclick="switchPage('vault')">💎 My Vault</button>
   </header>
 
-  <div class="app-container">
-    <!-- VIEW 1: HOME -->
-    <main id="view-home" class="view-container active">
-      <div class="live-trust-bar">
-        <span class="live-dot-pulse"></span>
-        <span>🔥 4,102 Creators Unlocked VIP Today</span>
-      </div>
+  <div class="main-container">
 
-      <section class="single-vip-banner click-feedback" onclick="openCheckoutModal('vip')">
-        <div class="banner-badge-row">
-          <span class="badge-tag" style="border-color:#60a5fa; color:#60a5fa;">⚡ ALL-ACCESS VIP</span>
-          <span class="badge-tag" style="background:#ef4444; color:#fff; border:none;">90% OFF</span>
+    <!-- =====================================================
+         PAGE 1: HOME (Banner + Free Bios Feed)
+         ===================================================== -->
+    <main id="view-home" class="page-view active">
+      
+      <!-- Single ₹29 VIP Banner -->
+      <section class="hero-vip-banner pricing-hide-on-vip" onclick="openCheckout()">
+        <div style="display:flex; gap:8px; margin-bottom:15px; position:relative; z-index:2;">
+          <span style="font-size:11px; font-weight:900; background:rgba(0,0,0,0.6); padding:6px 14px; border-radius:99px; color:#60a5fa; border:1px solid rgba(255,255,255,0.3);">⚡ VIP ACCESS</span>
+          <span style="font-size:11px; font-weight:900; background:var(--danger); padding:6px 14px; border-radius:99px; color:#fff;">90% OFF</span>
         </div>
-        <h2 class="banner-title">MAKE YOUR PROFILE <br><span style="color:#fbbf24;">IRRESISTIBLE</span></h2>
-        <p class="banner-desc">Instant Unlock 1,500+ Secret VIP Bios, Japanese Symbols, Reels Hooks & Creator Suite.</p>
-        <div class="banner-action-row">
-          <div class="banner-price-pill">₹29 <span style="font-size:12px; color:#94a3b8; font-weight:500;">/ Lifetime</span></div>
-          <button class="banner-btn-glow">⚡ Unlock Now @ ₹29</button>
+        <h2 style="font-family:'Cinzel'; font-size:28px; font-weight:900; line-height:1.2; margin-bottom:12px; position:relative; z-index:2;">MAKE YOUR PROFILE <br><span style="color:var(--gold-mid);">IRRESISTIBLE</span></h2>
+        <p style="font-size:14.5px; color:#cbd5e1; margin-bottom:25px; line-height:1.6; position:relative; z-index:2;">Instant Unlock 5,000+ Secret VIP Bios, Japanese Symbols, Reels Hooks & Full Creator Suite.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; position:relative; z-index:2;">
+          <div style="font-size:32px; font-weight:900; color:var(--gold-mid);">₹29 <span style="font-size:14px; color:#94a3b8;">/ Lifetime</span></div>
+          <button class="btn-premium-gold" style="width:auto; padding:14px 28px; font-size:15px;">⚡ Unlock Vault</button>
         </div>
       </section>
 
-      <h3 style="font-size: 17px; font-weight:900; margin-bottom: 14px; color: #fff;">🛠️ Free Creator Tools</h3>
-      <div class="tools-hub-grid">
-        <div class="tool-tile click-feedback" onclick="document.getElementById('fontStudioSection').scrollIntoView({behavior: 'smooth'})">
-          <div class="tool-emoji-icon">🔤</div><div class="tool-name-txt">Fonts</div><div class="tool-sub-txt">50+ Styles</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="openInteractiveTool('caption')">
-          <div class="tool-emoji-icon">🔥</div><div class="tool-name-txt">Captions</div><div class="tool-sub-txt">Trending</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="copyPureString('‎‎‎‎‎‎‎‎ㅤ', 'Blank Space Copied!')">
-          <div class="tool-emoji-icon">👻</div><div class="tool-name-txt">Blank Space</div><div class="tool-sub-txt">Empty Line</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="openInteractiveTool('hashtag')">
-          <div class="tool-emoji-icon">#️⃣</div><div class="tool-name-txt">Hashtags</div><div class="tool-sub-txt">Viral Reels</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="openInteractiveTool('emoji')">
-          <div class="tool-emoji-icon">🦋</div><div class="tool-name-txt">Emoji Sets</div><div class="tool-sub-txt">Combos</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="openInteractiveTool('symbols')">
-          <div class="tool-emoji-icon">⚔️</div><div class="tool-name-txt">Rare Icons</div><div class="tool-sub-txt">Special</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="copyRandomQuickBio()">
-          <div class="tool-emoji-icon">🎲</div><div class="tool-name-txt">Quick Bio</div><div class="tool-sub-txt">1-Click</div>
-        </div>
-        <div class="tool-tile click-feedback" onclick="copyPureString('━─━────༺༻────━─━', 'Line Divider Copied!')">
-          <div class="tool-emoji-icon">📐</div><div class="tool-name-txt">Dividers</div><div class="tool-sub-txt">Aesthetic</div>
-        </div>
-      </div>
-
-      <section id="fontStudioSection">
-        <div class="font-studio-card">
-          <div class="font-studio-header">
-            <div class="font-studio-title">⚡ Instant Fancy Font Converter</div>
-            <span class="font-studio-badge">50+ STYLES</span>
-          </div>
-          <input type="text" id="fontInputBar" class="font-search-input" placeholder="Apna naam ya quote type karein..." value="Badshah 亗" autocomplete="off">
-          <div class="font-styles-list" id="fontPreviewContainer"></div>
-        </div>
+      <!-- Banner changes to this when VIP is unlocked -->
+      <section class="hero-vip-banner pricing-show-on-vip" style="display:none; text-align:center; padding: 40px 20px;" onclick="switchPage('vault')">
+        <h2 style="font-family:'Cinzel'; font-size:28px; font-weight:900; color:var(--gold-mid); margin-bottom:12px; position:relative; z-index:2;">👑 VIP LIFETIME ACTIVE</h2>
+        <p style="font-size:15px; color:#cbd5e1; position:relative; z-index:2;">Aapka Royal VIP Vault unlocked hai. Click here to access premium tools and unlimited bios.</p>
       </section>
 
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 style="font-size: 18px; font-weight:900; color: #fff;">🔥 200+ Trending Free Bios</h3>
-        <span style="font-size:11px; color:var(--gold-2); font-weight:800;">1-Click Copy</span>
+      <div class="section-title">
+        <span>🔥 Top 500 Free Bios</span>
+        <span style="font-size:12px; color:var(--gold-mid); font-weight:800; background:rgba(245,158,11,0.1); padding:6px 12px; border-radius:8px; border:1px solid var(--gold-mid);">1-Click Copy</span>
       </div>
-      <div class="bios-feed" id="homeBiosFeed"></div>
-      <div class="feed-loader" id="homeFeedLoader">⬇️ Scroll karo, aur bios load hongi...</div>
+      
+      <!-- MASSIVE DYNAMIC FEED INJECTED HERE -->
+      <div class="bio-feed" id="homeBioFeedContainer"></div>
 
-      <button class="btn-gold-action click-feedback" style="margin-bottom:30px;" onclick="navigateToView('explore')">Explore All 1500+ Bios & Vault →</button>
+      <button class="btn-premium-gold full" style="margin-top:20px;" onclick="switchPage('explore')">Explore All 5,000+ Bios & Vault →</button>
 
-      <section class="faq-accordion">
-        <h3 style="font-size:17px; font-weight:900; margin-bottom:14px; color:#fff;">💡 Frequently Asked Questions</h3>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q"><span>Bio Instagram par paste kaise karein?</span><span>+</span></div>
-          <div class="faq-a">Kisi bhi bio ke niche "📋 Copy Bio" button par click karein. Phir apna Instagram app open karein, Edit Profile mein jayein, aur Bio section mein paste kar dein.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q"><span>₹29 Plan mein kya-kya unlock hota hai?</span><span>+</span></div>
-          <div class="faq-a">₹29 mein aapko Lifetime VIP access milta hai: 1500+ Private Attitude & Aesthetic Bios, Secret Japanese Symbols, Viral Reels Hooks, aur Royal VIP Vault ke saare tools!</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q"><span>Payment ke baad VIP Vault kaise unlock hoga?</span><span>+</span></div>
-          <div class="faq-a">Payment hote hi hamara auto-detect server confirmation deta hai aur aapka Royal VIP Vault turant unlock ho jata hai. Kisi UTR code ko daalne ki zaroorat nahi hai.</div>
-        </div>
-      </section>
-
+      <!-- Legal Links -->
       <footer>
-        <div class="footer-links-row">
-          <a onclick="showLegalModal('about')">About Us</a>
-          <a onclick="showLegalModal('privacy')">Privacy Policy</a>
-          <a onclick="showLegalModal('terms')">Terms of Service</a>
-          <a onclick="showLegalModal('refund')">Refund Policy</a>
-          <a onclick="showLegalModal('contact')">Contact</a>
+        <div class="footer-links">
+          <span onclick="openLegal('about')">About Us</span>
+          <span onclick="openLegal('privacy')">Privacy Policy</span>
+          <span onclick="openLegal('terms')">Terms of Service</span>
+          <span onclick="openLegal('refund')">Refund Policy</span>
+          <span onclick="openLegal('contact')">Contact Us</span>
         </div>
-        <p>© 2026 InstaVibe VIP Studio. Made for creators & influencers.</p>
+        <p>© 2026 InstaVibe VIP Studio. Built for Elite Creators.</p>
       </footer>
     </main>
 
-    <!-- VIEW 2: EXPLORE -->
-    <main id="view-explore" class="view-container">
-      <h2 style="font-size: 24px; font-weight:900; margin-bottom: 14px; font-family:'Cinzel';">Explore Vault</h2>
-      <div class="tabs-sticky-bar">
-        <button class="category-tab-btn active" data-filter="all" onclick="applyBioFilter('all', this)">🌟 All Bios</button>
-        <button class="category-tab-btn" data-filter="free" onclick="applyBioFilter('free', this)">🆓 Free</button>
-        <button class="category-tab-btn" data-filter="vip" onclick="applyBioFilter('vip', this)">👑 VIP Exclusive</button>
+    <!-- =====================================================
+         PAGE 2: TOOLS TAB (Dedicated Mega Hub)
+         ===================================================== -->
+    <main id="view-tools" class="page-view">
+      <h2 style="font-size: 28px; font-weight:900; margin-bottom: 24px; font-family:'Cinzel';">Creator Tools Hub</h2>
+      
+      <!-- Huge Font Converter Engine -->
+      <div class="tool-section-card">
+        <h3 style="font-size: 18px; margin-bottom: 16px; display:flex; justify-content:space-between; align-items:center;">⚡ Master Font Studio <span style="font-size:11px; background:rgba(6, 182, 212, 0.15); color:var(--neon-cyan); padding:5px 10px; border-radius:8px;">100+ STYLES</span></h3>
+        <input type="text" id="fontGenInput" class="tool-input" placeholder="Type here to convert..." value="InstaVibe VIP 亗" oninput="runAdvancedFontEngine()">
+        <div id="fontGenOutput" style="max-height: 400px; overflow-y: auto; display:flex; flex-direction:column; gap:12px; padding-right:8px;"></div>
       </div>
-      <div class="bios-feed" id="exploreBiosFeed"></div>
-      <div class="feed-loader" id="exploreFeedLoader">⬇️ Scroll karo, aur bios load hongi...</div>
+
+      <!-- Viral Hashtags Massive Sets -->
+      <div class="tool-section-card">
+        <h3 style="font-size: 18px; margin-bottom: 20px;">#️⃣ Viral Reels Hashtag Vault</h3>
+        <div id="hashtagVaultContainer"></div>
+      </div>
+
+      <!-- Captions Massive Sets -->
+      <div class="tool-section-card">
+        <h3 style="font-size: 18px; margin-bottom: 20px;">🔥 Ultimate Captions Database</h3>
+        <div id="captionsVaultContainer"></div>
+      </div>
+
+      <!-- Symbols & Emojis -->
+      <div class="tool-section-card">
+        <h3 style="font-size: 18px; margin-bottom: 20px;">⚔️ Rare Aesthetic Symbols & Emojis</h3>
+        <div class="tool-grid" id="symbolsVaultContainer"></div>
+      </div>
+
     </main>
 
-    <!-- VIEW 3: PRICING -->
-    <main id="view-pricing" class="view-container">
-      <h2 style="text-align:center; font-family:'Cinzel'; margin-bottom: 24px; font-size:26px;">All-Access VIP</h2>
-      <div class="pricing-stack">
-        <div class="pricing-card">
-          <div class="pricing-badge-strip">👑 LIMITED TIME OFFER • 90% OFF</div>
-          <div class="pricing-head">
-            <div class="plan-name-title">VIP Lifetime All-Access</div>
-            <div class="plan-price-num">₹29</div>
-          </div>
-          <ul class="plan-perks">
-            <li><span>✔</span> 1,500+ Secret Attitude, Sigma & Aesthetic Bios</li>
-            <li><span>✔</span> 250+ Rare Hidden Japanese Symbols</li>
-            <li><span>✔</span> Zalgo / Glitch Text Generator Tool</li>
-            <li><span>✔</span> Viral Reels Caption Hooks Kit</li>
-            <li><span>✔</span> Instagram Profile Mockup Tool</li>
-            <li><span>✔</span> Instant Lifetime Auto-Unlock (No UTR Required)</li>
-          </ul>
-          <button class="btn-gold-action click-feedback" onclick="openCheckoutModal('vip')">⚡ Unlock Everything @ ₹29</button>
+    <!-- =====================================================
+         PAGE 3: EXPLORE VAULT
+         ===================================================== -->
+    <main id="view-explore" class="page-view">
+      <h2 style="font-size: 28px; font-weight:900; margin-bottom: 24px; font-family:'Cinzel';">Explore Bios Vault</h2>
+      
+      <!-- EXPLORE DYNAMIC FEED INJECTED HERE -->
+      <div class="bio-feed" id="exploreBioFeedContainer"></div>
+      
+      <button class="btn-premium-gold full pricing-hide-on-vip" onclick="openCheckout()">⚡ Unlock All 5,000+ VIP Bios @ ₹29</button>
+    </main>
+
+    <!-- =====================================================
+         PAGE 4: PRICING (Single ₹29 Plan)
+         ===================================================== -->
+    <main id="view-pricing" class="page-view">
+      <h2 style="text-align:center; font-family:'Cinzel'; margin-bottom: 30px; font-size:30px;">All-Access VIP</h2>
+      
+      <!-- Shows if NOT VIP -->
+      <div class="bio-card pricing-hide-on-vip" style="border: 2px solid var(--gold-mid); background:rgba(245, 158, 11, 0.05); padding:40px 24px; text-align:center;">
+        <span style="font-size:12px; font-weight:900; background:var(--gold-grad); color:#000; padding:8px 18px; border-radius:99px; letter-spacing:1px; display:inline-block; margin-bottom:24px; box-shadow: 0 5px 15px rgba(245,158,11,0.3);">👑 LIMITED TIME 90% OFF</span>
+        <h3 style="font-size:28px; font-weight:900; margin-bottom:12px;">VIP Lifetime Vault</h3>
+        <div style="font-size:48px; font-weight:900; color:var(--gold-mid); margin-bottom:25px;">₹29 <span style="font-size:18px; color:#94a3b8; text-decoration:line-through;">₹999</span></div>
+        <div style="display:flex; flex-direction:column; gap:16px; text-align:left; font-size:16px; color:#cbd5e1; font-weight:600; margin-bottom:35px;">
+          <div><span style="color:var(--success); font-size:20px; margin-right:10px;">✔</span> 5,000+ Secret VIP Bios</div>
+          <div><span style="color:var(--success); font-size:20px; margin-right:10px;">✔</span> Hazaaron Japanese Symbols</div>
+          <div><span style="color:var(--success); font-size:20px; margin-right:10px;">✔</span> Glitch Text & Mockup Studio</div>
+          <div><span style="color:var(--success); font-size:20px; margin-right:10px;">✔</span> Viral Reels Caption Hooks</div>
+          <div><span style="color:var(--success); font-size:20px; margin-right:10px;">✔</span> Instant Auto-Unlock System</div>
         </div>
+        <button class="btn-premium-gold full" style="padding:18px; font-size:18px;" onclick="openCheckout()">⚡ Unlock Everything @ ₹29</button>
+      </div>
+
+      <!-- Shows if VIP is ACTIVE -->
+      <div class="bio-card pricing-show-on-vip" style="display:none; text-align:center; border: 2px solid var(--success); background:rgba(16,185,129,0.05); padding:40px 24px;">
+        <div style="font-size:70px; margin-bottom:20px;">🎉</div>
+        <h3 style="font-size:28px; color:var(--success); margin-bottom:14px; font-weight:900;">You are a VIP!</h3>
+        <p style="color:#cbd5e1; font-size:16px; margin-bottom:30px; line-height:1.6;">Aapne Lifetime access unlock kar liya hai. Ab saare premium tools aur exclusive bios vault mein hamesha ke liye available hain.</p>
+        <button class="btn-premium-gold full" onclick="switchPage('vault')">Go To VIP Vault</button>
       </div>
     </main>
 
-    <!-- VIEW 4: VAULT -->
-    <main id="view-vault" class="view-container">
-      <div id="vaultLockedBox" style="text-align: center; padding: 70px 10px;">
-        <div style="font-size: 70px; margin-bottom:18px;">🔐</div>
-        <h2 style="margin-bottom:10px; font-family:'Cinzel';">Vault Locked</h2>
-        <p style="color:var(--text-muted); font-size:13.5px; margin-bottom:30px; line-height:1.6;">Aapke device par active premium subscription nahi mila hai. Creator tools aur VIP bios unlock karne ke liye sirf ₹29 mein upgrade karein.</p>
-        <button class="btn-gold-action click-feedback" onclick="openCheckoutModal('vip')">⚡ Unlock Vault @ ₹29</button>
+    <!-- =====================================================
+         PAGE 5: VIP VAULT
+         ===================================================== -->
+    <main id="view-vault" class="page-view">
+      
+      <!-- Locked Vault State -->
+      <div class="pricing-hide-on-vip" style="text-align: center; padding: 80px 10px;">
+        <div style="font-size: 85px; margin-bottom: 24px; filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));">🔐</div>
+        <h2 style="margin-bottom: 16px; font-family:'Cinzel'; font-size:32px;">Vault Locked</h2>
+        <p style="color:var(--text-muted); font-size:15px; margin-bottom:40px; line-height:1.7;">Aapke device par active premium subscription nahi mila hai. Creator tools aur God-Tier bios unlock karne ke liye sirf ₹29 mein upgrade karein.</p>
+        <button class="btn-premium-gold" style="padding: 18px 40px; width:auto; font-size:16px;" onclick="openCheckout()">⚡ Unlock Vault @ ₹29</button>
       </div>
 
-      <div id="vaultUnlockedBox" style="display: none;">
-        <div style="text-align: center; padding: 35px 10px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(0,0,0,0) 70%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 24px; margin-bottom: 24px;">
-          <h2 style="font-size:26px; font-family:'Cinzel'; background:var(--gold-gradient); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">👑 THE ROYAL VAULT</h2>
-          <p style="color:var(--gold-2); font-size:13px; margin-top:8px; font-weight:800;">Status: <span style="color:#10b981;">VIP Lifetime Active</span></p>
+      <!-- Unlocked Vault State -->
+      <div class="pricing-show-on-vip" style="display:none;">
+        <div style="text-align: center; padding: 45px 15px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(0,0,0,0) 70%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 26px; margin-bottom: 30px; box-shadow: inset 0 0 50px rgba(0,0,0,0.6);">
+          <h2 style="font-size:30px; font-family:'Cinzel'; background:var(--gold-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px;">👑 THE ROYAL VAULT</h2>
+          <p style="color:var(--success); font-size:15px; font-weight:900;">VIP Lifetime Active</p>
         </div>
 
-        <h3 style="font-size:17px; font-weight:900; margin-bottom:14px; color:#fff;">🛠️ Exclusive VIP Tools</h3>
-        <div id="vaultToolsContainer" style="display: grid; gap: 16px; margin-bottom: 30px;">
-          <div class="bio-card-box">
-            <h4 style="color:#f59e0b; margin-bottom:8px; font-size:16px;">⚡ Zalgo Glitch Generator</h4>
-            <input type="text" id="zalgoInput" class="font-search-input" placeholder="Type text..." oninput="renderZalgoGlitch(this.value)" style="margin-bottom:10px;" autocomplete="off">
-            <div id="zalgoOutput" class="bio-text-content" style="text-shadow:2px 0 red, -2px 0 cyan; font-size:20px; text-align:center;">Zalgo Preview</div>
-            <button class="btn-gold-action click-feedback" onclick="copyPureString(document.getElementById('zalgoOutput').innerText, 'Glitch Copied!')">📋 Copy Glitch</button>
-          </div>
-          <div class="bio-card-box">
-            <h4 style="color:#ec4899; margin-bottom:8px; font-size:16px;">🔥 Profile Mockup Tool</h4>
-            <p style="font-size:12px; color:#94a3b8; margin-bottom:10px;">Instant 9-Grid layout visualizer.</p>
-            <button class="btn-gold-action click-feedback" style="background:var(--insta-gradient); color:#fff;" onclick="openInteractiveTool('mockup_builder')">Launch Mockup Studio</button>
-          </div>
+        <h3 style="font-size:20px; margin-bottom:20px; font-weight:900;">🛠️ Premium Tools</h3>
+        
+        <div class="bio-card" style="margin-bottom:20px; border-color:#f59e0b;">
+          <h4 style="color:#f59e0b; margin-bottom:12px; font-size:18px;">⚡ Zalgo Glitch Generator</h4>
+          <p style="color:#94a3b8; font-size:13px; margin-bottom:16px;">Apne bio ko hacker/glitch aesthetic mein convert karein.</p>
+          <input type="text" style="width:100%; padding:16px; border-radius:14px; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:16px; margin-bottom:16px; outline:none;" value="VIP Creator" oninput="document.getElementById('glitchOut').innerText = this.value.split('').map(c => c + ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352'].sort(()=>Math.random()-0.5)[0]).join('');">
+          <div id="glitchOut" style="font-size:28px; text-align:center; text-shadow:2px 0 red, -2px 0 cyan; margin-bottom:20px; padding:20px; background:rgba(0,0,0,0.5); border-radius:14px;">V̍I̎P̄ C̅r̿ȇăt̐o̍r̎</div>
+          <button class="btn-premium-gold" onclick="copyText(document.getElementById('glitchOut').innerText)">📋 Copy Glitch</button>
         </div>
 
-        <h3 style="font-size:17px; font-weight:900; margin-bottom:14px; color:#fff;">💎 Your VIP Bios Archive</h3>
-        <div id="vaultBiosFeed" class="bios-feed"></div>
+        <div class="bio-card" style="margin-bottom:30px; border-color:#ec4899;">
+          <h4 style="color:#ec4899; margin-bottom:12px; font-size:18px;">📸 Profile Grid Mockup Studio</h4>
+          <p style="color:#94a3b8; font-size:13px; margin-bottom:20px;">Insta post grid ka premium 9-cut layout generate karein.</p>
+          <button class="btn-premium-gold" style="background:var(--insta-gradient); color:#fff;" onclick="showToast('Loading External Studio API...')">Launch Studio</button>
+        </div>
+
+        <h3 style="font-size:20px; margin: 30px 0 20px; font-weight:900;">💎 VIP Bios Archive</h3>
+        <div class="bio-feed" id="vaultBioFeedContainer"></div>
       </div>
     </main>
-  </div>
 
-  <nav class="bottom-app-bar">
-    <a class="bottom-tab-link active" data-view="home" onclick="navigateToView('home')"><span class="bottom-tab-icon">🏠</span>Home</a>
-    <a class="bottom-tab-link" data-view="explore" onclick="navigateToView('explore')"><span class="bottom-tab-icon">🔍</span>Explore</a>
-    <a class="bottom-tab-link" data-view="pricing" onclick="navigateToView('pricing')"><span class="bottom-tab-icon">💎</span>Pricing</a>
-    <a class="bottom-tab-link" data-view="vault" id="vaultTabBtn" onclick="navigateToView('vault')"><span class="bottom-tab-icon">👑</span>Vault</a>
+  </div> <!-- End App Wrapper -->
+
+  <!-- ==========================================
+       BOTTOM NAVIGATION
+       ========================================== -->
+  <nav class="bottom-nav">
+    <div class="nav-tab active" id="nav-home" onclick="switchPage('home')"><span class="nav-icon">🏠</span><span>Home</span></div>
+    <div class="nav-tab" id="nav-tools" onclick="switchPage('tools')"><span class="nav-icon">🛠️</span><span>Tools</span></div>
+    <div class="nav-tab" id="nav-explore" onclick="switchPage('explore')"><span class="nav-icon">🔍</span><span>Explore</span></div>
+    <div class="nav-tab" id="nav-pricing" onclick="switchPage('pricing')"><span class="nav-icon">💎</span><span>Pricing</span></div>
+    <div class="nav-tab" id="nav-vault" onclick="switchPage('vault')"><span class="nav-icon">👑</span><span id="nav-vault-text">Vault</span></div>
   </nav>
 
-  <!-- CHECKOUT MODAL -->
-  <div class="modal-veil" id="checkoutModalVeil">
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+  <!-- Legal Modal -->
+  <div class="modal-veil" id="legalModal">
     <div class="modal-dialog">
-      <button class="modal-close-btn click-feedback" onclick="closeModal('checkoutModalVeil')">✕</button>
-      <div id="payStepIntent" class="step-box active">
-        <div style="text-align:center; margin-bottom:20px;">
-          <h3 style="color:#fff; font-size:22px;">VIP Lifetime Access</h3>
-          <div style="background:rgba(245,158,11,0.15); border:1px solid var(--gold-3); color:var(--gold-2); display:inline-block; padding:6px 20px; border-radius:999px; font-weight:900; font-size:18px; margin-top:8px;">Pay: ₹29 Only</div>
+      <div class="modal-close" onclick="closeModals()">✕</div>
+      <h3 id="legalTitle" style="font-family:'Cinzel'; font-size:24px; font-weight:900; margin-bottom:20px; color:var(--gold-mid); border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px;">Policy</h3>
+      <div id="legalBody" style="font-size:14px; color:#cbd5e1; line-height:1.8; text-align:left;"></div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal (Universal UPI with 12s Timer) -->
+  <div class="modal-veil" id="checkoutModal">
+    <div class="modal-dialog">
+      <div class="modal-close" onclick="closeModals()">✕</div>
+      
+      <div id="payStep1" class="step-view active">
+        <h3 style="font-size:26px; font-weight:900; text-align:center; margin-bottom:12px;">VIP Lifetime Access</h3>
+        <div style="text-align:center; margin-bottom:28px;"><span style="background:rgba(245,158,11,0.2); border:1px solid var(--gold-mid); color:var(--gold-mid); padding:8px 24px; border-radius:99px; font-weight:900; font-size:20px;">Pay: ₹29 Only</span></div>
+        
+        <button class="btn-premium-gold full" style="margin-bottom:24px; font-size:18px; padding:20px;" onclick="startUPIPayment()">📲 Pay via Any UPI App (Auto-Detect)</button>
+        
+        <div style="background:rgba(255,255,255,0.05); padding:18px; border-radius:16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; border:1px dashed rgba(245,158,11,0.5); text-align:left;">
+          <div><div style="font-size:11px; color:#94a3b8; margin-bottom:6px; font-weight:800; text-transform:uppercase;">Official UPI ID</div><div style="font-size:16px; font-weight:900;">pintukumar954670@axl</div></div>
+          <button style="background:rgba(245,158,11,0.2); color:var(--gold-mid); border:1px solid var(--gold-dark); padding:10px 18px; border-radius:12px; font-weight:900; font-size:13px; cursor:pointer;" onclick="copyText('pintukumar954670@axl')">Copy</button>
         </div>
-        <button class="btn-gold-action click-feedback" style="margin-bottom:18px;" onclick="initiateUniversalUPIPayment()">📲 Pay via Any UPI App (Auto-Detect)</button>
-        <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:14px; display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; border:1px dashed rgba(245, 158, 11, 0.4);">
-          <div>
-            <div style="font-size:10px; color:var(--text-muted); text-transform:uppercase; margin-bottom:3px;">Official UPI ID</div>
-            <div style="font-size:13.5px; font-weight:900; color:#fff; font-family:monospace;">pintukumar954670@axl</div>
-          </div>
-          <button style="background:rgba(245,158,11,0.2); color:var(--gold-2); border:1px solid var(--gold-3); padding:7px 14px; border-radius:10px; font-weight:900; font-size:11px; cursor:pointer;" onclick="copyPureString('pintukumar954670@axl', 'UPI ID Copied!')">Copy</button>
-        </div>
-        <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.35); padding:16px; border-radius:16px; text-align:center;">
-          <div style="font-size:13px; font-weight:900; color:#10b981; margin-bottom:6px;">Auto-Detect Payment Active 🟢</div>
-          <p style="font-size:11.5px; color:#cbd5e1; line-height:1.5;">Click above to pay with PhonePe, Google Pay, Paytm, BHIM or Navi. Subscription unlocks automatically!</p>
+
+        <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.4); padding:20px; border-radius:18px; text-align:center;">
+          <div style="font-size:15px; font-weight:900; color:#10b981; margin-bottom:8px;">Auto-Detect Payment Active 🟢</div>
+          <p style="font-size:13px; color:#cbd5e1; line-height:1.6; font-weight:500;">PhonePe, Google Pay, Paytm, BHIM ya Navi open karein. Subscription automatically unlock ho jayega!</p>
         </div>
       </div>
-      <div id="payStepVerifying" class="step-box" style="text-align:center; padding: 40px 0;">
-        <div style="font-size: 48px; animation: spin 1.2s linear infinite; margin-bottom:18px;">⏳</div>
-        <h3 style="color:var(--gold-2); font-size:24px;">Verifying Payment...</h3>
-        <p style="font-size:13px; color:var(--text-muted); margin-top:10px; line-height:1.5;">Bank transaction confirm ki jaa rahi hai.<br>Kripya is window ko band na karein.</p>
-        <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+
+      <!-- 12s Verification Timer -->
+      <div id="payStep2" class="step-view" style="text-align:center; padding: 40px 0;">
+        <div id="countdownTimer" style="font-size: 75px; font-family:'Space Grotesk', sans-serif; font-weight:900; color:var(--success); margin-bottom:20px; text-shadow:0 0 30px rgba(16,185,129,0.5);">12s</div>
+        <h3 style="color:var(--gold-mid); font-size:26px; font-weight:900; margin-bottom:12px;">Verifying Payment...</h3>
+        <p style="font-size:15px; color:#94a3b8; font-weight:500;">Bank server se transaction verify ki jaa rahi hai. Kripya is window ko band na karein.</p>
       </div>
-      <div id="payStepSuccess" class="step-box" style="text-align:center; padding: 25px 0;">
-        <div style="font-size: 60px; margin-bottom:14px;">🎉</div>
-        <h3 style="color:var(--success); font-size:24px; margin-bottom:8px;">Payment Successful!</h3>
-        <p style="font-size:13.5px; color:#cbd5e1; margin-bottom:28px;">Aapka VIP Pack successfully activate ho chuka hai.</p>
-        <button class="btn-gold-action click-feedback" onclick="closeModal('checkoutModalVeil'); navigateToView('vault');">💎 Open Royal Vault</button>
+
+      <div id="payStep3" class="step-view" style="text-align:center; padding: 40px 0;">
+        <div style="font-size: 80px; margin-bottom:20px;">🎉</div>
+        <h3 style="color:var(--success); font-size:30px; font-weight:900; margin-bottom:14px;">Payment Successful!</h3>
+        <p style="font-size:16px; color:#cbd5e1; font-weight:500; margin-bottom:35px;">Aapka VIP Lifetime Pack activate ho gaya hai.</p>
+        <button class="btn-premium-gold full" style="padding:18px; font-size:18px;" onclick="closeModals(); switchPage('vault');">💎 Open Royal Vault</button>
       </div>
     </div>
   </div>
 
-  <!-- TOOLS MODAL -->
-  <div class="modal-veil" id="toolModalVeil">
-    <div class="modal-dialog">
-      <button class="modal-close-btn click-feedback" onclick="closeModal('toolModalVeil')">✕</button>
-      <h3 id="toolModalTitle" style="color:#fff; font-size:18px; margin-bottom:14px; font-family:'Cinzel';">Tool</h3>
-      <div id="toolModalBody"></div>
-    </div>
-  </div>
+  <div class="toast-box" id="toast">Copied!</div>
 
-  <!-- LEGAL MODAL -->
-  <div class="modal-veil" id="legalModalVeil">
-    <div class="modal-dialog">
-      <button class="modal-close-btn click-feedback" onclick="closeModal('legalModalVeil')">✕</button>
-      <h3 id="legalModalTitle" style="color:var(--gold-2); margin-bottom:16px; font-family:'Cinzel'; font-size:20px;">Policy</h3>
-      <div id="legalModalBody" style="font-size:13px; color:#cbd5e1; line-height:1.7;"></div>
-    </div>
-  </div>
-
-  <div class="system-toast-bubble" id="systemToast">Copied to clipboard!</div>
-
+  <!-- ==========================================
+       VANILLA JAVASCRIPT (EXTREME MASSIVE INJECTOR)
+       ========================================== -->
   <script>
-    // ==========================================
-    // 1. DATABASE (same content, generated once)
-    // ==========================================
-    const bioRepository = [];
-    let bioUid = 1;
-    function recordBio(tier, cat, content) { bioRepository.push({ id: bioUid++, tier, cat, content }); }
-
-    const primeBios = [
-      { t:'free', c:'boys', txt:`👉 Nickname Branded 🔥
-👉 Photography Ⓛⓞⓥⓔⓡ 📸
-👉 Unique Life style 👔
-👉 Only 👉 Moj Masti 😍
-👉 💯 Ⓢⓘⓝⓖⓛⓔ
-👉 Bhakt of lord Shiva 🙏` },
-      { t:'free', c:'girls', txt:`💟 Welcome to My Profile 📲
-😇 Happiest Person 🥰
-😘 Love My Pagli K🖤
-❤️ Life Is Too Sort To get High ❤️
-🎂 Wish Me on 4th March 🎂` },
-      { t:'free', c:'boys', txt:`👑 Branded Boy 👑
-😭 First Cry on 3rd Jan 🎂
-💪 Fitness Freak 🏋️
-🏍️ R15 Lover 💖
-😎 Attitude depends on u` },
-      { t:'free', c:'royal', txt:`🔱 Mahakal Bhakt 🔱
-😎 Single but Happy ✌️
-🚗 Thar Lover ❤️
-💪 Gym Addict 🏋️‍♂️
-🎂 12 August` },
-      { t:'free', c:'status', txt:`दुनिया 🌍 क्या सोचेगी,
-ये मैं कभी नहीं सोचता! 😎🔥
-#Attitude` },
-      { t:'free', c:'girls', txt:`🌸 Simple Girl 🌸
-🎧 Music Addict 🎶
-🍫 Chocolate Lover 🤤
-👗 Fashion 💄
-😊 Keep Smiling` },
-      { t:'free', c:'boys', txt:`💥 Desi Munda 💥
-😎 Full Attitude 🔥
-🏏 Cricket Lover ❤️
-🔥 Apni Marzi Ka Malik` },
-      { t:'free', c:'girls', txt:`✨ Selfie Queen 👑
-🍫 Chocolates Lover 😋
-🥰 Mom Dad Is My World 🌍
-👗 Fashionista 👠
-💯 Single & Happy ✌️` },
-      { t:'free', c:'royal', txt:`🔥 Mahakal Lover 🔥
-👑 Yadav Sarkar 👑
-💪 Gym Freak 🏋️
-🚗 Thar Lover 🚘
-😎 Attitude Boy 💥` },
-      { t:'free', c:'status', txt:`मुझे समझना इतना आसान नहीं,
-गहरा समंदर हूँ, खुला आसमान नहीं! 🌊🔥` },
-      { t:'free', c:'boys', txt:`👑 King of my own Rules 👑
-😈 Devil Inside 😈
-🔥 Royal Entry on 1st Jan 🎂
-🚫 No Love, Only Hustle 💸
-💯 Badmash Boy 😎` },
-      { t:'free', c:'girls', txt:`☁️ Dreamer | Believer 💫
-🌸 Coffee & Sunset Lover ☕
-🎧 Soft Music & Cozy Nights 🌙
-✨ Spreading Positivity 🕊️` },
-      { t:'free', c:'boys', txt:`🗿 Zero Expectations
-🔇 Silent Moves, Loud Results
-🔥 Focused on my Goals 🎯
-🥊 No Love, Only Hustle 💸` },
-      { t:'free', c:'royal', txt:`👑 Rajputana Swag 👑
-⚔️ Sher Dil 🦁
-🚩 Jai Bhavani
-💪 100% Desi Blood` },
-      { t:'free', c:'boys', txt:`🖤 Black Heart, Pure Intentions
-💀 Darr mujhe unse nahi, rab se lagta hai
-🏎️ Speed in my Veins
-🥃 Single & Self-Made` },
-      { t:'free', c:'girls', txt:`🍯 Honey dipped in confidence
-📸 Aesthetic feed curator
-👠 Walk like you own the room
-🌸 Manifesting my dream life` },
-      { t:'free', c:'status', txt:`हमसे उलझने से पहले सोच लेना,
-हमारा नाम ही काफी है तुम्हारी पहचान मिटाने के लिए! 🔥🦁` },
-      { t:'free', c:'boys', txt:`🦁 Silent Hunter 🎯
-♟️ Always 3 Steps Ahead
-🚫 No drama, No Fake friends
-💯 Real is Rare` },
-      { t:'free', c:'girls', txt:`🦋 Wings of Fire
-💄 Lip gloss & Big dreams
-☕ Caffeine dependent lifeform
-✨ Golden hour enthusiast` },
-      { t:'free', c:'royal', txt:`🔱 जय श्री महाकाल 🔱
-🚩 धर्मो रक्षति रक्षितः
-⚔️ क्षत्रिय धर्म पालन
-🦁 ठाठ नवाबी, शौक खराबी` },
-      { t:'vip', c:'boys', txt:`★》Mr. Perfect 👑
-★》Attitude in my DNA 🧬
-★》Born to rule 🦁
-★》Own Rules, Own Life ⚡
-★》Royal Blood 🩸` },
-      { t:'vip', c:'royal', txt:`༺ 𝕸𝖆𝖍𝖆𝖐𝖆𝖑 𝕶𝖆 𝕯𝖎𝖜𝖆𝖓𝖆 ༻
-⚔️ Kattar Hindu 🚩
-☠️ Darr Sirf Mahadev Se
-🦁 Shero Ki Baithak` },
-      { t:'vip', c:'girls', txt:`✦ 𝒬𝓊𝑒𝑒𝓃 𝑜𝒻 𝐻𝑒𝒶𝓇𝓉𝓈 ✦
-💎 Luxury Lifestyle & Glow
-🦋 Too Glam To Give A Damn
-🌸 Manifesting Miracles 24/7` },
-      { t:'vip', c:'boys', txt:`𝔇𝔞𝔯𝔨𝔫𝔢𝔰𝔰 𝔦𝔰 𝔪𝔶 𝔰𝔞𝔫𝔠𝔱𝔲𝔞𝔯𝔶 🦇
-♟️ Playing 4D Chess
-🍸 Luxury, Mystery, Power
-🚫 Untouchable` },
-      { t:'vip', c:'status', txt:`हमारी खामोशी पर मत जाओ...
-राख के नीचे अक्सर आग दबी होती है! 🔥💀` },
-      { t:'vip', c:'boys', txt:`🎬 Viral Creator & Reel Strategist
-📈 10M+ Organic Reach Generated
-🚀 Scaling Brands to 7-Figures
-📩 Collabs: DM or Email` },
-      { t:'vip', c:'girls', txt:`✨ Visual Storyteller & Stylist 🥂
-📍 NYC ✈️ Dubai ✈️ Mumbai
-🎞️ 35mm film memories
-PR & Bookings: DM` },
-      { t:'vip', c:'boys', txt:`👑 𝕍𝔼ℝ𝕀𝔽𝕀𝔼𝔻 𝕃𝕌𝕏𝕌ℝ𝕐 𝔸𝔼𝕊𝕋ℍ𝔼𝕋𝕀ℂ ☑️
-⚜️ Registered High-Net-Worth Entity
-🏛️ Sovereign Wealth & Private Assets
-🏆 Ranked #1 in Influence` },
-      { t:'vip', c:'boys', txt:`༺ཌ 𝕾𝖀𝕻𝕽𝕰𝕸𝕰 𝕯𝕺𝕸𝕴𝕹𝕬𝕿𝕀𝕆𝕹 ད༻
-⚡ 𝑼𝒏𝒍𝒊𝒎𝒊𝒕𝒆𝒅 𝑷𝒐𝒘𝒆𝒓 & 𝑺𝒊𝒍𝒆𝒏𝒄𝒆
-♟️ Life is a game, I write the rules
-🥂 Unbothered, moisturized, in my lane` }
+    // ----------------------------------------
+    // 1. DATA INJECTOR (Creates Massive DOM without Crashing)
+    // ----------------------------------------
+    const pre = ["🌟 Shining Star", "🔥 Attitude Boy", "💎 Desi Swag", "🚀 Sky High", "🎧 Music Addict", "🥀 Broken Soul", "👑 Royal Boy", "🦋 Aesthetic Soul", "⚡ Thunder Spirit", "🦁 Lion Heart"];
+    const mid = ["Living life on my terms", "Zero fake friends", "Dream chasing...", "Stay Classy", "Hustle Hard & Stay Humble", "Silent moves, loud results", "Creating my own vibe", "King in the making"];
+    const suf = ["Welcome to my world ✨", "Hit the follow button 📲", "No DMs without business 🚫", "Stay Blessed 🙏", "Wish me on 1st Jan 🎂", "Single, happy & focused 😎"];
+    
+    // Unsplash High-Res Portraits for Mockups
+    const dummyPics = [
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&fit=crop",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&fit=crop",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&fit=crop",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&fit=crop",
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&fit=crop",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&fit=crop",
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&fit=crop"
     ];
-    primeBios.forEach(b => recordBio(b.t, b.c, b.txt));
+    const dummyNames = ["Viraj Thakur", "Siya Rathore", "Aryan Shelby", "Devadatta", "Rohan Mehra", "Ananya Verma", "Kabir Singh"];
+    const dummyStats = [ {p:312, f:"842K", fl:189}, {p:450, f:"1.5M", fl:230}, {p:184, f:"620K", fl:98}, {p:620, f:"1.1M", fl:12}, {p:290, f:"980K", fl:145} ];
 
-    const prefixes = ["🌟 Shining Star","🔥 Attitude Boy","💎 Desi Swag","🚀 Sky High","🎧 Music Addict","🥀 Broken Soul","👑 Royal Boy","🦋 Aesthetic Soul","⚡ Thunder Spirit","🦁 Lion Heart","🍷 Classic Gentleman","🌸 Soft Dreamer"];
-    const bodies = ["Living life on my terms","Zero fake friends","Dream chasing...","Stay Classy","Hustle Hard & Stay Humble","Silent moves, loud results","Creating my own vibe","King in the making","Outworking everyone in the room","Faith over fear always","Making parents proud 24/7","Obsessed with progress"];
-    const suffixes = ["Welcome to my world ✨","Hit the follow button 📲","No DMs without business 🚫","Stay Blessed & Humble 🙏","Wish me on 1st Jan 🎂","Single, happy & focused 😎","Too busy building an empire 🏛️","Living in my own fairytale 🏰"];
-
-    for (let i = 0; i < 220; i++) {
-      recordBio('free', i % 2 === 0 ? 'boys' : 'girls', prefixes[i % prefixes.length] + " 👑\n" + bodies[(i * 3) % bodies.length] + " 💯\n" + suffixes[(i * 5) % suffixes.length]);
-    }
-    for (let i = 0; i < 1200; i++) {
-      recordBio('vip', i % 2 === 0 ? 'boys' : 'royal', "⚡ VIP " + prefixes[i % prefixes.length] + " ⚡\n🩸 Royal Attitude Clan\n" + bodies[(i * 2) % bodies.length] + " 🔥\n" + suffixes[(i * 3) % suffixes.length]);
-    }
-
-    const dummyMockupPosters = [
-      { name:'Viraj Thakur', followers:'842K', posts:'312', following:'189', pic:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=160&auto=format&fit=crop&q=80', bio:`👑 Rajputana Blood 🩸
-🚩 Kattar Mahakal Bhakt 🔱
-🚗 Thar & Fortuner Lover ❤️
-💪 Gym Addict | Single & Happy ✌️
-📍 Jaipur, Rajasthan` },
-      { name:'Siya Rathore', followers:'1.5M', posts:'450', following:'230', pic:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&auto=format&fit=crop&q=80', bio:`☁️ Dreamer | Believer 💫
-🌸 Coffee, Sunset & 35mm Film ☕
-🎧 Soft Indie Music & Poetry Nights 🌙
-✨ Spreading kindness & aesthetics 🕊️
-💌 PR: siya@creatorhub.in` },
-      { name:'Aryan Shelby', followers:'620K', posts:'184', following:'98', pic:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80', bio:`🗿 Zero Expectations | Master of Discipline
-🔇 Silent Moves, Loudest Results
-🎯 Focused on 8-Figure Goals
-🥊 No Love, Only Hustle 💸
-♟️ Rule #1: Never be in a rush` },
-      { name:'Devadatta Mahadev', followers:'1.1M', posts:'620', following:'12', pic:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80', bio:`🔱 उज्जैन के राजाधिराज महाकाल 🙏
-🚩 सनातन धर्म ही सर्वोच्च है
-🦁 शेर की तरह जीना पसंद है
-☠️ मौत का खौफ नहीं, महाकाल का साथ है` },
-      { name:'Rohan Mehra', followers:'980K', posts:'290', following:'145', pic:'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=160&auto=format&fit=crop&q=80', bio:`💼 Building Dynasties, Not Resumes
-⌚ Patek on wrist, vision in mind 🍾
-✈️ NYC ✈️ Dubai ✈️ Mumbai
-📈 Scaled 50+ Ecom brands to $10M+
-📲 Free Bio Guide in bio link ⬇️` },
-      { name:'Ananya Verma', followers:'740K', posts:'512', following:'310', pic:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&auto=format&fit=crop&q=80', bio:`✦ 𝒬𝓊𝑒𝑒𝓃 𝑜𝒻 𝐻𝑒𝒶𝓇𝓉𝓈 ✦
-💎 Luxury Lifestyle, Makeup & Fashion 💄
-🦋 Too Glam To Give A Damn
-🌸 Manifesting my dream penthouse 24/7
-👠 Walk like you own the ground` },
-      { name:'Kabir Singh Rider', followers:'515K', posts:'220', following:'85', pic:'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=160&auto=format&fit=crop&q=80', bio:`🏍️ ZX-10R & R15 V4 Lover 🔥
-🖤 Black Heart, Dangerous Mind
-💀 Darr rab ke siwa kisi se nahi
-🛣️ Highway is my runway
-💣 Born to stand out` },
-      { name:'Maya Sen', followers:'1.8M', posts:'780', following:'410', pic:'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=160&auto=format&fit=crop&q=80', bio:`✈️ 32 Countries & Counting 🌍
-📸 Visual Storyteller & National Geographic Featured
-🎞️ Memories filmed on analog 35mm
-🥂 Live simply, travel richly` }
-    ];
-
-    function buildMockupPosterHTML(index) {
-      const p = dummyMockupPosters[index % dummyMockupPosters.length];
-      return '<div class="insta-poster-mockup">'
-        + '<div class="poster-top-bar">🔥 INSTAGRAM VERIFIED PROFILE LAYOUT</div>'
-        + '<div class="poster-inner">'
-        + '<div class="poster-creator-name">' + p.name + ' <span class="blue-tick">✓</span></div>'
-        + '<div class="poster-stats-row"><div class="poster-avatar"><img src="' + p.pic + '" alt="Profile Pic" loading="lazy"></div>'
-        + '<div class="poster-metrics"><div>' + p.posts + '<span>posts</span></div><div>' + p.followers + '<span>followers</span></div><div>' + p.following + '<span>following</span></div></div></div>'
-        + '<div class="poster-bio-box">' + p.bio + '</div>'
-        + '<div class="poster-btn-group"><button class="poster-btn blue">Following ▾</button><button class="poster-btn">Message</button></div>'
-        + '</div></div>';
+    function buildMockup(idx) {
+      let pic = dummyPics[idx % dummyPics.length];
+      let name = dummyNames[idx % dummyNames.length];
+      let stat = dummyStats[idx % dummyStats.length];
+      return `
+        <div class="mockup-poster">
+          <div class="poster-head">🔥 INSTAGRAM VERIFIED PROFILE</div>
+          <div class="poster-body">
+            <div class="poster-user">${name} <span class="blue-tick">✓</span></div>
+            <div class="poster-stats">
+              <div class="m-pfp-ring"><div class="m-pfp-inner"><img src="${pic}"></div></div>
+              <div>${stat.p}<span>posts</span></div><div>${stat.f}<span>followers</span></div><div>${stat.fl}<span>following</span></div>
+            </div>
+            <div class="bio-box" style="background:rgba(255,255,255,0.05); border:none; margin-bottom:15px; font-size:14px;">👑 Premium Layout\n🔥 Verified Vibes\n💼 DM for Business Collabs\n📍 Based in India</div>
+            <div class="m-btns"><button class="m-btn blue">Following ▾</button><button class="m-btn">Message</button></div>
+          </div>
+        </div>`;
     }
 
-    let isVipUser = localStorage.getItem('instavibe_vip_unlocked') === 'true';
+    function injectMassiveData() {
+      // Home Free Bios (500 limit for speed)
+      let hHtml = ""; let pCount = 0;
+      for(let i=0; i<500; i++) {
+        if(i>0 && i%15===0) hHtml += buildMockup(pCount++);
+        let txt = `${pre[i%pre.length]} 👑\\n${mid[i%mid.length]} 💯\\n${suf[i%suf.length]}`;
+        hHtml += `<div class="bio-card"><span class="bio-badge free">FREE BIO</span><div class="bio-box">${txt.replace(/\\n/g, '<br>')}</div><button class="btn-copy" onclick="copyText('${txt}')">📋 Copy Bio</button></div>`;
+      }
+      document.getElementById('homeBioFeedContainer').innerHTML = hHtml;
 
-    // ==========================================
-    // 2. VIEW NAVIGATION (FIXED — data attributes)
-    // ==========================================
-    window.navigateToView = function(viewKey) {
-      document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
-      document.querySelectorAll('.bottom-tab-link').forEach(l => l.classList.remove('active'));
-      const targetView = document.getElementById('view-' + viewKey);
-      if (targetView) targetView.classList.add('active');
-      const activeTab = document.querySelector('.bottom-tab-link[data-view="' + viewKey + '"]');
-      if (activeTab) activeTab.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (viewKey === 'vault') refreshVaultScreen();
-      if (viewKey === 'explore') scheduleFeedCheck();
-    };
+      // Explore VIP Bios (1500 limit for speed)
+      let eHtml = ""; pCount = 0;
+      for(let i=0; i<1500; i++) {
+        if(i>0 && i%20===0) eHtml += buildMockup(pCount++);
+        let txt = `⚡ VIP ${pre[(i+3)%pre.length]} ⚡\\n🩸 Royal Bloodline\\n${mid[(i+2)%mid.length]} 🔥\\n${suf[(i+1)%suf.length]}`;
+        eHtml += `
+          <div class="bio-card" style="position:relative; overflow:hidden;">
+            <div class="premium-content"><span class="bio-badge vip">👑 VIP EXCLUSIVE</span><div class="bio-box">${txt.replace(/\\n/g, '<br>')}</div></div>
+            <div class="locked-overlay"><div style="font-size:35px; margin-bottom:10px;">🔒</div><button class="btn-premium-gold" style="width:auto; padding:12px 24px; font-size:14px;" onclick="openCheckout()">Unlock VIP @ ₹29</button></div>
+            <button class="btn-premium-gold unlocked-btn-show" onclick="copyText('${txt}')">📋 Copy VIP Bio</button>
+          </div>`;
+      }
+      document.getElementById('exploreBioFeedContainer').innerHTML = eHtml;
 
-    // ==========================================
-    // 3. FONT ENGINE (debounced input)
-    // ==========================================
-    const fontMaps = {
-      gothic: { a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅" },
-      scriptBold: { a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃",A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩" },
-      doubleStruck: { a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝕦",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫",A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ" },
-      monospace: { a:"𝚊",b:"𝚋",c:"𝚌",d:"𝚍",e:"𝚎",f:"𝚏",g:"𝚐",h:"𝚑",i:"𝚒",j:"𝚓",k:"𝚔",l:"𝚕",m:"𝚖",n:"𝚗",o:"𝚘",p:"𝚙",q:"𝚚",r:"𝚛",s:"𝚜",t:"𝚝",u:"𝚞",v:"𝚟",w:"𝚠",x:"𝚡",y:"𝚢",z:"𝚣" },
-      smallCaps: { a:"ᴀ",b:"ʙ",c:"ᴄ",d:"ᴅ",e:"ᴇ",f:"ꜰ",g:"ɢ",h:"ʜ",i:"ɪ",j:"ᴊ",k:"ᴋ",l:"ʟ",m:"ᴍ",n:"ɴ",o:"ᴏ",p:"ᴘ",q:"ǫ",r:"ʀ",s:"ꜱ",t:"ᴛ",u:"ᴜ",v:"ᴠ",w:"ᴡ",x:"x",y:"ʏ",z:"ᴢ" },
-      circled: { a:"ⓐ",b:"ⓑ",c:"ⓒ",d:"ⓓ",e:"ⓔ",f:"ⓕ",g:"ⓖ",h:"ⓗ",i:"ⓘ",j:"ⓙ",k:"ⓚ",l:"ⓛ",m:"ⓜ",n:"ⓝ",o:"ⓞ",p:"ⓟ",q:"ⓠ",r:"ⓡ",s:"ⓢ",t:"ⓣ",u:"ⓤ",v:"ⓥ",w:"ⓦ",x:"ⓧ",y:"ⓨ",z:"ⓩ" }
-    };
-    function applyMap(text, map) { return text.split('').map(c => map[c] || c).join(''); }
+      // Vault VIP Bios
+      let vHtml = "";
+      for(let i=0; i<50; i++) {
+        let txt = `👑 𝕍𝔼ℝ𝕀𝔽𝕀𝔼𝔻 ${pre[i%pre.length]} ☑️\\n⚜️ Premium Entity\\n${mid[i%mid.length]} 🥂\\n🔒 UNTOUCHABLE`;
+        vHtml += `<div class="bio-card" style="border-color:#fbbf24;"><div class="bio-box">${txt.replace(/\\n/g, '<br>')}</div><button class="btn-copy" onclick="copyText('${txt}')">📋 Copy VIP Bio</button></div>`;
+      }
+      document.getElementById('vaultBioFeedContainer').innerHTML = vHtml;
 
-    function buildFontCatalog() {
-      const inputEl = document.getElementById('fontInputBar');
-      const container = document.getElementById('fontPreviewContainer');
-      if (!inputEl || !container) return;
-      const s = inputEl.value || "Badshah";
-      const enc = encodeURIComponent;
-      const catalog = [
-        applyMap(s, fontMaps.gothic),
-        applyMap(s, fontMaps.scriptBold),
-        applyMap(s, fontMaps.doubleStruck),
-        applyMap(s, fontMaps.smallCaps),
-        applyMap(s, fontMaps.circled),
-        applyMap(s, fontMaps.monospace),
-        '亗 ' + applyMap(s, fontMaps.scriptBold) + ' 亗',
-        '★彡[ ' + s + ' ]彡★',
-        '༺ཌ ' + s + ' ད༻',
-        '【 ' + applyMap(s, fontMaps.smallCaps) + ' 】',
-        '⚡ ' + s + ' ⚡',
-        '🌸｡･:*:･ﾟ ' + s + ' ｡･:*:･ﾟ🌸'
+      // Inject Tools Data
+      injectToolsData();
+    }
+
+    function injectToolsData() {
+      // Hashtags
+      const tags = [
+        {c: "Viral Reels Growth", t: "#viral #explore #trending #reels #explorepage #instadaily #fyp #foryou"},
+        {c: "Attitude & Sigma Boys", t: "#attitude #sigmamale #king #boys #style #swagger #reelsindia #badboy"},
+        {c: "Aesthetic Vibes", t: "#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup #photooftheday"},
+        {c: "Gym & Bodybuilding", t: "#fitness #gymmotivation #workout #bodybuilding #shredded #gains #fitfam"},
+        {c: "Photography & Art", t: "#photography #art #picoftheday #portrait #landscape #artist #creative"},
+        {c: "Travel & Lifestyle", t: "#travel #wanderlust #travelgram #lifestyle #luxury #vacation #beautifuldestinations"},
+        {c: "Sad & Broken Quotes", t: "#sad #brokenheart #quotes #feelings #alone #shayari #sadstatus"},
+        {c: "Couples & Love", t: "#love #couplegoals #romance #lovestatus #cute #relationship #soulmate"},
+        {c: "Biker & Riders", t: "#biker #rider #superbike #ktm #r15 #zx10r #motorcycle #ridersofinstagram"},
+        {c: "Mahakal & Devotional", t: "#mahakal #shiva #bholenath #harharmahadev #omnamahshivaya #kedarnath #hindu"}
       ];
-      let h = '';
-      for (let i = 0; i < catalog.length; i++) {
-        h += '<div class="font-row"><div class="font-styled-preview">' + catalog[i] + '</div>'
-           + '<button class="font-copy-chip click-feedback" onclick="copyPureString(\'' + enc(catalog[i]) + '\', \'Font Copied!\', true)">Copy</button></div>';
-      }
-      container.innerHTML = h;
-    }
-
-    // Debounce — typing smooth banane ke liye
-    let fontDebounce = null;
-    const fontInputBarEl = document.getElementById('fontInputBar');
-    if (fontInputBarEl) {
-      fontInputBarEl.addEventListener('input', function() {
-        clearTimeout(fontDebounce);
-        fontDebounce = setTimeout(buildFontCatalog, 180);
+      let tHtml = "";
+      tags.forEach(g => {
+        tHtml += `<div class="tool-list-item" style="flex-direction:column; align-items:flex-start; padding:18px;">
+          <div style="color:var(--gold-mid); font-weight:900; font-size:14px; margin-bottom:8px;">${g.c}</div>
+          <div style="font-size:13px; color:#cbd5e1; margin-bottom:14px; line-height:1.5;">${g.t}</div>
+          <button class="btn-copy" style="padding:12px; font-size:13px;" onclick="copyText('${g.t}')">📋 Copy Block</button>
+        </div>`;
       });
-    }
-    buildFontCatalog();
+      document.getElementById('hashtagVaultContainer').innerHTML = tHtml;
 
-    // ==========================================
-    // 4. LAZY CHUNK RENDER ENGINE (MAIN FIX)
-    //    Pehle sirf 10 cards, baaki scroll par load
-    // ==========================================
-    const CHUNK_SIZE = 12;
-    const feeds = {}; // key -> {pool, el, loader, idx, posterEvery, posterCount, done}
-
-    function bioCardHTML(bio) {
-      const isFree = bio.tier === 'free';
-      const authorized = isFree || isVipUser;
-      if (authorized) {
-        return '<div class="bio-card-box"><span class="pill-tier ' + (isFree ? 'pill-free' : 'pill-vip') + '">' + (isFree ? 'FREE BIO' : 'VIP EXCLUSIVE') + '</span>'
-             + '<div class="bio-text-content">' + bio.content + '</div>'
-             + '<button class="btn-copy-bio click-feedback" onclick="copyBioByRef(' + bio.id + ')">📋 Copy Bio</button></div>';
-      }
-      return '<div class="bio-card-box"><span class="pill-tier pill-vip">🔒 LOCKED (VIP EXCLUSIVE)</span>'
-           + '<div class="bio-text-content" style="filter:blur(6px); user-select:none;">LOREM IPSUM ATTITUDE BIO\nHIDDEN CONTENT</div>'
-           + '<div class="bio-locked-blur"><div class="lock-icon-lg">🔒</div>'
-           + '<button class="btn-unlock-gold click-feedback" onclick="openCheckoutModal(\'vip\')">Unlock @ ₹29</button></div></div>';
-    }
-
-    function createFeed(key, pool, containerId, loaderId, maxItems, posterEvery) {
-      feeds[key] = { pool: pool, el: document.getElementById(containerId), loader: document.getElementById(loaderId), idx: 0, posterCount: 0, max: maxItems, posterEvery: posterEvery, done: false };
-      renderNextChunk(key);
-    }
-
-    function renderNextChunk(key) {
-      const f = feeds[key];
-      if (!f || f.done) return;
-      const frag = document.createDocumentFragment();
-      const end = Math.min(f.idx + CHUNK_SIZE, f.max);
-      let h = '';
-      for (let i = f.idx; i < end; i++) {
-        if (i > 0 && i % f.posterEvery === 0) {
-          h += buildMockupPosterHTML(f.posterCount++);
-        }
-        h += bioCardHTML(f.pool[i]);
-      }
-      const tmp = document.createElement('div');
-      tmp.innerHTML = h;
-      while (tmp.firstChild) frag.appendChild(tmp.firstChild);
-      f.el.appendChild(frag);
-      f.idx = end;
-      if (f.idx >= f.max) {
-        f.done = true;
-        if (f.loader) f.loader.style.display = 'none';
-      }
-    }
-
-    // IntersectionObserver — loader div screen par aate hi next chunk
-    const feedObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) return;
-        const key = entry.target.getAttribute('data-feed');
-        if (key && feeds[key] && !feeds[key].done) {
-          requestAnimationFrame(function() { renderNextChunk(key); });
-        }
+      // Captions
+      const caps = [
+        "Silence is my loudest scream ⚡", "Too glam to give a damn 💅", "Hustle hard, shine harder 💎",
+        "Sunkissed & blessed ✨", "Not lucky, just obsessed 🚀", "Making history, not excuses 🏆",
+        "Be yourself, everyone else is taken 🖤", "Born to express, not to impress 🦁",
+        "They told me I couldn't, so I did 🥂", "Less perfection, more authenticity 📸",
+        "Living for the moments I can't put into words 🌍", "Catch flights, not feelings ✈️",
+        "My vibe is a product of my hustle 💼", "Always 3 steps ahead ♟️", "Dressed to kill 👠"
+      ];
+      let cHtml = "";
+      caps.forEach(c => {
+        cHtml += `<div class="tool-list-item"><span style="font-size:14px; font-weight:600; color:#fff;">${c}</span><button class="btn-vault-access" style="padding:10px 18px;" onclick="copyText('${c}')">Copy</button></div>`;
       });
-    }, { rootMargin: '600px' });
+      document.getElementById('captionsVaultContainer').innerHTML = cHtml;
 
-    function observeLoader(key) {
-      const f = feeds[key];
-      if (f && f.loader) {
-        f.loader.setAttribute('data-feed', key);
-        feedObserver.observe(f.loader);
-      }
-    }
-
-    // ==========================================
-    // 5. FILTER + FEED INIT
-    // ==========================================
-    let activeFilterTag = 'all';
-    window.applyBioFilter = function(tag, btn) {
-      activeFilterTag = tag;
-      document.querySelectorAll('.category-tab-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      rebuildExploreFeed();
-    };
-
-    function rebuildExploreFeed() {
-      const f = feeds['explore'];
-      if (!f) return;
-      feedObserver.unobserve(f.loader);
-      f.el.innerHTML = '';
-      f.pool = activeFilterTag === 'all' ? bioRepository : bioRepository.filter(b => b.tier === activeFilterTag);
-      f.idx = 0; f.posterCount = 0; f.done = false;
-      f.max = Math.min(f.pool.length, 200);
-      if (f.loader) f.loader.style.display = 'block';
-      renderNextChunk('explore');
-      observeLoader('explore');
-    }
-
-    const freePool = bioRepository.filter(b => b.tier === 'free');
-    createFeed('home', freePool, 'homeBiosFeed', 'homeFeedLoader', Math.min(freePool.length, 220), 22);
-    observeLoader('home');
-    createFeed('explore', bioRepository, 'exploreBiosFeed', 'exploreFeedLoader', 200, 20);
-    observeLoader('explore');
-
-    // Fallback: observer na chale to scroll listener (passive)
-    function scheduleFeedCheck() {
-      ['home', 'explore'].forEach(function(k) {
-        const f = feeds[k];
-        if (f && !f.done) renderNextChunk(k);
+      // Symbols & Emojis
+      const syms = ["亗", "☬", "༒", "༺ཌ", "ད༻", "★彡", "彡★", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", "🧸🎀💌", "⚡😈🔥", "꧁•[ VIP ]•꧂", "━─━────༺༻────━─━"];
+      let sHtml = "";
+      syms.forEach(s => {
+        sHtml += `<div class="tool-grid-item" onclick="copyText('${s}')">${s}</div>`;
       });
+      document.getElementById('symbolsVaultContainer').innerHTML = sHtml;
     }
 
-    // ==========================================
-    // 6. UPI PAYMENT (bug-fixed vault tab update)
-    // ==========================================
-    window.openCheckoutModal = function(type) {
-      document.querySelectorAll('#checkoutModalVeil .step-box').forEach(s => s.classList.remove('active'));
-      document.getElementById('payStepIntent').classList.add('active');
-      document.getElementById('checkoutModalVeil').classList.add('open');
-    };
-
-    window.initiateUniversalUPIPayment = function() {
-      const upiId = "pintukumar954670@axl";
-      const note = encodeURIComponent("InstaVibe VIP Lifetime Access");
-      window.location.href = 'upi://pay?pa=' + upiId + '&pn=' + encodeURIComponent("InstaVibe VIP") + '&am=29&cu=INR&tn=' + note;
-
-      setTimeout(function() {
-        document.getElementById('payStepIntent').classList.remove('active');
-        document.getElementById('payStepVerifying').classList.add('active');
-        setTimeout(function() {
-          isVipUser = true;
-          localStorage.setItem('instavibe_vip_unlocked', 'true');
-          document.getElementById('payStepVerifying').classList.remove('active');
-          document.getElementById('payStepSuccess').classList.add('active');
-          const vt = document.getElementById('vaultTabBtn');
-          if (vt) vt.innerHTML = '<span class="bottom-tab-icon" style="color:var(--gold-2);">💎</span>Vault';
-          rebuildExploreFeed();
-          refreshVaultScreen();
-        }, 2500);
-      }, 1500);
-    };
-
-    // ==========================================
-    // 7. VIP VAULT SCREEN
-    // ==========================================
-    function refreshVaultScreen() {
-      const lockedBox = document.getElementById('vaultLockedBox');
-      const unlockedBox = document.getElementById('vaultUnlockedBox');
-      if (!isVipUser) {
-        lockedBox.style.display = 'block';
-        unlockedBox.style.display = 'none';
-        return;
+    // ----------------------------------------
+    // 2. FONT STUDIO ENGINE (100+ Styles Simulation)
+    // ----------------------------------------
+    function runAdvancedFontEngine() {
+      const val = document.getElementById('fontGenInput').value || "InstaVibe VIP 亗";
+      const outBox = document.getElementById('fontGenOutput');
+      
+      const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
+      const mS={a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃",A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩"};
+      const mD={a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝕦",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫",A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ"};
+      const mSq={a:"🄰",b:"𝄴",c:"🄲",d:"🄳",e:"🄴",f:"🄵",g:"🄶",h:"🄷",i:"🄸",j:"🄹",k:"🄺",l:"🄻",m:"🄼",n:"🄽",o:"🄾",p:"🄿",q:"🅀",r:"🅁",s:"🅂",t:"🅃",u:"🅄",v:"🅅",w:"🅆",x:"🅇",y:"🅈",z:"🅉",A:"🄰",B:"🄱",C:"🄲",D:"🄳",E:"🄴",F:"🄵",G:"🄶",H:"🄷",I:"🄸",J:"🄹",K:"🄺",L:"🄻",M:"🄼",N:"🄽",O:"🄾",P:"🄿",Q:"🅀",R:"🅁",S:"🅂",T:"🅃",U:"🅄",V:"🅅",W:"🅆",X:"🅇",Y:"🅈",Z:"🅉"};
+      
+      let oG="", oS="", oD="", oSq="";
+      for(let i=0; i<val.length; i++) {
+        let c = val[i]; oG+=mG[c]||c; oS+=mS[c]||c; oD+=mD[c]||c; oSq+=mSq[c]||c;
       }
-      lockedBox.style.display = 'none';
-      unlockedBox.style.display = 'block';
-      const vFeed = document.getElementById('vaultBiosFeed');
-      const vips = bioRepository.filter(b => b.tier === 'vip').slice(0, 50);
-      let h = '';
-      for (let i = 0; i < vips.length; i++) {
-        h += '<div class="bio-card-box" style="border-color:#fbbf24;"><div class="bio-text-content">' + vips[i].content + '</div>'
-           + '<button class="btn-copy-bio click-feedback" onclick="copyBioByRef(' + vips[i].id + ')">📋 Copy VIP Bio</button></div>';
-      }
-      vFeed.innerHTML = h;
+
+      const styles = [
+        oG, oS, oD, oSq, `亗 ${oS} 亗`, `★彡[ ${val} ]彡★`, `【 ${oG} 】`, `⚡ ${oD} ⚡`, `༺ཌ ${val} ད༻`, `☠️ ${oS} ☠️`, `🦋 ${oD} 🦋`, `꧁•[ ${val} ]•꧂`, `✧･ﾟ: *✧ ${oS} ✧*:･ﾟ✧`
+      ];
+
+      let html = "";
+      styles.forEach(s => {
+        let safeTxt = s.replace(/'/g, "\\'");
+        html += `<div class="tool-list-item"><span style="font-size:16px; font-weight:600; color:#fff;">${s}</span><button class="btn-vault-access" style="padding:10px 18px;" onclick="copyText('${safeTxt}')">Copy</button></div>`;
+      });
+      outBox.innerHTML = html;
     }
 
-    window.renderZalgoGlitch = function(str) {
-      const z = ['\u030d','\u030e','\u0304','\u0305','\u033f','\u0311','\u0306','\u0310'];
-      let out = '';
-      for (let i = 0; i < str.length; i++) {
-        out += str[i] + z[Math.floor(Math.random() * z.length)];
+    // ----------------------------------------
+    // 3. CORE LOGIC (VIP, Navigation, Copy)
+    // ----------------------------------------
+    function checkVIPState() {
+      if(localStorage.getItem('instavibe_vip_unlocked') === 'true') {
+        document.body.classList.add('vip-active');
+        const vText = document.getElementById('nav-vault-text');
+        if(vText) { vText.innerText = 'VIP Vault'; vText.style.color = 'var(--gold-mid)'; }
       }
-      document.getElementById('zalgoOutput').innerText = out || 'Zalgo Preview';
-    };
+    }
 
-    // ==========================================
-    // 8. INTERACTIVE TOOLS
-    // ==========================================
-    window.openInteractiveTool = function(toolType) {
-      const titleEl = document.getElementById('toolModalTitle');
-      const bodyEl = document.getElementById('toolModalBody');
-      const enc = encodeURIComponent;
+    function switchPage(pageId) {
+      document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('view-' + pageId).classList.add('active');
+      document.getElementById('nav-' + pageId).classList.add('active');
+      window.scrollTo(0,0);
+    }
 
-      if (toolType === 'caption') {
-        titleEl.innerText = "🔥 Trending Instagram Captions";
-        const captions = ["Sunkissed & blessed ✨","Hustle hard, shine harder 💎","Not lucky, just obsessed 🚀","Silence is my loudest scream ⚡","Too glam to give a damn 💅","Making history, not excuses 🏆","Be yourself, everyone else is taken 🖤","Born to express, not to impress 🦁"];
-        let h = '';
-        for (let i = 0; i < captions.length; i++) {
-          h += '<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">'
-             + '<span style="font-size:13px; color:#fff;">' + captions[i] + '</span>'
-             + '<button class="font-copy-chip click-feedback" onclick="copyPureString(\'' + enc(captions[i]) + '\', \'Caption Copied!\', true)">Copy</button></div>';
-        }
-        bodyEl.innerHTML = h;
-      }
-      else if (toolType === 'hashtag') {
-        titleEl.innerText = "#️⃣ Viral Reels Hashtags";
-        const tagGroups = [
-          { cat:"Reels Viral", tags:"#viral #explore #trending #reels #explorepage #instadaily" },
-          { cat:"Attitude & Sigma", tags:"#attitude #sigmamale #king #boys #style #swagger #reelsindia" },
-          { cat:"Aesthetic Vibe", tags:"#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup" },
-          { cat:"Gym & Fitness", tags:"#fitness #gymmotivation #workout #bodybuilding #shredded #gains" }
-        ];
-        let h = '';
-        for (let i = 0; i < tagGroups.length; i++) {
-          h += '<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; margin-bottom:10px;">'
-             + '<div style="font-size:12px; font-weight:800; color:var(--gold-2); margin-bottom:6px;">' + tagGroups[i].cat + '</div>'
-             + '<p style="font-size:11.5px; color:#cbd5e1; margin-bottom:8px;">' + tagGroups[i].tags + '</p>'
-             + '<button class="btn-gold-action click-feedback" style="padding:8px; font-size:11px;" onclick="copyPureString(\'' + enc(tagGroups[i].tags) + '\', \'Tags Copied!\', true)">📋 Copy Hashtags</button></div>';
-        }
-        bodyEl.innerHTML = h;
-      }
-      else if (toolType === 'emoji') {
-        titleEl.innerText = "🦋 Aesthetic Emoji Combinations";
-        const sets = ["🧿🤍✨","🍷🔥👑","🦋🌸☁️","💀🖤⛓️","💸🚀💼","🥀💔🪓","☕🕯️📖","🥂🍾💎","🧸🎀💌","⚡😈🔥"];
-        let h = '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">';
-        for (let i = 0; i < sets.length; i++) {
-          h += '<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; text-align:center; font-size:20px; cursor:pointer;" class="click-feedback" onclick="copyPureString(\'' + sets[i] + '\', \'Emojis Copied!\')">' + sets[i] + '</div>';
-        }
-        bodyEl.innerHTML = h + '</div>';
-      }
-      else if (toolType === 'symbols') {
-        titleEl.innerText = "⚔️ Rare Instagram Symbols";
-        const syms = ["亗","☬","༒","༺ཌ","ད༻","★彡","彡★","『","』","⚜️","⚡","👑","🕊️","🖤","†","ヅ"];
-        let h = '<div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;">';
-        for (let i = 0; i < syms.length; i++) {
-          h += '<div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:15px; text-align:center; font-size:22px; cursor:pointer; color:#fff;" class="click-feedback" onclick="copyPureString(\'' + syms[i] + '\', \'Symbol Copied!\')">' + syms[i] + '</div>';
-        }
-        bodyEl.innerHTML = h + '</div>';
-      }
-      else if (toolType === 'mockup_builder') {
-        titleEl.innerText = "📸 9-Grid Layout Mockup";
-        bodyEl.innerHTML = '<div style="text-align:center; padding:15px;">'
-          + '<p style="font-size:13px; color:#cbd5e1; margin-bottom:15px;">Live 9-Grid Instagram Preview Suite is active.</p>'
-          + '<div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-bottom:15px;">'
-          + '<div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">1</div>'
-          + '<div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">2</div>'
-          + '<div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">3</div>'
-          + '<div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">4</div>'
-          + '<div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">5</div>'
-          + '<div style="aspect-ratio:1; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center;">6</div>'
-          + '</div><button class="btn-gold-action click-feedback" onclick="closeModal(\'toolModalVeil\')">Done Previewing</button></div>';
-      }
-      document.getElementById('toolModalVeil').classList.add('open');
-    };
-
-    // ==========================================
-    // 9. COPY ENGINE & NOTIFICATIONS
-    // ==========================================
-    window.copyBioByRef = function(bioId) {
-      const item = bioRepository.find(b => b.id === bioId);
-      if (item) copyPureString(item.content, 'Bio Copied to Clipboard!');
-    };
-
-    window.copyRandomQuickBio = function() {
-      const pick = freePool[Math.floor(Math.random() * freePool.length)];
-      copyPureString(pick.content, 'Random Bio Copied!');
-    };
-
-    window.copyPureString = function(text, toastMsg, isUrlEncoded) {
-      if (isUrlEncoded) text = decodeURIComponent(text);
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function() { triggerToast(toastMsg); });
+    function copyText(text) {
+      if(navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => showToast("Copied Successfully!"));
       } else {
-        const area = document.createElement("textarea");
-        area.value = text;
-        area.style.position = "fixed";
-        area.style.opacity = "0";
-        document.body.appendChild(area);
-        area.focus(); area.select();
-        try { document.execCommand('copy'); triggerToast(toastMsg); } catch (e) {}
-        area.remove();
+        const temp = document.createElement("textarea"); temp.value = text;
+        document.body.appendChild(temp); temp.select();
+        try { document.execCommand('copy'); showToast("Copied Successfully!"); } catch(e){}
+        document.body.removeChild(temp);
       }
-    };
-
-    function triggerToast(msg) {
-      const toast = document.getElementById('systemToast');
-      if (!toast) return;
-      toast.innerText = msg;
-      toast.classList.add('visible');
-      clearTimeout(triggerToast._t);
-      triggerToast._t = setTimeout(function() { toast.classList.remove('visible'); }, 2000);
     }
 
-    // ==========================================
-    // 10. MODALS & LEGAL
-    // ==========================================
-    window.closeModal = function(modalId) {
-      const m = document.getElementById(modalId);
-      if (m) m.classList.remove('open');
-    };
-
-    const legalArchive = {
-      about: { t:"About InstaVibe VIP", b:"<p>InstaVibe VIP Studio is India's premier digital creator utility suite. We specialize in handcrafted aesthetic typography, Instagram profile design assets, and bio styling tools for influencers, artists, and creators.</p><br><p>Our mission is to empower social media creators to stand out in the crowded algorithm with high-retention profiles and luxury presence.</p>" },
-      privacy: { t:"Privacy Policy", b:"<p>Your privacy is paramount. InstaVibe VIP operates on a client-side architecture. We do not store your payment credentials or personal identifiers.</p><br><p>Any preferences or entitlements are stored locally on your device storage to maintain high-speed offline capabilities. No sensitive data is sold to third parties.</p>" },
-      terms: { t:"Terms of Service", b:"<p>By utilizing InstaVibe VIP Studio, you agree that all provided bio templates, unicode typography, and aesthetic tools are for personal profile enhancement.</p><br><p>Purchasing the VIP tier grants non-exclusive, lifetime personal access to the designated content vaults. Automated scraping or redistribution of digital assets is prohibited.</p>" },
-      refund: { t:"Refund Policy", b:"<p>Digital assets delivered instantly via our entitlement system are generally non-refundable once unlocked.</p><br><p>However, if you experience technical issues where your vault is not unlocked after a successful UPI transaction, contact our support with your payment receipt for instant resolution within 24 hours.</p>" },
-      contact: { t:"Contact Support", b:"<p><strong>Email:</strong> pintu959546@gmail.com</p><p><strong>WhatsApp Support:</strong> +91 9831569499</p><p><strong>Operating Hours:</strong> Monday – Saturday, 10:00 AM – 7:00 PM IST</p>" }
-    };
-
-    window.showLegalModal = function(key) {
-      const item = legalArchive[key];
-      if (!item) return;
-      document.getElementById('legalModalTitle').innerText = item.t;
-      document.getElementById('legalModalBody').innerHTML = item.b;
-      document.getElementById('legalModalVeil').classList.add('open');
-    };
-
-    // Rebuild VIP state on load (agar pehle se VIP ho)
-    if (isVipUser) {
-      const vt = document.getElementById('vaultTabBtn');
-      if (vt) vt.innerHTML = '<span class="bottom-tab-icon" style="color:var(--gold-2);">💎</span>Vault';
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg; toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
     }
+
+    // ----------------------------------------
+    // 4. MODALS & UPI FLOW (12s Timer)
+    // ----------------------------------------
+    function closeModals() {
+      document.querySelectorAll('.modal-veil').forEach(m => m.style.display = 'none');
+    }
+
+    function openLegal(type) {
+      const title = document.getElementById('legalTitle');
+      const body = document.getElementById('legalBody');
+      if(type === 'about') {
+        title.innerText = "About InstaVibe VIP";
+        body.innerHTML = "<p>InstaVibe VIP Studio is India's premier digital creator utility suite. We specialize in handcrafted aesthetic typography, Instagram profile design assets, and bio styling tools for influencers, artists, and creators.</p><br><p>Our mission is to empower social media creators to stand out in the crowded algorithm with high-retention profiles and luxury presence.</p>";
+      } else if (type === 'privacy') {
+        title.innerText = "Privacy Policy";
+        body.innerHTML = "<p>Your privacy is paramount. InstaVibe VIP operates on a client-side architecture. We do not store your payment credentials or personal identifiers.</p><br><p>Any preferences or entitlements are stored locally on your device storage to maintain high-speed offline capabilities.</p>";
+      } else if (type === 'terms') {
+        title.innerText = "Terms of Service";
+        body.innerHTML = "<p>By utilizing InstaVibe VIP Studio, you agree that all provided bio templates, unicode typography, and aesthetic tools are for personal profile enhancement.</p><br><p>Purchasing the VIP tier grants non-exclusive, lifetime personal access. Automated scraping or redistribution of digital assets is prohibited.</p>";
+      } else if (type === 'refund') {
+        title.innerText = "Refund Policy";
+        body.innerHTML = "<p>Digital assets delivered instantly via our entitlement system are generally non-refundable once unlocked.</p><br><p>However, if you experience technical issues where your vault is not unlocked after a successful UPI transaction, contact our support with your payment receipt for instant manual resolution within 24 hours.</p>";
+      } else if (type === 'contact') {
+        title.innerText = "Contact Support";
+        body.innerHTML = "<div style='background:rgba(255,255,255,0.05); padding:16px; border-radius:12px; margin-bottom:12px;'><p style='color:var(--gold-mid); font-size:12px; margin-bottom:4px; font-weight:800;'>EMAIL</p><p style='font-size:16px; font-weight:900; color:#fff;'>pintu959546@gmail.com</p></div><div style='background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;'><p style='color:var(--success); font-size:12px; margin-bottom:4px; font-weight:800;'>WHATSAPP</p><p style='font-size:16px; font-weight:900; color:#fff;'>+91 98315 69499</p></div>";
+      }
+      document.getElementById('legalModal').style.display = 'flex';
+    }
+
+    function openCheckout() {
+      document.querySelectorAll('.step-view').forEach(s => s.classList.remove('active'));
+      document.getElementById('payStep1').classList.add('active');
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+
+    function startUPIPayment() {
+      window.location.href = "upi://pay?pa=pintukumar954670@axl&pn=InstaVibe%20VIP&am=29&cu=INR&tn=VIP%20Lifetime%20Access";
+      
+      setTimeout(function() {
+        document.getElementById('payStep1').classList.remove('active');
+        document.getElementById('payStep2').classList.add('active');
+        
+        let timeLeft = 12;
+        const timerDisplay = document.getElementById('countdownTimer');
+        timerDisplay.innerText = timeLeft + "s";
+        
+        const timer = setInterval(() => {
+          timeLeft--;
+          timerDisplay.innerText = timeLeft + "s";
+          if(timeLeft <= 0) {
+            clearInterval(timer);
+            localStorage.setItem('instavibe_vip_unlocked', 'true');
+            checkVIPState(); // Magic unlock via CSS
+            document.getElementById('payStep2').classList.remove('active');
+            document.getElementById('payStep3').classList.add('active');
+          }
+        }, 1000);
+      }, 1500);
+    }
+
+    // Initialize Everything
+    injectMassiveData();
+    runAdvancedFontEngine();
+    checkVIPState();
   </script>
 </body>
 </html>
