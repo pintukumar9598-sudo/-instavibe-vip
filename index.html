@@ -358,6 +358,22 @@
       </div>
     </main>
 
+    <!-- ==============================================
+         ABOUT US VIEW
+         ============================================== -->
+    <main id="view-about" class="view-page">
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 30px 20px; text-align: center; margin-top: 10px;">
+        <div style="font-size: 60px; margin-bottom: 20px;">🇮🇳</div>
+        <h2 style="font-weight: 900; font-size: 24px; margin-bottom: 15px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
+        <p style="color:#cbd5e1; font-size:14px; line-height:1.7; margin-bottom:25px;">India's largest free ecosystem for Instagram Aesthetics. Humara mission hai har Indian creator ko premium bio templates, rangdar hindi quotes, aur unicode fonts totally free mein provide karna.</p>
+        
+        <div style="background:rgba(0,0,0,0.4); border-radius:16px; padding:20px; text-align:left; border:1px solid rgba(255,255,255,0.05); margin-bottom:20px;">
+          <div style="font-size:12px; color:#94a3b8; font-weight:800; margin-bottom:5px;">DEVELOPER EMAIL</div>
+          <div style="font-size:16px; font-weight:900; color:#fff; margin-bottom:15px;">pintu959546@gmail.com</div>
+        </div>
+      </div>
+    </main>
+
   </div> <!-- End App Container -->
 
   <!-- ==============================================
@@ -370,7 +386,7 @@
     <div class="nav-tab" id="tab-categories" onclick="switchPage('categories')">
       <span class="nav-icon">🗂️</span><span>Categories</span>
     </div>
-    <div class="nav-tab" onclick="document.getElementById('footer-section').scrollIntoView({behavior: 'smooth'})">
+    <div class="nav-tab" id="tab-about" onclick="switchPage('about')">
       <span class="nav-icon">ℹ️</span><span>Info</span>
     </div>
   </nav>
@@ -388,7 +404,7 @@
   </div>
 
   <!-- ==============================================
-       LEGAL MODALS (Privacy, Terms, Contact)
+       LEGAL MODALS (Privacy, Terms, About, Contact)
        ============================================== -->
   <div class="modal-veil" id="legalModal">
     <div class="modal-box">
@@ -554,7 +570,7 @@
     const mixedHomeFeed = [...auraBios, ...restBios];
 
     // ----------------------------------------
-    // 4. HYPER-REALISTIC MOCKUP POSTERS ENGINE
+    // 3. HYPER-REALISTIC MOCKUP POSTERS ENGINE
     // ----------------------------------------
     const mockupProfiles = [
       { name: 'Viraj Thakur', loc: 'Jaipur, India', f: '842K', p: '312', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&fit=crop', bio: '👑 Rajputana Blood 🩸\n🚩 Kattar Mahakal Bhakt 🔱\n💪 Gym Addict | Single ✌️\n📍 Jaipur, Rajasthan' },
@@ -595,7 +611,7 @@
     }
 
     // ----------------------------------------
-    // 5. INFINITE SCROLL RENDERER
+    // 4. INFINITE SCROLL RENDERER (Anti-Crash)
     // ----------------------------------------
     let currentIndex = 0;
     const renderChunkSize = 50; 
@@ -657,7 +673,7 @@
     observer.observe(loaderBox);
 
     // ----------------------------------------
-    // 6. CATEGORIES FILTERING LOGIC
+    // 5. CATEGORIES FILTERING LOGIC
     // ----------------------------------------
     function loadCategoryFeed(title, categoryKey) {
       document.getElementById('cat-grid-container').style.display = 'none';
@@ -693,7 +709,7 @@
     }
 
     // ----------------------------------------
-    // 7. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
+    // 6. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
     // ----------------------------------------
     const liveStatusBarHTML = `
       <div class="live-status-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; background: rgba(16,185,129,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
@@ -765,8 +781,8 @@
 
         const tags = [
           {c:"Viral Growth Engine", t:"#viral #explore #trending #reels #explorepage"},
-          {c:"Attitude Boys", t:"#attitude #sigmamale #king #boys #swagger"},
-          {c:"Aesthetic Girls", t:"#aesthetic #softgirl #fashion #ootd #glowup"},
+          {c:"Attitude Boys", t:"#attitude #sigmamale #king #boys #style #swagger #reelsindia"},
+          {c:"Aesthetic Girls", t:"#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup"},
           {c:"Gym & Bodybuilding", t:"#fitness #gymmotivation #workout #bodybuilding #shredded"},
           {c:"Sad & Broken Poetry", t:"#sad #brokenheart #quotes #feelings #alone"},
           {c:"Mahakal & Devotional", t:"#mahakal #shiva #bholenath #harharmahadev"},
