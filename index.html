@@ -57,18 +57,21 @@
     #splashScreen {
       position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.4s ease-out;
-      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 70%);
+      transition: opacity 0.5s ease-out; padding: 0 40px; cursor: pointer;
+      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.12) 0%, #030508 70%);
     }
-    .splash-logo { font-size: 55px; margin-bottom: 15px; filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
+    .splash-logo { font-size: 60px; margin-bottom: 18px; filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.7)); animation: splashPulse 2s infinite ease-in-out; }
     #splashText {
-      font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900;
+      font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900;
       color: var(--gold-mid); margin: 0;
-      border-right: 2px solid var(--gold-mid); padding-right: 4px;
+      border-right: 2px solid var(--gold-mid); padding-right: 6px;
       animation: blinkCursor 0.6s step-end infinite;
-      text-align: center;
+      text-align: center; line-height: 1.4;
     }
+    .splash-sub { font-size: 13px; color: #94a3b8; margin-top: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+    
     @keyframes blinkCursor { 50% { border-color: transparent; } }
+    @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
     /* ==========================================================================
        3. FULL WIDTH EDGE-TO-EDGE HEADER
@@ -208,7 +211,8 @@
 
   <!-- SPLASH SCREEN PRE-CHECK (Prevents blinking on refresh) -->
   <script>
-    if (sessionStorage.getItem('instavibe_welcomed')) {
+    // Zindagi me sirf ek baar (LocalStorage check)
+    if (localStorage.getItem('instavibe_welcomed_ever')) {
       document.write('<style>#splashScreen { display: none !important; }</style>');
     }
   </script>
@@ -216,7 +220,7 @@
 <body>
 
   <!-- WELCOME SPLASH SCREEN -->
-  <div id="splashScreen">
+  <div id="splashScreen" onclick="dismissSplash()">
     <div class="splash-logo">亗</div>
     <h1 id="splashText"></h1>
     <div class="splash-sub" id="splashSub" style="opacity: 0; transition: 0.3s;">Premium Creator Suite</div>
@@ -358,22 +362,6 @@
       </div>
     </main>
 
-    <!-- ==============================================
-         ABOUT US VIEW
-         ============================================== -->
-    <main id="view-about" class="view-page">
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 30px 20px; text-align: center; margin-top: 10px;">
-        <div style="font-size: 60px; margin-bottom: 20px;">🇮🇳</div>
-        <h2 style="font-weight: 900; font-size: 24px; margin-bottom: 15px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <p style="color:#cbd5e1; font-size:14px; line-height:1.7; margin-bottom:25px;">India's largest free ecosystem for Instagram Aesthetics. Humara mission hai har Indian creator ko premium bio templates, rangdar hindi quotes, aur unicode fonts totally free mein provide karna.</p>
-        
-        <div style="background:rgba(0,0,0,0.4); border-radius:16px; padding:20px; text-align:left; border:1px solid rgba(255,255,255,0.05); margin-bottom:20px;">
-          <div style="font-size:12px; color:#94a3b8; font-weight:800; margin-bottom:5px;">DEVELOPER EMAIL</div>
-          <div style="font-size:16px; font-weight:900; color:#fff; margin-bottom:15px;">pintu959546@gmail.com</div>
-        </div>
-      </div>
-    </main>
-
   </div> <!-- End App Container -->
 
   <!-- ==============================================
@@ -386,7 +374,7 @@
     <div class="nav-tab" id="tab-categories" onclick="switchPage('categories')">
       <span class="nav-icon">🗂️</span><span>Categories</span>
     </div>
-    <div class="nav-tab" id="tab-about" onclick="switchPage('about')">
+    <div class="nav-tab" onclick="document.getElementById('footer-section').scrollIntoView({behavior: 'smooth'})">
       <span class="nav-icon">ℹ️</span><span>Info</span>
     </div>
   </nav>
@@ -421,39 +409,60 @@
        ========================================================================== -->
   <script>
     // ----------------------------------------
-    // 1. SPLASH SCREEN (SMOOTH TYPEWRITER EFFECT)
+    // 1. SPLASH SCREEN (3 SECOND TYPEWRITER + 1 SEC HOLD)
     // ----------------------------------------
+    let splashInterval;
+    let splashTimeout1, splashTimeout2;
+
     window.onload = () => {
       const splash = document.getElementById('splashScreen');
       if (!splash) return;
 
-      // Check if user has visited in this session
-      if (!sessionStorage.getItem('instavibe_welcomed')) {
+      // Zindagi mein sirf ek baar welcome dikhega
+      if (!localStorage.getItem('instavibe_welcomed_ever')) {
         const textEl = document.getElementById('splashText');
         const subEl = document.getElementById('splashSub');
         const fullText = "Welcome to InstaVibe Ultimate";
         let idx = 0;
         
-        // Typing Effect
-        const typingInterval = setInterval(() => {
+        // Typing Effect (takes around ~2.8 seconds total)
+        splashInterval = setInterval(() => {
           textEl.innerText = fullText.substring(0, idx + 1);
           idx++;
           if (idx >= fullText.length) {
-            clearInterval(typingInterval);
+            clearInterval(splashInterval);
             subEl.style.opacity = '1'; // Fade in subtitle
             
-            // Wait and then fade out splash
-            setTimeout(() => {
-              splash.style.opacity = '0';
-              setTimeout(() => { splash.style.display = 'none'; }, 400);
-            }, 700);
+            // Hold for 1 second, then fade out
+            splashTimeout1 = setTimeout(() => {
+              dismissSplash();
+            }, 1000);
           }
-        }, 30); // Speed of typing
+        }, 100); 
 
-        sessionStorage.setItem('instavibe_welcomed', 'true');
+        localStorage.setItem('instavibe_welcomed_ever', 'true');
       } else {
         // If already visited, hide instantly
         splash.style.display = 'none';
+      }
+    };
+
+    // User can tap anywhere to skip animation
+    window.dismissSplash = function() {
+      const splash = document.getElementById('splashScreen');
+      if(splash && splash.style.display !== 'none') {
+        clearInterval(splashInterval);
+        clearTimeout(splashTimeout1);
+        clearTimeout(splashTimeout2);
+        
+        // Quick fill if user taps before typing ends
+        const textEl = document.getElementById('splashText');
+        if(textEl && textEl.innerText.length < "Welcome to InstaVibe Ultimate".length) {
+          textEl.innerText = "Welcome to InstaVibe Ultimate";
+        }
+
+        splash.style.opacity = '0';
+        splashTimeout2 = setTimeout(() => { splash.style.display = 'none'; }, 500);
       }
     };
 
@@ -480,7 +489,7 @@
     };
 
     function switchPage(pageId) {
-      // Bug Fix: If clicking 'categories' tab while inside a category feed, reset to grid
+      // Fix Double Click Bug on Categories
       if(pageId === 'categories') {
         backToCategories();
       }
@@ -499,7 +508,7 @@
     // ----------------------------------------
     const masterBiosObj = [];
 
-    // NEW: 120 3-Line Aura / Deep / Vibes (Hindi + English Mix with distinct emojis)
+    // 120 3-Line Aura / Deep / Vibes (Hindi + English Mix with distinct emojis)
     const auraLine1 = ["Unmatched Aura ⚜️", "Walking in the shadows 🌘", "Born to conquer 🦅", "Not your average mindset 🧠", "Crafting my own reality 🌌", "Living beyond limits 🪐", "Silent but violent 🗡️", "Supreme Entity 👑"];
     const auraLine2 = ["शेर की खामोशी से जंगल काँपता है 🦁", "वक्त का इंतजार कर, तबाही मचेगी ⏳", "हमसे उलझना मौत को दावत देना है ☠️", "अकेला हूँ, पर खुद में एक सेना हूँ 🛡️", "हमारी पहचान नाम से नहीं, खौफ से है 🌪️", "बुरे वक्त में भी नवाबी शौक रखते हैं 🍷", "दुनियादारी से दूर, अपनी धुन में मस्त 🎧"];
     const auraLine3 = ["100% Unstoppable ⚔️", "Rule breaker 🩸", "No limits 🚀", "Forever Hustling 💼", "Savage Blood 💀", "Pure Gold 🏆", "Untouchable Vibe 🧿"];
@@ -570,7 +579,7 @@
     const mixedHomeFeed = [...auraBios, ...restBios];
 
     // ----------------------------------------
-    // 3. HYPER-REALISTIC MOCKUP POSTERS ENGINE
+    // 4. HYPER-REALISTIC MOCKUP POSTERS ENGINE
     // ----------------------------------------
     const mockupProfiles = [
       { name: 'Viraj Thakur', loc: 'Jaipur, India', f: '842K', p: '312', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&fit=crop', bio: '👑 Rajputana Blood 🩸\n🚩 Kattar Mahakal Bhakt 🔱\n💪 Gym Addict | Single ✌️\n📍 Jaipur, Rajasthan' },
@@ -611,7 +620,7 @@
     }
 
     // ----------------------------------------
-    // 4. INFINITE SCROLL RENDERER (Anti-Crash)
+    // 5. INFINITE SCROLL RENDERER
     // ----------------------------------------
     let currentIndex = 0;
     const renderChunkSize = 50; 
@@ -625,7 +634,6 @@
       loaderBox.style.display = 'block';
       let htmlChunk = "";
       
-      // Starting Mockup Dummy immediately at top
       if(currentIndex === 0) {
         htmlChunk += createMockupHTML(posterCounter++);
       }
@@ -633,7 +641,6 @@
       let endIndex = Math.min(currentIndex + renderChunkSize, mixedHomeFeed.length);
       
       for(let i = currentIndex; i < endIndex; i++) {
-        // Inject Realistic Mockup every 20 bios
         if(i > 0 && i % 20 === 0) {
           htmlChunk += createMockupHTML(posterCounter++);
         }
@@ -661,10 +668,8 @@
       loaderBox.style.display = 'none';
     }
 
-    // Initial render
     renderNextBiosChunk();
 
-    // Intersection Observer for Infinite Scroll
     const observer = new IntersectionObserver((entries) => {
       if(entries[0].isIntersecting) {
         setTimeout(renderNextBiosChunk, 400); 
@@ -673,7 +678,7 @@
     observer.observe(loaderBox);
 
     // ----------------------------------------
-    // 5. CATEGORIES FILTERING LOGIC
+    // 6. CATEGORIES FILTERING LOGIC
     // ----------------------------------------
     function loadCategoryFeed(title, categoryKey) {
       document.getElementById('cat-grid-container').style.display = 'none';
@@ -709,7 +714,7 @@
     }
 
     // ----------------------------------------
-    // 6. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
+    // 7. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
     // ----------------------------------------
     const liveStatusBarHTML = `
       <div class="live-status-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; background: rgba(16,185,129,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
@@ -896,7 +901,8 @@
       const val = document.getElementById('wingInput').value || "Badshah";
       const outBox = document.getElementById('wingOut');
       const wings = [
-        `꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`
+        `꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`,
+        `★·.·´¯\`·.·★ ${val} ★·.·´¯\`·.·★`, `..¤¸¸.•´¯\`•.¸•..>> ${val} <<..•.¸¸•´¯\`•.¸¸¤..`, `×º°”˜\`”°º× ${val} ×º°”˜\`”°º×`
       ];
       let html = "";
       wings.forEach(w => {
