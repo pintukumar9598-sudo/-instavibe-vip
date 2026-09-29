@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <!-- SEO Meta Tags -->
+  <!-- Premium SEO Meta Tags -->
   <title>InstaVibe Ultimate 亗 - 5000+ VIP Bios, Fancy Fonts & Creator Tools</title>
   <meta name="theme-color" content="#030508">
   <meta name="description" content="India's #1 Free Creator Suite: Get 5000+ Instagram VIP Bios, Attitude Bios, Fancy Font Generator, Viral Hashtags, Blank Space Copy, and Premium Aesthetics.">
@@ -18,7 +18,7 @@
 
   <style>
     /* ==========================================================================
-       1. GLOBAL RESET & DARK AESTHETIC VARIABLES
+       1. GLOBAL RESET & HARDWARE ACCELERATED VARIABLES
        ========================================================================== */
     :root {
       --bg-main: #030508;
@@ -27,6 +27,7 @@
       --primary: #3b82f6; --primary-glow: rgba(59, 130, 246, 0.4);
       --accent: #f59e0b; --accent-glow: rgba(245, 158, 11, 0.4);
       --insta-grad: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      --gold-mid: #fbbf24;
       --text-main: #f8fafc; --text-muted: #94a3b8;
     }
 
@@ -44,27 +45,30 @@
     ::-webkit-scrollbar-track { background: var(--bg-main); }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
-    /* Ambient Background Elements */
+    /* Ambient Background Elements (GPU Accelerated) */
     .bg-ambience { position: fixed; inset: 0; z-index: -2; background: linear-gradient(180deg, #030508 0%, #0a0d14 100%); transform: translateZ(0); }
     .glow-orb { position: fixed; width: 350px; height: 350px; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.25; pointer-events: none; transform: translateZ(0); }
     .glow-1 { top: -100px; left: -100px; background: #3b82f6; }
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
     /* ==========================================================================
-       2. WELCOME SPLASH SCREEN
+       2. CINEMATIC SPLASH SCREEN (Typewriter Aesthetic)
        ========================================================================== */
     #splashScreen {
       position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 60%);
+      transition: opacity 0.4s ease-out;
+      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 70%);
     }
-    .splash-logo { font-size: 60px; margin-bottom: 20px; animation: splashPulse 2s infinite ease-in-out; filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
-    .splash-text { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900; text-align: center; background: linear-gradient(110deg, #fef08a, #fbbf24, #fff, #fbbf24); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textShine 3s linear infinite; letter-spacing: 1px; }
-    .splash-sub { font-size: 13px; color: #94a3b8; margin-top: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
-    
-    @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-    @keyframes textShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+    .splash-logo { font-size: 55px; margin-bottom: 15px; filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
+    #splashText {
+      font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900;
+      color: var(--gold-mid); margin: 0;
+      border-right: 2px solid var(--gold-mid); padding-right: 4px;
+      animation: blinkCursor 0.6s step-end infinite;
+      text-align: center;
+    }
+    @keyframes blinkCursor { 50% { border-color: transparent; } }
 
     /* ==========================================================================
        3. FULL WIDTH EDGE-TO-EDGE HEADER
@@ -116,7 +120,7 @@
     
     .m-body { padding: 20px 16px; }
     .m-profile-row { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; }
-    .m-pfp-wrapper { width: 85px; height: 85px; border-radius: 50%; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 3px; flex-shrink: 0; }
+    .m-pfp-wrapper { width: 85px; height: 85px; border-radius: 50%; background: var(--insta-grad); padding: 3px; flex-shrink: 0; }
     .m-pfp-inner { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #000; overflow: hidden; background: #222; }
     .m-pfp-inner img { width: 100%; height: 100%; object-fit: cover; }
     
@@ -136,9 +140,9 @@
     .m-btn.primary { background: #0095f6; }
 
     /* ==========================================================================
-       6. 5000+ BIOS FEED STYLING
+       6. 5000+ BIOS FEED STYLING (GPU Accelerated Scroll)
        ========================================================================== */
-    .bio-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+    .bio-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; transform: translateZ(0); }
     .bio-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
     .bio-badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .bio-badge { font-size: 10px; font-weight: 900; background: rgba(59,130,246,0.15); color: #60a5fa; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(59,130,246,0.3); text-transform: uppercase; letter-spacing: 0.5px;}
@@ -201,14 +205,21 @@
     .seo-text-block { text-align: left; padding: 20px; font-size: 11.5px; color: #475569; line-height: 1.6; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
 
   </style>
+
+  <!-- SPLASH SCREEN PRE-CHECK (Prevents blinking on refresh) -->
+  <script>
+    if (sessionStorage.getItem('instavibe_welcomed')) {
+      document.write('<style>#splashScreen { display: none !important; }</style>');
+    }
+  </script>
 </head>
 <body>
 
   <!-- WELCOME SPLASH SCREEN -->
   <div id="splashScreen">
     <div class="splash-logo">亗</div>
-    <div class="splash-text">Welcome to<br>InstaVibe Ultimate</div>
-    <div class="splash-sub">Premium Creator Suite</div>
+    <h1 id="splashText"></h1>
+    <div class="splash-sub" id="splashSub" style="opacity: 0; transition: 0.3s;">Premium Creator Suite</div>
   </div>
 
   <div class="bg-ambience"></div>
@@ -227,7 +238,7 @@
   <div class="app-container">
 
     <!-- ==============================================
-         HOME VIEW
+         HOME VIEW (Tools + 5000 Bios Feed)
          ============================================== -->
     <main id="view-home" class="view-page active">
       
@@ -256,7 +267,6 @@
         <div class="tool-card" onclick="openToolModal('symbols')">
           <div class="tool-icon">⚔️</div><div class="tool-name">Rare Icons</div><div class="tool-sub">VIP Glyphs</div>
         </div>
-        <!-- FIXED QUICK BIO: Opens Interactive Generator Tool -->
         <div class="tool-card" onclick="openToolModal('quickbio')">
           <div class="trending-tag">Instant</div>
           <div class="tool-icon">🎲</div><div class="tool-name">Quick Bio</div><div class="tool-sub">Generator</div>
@@ -280,6 +290,7 @@
       
       <!-- Container where JS will inject bios & mockups -->
       <div class="bio-feed" id="mainBioFeed"></div>
+      
       <div class="loader-box" id="feedLoader">Loading more templates... ⏳</div>
 
       <!-- AESTHETIC Q&A SECTION -->
@@ -313,7 +324,7 @@
         </div>
         <p>© 2026 InstaVibe Ultimate. 100% Free Lifetime Access.</p>
         
-        <!-- SEO Paragraph -->
+        <!-- Invisible SEO text for Google Indexing -->
         <article class="seo-text-block">
           <strong>Grow Your Instagram Profile with InstaVibe Ultimate:</strong> The premium Indian platform offering 5000+ Instagram VIP Bios, Attitude Bios for Boys in Hindi, Aesthetic Bios for Girls, and multi-line royal lifestyle templates. Create stunning profiles using our 100+ Fancy Font Generator styles (Gothic, Cursive, Double Struck). Copy the famous Instagram Blank Space utility for neat line breaks. Explore live trending Viral Reels Hashtags, rare Japanese symbols, and VIP text decorators. Our tool ensures your social media aesthetic is top-tier without any premium cost.
         </article>
@@ -322,7 +333,7 @@
     </main>
 
     <!-- ==============================================
-         CATEGORIES VIEW
+         CATEGORIES VIEW (Double-tap bug fixed)
          ============================================== -->
     <main id="view-categories" class="view-page">
       <div id="cat-grid-container">
@@ -377,7 +388,7 @@
   </div>
 
   <!-- ==============================================
-       LEGAL MODALS (Privacy, Terms, About, Contact)
+       LEGAL MODALS (Privacy, Terms, Contact)
        ============================================== -->
   <div class="modal-veil" id="legalModal">
     <div class="modal-box">
@@ -394,7 +405,44 @@
        ========================================================================== -->
   <script>
     // ----------------------------------------
-    // 1. FAST GLOBAL UTILITIES (DEFINED FIRST TO PREVENT CRASHES)
+    // 1. SPLASH SCREEN (SMOOTH TYPEWRITER EFFECT)
+    // ----------------------------------------
+    window.onload = () => {
+      const splash = document.getElementById('splashScreen');
+      if (!splash) return;
+
+      // Check if user has visited in this session
+      if (!sessionStorage.getItem('instavibe_welcomed')) {
+        const textEl = document.getElementById('splashText');
+        const subEl = document.getElementById('splashSub');
+        const fullText = "Welcome to InstaVibe Ultimate";
+        let idx = 0;
+        
+        // Typing Effect
+        const typingInterval = setInterval(() => {
+          textEl.innerText = fullText.substring(0, idx + 1);
+          idx++;
+          if (idx >= fullText.length) {
+            clearInterval(typingInterval);
+            subEl.style.opacity = '1'; // Fade in subtitle
+            
+            // Wait and then fade out splash
+            setTimeout(() => {
+              splash.style.opacity = '0';
+              setTimeout(() => { splash.style.display = 'none'; }, 400);
+            }, 700);
+          }
+        }, 30); // Speed of typing
+
+        sessionStorage.setItem('instavibe_welcomed', 'true');
+      } else {
+        // If already visited, hide instantly
+        splash.style.display = 'none';
+      }
+    };
+
+    // ----------------------------------------
+    // 2. FAST GLOBAL UTILITIES
     // ----------------------------------------
     window.copyPureText = function(text, msg) {
       if(navigator.clipboard && window.isSecureContext) {
@@ -415,26 +463,15 @@
       setTimeout(() => toast.style.display = 'none', 2000);
     };
 
-    // Splash Screen Timer
-    window.onload = () => {
-      setTimeout(() => {
-        const splash = document.getElementById('splashScreen');
-        if(splash) {
-          splash.style.opacity = '0';
-          splash.style.transform = 'scale(1.1)';
-          setTimeout(() => { splash.style.display = 'none'; }, 800);
-        }
-      }, 2000);
-    };
-
     function switchPage(pageId) {
-      document.querySelectorAll('.view-page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-      
+      // Bug Fix: If clicking 'categories' tab while inside a category feed, reset to grid
       if(pageId === 'categories') {
         backToCategories();
       }
 
+      document.querySelectorAll('.view-page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      
       document.getElementById('view-' + pageId).classList.add('active');
       const tab = document.getElementById('tab-' + pageId);
       if(tab) tab.classList.add('active');
@@ -442,11 +479,11 @@
     }
 
     // ----------------------------------------
-    // 2. 5000+ BIOS ENGINE (4-5 LINES, HINDI RANGDAR, POETRY, ENGLISH)
+    // 3. 5000+ BIOS ENGINE (120 AURA LINES ADDED)
     // ----------------------------------------
     const masterBiosObj = [];
 
-    // 3-Line Aura / Deep / Vibes (Hindi + English Mix)
+    // NEW: 120 3-Line Aura / Deep / Vibes (Hindi + English Mix with distinct emojis)
     const auraLine1 = ["Unmatched Aura ⚜️", "Walking in the shadows 🌘", "Born to conquer 🦅", "Not your average mindset 🧠", "Crafting my own reality 🌌", "Living beyond limits 🪐", "Silent but violent 🗡️", "Supreme Entity 👑"];
     const auraLine2 = ["शेर की खामोशी से जंगल काँपता है 🦁", "वक्त का इंतजार कर, तबाही मचेगी ⏳", "हमसे उलझना मौत को दावत देना है ☠️", "अकेला हूँ, पर खुद में एक सेना हूँ 🛡️", "हमारी पहचान नाम से नहीं, खौफ से है 🌪️", "बुरे वक्त में भी नवाबी शौक रखते हैं 🍷", "दुनियादारी से दूर, अपनी धुन में मस्त 🎧"];
     const auraLine3 = ["100% Unstoppable ⚔️", "Rule breaker 🩸", "No limits 🚀", "Forever Hustling 💼", "Savage Blood 💀", "Pure Gold 🏆", "Untouchable Vibe 🧿"];
@@ -517,7 +554,7 @@
     const mixedHomeFeed = [...auraBios, ...restBios];
 
     // ----------------------------------------
-    // 3. HYPER-REALISTIC MOCKUP POSTERS ENGINE
+    // 4. HYPER-REALISTIC MOCKUP POSTERS ENGINE
     // ----------------------------------------
     const mockupProfiles = [
       { name: 'Viraj Thakur', loc: 'Jaipur, India', f: '842K', p: '312', pic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&fit=crop', bio: '👑 Rajputana Blood 🩸\n🚩 Kattar Mahakal Bhakt 🔱\n💪 Gym Addict | Single ✌️\n📍 Jaipur, Rajasthan' },
@@ -558,7 +595,7 @@
     }
 
     // ----------------------------------------
-    // 4. INFINITE SCROLL RENDERER
+    // 5. INFINITE SCROLL RENDERER
     // ----------------------------------------
     let currentIndex = 0;
     const renderChunkSize = 50; 
@@ -572,6 +609,7 @@
       loaderBox.style.display = 'block';
       let htmlChunk = "";
       
+      // Starting Mockup Dummy immediately at top
       if(currentIndex === 0) {
         htmlChunk += createMockupHTML(posterCounter++);
       }
@@ -579,6 +617,7 @@
       let endIndex = Math.min(currentIndex + renderChunkSize, mixedHomeFeed.length);
       
       for(let i = currentIndex; i < endIndex; i++) {
+        // Inject Realistic Mockup every 20 bios
         if(i > 0 && i % 20 === 0) {
           htmlChunk += createMockupHTML(posterCounter++);
         }
@@ -590,9 +629,12 @@
         let tags = ["FREE BIO", "TOP VIRAL", "TRENDING 🔥", "NEW ✨", "VIP STYLE 👑"];
         let randTag = tags[Math.floor(Math.random() * tags.length)];
 
+        // Highlight Aura Bios
+        let auraBorder = mixedHomeFeed[i].isAura ? 'border-color: #fbbf24; box-shadow: 0 5px 20px rgba(245,158,11,0.2);' : '';
+
         htmlChunk += `
-          <div class="bio-card">
-            <div class="bio-badge-row"><span class="bio-badge">${randTag}</span></div>
+          <div class="bio-card" style="${auraBorder}">
+            <div class="bio-badge-row"><span class="bio-badge">${mixedHomeFeed[i].isAura ? 'AURA VIBES ⚜️' : randTag}</span></div>
             <div class="bio-text">${displayBioText}</div>
             <button class="btn-copy" onclick="copyPureText('${safeBioText}', 'Bio Copied!')">📋 Copy Bio</button>
           </div>`;
@@ -603,8 +645,10 @@
       loaderBox.style.display = 'none';
     }
 
+    // Initial render
     renderNextBiosChunk();
 
+    // Intersection Observer for Infinite Scroll
     const observer = new IntersectionObserver((entries) => {
       if(entries[0].isIntersecting) {
         setTimeout(renderNextBiosChunk, 400); 
@@ -613,7 +657,7 @@
     observer.observe(loaderBox);
 
     // ----------------------------------------
-    // 5. CATEGORIES FILTERING LOGIC
+    // 6. CATEGORIES FILTERING LOGIC
     // ----------------------------------------
     function loadCategoryFeed(title, categoryKey) {
       document.getElementById('cat-grid-container').style.display = 'none';
@@ -640,12 +684,16 @@
     }
 
     function backToCategories() {
-      document.getElementById('cat-feed-container').style.display = 'none';
-      document.getElementById('cat-grid-container').style.display = 'block';
+      const catFeed = document.getElementById('cat-feed-container');
+      const catGrid = document.getElementById('cat-grid-container');
+      if (catFeed && catGrid) {
+        catFeed.style.display = 'none';
+        catGrid.style.display = 'block';
+      }
     }
 
     // ----------------------------------------
-    // 6. 10 MEGA TOOLS MODAL LOGIC (INCLUDING QUICK BIO FIX)
+    // 7. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
     // ----------------------------------------
     const liveStatusBarHTML = `
       <div class="live-status-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; background: rgba(16,185,129,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
@@ -672,7 +720,6 @@
         return; 
       }
       else if(toolType === 'quickbio') {
-        // FIX FOR QUICK BIO: FULL INTERACTIVE STUDIO MODAL
         title.innerText = "🎲 1-Click Quick Bio Generator";
         sub.innerHTML = liveStatusBarHTML;
         
@@ -811,17 +858,14 @@
       const outBox = document.getElementById('modalFontOut');
       const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
       const mS={a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃",A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩"};
-      const mD={a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝖚",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫",A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ"};
-      const mC={a:"ⓐ",b:"ⓑ",c:"ⓒ",d:"ⓓ",e:"ⓔ",f:"ⓕ",g:"ⓖ",h:"ⓗ",i:"ⓘ",j:"ⓙ",k:"ⓚ",l:"ⓛ",m:"ⓜ",n:"ⓝ",o:"ⓞ",p:"ⓟ",q:"ⓠ",r:"ⓡ",s:"ⓢ",t:"ⓣ",u:"ⓤ",v:"ⓥ",w:"ⓦ",x:"ⓧ",y:"ⓨ",z:"ⓩ",A:"Ⓐ",B:"Ⓑ",C:"Ⓒ",D:"Ⓓ",E:"Ⓔ",F:"Ⓕ",G:"Ⓖ",H:"Ⓗ",I:"Ⓘ",J:"Ⓙ",K:"Ⓚ",L:"Ⓛ",M:"Ⓜ",N:"Ⓝ",O:"Ⓞ",P:"Ⓟ",Q:"Ⓠ",R:"Ⓡ",S:"Ⓢ",T:"Ⓣ",U:"Ⓤ",V:"Ⓥ",W:"Ⓦ",X:"Ⓧ",Y:"Ⓨ",Z:"Ⓩ"};
-      const mSq={a:"🄰",b:"🄱",c:"🄲",d:"🄳",e:"🄴",f:"🄵",g:"🄶",h:"🄷",i:"🄸",j:"🄹",k:"🄺",l:"🄻",m:"🄼",n:"🄽",o:"🄾",p:"🄿",q:"🅀",r:"🅁",s:"🅂",t:"🅃",u:"🅄",v:"🅅",w:"🅆",x:"🅇",y:"🅈",z:"🅉",A:"🄰",B:"🄱",C:"🄲",D:"🄳",E:"🄴",F:"🄵",G:"🄶",H:"🄷",I:"🄸",J:"🄹",K:"🄺",L:"🄻",M:"🄼",N:"🄽",O:"🄾",P:"🄿",Q:"🅀",R:"🅁",S:"🅂",T:"🅃",U:"🅄",V:"🅅",W:"🅆",X:"🅇",Y:"🅈",Z:"🅉"};
+      const mD={a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝕦",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫",A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ"};
       
-      let oG="", oS="", oD="", oC="", oSq="";
-      for(let i=0; i<val.length; i++) { let c=val[i]; oG+=mG[c]||c; oS+=mS[c]||c; oD+=mD[c]||c; oC+=mC[c]||c; oSq+=mSq[c]||c;}
+      let oG="", oS="", oD="";
+      for(let i=0; i<val.length; i++) { let c=val[i]; oG+=mG[c]||c; oS+=mS[c]||c; oD+=mD[c]||c; }
 
       const styles = [
-        oG, oS, oD, oC, oSq, `亗 ${oS} 亗`, `★彡[ ${val} ]彡★`, `【 ${oG} 】`, `⚡ ${oD} ⚡`, `༺ཌ ${val} ད༻`,
-        `☠️ ${oS} ☠️`, `🦋 ${oD} 🦋`, `꧁•[ ${val} ]•꧂`, `✧･ﾟ: *✧ ${oS} ✧*:･ﾟ✧`, `🖤 ${oG} 🖤`,
-        `[̲̅$̲̅(̲̅ ${val} )̲̅$̲̅]`, `˜”*°•. ${oS} .•°*”˜`, `ıllıllı ${val} ıllıllı`, `╰☆☆ ${oD} ☆☆╮`, `°l||l° ${oG} °l||l°`
+        oG, oS, oD, `亗 ${oS} 亗`, `★彡[ ${val} ]彡★`, `【 ${oG} 】`, `⚡ ${oD} ⚡`, `༺ཌ ${val} ད༻`,
+        `☠️ ${oS} ☠️`, `🦋 ${oD} 🦋`, `꧁•[ ${val} ]•꧂`, `✧･ﾟ: *✧ ${oS} ✧*:･ﾟ✧`, `🖤 ${oG} 🖤`
       ];
 
       let html = "";
@@ -836,8 +880,7 @@
       const val = document.getElementById('wingInput').value || "Badshah";
       const outBox = document.getElementById('wingOut');
       const wings = [
-        `꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`,
-        `★·.·´¯\`·.·★ ${val} ★·.·´¯\`·.·★`, `..¤¸¸.•´¯\`•.¸•..>> ${val} <<..•.¸¸•´¯\`•.¸¸¤..`, `×º°”˜\`”°º× ${val} ×º°”˜\`”°º×`
+        `꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`
       ];
       let html = "";
       wings.forEach(w => {
@@ -887,13 +930,8 @@
       listContainer.innerHTML = html;
     }
 
-    // Top Level Quick Action Fallback
-    window.copyRandomQuickBio = function() {
-      openToolModal('quickbio');
-    };
-
     // ----------------------------------------
-    // 7. LEGAL MODALS (Fixed & Detailed)
+    // 8. LEGAL MODALS (Privacy, Terms, Contact)
     // ----------------------------------------
     window.openPolicyModal = function(type) {
       const title = document.getElementById('legalModalTitle');
@@ -934,7 +972,7 @@
       title.innerText = contentMap[type].t;
       body.innerHTML = contentMap[type].d;
       document.getElementById('legalModal').style.display = 'flex';
-    };
+    }
 
   </script>
 </body>
