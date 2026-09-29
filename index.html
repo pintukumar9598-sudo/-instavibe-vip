@@ -52,7 +52,7 @@
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
     /* ==========================================================================
-       2. CINEMATIC SPLASH SCREEN (Pure Typewriter Aesthetic)
+       2. CINEMATIC SPLASH SCREEN (Silent & Clean Typewriter)
        ========================================================================== */
     #splashScreen {
       position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
@@ -65,8 +65,6 @@
     #splashText {
       font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900;
       color: var(--gold-mid); margin: 0;
-      border-right: 2px solid var(--gold-mid); padding-right: 5px;
-      animation: blinkCursor 0.6s step-end infinite;
       text-align: center; line-height: 1.5;
       white-space: pre-wrap; 
       max-width: 100%;
@@ -74,7 +72,6 @@
 
     .splash-sub { font-size: 13px; color: #94a3b8; margin-top: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
     
-    @keyframes blinkCursor { 50% { border-color: transparent; } }
     @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
     /* ==========================================================================
@@ -117,7 +114,6 @@
 
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.5;} }
 
-    /* Knife Shine Animation */
     .knife-shine {
       background: linear-gradient(110deg, #ff0000, #ff7300, #fff, #ff7300, #ff0000); background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -180,10 +176,10 @@
     .faq-item.open { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
 
     /* ==========================================================================
-       8. MODALS FOR TOOLS & LEGAL (SCROLL BLEED FIX)
+       8. MODALS FOR TOOLS & LEGAL
        ========================================================================== */
     .modal-veil { position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 15px; }
-    .modal-box { background: #0d1220; border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; width: 100%; max-width: 480px; padding: 24px 20px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;}
+    .modal-box { background: #0d1220; border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; width: 100%; max-width: 480px; padding: 24px 20px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left; -webkit-overflow-scrolling: touch;}
     .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-weight: 900; cursor: pointer; color: #fff; border: 1px solid rgba(255,255,255,0.2); z-index:10;}
     
     .modal-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 16px; outline: none; }
@@ -230,10 +226,10 @@
 </head>
 <body>
 
-  <!-- WELCOME SPLASH SCREEN (Tap to skip) -->
+  <!-- WELCOME SPLASH SCREEN (Tap to skip, No Cursor, Silent) -->
   <div id="splashScreen" onclick="dismissSplash()">
     <div class="splash-logo">亗</div>
-    <h1 id="splashText"></h1>
+    <div id="splashText"></div>
     <div class="splash-sub" id="splashSub" style="opacity: 0; transition: 0.3s;">Premium Creator Suite</div>
   </div>
 
@@ -381,7 +377,7 @@
     </main>
 
     <!-- ==============================================
-         INFO / ABOUT APP VIEW (PREMIUM VERSION)
+         INFO / ABOUT APP VIEW
          ============================================== -->
     <main id="view-about" class="view-page">
       <div class="section-title" style="margin-top: 10px;"><span>ℹ️ App Info</span></div>
@@ -389,7 +385,7 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 30px 20px; text-align: center; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 70px; height: 70px; font-size: 35px; margin: 0 auto 15px; border-radius: 20px; box-shadow: 0 0 20px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 24px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 12px; color: var(--primary); font-weight: 800; margin-bottom: 20px; letter-spacing: 1px;">VERSION 13.0 (FREE)</div>
+        <div style="font-size: 12px; color: var(--primary); font-weight: 800; margin-bottom: 20px; letter-spacing: 1px;">VERSION 14.5 (FREE)</div>
         
         <p style="color:#cbd5e1; font-size:14px; line-height:1.7; margin-bottom:25px;">India's largest free ecosystem for Instagram Aesthetics. Humara mission hai har Indian creator ko premium bio templates, rangdar hindi quotes, aur unicode fonts totally free mein provide karna.</p>
         
@@ -425,7 +421,6 @@
        ============================================== -->
   <div class="modal-veil" id="toolsModal">
     <div class="modal-box">
-      <!-- CLOSE MODAL BUTTON -->
       <div class="modal-close" onclick="closeAllModals()">✕</div>
       <h3 id="modalTitle" style="font-size: 20px; font-weight: 900; margin-bottom: 5px; color: #fff;">Tool Name</h3>
       <div id="modalSub" style="margin-bottom: 20px;"></div>
@@ -438,7 +433,6 @@
        ============================================== -->
   <div class="modal-veil" id="legalModal">
     <div class="modal-box">
-      <!-- CLOSE MODAL BUTTON -->
       <div class="modal-close" onclick="closeAllModals()">✕</div>
       <h3 id="legalModalTitle" style="font-family:'Cinzel'; font-size:22px; font-weight:900; margin-bottom:20px; color:#3b82f6; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px;">Policy</h3>
       <div id="legalModalBody" style="font-size: 14px; color: #cbd5e1; line-height: 1.7;"></div>
@@ -466,7 +460,7 @@
     };
 
     // ----------------------------------------
-    // 2. SPLASH SCREEN (3 SECOND MULTI-LINE TYPEWRITER + 1 SEC HOLD)
+    // 2. SPLASH SCREEN (SILENT, NO CURSOR, 3 SECONDS)
     // ----------------------------------------
     let splashInterval;
     let splashTimeout1, splashTimeout2;
@@ -488,6 +482,7 @@
             clearInterval(splashInterval);
             subEl.style.opacity = '1'; 
             
+            // Exactly 1 sec hold
             splashTimeout1 = setTimeout(() => {
               dismissSplash();
             }, 1000);
@@ -514,7 +509,7 @@
         }
 
         splash.style.opacity = '0';
-        splashTimeout2 = setTimeout(() => { splash.style.display = 'none'; }, 400);
+        splashTimeout2 = setTimeout(() => { splash.style.display = 'none'; }, 500);
       }
     };
 
@@ -541,7 +536,7 @@
     };
 
     function switchPage(pageId) {
-      // Auto-Close Modals on Tab Switch & Unlock Scroll
+      // Bug Fix: Auto-close any open modals when navigating
       closeAllModals();
 
       if(pageId === 'categories') {
@@ -558,7 +553,7 @@
     }
 
     // ----------------------------------------
-    // 4. 5000+ BIOS ENGINE (120 AURA LINES ADDED)
+    // 4. 5000+ BIOS ENGINE (AURA LINES ADDED)
     // ----------------------------------------
     const masterBiosObj = [];
 
@@ -574,7 +569,7 @@
     }
     
     const bPre = ["महाकाल का दीवाना 🔱", "नवाबों का शहर 👑", "ब्राह्मण शेर 🦁", "यादव सरकार 🔥", "क्षत्रिय रक्त 🩸", "देसी बालक 😎", "बदमाश छोरा 💣", "जिद्दी परिंदा 🦅", "🌟 Shining Star", "🔥 Attitude King", "💎 Desi Swag", "🚀 Hustler"];
-    const bMid = ["बाप के सामने अय्याशी नहीं 🚫", "शेर जब शिकार करता है 🦁", "अपनी मर्जी का मालिक 💯", "दुश्मनों की महफिल में 🔥", "हम बुरे ही ठीक हैं 😎", "Living life on my terms ♠️", "Zero fake friends 🎭", "Hustle Hard & Stay Humble 💼"];
+    const bMid = ["बाप के सामने अय्याशी नहीं 🚫", "शेर step जब शिकार करता है 🦁", "अपनी मर्जी का मालिक 💯", "दुश्मनों की महफिल में 🔥", "हम बुरे ही ठीक हैं 😎", "Living life on my terms ♠️", "Zero fake friends 🎭", "Hustle Hard & Stay Humble 💼"];
     const bSuf = ["जय श्री राम 🚩", "हर हर महादेव 🙏", "सिंगल और खुश ✌️", "जलने वाले जलते रहें 🔥", "Hit the follow button 📲", "No DMs without business 🚫"];
 
     const l1 = ["🌟 Dreamer & Achiever", "🔥 Hustle Mode: ON", "💎 Creating my own legacy", "✈️ Exploring the unseen", "🎯 Focused on goals", "👑 King of my own world", "✨ Manifesting magic"];
@@ -757,7 +752,7 @@
     }
 
     // ----------------------------------------
-    // 8. 12 MEGA TOOLS MODAL LOGIC (SCROLL LOCK ADDED)
+    // 8. 12 MEGA TOOLS MODAL LOGIC
     // ----------------------------------------
     const liveStatusBarHTML = `
       <div class="live-status-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; background: rgba(16,185,129,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
@@ -780,7 +775,7 @@
         `;
         body.innerHTML = html;
         document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Lock Scroll
+        document.body.style.overflow = 'hidden'; 
         runModalFonts(); 
         return; 
       }
@@ -796,7 +791,7 @@
         `;
         body.innerHTML = html;
         document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Lock Scroll
+        document.body.style.overflow = 'hidden'; 
         runGamerNames();
         return;
       }
@@ -812,6 +807,7 @@
       else if(toolType === 'quickbio') {
         title.innerText = "🎲 1-Click Quick Bio Generator";
         sub.innerHTML = liveStatusBarHTML;
+        
         html = `
           <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:20px; text-align:center; margin-bottom:20px;">
             <div id="quickBioDisplay" style="font-size:16px; font-weight:700; line-height:1.7; color:#f8fafc; margin-bottom:18px; white-space:pre-line;">🌟 Shining Star 👑\nLiving life on my terms 💯\nWelcome to my world ✨</div>
@@ -825,7 +821,7 @@
         `;
         body.innerHTML = html;
         document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Lock Scroll
+        document.body.style.overflow = 'hidden'; 
         renderQuickBioList();
         rollNextQuickBio();
         return;
@@ -833,13 +829,17 @@
       else if(toolType === 'captions') {
         title.innerText = "🔥 Trending Captions Database";
         sub.innerHTML = liveStatusBarHTML;
+        
         const caps = [
           "Silence is my loudest scream ⚡", "Too glam to give a damn 💅", "Hustle hard, shine harder 💎",
           "बाप के सामने अय्याशी नहीं 🚫", "शेर जब शिकार करता है 🦁", "Sunkissed & blessed ✨", 
           "Not lucky, just obsessed 🚀", "अकेला ही काफी हूँ 🚶‍♂️", "वक्त आने पर जवाब दूंगा ⏳", 
           "Catch flights, not feelings ✈️", "हम बुरे ही ठीक हैं 😎", "My vibe is a product of my hustle 💼",
-          "Always 3 steps ahead ♟️", "Dressed to kill 👠", "खामोशियाँ बेवजह नहीं होतीं 🥀"
+          "Always 3 steps ahead ♟️", "Dressed to kill 👠", "खामोशियाँ बेवजह नहीं होतीं 🥀",
+          "दिल से देसी 🇮🇳", "ज़िंदगी अपने हिसाब से जीनी चाहिए 💯", "Living for the moments I can't put into words 🌍",
+          "Less perfection, more authenticity 📸", "They told me I couldn't, so I did 🥂"
         ];
+        
         for(let i=0; i<30; i++) {
           let c = caps[i % caps.length];
           html += `<div class="tool-list-row"><div class="tool-list-text">${c}</div><button class="tool-btn-copy" onclick="copyPureText('${c}', 'Caption Copied!')">Copy</button></div>`;
@@ -848,15 +848,20 @@
       else if(toolType === 'hashtags') {
         title.innerText = "#️⃣ Viral Reels Hashtags";
         sub.innerHTML = liveStatusBarHTML;
+
         const tags = [
           {c:"Viral Growth Engine", t:"#viral #explore #trending #reels #explorepage"},
           {c:"Attitude Boys", t:"#attitude #sigmamale #king #boys #style #swagger #reelsindia"},
           {c:"Aesthetic Girls", t:"#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup"},
           {c:"Gym & Bodybuilding", t:"#fitness #gymmotivation #workout #bodybuilding #shredded"},
           {c:"Sad & Broken Poetry", t:"#sad #brokenheart #quotes #feelings #alone"},
-          {c:"Mahakal & Devotional", t:"#mahakal #shiva #bholenath #harharmahadev"}
+          {c:"Mahakal & Devotional", t:"#mahakal #shiva #bholenath #harharmahadev"},
+          {c:"Photography Pro", t:"#photography #picoftheday #portrait #nature #art"},
+          {c:"Travel Vlog & Lifestyle", t:"#travel #vlog #wanderlust #vacation #trip #luxury"},
+          {c:"Couples & Romance", t:"#love #couplegoals #romance #lovestatus #cute"},
+          {c:"Superbikes & Riders", t:"#biker #rider #superbike #ktm #r15 #zx10r"}
         ];
-        for(let i=0; i<20; i++) {
+        for(let i=0; i<30; i++) {
           let t = tags[i % tags.length];
           html += `<div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:14px; margin-bottom:12px;">
             <div style="font-size:13px; font-weight:900; color:#3b82f6; margin-bottom:8px;">${t.c}</div>
@@ -868,9 +873,13 @@
       else if(toolType === 'emojis') {
         title.innerText = "🦋 100+ Aesthetic Emoji Sets";
         sub.innerHTML = liveStatusBarHTML;
-        const ems = ["🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", "🧸🎀💌", "⚡😈🔥", "📸🌍✈️", "🎵🎧🖤", "🌙💫✨", "🍕🍟🍔", "🎨🖌️🎭", "🏋️‍♂️💪🔥", "👑😎💯", "🧘‍♀️🌿🍵", "☀️🌴🌊", "🥺👉👈", "✨💖🥺"];
+        const ems = [
+          "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", 
+          "🧸🎀💌", "⚡😈🔥", "📸🌍✈️", "🎵🎧🖤", "🌙💫✨", "🍕🍟🍔", "🎨🖌️🎭", "🏋️‍♂️💪🔥",
+          "👑😎💯", "🧘‍♀️🌿🍵", "☀️🌴🌊", "🥺👉👈", "✨💖🥺"
+        ];
         html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
-        for(let i=0; i<40; i++) {
+        for(let i=0; i<60; i++) {
           let e = ems[i % ems.length];
           html += `<div class="grid-sym-box" style="font-size:20px;" onclick="copyPureText('${e}', 'Emojis Copied!')">${e}</div>`;
         }
@@ -878,9 +887,12 @@
       }
       else if(toolType === 'symbols') {
         title.innerText = "⚔️ 100+ Rare VIP Symbols";
-        const syms = ["亗", "☬", "༒", "༺", "༻", "ཌ", "ད", "★", "彡", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ", "ॐ", "☪", "☯", "☮", "☠", "☢", "☣", "❀", "✿", "❁", "✾", "♕", "♚", "♛", "♡", "♥", "❥", "❣"];
+        const syms = [
+          "亗", "☬", "༒", "༺", "༻", "ཌ", "ད", "★", "彡", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ",
+          "ॐ", "☪", "☯", "☮", "☠", "☢", "☣", "❀", "✿", "❁", "✾", "♕", "♚", "♛", "♡", "♥", "❥", "❣"
+        ];
         html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
-        for(let i=0; i<60; i++) {
+        for(let i=0; i<100; i++) {
           let s = syms[i % syms.length];
           html += `<div class="grid-sym-box" style="font-size:24px;" onclick="copyPureText('${s}', 'Symbol Copied!')">${s}</div>`;
         }
@@ -888,8 +900,12 @@
       }
       else if(toolType === 'dividers') {
         title.innerText = "📐 40+ Aesthetic Bio Dividers";
-        const divs = ["━─━────༺༻────━─━", "════ ⋆★⋆ ════", "✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧", "────── ⋆⋅☆⋅⋆ ──────", "━━━━━━ ◦ ❖ ◦ ━━━━━━", "•❅──────✧❅✦❅✧──────❅•", "─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───"];
-        for(let i=0; i<15; i++) {
+        const divs = [
+          "━─━────༺༻────━─━", "════ ⋆★⋆ ════", "✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧", 
+          "────── ⋆⋅☆⋅⋆ ──────", "━━━━━━ ◦ ❖ ◦ ━━━━━━", "•❅──────✧❅✦❅✧──────❅•",
+          "─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───"
+        ];
+        for(let i=0; i<20; i++) {
           let d = divs[i % divs.length];
           html += `<div class="tool-list-row" style="flex-direction:column; gap:10px; text-align:center;"><div class="tool-list-text" style="max-width:100%; font-size:16px;">${d}</div><button class="btn-copy" style="padding:10px; background:rgba(255,255,255,0.1); border:none;" onclick="copyPureText('${d}', 'Divider Copied!')">Copy Divider</button></div>`;
         }
@@ -902,7 +918,7 @@
         `;
         body.innerHTML = html;
         document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Lock Scroll
+        document.body.style.overflow = 'hidden'; 
         runWings();
         return;
       }
@@ -915,14 +931,14 @@
         `;
         body.innerHTML = html;
         document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Lock Scroll
+        document.body.style.overflow = 'hidden'; 
         runZalgo();
         return;
       }
 
       body.innerHTML = html;
       document.getElementById('toolsModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Lock Scroll
+      document.body.style.overflow = 'hidden'; 
     }
 
     // Modal Sub-Engines
@@ -1053,7 +1069,7 @@
     }
 
     // ----------------------------------------
-    // 9. LEGAL MODALS (Privacy, Terms, Contact) - WITH SCROLL LOCK
+    // 9. LEGAL MODALS (Privacy, Terms, Contact)
     // ----------------------------------------
     window.openPolicyModal = function(type) {
       const title = document.getElementById('legalModalTitle');
@@ -1095,7 +1111,7 @@
       title.innerText = contentMap[type].t;
       body.innerHTML = contentMap[type].d;
       document.getElementById('legalModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Lock Scroll
+      document.body.style.overflow = 'hidden'; 
     }
 
   </script>
