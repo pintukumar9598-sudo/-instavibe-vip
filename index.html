@@ -64,6 +64,7 @@
     .splash-sub { font-size: 13px; color: #94a3b8; margin-top: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
     
     @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    @keyframes textShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
 
     /* ==========================================================================
        3. FULL WIDTH EDGE-TO-EDGE HEADER
@@ -226,7 +227,7 @@
   <div class="app-container">
 
     <!-- ==============================================
-         HOME VIEW (Tools + 5000 Bios Feed)
+         HOME VIEW
          ============================================== -->
     <main id="view-home" class="view-page active">
       
@@ -255,8 +256,10 @@
         <div class="tool-card" onclick="openToolModal('symbols')">
           <div class="tool-icon">⚔️</div><div class="tool-name">Rare Icons</div><div class="tool-sub">VIP Glyphs</div>
         </div>
-        <div class="tool-card" onclick="copyRandomQuickBio()">
-          <div class="tool-icon">🎲</div><div class="tool-name">Quick Bio</div><div class="tool-sub">1-Click</div>
+        <!-- FIXED QUICK BIO: Opens Interactive Generator Tool -->
+        <div class="tool-card" onclick="openToolModal('quickbio')">
+          <div class="trending-tag">Instant</div>
+          <div class="tool-icon">🎲</div><div class="tool-name">Quick Bio</div><div class="tool-sub">Generator</div>
         </div>
         <div class="tool-card" onclick="openToolModal('dividers')">
           <div class="tool-icon">📐</div><div class="tool-name">Dividers</div><div class="tool-sub">Bio Lines</div>
@@ -279,7 +282,7 @@
       <div class="bio-feed" id="mainBioFeed"></div>
       <div class="loader-box" id="feedLoader">Loading more templates... ⏳</div>
 
-      <!-- NEW AESTHETIC Q&A SECTION -->
+      <!-- AESTHETIC Q&A SECTION -->
       <div class="faq-container">
         <div class="section-title">💡 Creator Q&A</div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -310,7 +313,7 @@
         </div>
         <p>© 2026 InstaVibe Ultimate. 100% Free Lifetime Access.</p>
         
-        <!-- Invisible SEO text for Google Indexing -->
+        <!-- SEO Paragraph -->
         <article class="seo-text-block">
           <strong>Grow Your Instagram Profile with InstaVibe Ultimate:</strong> The premium Indian platform offering 5000+ Instagram VIP Bios, Attitude Bios for Boys in Hindi, Aesthetic Bios for Girls, and multi-line royal lifestyle templates. Create stunning profiles using our 100+ Fancy Font Generator styles (Gothic, Cursive, Double Struck). Copy the famous Instagram Blank Space utility for neat line breaks. Explore live trending Viral Reels Hashtags, rare Japanese symbols, and VIP text decorators. Our tool ensures your social media aesthetic is top-tier without any premium cost.
         </article>
@@ -391,8 +394,28 @@
        ========================================================================== -->
   <script>
     // ----------------------------------------
-    // 1. SPLASH SCREEN & GLOBAL NAVIGATION
+    // 1. FAST GLOBAL UTILITIES (DEFINED FIRST TO PREVENT CRASHES)
     // ----------------------------------------
+    window.copyPureText = function(text, msg) {
+      if(navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => showToast(msg));
+      } else {
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area); area.select();
+        try { document.execCommand('copy'); showToast(msg); } catch(e){}
+        document.body.removeChild(area);
+      }
+    };
+
+    window.showToast = function(msg) {
+      const toast = document.getElementById('globalToast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 2000);
+    };
+
+    // Splash Screen Timer
     window.onload = () => {
       setTimeout(() => {
         const splash = document.getElementById('splashScreen');
@@ -401,14 +424,13 @@
           splash.style.transform = 'scale(1.1)';
           setTimeout(() => { splash.style.display = 'none'; }, 800);
         }
-      }, 2200);
+      }, 2000);
     };
 
     function switchPage(pageId) {
       document.querySelectorAll('.view-page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
       
-      // Fix Double Click Bug on Categories
       if(pageId === 'categories') {
         backToCategories();
       }
@@ -419,31 +441,12 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function copyPureText(text, msg) {
-      if(navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => showToast(msg));
-      } else {
-        const area = document.createElement("textarea");
-        area.value = text;
-        document.body.appendChild(area); area.select();
-        try { document.execCommand('copy'); showToast(msg); } catch(e){}
-        document.body.removeChild(area);
-      }
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('globalToast');
-      toast.innerText = msg;
-      toast.style.display = 'block';
-      setTimeout(() => toast.style.display = 'none', 2000);
-    }
-
     // ----------------------------------------
-    // 2. 5000+ BIOS ENGINE (NEW 3-LINE AURA ADDED)
+    // 2. 5000+ BIOS ENGINE (4-5 LINES, HINDI RANGDAR, POETRY, ENGLISH)
     // ----------------------------------------
     const masterBiosObj = [];
 
-    // NEW: 120 3-Line Aura / Deep / Vibes (Hindi + English Mix)
+    // 3-Line Aura / Deep / Vibes (Hindi + English Mix)
     const auraLine1 = ["Unmatched Aura ⚜️", "Walking in the shadows 🌘", "Born to conquer 🦅", "Not your average mindset 🧠", "Crafting my own reality 🌌", "Living beyond limits 🪐", "Silent but violent 🗡️", "Supreme Entity 👑"];
     const auraLine2 = ["शेर की खामोशी से जंगल काँपता है 🦁", "वक्त का इंतजार कर, तबाही मचेगी ⏳", "हमसे उलझना मौत को दावत देना है ☠️", "अकेला हूँ, पर खुद में एक सेना हूँ 🛡️", "हमारी पहचान नाम से नहीं, खौफ से है 🌪️", "बुरे वक्त में भी नवाबी शौक रखते हैं 🍷", "दुनियादारी से दूर, अपनी धुन में मस्त 🎧"];
     const auraLine3 = ["100% Unstoppable ⚔️", "Rule breaker 🩸", "No limits 🚀", "Forever Hustling 💼", "Savage Blood 💀", "Pure Gold 🏆", "Untouchable Vibe 🧿"];
@@ -508,7 +511,7 @@
       masterBiosObj.push({ category: 'love', text: `❤️ Love is Life\\nMy heart beats for you 🥰\\nYou are my everything 🌍\\nForever Mine 💍`});
     }
 
-    // Separate Aura bios to ensure they appear first, then shuffle the rest
+    // Aura bios first, shuffle the rest
     const auraBios = masterBiosObj.filter(b => b.isAura);
     const restBios = masterBiosObj.filter(b => !b.isAura).sort(() => Math.random() - 0.5);
     const mixedHomeFeed = [...auraBios, ...restBios];
@@ -569,7 +572,6 @@
       loaderBox.style.display = 'block';
       let htmlChunk = "";
       
-      // Starting Mockup Dummy immediately at top
       if(currentIndex === 0) {
         htmlChunk += createMockupHTML(posterCounter++);
       }
@@ -601,10 +603,8 @@
       loaderBox.style.display = 'none';
     }
 
-    // Initial render
     renderNextBiosChunk();
 
-    // Intersection Observer for Infinite Scroll
     const observer = new IntersectionObserver((entries) => {
       if(entries[0].isIntersecting) {
         setTimeout(renderNextBiosChunk, 400); 
@@ -645,7 +645,7 @@
     }
 
     // ----------------------------------------
-    // 6. 10 MEGA TOOLS MODAL LOGIC (Extended Data & Live UI)
+    // 6. 10 MEGA TOOLS MODAL LOGIC (INCLUDING QUICK BIO FIX)
     // ----------------------------------------
     const liveStatusBarHTML = `
       <div class="live-status-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; background: rgba(16,185,129,0.1); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
@@ -670,6 +670,28 @@
         document.getElementById('toolsModal').style.display = 'flex';
         runModalFonts(); 
         return; 
+      }
+      else if(toolType === 'quickbio') {
+        // FIX FOR QUICK BIO: FULL INTERACTIVE STUDIO MODAL
+        title.innerText = "🎲 1-Click Quick Bio Generator";
+        sub.innerHTML = liveStatusBarHTML;
+        
+        html = `
+          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:20px; text-align:center; margin-bottom:20px;">
+            <div id="quickBioDisplay" style="font-size:16px; font-weight:700; line-height:1.7; color:#f8fafc; margin-bottom:18px; white-space:pre-line;">🌟 Shining Star 👑\nLiving life on my terms 💯\nWelcome to my world ✨</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <button class="btn-copy" style="background:#3b82f6; color:#fff; border:none;" onclick="rollNextQuickBio()">🎲 Next Bio</button>
+              <button class="btn-copy" style="background:#10b981; color:#000; border:none;" onclick="copyCurrentQuickBio()">📋 Copy This</button>
+            </div>
+          </div>
+          <div style="font-size:13px; font-weight:800; color:#94a3b8; margin-bottom:12px; text-transform:uppercase;">Quick Copy List</div>
+          <div id="quickBioList" style="display:flex; flex-direction:column; gap:10px; max-height:35vh; overflow-y:auto;"></div>
+        `;
+        body.innerHTML = html;
+        document.getElementById('toolsModal').style.display = 'flex';
+        renderQuickBioList();
+        rollNextQuickBio();
+        return;
       }
       else if(toolType === 'captions') {
         title.innerText = "🔥 Trending Captions Database";
@@ -696,8 +718,8 @@
 
         const tags = [
           {c:"Viral Growth Engine", t:"#viral #explore #trending #reels #explorepage"},
-          {c:"Attitude Boys", t:"#attitude #sigmamale #king #boys #style #swagger #reelsindia"},
-          {c:"Aesthetic Girls", t:"#aesthetic #softgirl #fashion #ootd #pinterestvibes #glowup"},
+          {c:"Attitude Boys", t:"#attitude #sigmamale #king #boys #swagger"},
+          {c:"Aesthetic Girls", t:"#aesthetic #softgirl #fashion #ootd #glowup"},
           {c:"Gym & Bodybuilding", t:"#fitness #gymmotivation #workout #bodybuilding #shredded"},
           {c:"Sad & Broken Poetry", t:"#sad #brokenheart #quotes #feelings #alone"},
           {c:"Mahakal & Devotional", t:"#mahakal #shiva #bholenath #harharmahadev"},
@@ -778,18 +800,6 @@
         runZalgo();
         return;
       }
-      else if(toolType === 'ai') {
-        title.innerText = "🤖 AI Bio Generator";
-        html = `
-          <p style="font-size:13px; color:#94a3b8; margin-bottom:15px;">Enter your niche/category (e.g. Gamer, Student, Trader)</p>
-          <input type="text" id="aiIn" class="modal-input" placeholder="e.g. Trader...">
-          <button class="btn-copy" style="background:#10b981; border:none; margin-bottom:15px;" onclick="runAI()">✨ Generate Prompt Bio</button>
-          <div id="aiRes" style="display:none; background:rgba(16,185,129,0.1); padding:16px; border-radius:14px; border:1px solid #10b981; color:#10b981; font-weight:800; white-space:pre-line;"></div>
-        `;
-        body.innerHTML = html;
-        document.getElementById('toolsModal').style.display = 'flex';
-        return;
-      }
 
       body.innerHTML = html;
       document.getElementById('toolsModal').style.display = 'flex';
@@ -801,7 +811,7 @@
       const outBox = document.getElementById('modalFontOut');
       const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
       const mS={a:"𝓪",b:"𝓫",c:"𝓬",d:"𝓭",e:"𝓮",f:"𝓯",g:"𝓰",h:"𝓱",i:"𝓲",j:"𝓳",k:"𝓴",l:"𝓵",m:"𝓶",n:"𝓷",o:"𝓸",p:"𝓹",q:"𝓺",r:"𝓻",s:"𝓼",t:"𝓽",u:"𝓾",v:"𝓿",w:"𝔀",x:"𝔁",y:"𝔂",z:"𝔃",A:"𝓐",B:"𝓑",C:"𝓒",D:"𝓓",E:"𝓔",F:"𝓕",G:"𝓖",H:"𝓗",I:"𝓘",J:"𝓙",K:"𝓚",L:"𝓛",M:"𝓜",N:"𝓝",O:"𝓞",P:"𝓟",Q:"𝓠",R:"𝓡",S:"𝓢",T:"𝓣",U:"𝓤",V:"𝓥",W:"𝓦",X:"𝓧",Y:"𝓨",Z:"𝓩"};
-      const mD={a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝕦",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫",A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ"};
+      const mD={a:"𝕒",b:"𝕓",c:"𝕔",d:"𝕕",e:"𝕖",f:"𝕗",g:"𝕘",h:"𝕙",i:"𝕚",j:"𝕛",k:"𝕜",l:"𝕝",m:"𝕞",n:"𝕟",o:"𝕠",p:"𝕡",q:"𝕢",r:"𝕣",s:"𝕤",t:"𝕥",u:"𝖚",v:"𝕧",w:"𝕨",x:"𝕩",y:"𝕪",z:"𝕫",A:"𝔸",B:"𝔹",C:"ℂ",D:"𝔻",E:"𝔼",F:"𝔽",G:"𝔾",H:"ℍ",I:"𝕀",J:"𝕁",K:"𝕂",L:"𝕃",M:"𝕄",N:"ℕ",O:"𝕆",P:"ℙ",Q:"ℚ",R:"ℝ",S:"𝕊",T:"𝕋",U:"𝕌",V:"𝕍",W:"𝕎",X:"𝕏",Y:"𝕐",Z:"ℤ"};
       const mC={a:"ⓐ",b:"ⓑ",c:"ⓒ",d:"ⓓ",e:"ⓔ",f:"ⓕ",g:"ⓖ",h:"ⓗ",i:"ⓘ",j:"ⓙ",k:"ⓚ",l:"ⓛ",m:"ⓜ",n:"ⓝ",o:"ⓞ",p:"ⓟ",q:"ⓠ",r:"ⓡ",s:"ⓢ",t:"ⓣ",u:"ⓤ",v:"ⓥ",w:"ⓦ",x:"ⓧ",y:"ⓨ",z:"ⓩ",A:"Ⓐ",B:"Ⓑ",C:"Ⓒ",D:"Ⓓ",E:"Ⓔ",F:"Ⓕ",G:"Ⓖ",H:"Ⓗ",I:"Ⓘ",J:"Ⓙ",K:"Ⓚ",L:"Ⓛ",M:"Ⓜ",N:"Ⓝ",O:"Ⓞ",P:"Ⓟ",Q:"Ⓠ",R:"Ⓡ",S:"Ⓢ",T:"Ⓣ",U:"Ⓤ",V:"Ⓥ",W:"Ⓦ",X:"Ⓧ",Y:"Ⓨ",Z:"Ⓩ"};
       const mSq={a:"🄰",b:"🄱",c:"🄲",d:"🄳",e:"🄴",f:"🄵",g:"🄶",h:"🄷",i:"🄸",j:"🄹",k:"🄺",l:"🄻",m:"🄼",n:"🄽",o:"🄾",p:"🄿",q:"🅀",r:"🅁",s:"🅂",t:"🅃",u:"🅄",v:"🅅",w:"🅆",x:"🅇",y:"🅈",z:"🅉",A:"🄰",B:"🄱",C:"🄲",D:"🄳",E:"🄴",F:"🄵",G:"🄶",H:"🄷",I:"🄸",J:"🄹",K:"🄺",L:"🄻",M:"🄼",N:"🄽",O:"🄾",P:"🄿",Q:"🅀",R:"🅁",S:"🅂",T:"🅃",U:"🅄",V:"🅅",W:"🅆",X:"🅇",Y:"🅈",Z:"🅉"};
       
@@ -843,15 +853,43 @@
       document.getElementById('zOut').innerText = val.split('').map(c => c + z[Math.floor(Math.random()*z.length)]).join('');
     };
 
-    window.runAI = function() {
-      const q = document.getElementById('aiIn').value || 'Creator';
-      const res = document.getElementById('aiRes');
-      res.style.display = 'block';
-      res.innerText = 'AI Thinking... ⏳';
-      setTimeout(() => {
-        const text = `👑 Verified ${q} 亗\n🚀 Scaling ideas to reality\n💼 Hustle & Grind 24/7\n✨ Manifesting greatness\n📩 DM for Business`;
-        res.innerHTML = text + `<br><br><button class="btn-copy" style="background:#10b981; color:#000; border:none;" onclick="copyPureText('${text.replace(/\n/g, '\\n')}', 'AI Bio Copied!')">📋 Copy AI Bio</button>`;
-      }, 1000);
+    // Quick Bio Modal Features
+    let currentQuickBioRaw = "";
+    window.rollNextQuickBio = function() {
+      const pick = masterBiosObj[Math.floor(Math.random() * masterBiosObj.length)].text;
+      currentQuickBioRaw = pick;
+      const disp = document.getElementById('quickBioDisplay');
+      if(disp) {
+        disp.innerHTML = pick.replace(/\\n/g, '<br>');
+      }
+    };
+
+    window.copyCurrentQuickBio = function() {
+      if(currentQuickBioRaw) {
+        copyPureText(currentQuickBioRaw.replace(/\\n/g, '\n'), 'Quick Bio Copied!');
+      }
+    };
+
+    function renderQuickBioList() {
+      const listContainer = document.getElementById('quickBioList');
+      if(!listContainer) return;
+      let html = "";
+      for(let i=0; i<10; i++) {
+        let bio = masterBiosObj[Math.floor(Math.random() * masterBiosObj.length)].text;
+        let safe = bio.replace(/\\n/g, '\\n').replace(/'/g, "\\'");
+        html += `
+          <div class="tool-list-row">
+            <div class="tool-list-text" style="font-size:13px;">${bio.replace(/\\n/g, '<br>')}</div>
+            <button class="tool-btn-copy" onclick="copyPureText('${safe}', 'Bio Copied!')">Copy</button>
+          </div>
+        `;
+      }
+      listContainer.innerHTML = html;
+    }
+
+    // Top Level Quick Action Fallback
+    window.copyRandomQuickBio = function() {
+      openToolModal('quickbio');
     };
 
     // ----------------------------------------
@@ -896,7 +934,7 @@
       title.innerText = contentMap[type].t;
       body.innerHTML = contentMap[type].d;
       document.getElementById('legalModal').style.display = 'flex';
-    }
+    };
 
   </script>
 </body>
