@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>InstaVibe VIP Studio 亗 - Ultra Luxury Creator Platform</title>
   <meta name="theme-color" content="#020305">
-  <meta name="description" content="India's #1 Luxury Instagram Bios, Unicode Fonts & Creator Utility Suite">
+  <meta name="description" content="India's #1 Luxury Instagram Bios, Unicode Fonts & Creator Utility App">
 
-  <!-- Premium Typography -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================
-       1. GLOBAL RESET & LUXURY DESIGN SYSTEM
+       1. GLOBAL RESET & HARDWARE ACCELERATED DESIGN SYSTEM
        ============================================================ */
     :root {
       --bg-dark: #020305;
@@ -45,47 +45,64 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
+    html, body {
       background-color: var(--bg-dark);
       color: var(--text-main);
       overflow-x: hidden;
-      padding-bottom: 110px;
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    /* Ambient Dynamic Moving Canvas */
+    body {
+      padding-bottom: 110px;
+      contain: layout style;
+    }
+
+    /* Hardware Accelerated Ambient Canvas */
     .bg-glass {
       position: fixed;
       inset: 0;
       z-index: -2;
-      background: radial-gradient(circle at 10% 18%, rgba(245, 158, 11, 0.14) 0%, transparent 42%),
-                  radial-gradient(circle at 90% 45%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+      background: radial-gradient(circle at 12% 18%, rgba(245, 158, 11, 0.14) 0%, transparent 40%),
+                  radial-gradient(circle at 88% 45%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
                   radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.09) 0%, transparent 50%),
                   linear-gradient(180deg, #020305 0%, #060913 100%);
       background-attachment: fixed;
+      pointer-events: none;
+      transform: translateZ(0);
+      will-change: transform;
     }
 
     .glow-orb {
       position: fixed;
-      width: 360px;
-      height: 360px;
+      width: 380px;
+      height: 380px;
       border-radius: 50%;
       pointer-events: none;
       filter: blur(130px);
       z-index: -1;
       opacity: 0.35;
-      animation: floatOrb 11s infinite alternate;
+      animation: floatAmbient 12s infinite alternate ease-in-out;
+      transform: translateZ(0);
+      will-change: transform;
     }
-    .glow-1 { top: -100px; left: -100px; background: #fbbf24; }
-    .glow-2 { bottom: 80px; right: -100px; background: #a855f7; animation-delay: -5.5s; }
+    .glow-1 { top: -120px; left: -120px; background: #fbbf24; }
+    .glow-2 { bottom: 80px; right: -120px; background: #a855f7; animation-delay: -6s; }
 
-    @keyframes floatOrb {
-      0% { transform: translateY(0px) scale(1); }
-      100% { transform: translateY(30px) scale(1.1); }
+    @keyframes floatAmbient {
+      0% { transform: translateY(0px) scale(1) translateZ(0); }
+      100% { transform: translateY(28px) scale(1.08) translateZ(0); }
     }
+
+    /* Custom Silky Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.4); }
+    ::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.3); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-3); }
 
     /* ============================================================
-       2. TOP APP BAR (Full Width Edge-to-Edge Touch)
+       2. TOP APP BAR (Edge-To-Edge Touch)
        ============================================================ */
     .top-nav-full {
       width: 100%;
@@ -101,6 +118,7 @@
       z-index: 999;
       margin-bottom: 18px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transform: translateZ(0);
     }
 
     .brand-wrap {
@@ -154,7 +172,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: transform 0.2s, background 0.2s;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
     }
     .nav-vault-chip:active { transform: scale(0.95); }
 
@@ -180,6 +198,7 @@
       font-size: 12px;
       color: #34d399;
       font-weight: 800;
+      transform: translateZ(0);
     }
 
     .live-dot-pulse {
@@ -205,9 +224,10 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.15);
       margin-bottom: 25px;
       cursor: pointer;
+      transform: translateZ(0);
     }
 
-    /* Continuous Diagonal Sheen Sweep Glare */
+    /* Continuous Sheen Sweep Glare Effect */
     .single-vip-banner::before {
       content: '';
       position: absolute;
@@ -293,7 +313,7 @@
       color: #000;
       background: var(--gold-gradient);
       box-shadow: 0 4px 20px var(--gold-glow);
-      transition: transform 0.2s;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Micro-Interactions */
@@ -317,11 +337,11 @@
       background: var(--gold-gradient);
       box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35);
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* ============================================================
-       4. CREATOR TOOLS GRID
+       4. CREATOR TOOLS GRID (8 Options)
        ============================================================ */
     .tools-hub-grid {
       display: grid;
@@ -340,14 +360,15 @@
       align-items: center;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.25s, border-color 0.25s, background 0.25s;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s, background 0.25s;
       backdrop-filter: blur(12px);
+      transform: translateZ(0);
     }
 
     .tool-tile:hover, .tool-tile:active {
       border-color: var(--gold-2);
       background: rgba(245, 158, 11, 0.08);
-      transform: translateY(-4px);
+      transform: translateY(-4px) translateZ(0);
       box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15);
     }
 
@@ -382,6 +403,7 @@
       margin-bottom: 35px;
       backdrop-filter: blur(16px);
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+      transform: translateZ(0);
     }
 
     .font-studio-header {
@@ -444,7 +466,9 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 12px;
+      transition: transform 0.15s ease;
     }
+    .font-row:active { transform: scale(0.98); }
 
     .font-styled-preview {
       font-size: 14.5px;
@@ -468,7 +492,7 @@
     }
 
     /* ============================================================
-       6. TABS & BIOS FEED
+       6. TABS & BIOS RENDER CARDS (Fluid Virtual Feel)
        ============================================================ */
     .tabs-sticky-bar {
       position: sticky;
@@ -483,6 +507,7 @@
       gap: 8px;
       overflow-x: auto;
       scrollbar-width: none;
+      transform: translateZ(0);
     }
     .tabs-sticky-bar::-webkit-scrollbar { display: none; }
 
@@ -496,7 +521,7 @@
       background: rgba(255, 255, 255, 0.04);
       color: #94a3b8;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       letter-spacing: 0.5px;
     }
     .category-tab-btn.active {
@@ -511,6 +536,7 @@
       flex-direction: column;
       gap: 16px;
       margin-bottom: 30px;
+      contain: content;
     }
 
     .bio-card-box {
@@ -521,6 +547,8 @@
       position: relative;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(12px);
+      transform: translateZ(0);
+      will-change: transform;
     }
 
     .bio-text-content {
@@ -618,6 +646,7 @@
       margin: 26px 0;
       box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
       overflow: hidden;
+      transform: translateZ(0);
     }
 
     .poster-top-bar {
@@ -749,6 +778,7 @@
       position: relative;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.2);
       backdrop-filter: blur(14px);
+      transform: translateZ(0);
     }
 
     .pricing-badge-strip {
@@ -801,6 +831,7 @@
       align-items: center;
       justify-content: center;
       padding: 18px;
+      transform: translateZ(0);
     }
     .modal-veil.open { display: flex; }
 
@@ -813,12 +844,12 @@
       margin: auto;
       padding: 26px 20px;
       position: relative;
-      animation: modalSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: modalSlide 0.32s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
       max-height: 88vh;
       overflow-y: auto;
     }
-    @keyframes modalSlide { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes modalSlide { from { transform: translateY(35px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
     .modal-close-btn {
       position: absolute;
@@ -849,6 +880,7 @@
       border-radius: 14px;
       margin-bottom: 10px;
       overflow: hidden;
+      transition: background 0.2s;
     }
 
     .faq-q {
@@ -875,7 +907,7 @@
       position: fixed;
       bottom: 100px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateZ(0);
       background: #fff;
       color: #000;
       padding: 13px 26px;
@@ -883,14 +915,14 @@
       font-size: 13px;
       font-weight: 900;
       opacity: 0;
-      transition: 0.25s ease;
+      transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 5000;
       pointer-events: none;
       box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8);
     }
     .system-toast-bubble.visible {
       opacity: 1;
-      transform: translateX(-50%) translateY(-10px);
+      transform: translateX(-50%) translateY(-10px) translateZ(0);
     }
 
     /* Fixed Bottom Navigation */
@@ -907,6 +939,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       z-index: 1000;
       box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
+      transform: translateZ(0);
     }
 
     .bottom-tab-link {
@@ -919,7 +952,7 @@
       font-weight: 800;
       cursor: pointer;
       text-decoration: none;
-      transition: 0.2s;
+      transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .bottom-tab-link.active {
       color: var(--gold-2);
@@ -930,10 +963,10 @@
     .view-container { display: none; }
     .view-container.active {
       display: block;
-      animation: viewIn 0.3s ease;
+      animation: viewIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     @keyframes viewIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -964,7 +997,7 @@
 </head>
 <body>
 
-  <!-- Ambient Moving Glow Canvas -->
+  <!-- Background Ambience -->
   <div class="bg-glass"></div>
   <div class="glow-orb glow-1"></div>
   <div class="glow-orb glow-2"></div>
@@ -1044,7 +1077,7 @@
           </div>
           <input type="text" id="fontInputBar" class="font-search-input" placeholder="Apna naam ya quote type karein..." value="Badshah 亗">
           <div class="font-styles-list" id="fontPreviewContainer">
-            <!-- Fallback Static List for Instant Display -->
+            <!-- Hardcoded Initial Styles (Never Empty) -->
             <div class="font-row">
               <div class="font-styled-preview">𝕭𝖆𝖉𝖘𝖍𝖆𝖍 亗</div>
               <button class="font-copy-chip click-feedback" onclick="copyPureString('𝕭𝖆𝖉𝖘𝖍𝖆𝖍 亗', 'Font Copied!')">Copy</button>
@@ -1476,9 +1509,9 @@
     // ==========================================
     const fontMaps = {
       gothic: { a: "𝖆", b: "𝖇", c: "𝖈", d: "𝖉", e: "𝖊", f: "𝖋", g: "𝖌", h: "𝖍", i: "𝖎", j: "𝖏", k: "𝖐", l: "𝖑", m: "𝖒", n: "𝖓", o: "𝖔", p: "𝖕", q: "𝖖", r: "𝖗", s: "𝖘", t: "𝖙", u: "𝖚", v: "𝖛", w: "𝖜", x: "𝖝", y: "𝖞", z: "𝖟", A: "𝕬", B: "𝕭", C: "𝕮", D: "𝕯", E: "𝕰", F: "𝕱", G: "𝕲", H: "𝕳", I: "𝕴", J: "𝕵", K: "𝕶", L: "𝕷", M: "𝕸", N: "𝕹", O: "𝕺", P: "𝕻", Q: "𝕼", R: "𝕽", S: "𝕾", T: "𝕿", U: "𝖀", V: "𝖁", W: "𝖂", X: "𝖃", Y: "𝖄", Z: "𝖅" },
-      scriptBold: { a: "𝓪", b: "𝓫", c: "𝓬", d: "𝓭", e: "𝓮", f: "𝓯", g: "𝓰", h: "𝓱", i: "𝓲", j: "𝓳", k: "", l: "𝓵", m: "𝓶", n: "𝓷", o: "𝓸", p: "𝓹", q: "𝓺", r: "𝓻", s: "𝓼", t: "𝓽", u: "𝓾", v: "𝓿", w: "𝔀", x: "𝔁", y: "𝔂", z: "𝔃", A: "𝓐", B: "𝓑", C: "𝓒", D: "𝓓", E: "𝓔", F: "𝓕", G: "𝓖", H: "𝓗", I: "𝓘", J: "𝓙", K: "𝓚", L: "𝓛", M: "𝓜", N: "𝓝", O: "𝓞", P: "𝓟", Q: "𝓠", R: "𝓡", S: "𝓢", T: "𝓣", U: "𝓤", V: "𝓥", W: "𝓦", X: "𝓧", Y: "𝓨", Z: "𝓩" },
-      doubleStruck: { a: "𝕒", b: "𝕓", c: "𝕔", d: "𝕕", e: "𝕖", f: "𝕗", g: "𝕘", h: "𝕙", i: "𝕚", j: "𝕛", k: "𝕜", l: "𝕝", m: "𝕞", n: "𝕟", o: "𝕠", p: "𝕡", q: "𝕢", r: "𝕣", s: "𝕤", t: "𝕥", u: "𝖚", v: "𝕧", w: "𝕨", x: "𝕩", y: "𝕪", z: "𝕫", A: "𝔸", B: "𝔹", C: "ℂ", D: "𝔻", E: "𝔼", F: "𝔽", G: "𝔾", H: "ℍ", I: "𝕀", J: "𝕁", K: "𝕂", L: "𝕃", M: "𝕄", N: "ℕ", O: "𝕆", P: "ℙ", Q: "ℚ", R: "ℝ", S: "𝕊", T: "𝕋", U: "𝕌", V: "𝕍", W: "𝕎", X: "𝕏", Y: "𝕐", Z: "ℤ" },
-      monospace: { a: "𝚊", b: "𝚋", c: "𝚌", d: "𝚍", e: "𝚎", f: "𝚏", g: "𝚐", h: "𝚑", i: "𝚒", j: "𝚓", k: "𝚔", l: "𝚕", m: "𝚖", n: "𝚗", o: "𝚘", p: "𝚙", q: "𝚚", r: "𝚛", s: "𝚜", t: "𝚝", u: "𝚞", v: "𝚟", w: "𝚠", x: "𝚡", y: "𝚢", z: "𝚣" },
+      scriptBold: { a: "𝓪", b: "𝓫", c: "𝓬", d: "𝓭", e: "𝓮", f: "𝓯", g: "𝓰", h: "𝓱", i: "𝓲", j: "𝓳", k: "𝓴", l: "𝓵", m: "𝓶", n: "𝓷", o: "𝓸", p: "𝓹", q: "𝓺", r: "𝓻", s: "𝓼", t: "𝓽", u: "𝓾", v: "𝓿", w: "𝔀", x: "𝔁", y: "𝔂", z: "𝔃", A: "𝓐", B: "𝓑", C: "𝓒", D: "𝓓", E: "𝓔", F: "𝓕", G: "𝓖", H: "𝓗", I: "𝓘", J: "𝓙", K: "𝓚", L: "𝓛", M: "𝓜", N: "𝓝", O: "𝓞", P: "𝓟", Q: "𝓠", R: "𝓡", S: "𝓢", T: "𝓣", U: "𝓤", V: "𝓥", W: "𝓦", X: "𝓧", Y: "𝓨", Z: "𝓩" },
+      doubleStruck: { a: "𝕒", b: "𝕓", c: "𝕔", d: "𝕕", e: "𝕖", f: "𝕗", g: "𝕘", h: "𝕙", i: "𝕚", j: "𝕛", k: "𝕜", l: "𝕝", m: "𝖒", n: "𝕟", o: "𝕠", p: "𝕡", q: "𝕢", r: "𝕣", s: "𝕤", t: "𝕥", u: "𝖚", v: "𝕧", w: "𝕨", x: "𝕩", y: "𝕪", z: "𝕫", A: "𝔸", B: "𝔹", C: "ℂ", D: "𝔻", E: "𝔼", F: "𝔽", G: "𝔾", H: "ℍ", I: "𝕀", J: "𝕁", K: "𝕂", L: "𝕃", M: "𝕄", N: "ℕ", O: "𝕆", P: "ℙ", Q: "ℚ", R: "ℝ", S: "𝕊", T: "𝕋", U: "𝕌", V: "𝕍", W: "𝕎", X: "𝕏", Y: "𝕐", Z: "ℤ" },
+      monospace: { a: "𝚊", b: "𝚋", c: "𝚌", d: "𝚍", e: "𝚎", f: "𝚏", g: "𝚐", h: "𝚑", i: "𝚒", j: "𝚓", k: "𝚔", l: "𝚕", m: "𝚖", n: "𝖓", o: "𝚘", p: "𝚙", q: "𝚚", r: "𝚛", s: "𝚜", t: "𝚝", u: "𝚞", v: "𝖛", w: "𝚠", x: "𝚡", y: "𝚢", z: "𝚣" },
       smallCaps: { a: "ᴀ", b: "ʙ", c: "ᴄ", d: "ᴅ", e: "ᴇ", f: "ꜰ", g: "ɢ", h: "ʜ", i: "ɪ", j: "ᴊ", k: "ᴋ", l: "ʟ", m: "ᴍ", n: "ɴ", o: "ᴏ", p: "ᴘ", q: "ǫ", r: "ʀ", s: "ꜱ", t: "ᴛ", u: "ᴜ", v: "ᴠ", w: "ᴡ", x: "x", y: "ʏ", z: "ᴢ" },
       circled: { a: "ⓐ", b: "ⓑ", c: "ⓒ", d: "ⓓ", e: "ⓔ", f: "ⓕ", g: "ⓖ", h: "ⓗ", i: "ⓘ", j: "ⓙ", k: "ⓚ", l: "ⓛ", m: "ⓜ", n: "ⓝ", o: "ⓞ", p: "ⓟ", q: "ⓠ", r: "ⓡ", s: "ⓢ", t: "ⓣ", u: "ⓤ", v: "ⓥ", w: "ⓦ", x: "ⓧ", y: "ⓨ", z: "ⓩ" }
     };
