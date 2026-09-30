@@ -34,13 +34,12 @@
        ========================================================================== */
     :root {
       --bg-main: #030508;
-      --card-bg: #111620; 
+      --card-bg: rgba(20, 25, 35, 0.95);
       --card-border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6; --primary-glow: rgba(59, 130, 246, 0.5);
       --accent: #f59e0b; 
       --gold-mid: #fbbf24;
       --text-main: #f8fafc; --text-muted: #94a3b8;
-      --solid-btn: #1a2233; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -93,7 +92,7 @@
        2. HEADER
        ========================================================================== */
     .header-master {
-      width: 100%; position: fixed; top: 0; left: 0; background: #030508; 
+      width: 100%; position: fixed; top: 0; left: 0; background: rgba(3, 5, 8, 0.98); 
       padding: 14px 20px; display: flex; align-items: center;
       justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6);
     }
@@ -157,7 +156,7 @@
     .master-text { font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px;}
     
     .master-btn, .btn-copy, .tool-btn-copy { 
-      background: var(--solid-btn); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      background: #1a2233; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       width: 100%; padding: 14px; border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;
     }
     .master-btn:active, .btn-copy:active, .tool-btn-copy:active { transform: scale(0.97); background: #2a3447; }
@@ -174,11 +173,23 @@
     /* ==========================================================================
        5. AI CHAT INTERFACE & THINKING DOTS
        ========================================================================== */
-    .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; }
-    .chat-box { padding: 15px; display: flex; flex-direction: column; gap: 12px; }
+    /* AI HEADER TITLE FIX */
+    .chat-header-title {
+        display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 15px; padding: 0 5px; flex-wrap: nowrap;
+    }
+    .chat-header-text {
+        font-size: 18px; font-weight: 900; display: flex; align-items: center; gap: 8px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;
+    }
+
+    .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; height: 100%; position: relative;}
+    .chat-box { padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; margin-bottom: 80px;}
     .msg-wrapper { display: flex; flex-direction: column; }
     .msg-user { align-self: flex-end; background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; font-size: 14.5px; font-weight: 600; line-height: 1.5; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
+    
+    /* Error / System Msg Styles */
     .msg-ai { align-self: flex-start; background: #111620; border: 1px solid var(--card-border); color: #f8fafc; padding: 14px 18px; border-radius: 18px 18px 18px 4px; max-width: 90%; font-size: 14.5px; font-weight: 500; line-height: 1.6; box-shadow: 0 4px 15px rgba(0,0,0,0.4);}
+    .msg-ai.error-msg { border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.05); color: #fca5a5; }
+    .msg-ai.stop-msg { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05); color: #fcd34d; }
     .msg-ai b { color: var(--gold-mid); font-weight: 900; }
     
     .thinking-box { display: flex; flex-direction: column; gap: 8px; }
@@ -186,27 +197,28 @@
     .dot { width: 7px; height: 7px; background: var(--gold-mid); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
     .dot:nth-child(1) { animation-delay: -0.32s; }
     .dot:nth-child(2) { animation-delay: -0.16s; }
-    .ai-typing-status { font-size: 12px; color: #94a3b8; font-style: italic; font-weight: 600;}
+    .ai-typing-status { font-size: 13px; color: #cbd5e1; font-style: italic; font-weight: 600; transition: opacity 0.5s ease;}
+    .ai-typing-status.fade { opacity: 0; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
     .ai-chips-wrap { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none;}
     .ai-chips-wrap::-webkit-scrollbar { display: none; }
-    .ai-chip { background: var(--solid-btn); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
+    .ai-chip { background: #1a2233; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
 
-    .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.2s ease;}
+    .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
     @media (min-width: 600px) { .chat-input-area { left: 50%; transform: translateX(-50%); max-width: 600px; } }
     .chat-input-row { display: flex; gap: 10px; padding: 5px 15px 15px; }
     .chat-input { flex: 1; padding: 15px 20px; background: #161d29; border: 1px solid rgba(255,255,255,0.15); border-radius: 25px; color: #fff; font-size: 16px; outline: none; transition: 0.2s; }
     .chat-input:focus { border-color: var(--primary); background: #000; }
     .chat-input:disabled { opacity: 0.6; cursor: not-allowed; }
     
-    .chat-send-btn { background: var(--primary); color: #fff; border: none; width: 52px; height: 52px; border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 15px var(--primary-glow); transition: 0.2s; flex-shrink: 0;}
+    .chat-send-btn { background: var(--primary); color: #fff; border: none; width: 52px; height: 52px; border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 15px var(--primary-glow); transition: background 0.3s, transform 0.2s; flex-shrink: 0;}
     .chat-send-btn:active { transform: scale(0.9); }
-    /* 🔥 NEW PREMIUM AMBER COLOR FOR STOP BUTTON 🔥 */
+    /* PREMIUM AMBER STOP BUTTON */
     .chat-send-btn.stop-mode { background: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
 
-    /* Keyboard fixes */
+    /* Keyboard open state classes */
     body.keyboard-open .chat-input-area { bottom: 0 !important; }
     body.keyboard-open .bottom-nav { display: none !important; }
 
@@ -250,7 +262,7 @@
     /* Animation Fix for Tab Switch */
     .view-page { display: none; }
     .view-page.active { display: block; animation: fadeIn 0.3s ease-out; }
-    #view-aichat.active { display: flex; animation: fadeInChat 0.3s ease-out; } 
+    #view-aichat.active { display: flex; flex-direction: column; animation: fadeInChat 0.3s ease-out; } 
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
     @keyframes fadeInChat { from{opacity:0;} to{opacity:1;} }
     
@@ -260,7 +272,7 @@
     .footer-links span { color: #cbd5e1; font-weight: 800; font-size: 13px; text-decoration: underline; cursor: pointer;}
     .seo-text-block { text-align: left; padding: 22px; font-size: 12.5px; color: #475569; line-height: 1.7; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;}
 
-    /* EMAIL CONTAINER FIX */
+    /* INFO TAB EMAIL CONTAINER FIX */
     .email-container {
       display: flex; justify-content: space-between; align-items: center;
       background: var(--solid-btn); border-radius: 12px; padding: 12px 16px;
@@ -271,7 +283,7 @@
 </head>
 <body>
 
-  <!-- 🔥 GRAND WELCOME OVERLAY (PURE CSS ROCKETS - 1 TAP SKIP) 🔥 -->
+  <!-- 🔥 GRAND WELCOME OVERLAY (PURE CSS ROCKETS) 🔥 -->
   <div id="grandWelcome" onclick="closeGrandWelcome()">
     <div class="css-rocket r1"></div>
     <div class="css-rocket r2"></div>
@@ -305,7 +317,7 @@
 
   <div class="bg-ambience"></div><div class="glow-orb glow-1"></div><div class="glow-orb glow-2"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER (FIXED TOP) -->
   <header class="header-master">
     <div class="brand-wrap">
       <div class="brand-icon">亗</div>
@@ -358,7 +370,7 @@
           <div class="tool-icon">✨</div><div class="tool-name">VIP Wings</div><div class="tool-sub">Name Borders</div>
         </div>
         <div class="tool-card" onclick="openToolModal('zalgo')">
-          <div class="tool-icon">🕷️</div><div class="tool-name">Zalgo Glitch</div><div class="tool-sub">Hacker Text</div>
+          <div class="tool-icon">🕷️️</div><div class="tool-name">Zalgo Glitch</div><div class="tool-sub">Hacker Text</div>
         </div>
         <div class="tool-card" onclick="openToolModal('textart')">
           <div class="tool-icon">🖼️</div><div class="tool-name">Text Arts</div><div class="tool-sub">ASCII Faces</div>
@@ -412,16 +424,16 @@
         <p>© 2026 InstaVibe Ultimate. All Rights Reserved.</p>
         
         <article class="seo-text-block">
-          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
+          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
         </article>
       </footer>
     </main>
 
-    <!-- FULLSCREEN AI CHAT VIEW -->
+    <!-- FULLSCREEN AI CHAT VIEW (FIXED UI) -->
     <main id="view-aichat" class="view-page">
-      <div class="section-title" style="margin-top: 10px;">
-        <span style="display:flex; align-items:center; gap:8px;">🧠 InstaVibe AI Assistant</span>
-        <span class="header-badge" style="padding:4px 8px; font-size:9px;">ONLINE</span>
+      <div class="chat-header-title">
+        <div class="chat-header-text">🧠 InstaVibe AI Assistant</div>
+        <span class="header-badge">ONLINE</span>
       </div>
       
       <div class="chat-container">
@@ -479,7 +491,7 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V33 (THE MASTERPIECE)</div>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V35 (THE MASTERPIECE)</div>
         <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. No repeating bios, fully responsive UI, Smart AI Engine, and 15 Mega Tools.</p>
         
         <div style="background:#0a0d14; border-radius:18px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
@@ -492,7 +504,7 @@
       </div>
     </main>
 
-  </div>
+  </div> <!-- /app-container -->
 
   <!-- 4 TABS BOTTOM NAVIGATION -->
   <nav class="bottom-nav" id="bottomNav">
@@ -531,10 +543,11 @@
 
   <script>
     /* ==========================================================================
-       KEYBOARD UI FIX 
+       KEYBOARD UI FIX (Hide Bottom Nav when Typing) 
        ========================================================================== */
     const chatInput = document.getElementById('chatInput');
     const bottomNav = document.getElementById('bottomNav');
+    const chatInputArea = document.getElementById('chatInputArea');
 
     chatInput.addEventListener('focus', () => {
       document.body.classList.add('keyboard-open');
@@ -634,7 +647,7 @@
     }
 
     /* ==========================================================================
-       🔥 SMART AI CHATBOT LOGIC (STOP BUTTON + THINKING PHRASES) 🔥
+       🔥 SMART AI CHATBOT LOGIC (STOP BUTTON + ANIMATED THINKING) 🔥
        ========================================================================== */
     let aiChatMemory = []; 
     let currentAiMode = "chat";
@@ -667,12 +680,23 @@
     }
 
     function stopAiGeneration() {
+      isAiGenerating = false;
       if(aiAbortController) aiAbortController.abort();
       if(typeWriterTimeout) clearTimeout(typeWriterTimeout);
       if(thinkingInterval) clearInterval(thinkingInterval);
       
       const loadingSpan = document.querySelector('.ai-typing-status');
-      if(loadingSpan) loadingSpan.innerText = "Generation stopped by user.";
+      if(loadingSpan) {
+        loadingSpan.parentElement.parentElement.classList.remove('msg-ai');
+        loadingSpan.parentElement.parentElement.classList.add('msg-ai', 'stop-msg');
+        loadingSpan.innerText = "Generation manually stopped. 🛑";
+        loadingSpan.classList.remove('fade');
+        loadingSpan.style.animation = "none";
+        
+        // Remove thinking dots
+        const dots = document.querySelector('.thinking-dots');
+        if(dots) dots.style.display = 'none';
+      }
 
       resetAiInputState();
     }
@@ -709,22 +733,32 @@
           <div class="msg-ai">
             <div class="thinking-box">
               <div class="thinking-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-              <div class="ai-typing-status">Connecting to server...</div>
+              <div class="ai-typing-status">Analyzing your request... 🤔</div>
             </div>
           </div>
         </div>
       `;
       chatBox.scrollTop = chatBox.scrollHeight;
 
-      const phrases = ["Analyzing your request... 🤔", "Brainstorming ideas... 💡", "Crafting magical words... ✨", "Adding premium aesthetics... 🎨", "Almost done... 🚀"];
+      const phrases = [
+        "Analyzing your request... 🤔", 
+        "Brainstorming creative ideas... 💡", 
+        "Adding premium aesthetics... ✨", 
+        "Almost ready... 🚀"
+      ];
       let phraseIndex = 0;
+      
       thinkingInterval = setInterval(() => {
           const statusEl = document.querySelector(`#${loadingId} .ai-typing-status`);
-          if(statusEl) {
-              phraseIndex = (phraseIndex + 1) % phrases.length;
-              statusEl.innerText = phrases[phraseIndex];
+          if(statusEl && isAiGenerating) {
+              statusEl.classList.add('fade');
+              setTimeout(() => {
+                  phraseIndex = (phraseIndex + 1) % phrases.length;
+                  statusEl.innerText = phrases[phraseIndex];
+                  statusEl.classList.remove('fade');
+              }, 500);
           }
-      }, 1500);
+      }, 2500);
 
       aiAbortController = new AbortController();
 
@@ -799,9 +833,14 @@
         if(e.name === 'AbortError') {
             console.log('Fetch aborted by user');
         } else {
-            document.getElementById(loadingId).innerHTML = `
-              <div class="msg-ai" style="color:#ef4444;">⚠️ Connection failed! Please try again.</div>
-            `;
+            const errorDiv = document.getElementById(loadingId);
+            if(errorDiv) {
+              errorDiv.innerHTML = `
+                <div class="msg-ai error-msg">
+                   ⚠️ Connection failed! Please check your network or try again later.
+                </div>
+              `;
+            }
             resetAiInputState();
         }
       }
@@ -809,7 +848,7 @@
     }
 
     /* ==========================================================================
-       🔥 RAW MANUAL DATA ARRAYS (NO REPETITION LOGIC) 🔥
+       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -835,9 +874,7 @@
       "शेर हमेशा अकेला आता है 🦁\nभीड़ तो कुत्तों की होती है 🐕\nअपना रास्ता खुद बनाऊंगा 🛣\nमंज़िल दूर है पर मिलेगी ज़रूर 🎯",
       "ज़िद्दी परिंदा 🦅\nउड़ान अभी बाकी है ☁\nआसमान छूने का इरादा 🌌\nकोई रोक सके तो रोक ले ✋",
       "रॉयल खून 🩸\nनवाबी शौक 🍷\nज़िंदगी अपने उसूलों पर 🔥\nकिसी के आगे झुकना नहीं 🦅",
-      "खिलाड़ी हूँ, खेलूंगा तो जीतूंगा 🎲\nहारना मेरी डिक्शनरी में नहीं 🚫\nसिग्मा मेल 🗿\nहसलर 💼",
-      "Sher ki bhukh aur hamara look... 🦁\nDono jaanlewa hain 🔥\nRules breaker 🚫\nDesi Swag 😎",
-      "Hustle daily 💯\nTalk less, act more 🤫\nGym rat 💪\nFocused on my empire 🏰"
+      "खिलाड़ी हूँ, खेलूंगा तो जीतूंगा 🎲\nहारना मेरी डिक्शनरी में नहीं 🚫\nसिग्मा मेल 🗿\nहसलर 💼"
     ];
 
     const realGirlsBios = [
@@ -890,7 +927,7 @@
       "तन्हाई बेहतर है 🥀\nभीड़ में अक्सर लोग खो जाते हैं 🚶‍♂️\nदिल टूटने की आवाज़ नहीं होती 💔\nखामोश दर्द 🤫\nअधूरा सफर 🛤",
       "वक्त ने बता दी सबकी औकात 😔\nवरना हम तो सबको अपना मानते थे 💔\nतेरा नाम था आज किसी अजनबी की जुबान पे 🥀\nदिल ने बुरा मान लिया 🖤",
       "मोहब्बत का शौक किसे था ❤️\nतुम पास आते गए और हमें आदत हो गई 💔\nअब आलम ये है कि तुम्हारे बिना 🥀\nये साँसें भी बोझ सी लगती हैं ⏳",
-      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️️\nTrust nobody 🚫",
+      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁\nTrust nobody 🚫",
       "Depressed soul 🥀\nHiding the pain with a smile 😊\nNights are the hardest 🌙\nMemories hurt 💭\nWaiting for the end ⏳",
       "हँसते हुए चेहरे के पीछे का दर्द 🎭\nकोई नहीं समझता 💔\nअंदर से टूट चुका हूँ 🥀\nखामोश ज़िन्दगी 🤫",
       "अब ना किसी की चाहत 🚫\nना किसी की उम्मीद 😔\nअकेला आया था, अकेला जाऊंगा 🚶‍♂️\nटूटा हुआ दिल 💔",
@@ -938,12 +975,12 @@
       "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
       "Couples Goal 👩‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
       "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
-      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
+      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️️",
       "❤ Love is Life\nMy heart beats for you 🥰\nAlways together 👫\nForever Mine 💍",
       "🌍 You are my world\nLost in your eyes 👁\nMy happy place is you 💖\nSoulmates 🔗",
       "तेरा फितूर ❤\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
       "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
-      "तू मेरा है, मैं तेरी हूँ 👩‍‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
+      "तू मेरा है, मैं तेरी हूँ 👩‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी ❤️",
       "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
     ];
 
@@ -966,7 +1003,7 @@
       "Mogambo khush hua 😈\nFilmy keeda 🍿\nBollywood is life 🎬\nDrama in my veins 🎭"
     ];
 
-    // NOTE: Loop removed completely. Pushing exact individual objects.
+    // NOTE: Strict iteration without loop repetition
     function populateBios(arr, category, isAura = false) {
       arr.forEach(text => masterBiosObj.push({ category: category, text: text, isAura: isAura }));
     }
@@ -1085,14 +1122,55 @@
     }
 
     /* ==========================================================================
-       TOOLS MODAL LOGIC (ADDED 3 NEW TOOLS)
+       TOOLS MODAL LOGIC (ADDED DETAILS IN QUOTES, NUMBERS, BULLETS)
        ========================================================================== */
     function openToolModal(toolType) {
       const title = document.getElementById('modalTitle');
       const body = document.getElementById('modalBody');
       let html = ""; 
 
-      if(toolType === 'fonts') {
+      if(toolType === 'numbers') {
+        title.innerText = "🔢 VIP Numbers";
+        html = `
+          <div style="color:#94a3b8; font-size:13px; margin-bottom:15px; line-height: 1.5;">Type your special dates, lucky numbers or phone number to convert them into premium fonts. Select below:</div>
+          <input type="number" id="numInput" class="modal-input" placeholder="Type numbers (e.g. 2026)..." value="2026" oninput="runNumbers()">
+          <div id="numOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:50vh; padding-right:5px;"></div>
+        `;
+      }
+      else if(toolType === 'bullets') {
+        title.innerText = "🔘 Pro Bullets";
+        html = `<div style="color:#94a3b8; font-size:13px; margin-bottom:15px; line-height: 1.5;">Create aesthetic bio lists with these rare bullet points. Tap any to copy!</div>`;
+        const bullets = [
+          "➤", "✦", "✓", "➻", "•", "◈", "❖", "✧", "►", "✰", "❥", "☠", "⚡", "★", "👑", "🥀", 
+          "❁", "⋆", "✣", "⧪", "⍟", "⊛", "➼", "☙"
+        ];
+        html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
+        bullets.forEach(b => { html += `<div class="grid-sym-box" style="font-size:20px;" onclick="copyEncodedText('${encodeURIComponent(b)}', 'Bullet Copied!')">${b}</div>`; });
+        html += '</div>';
+      }
+      else if(toolType === 'quotes') {
+        title.innerText = "💬 Bio Quotes";
+        html = `<div style="color:#94a3b8; font-size:13px; margin-bottom:15px; line-height: 1.5;">Short, powerful and aesthetic quotes perfect for 1-line bio updates.</div>`;
+        const quotes = [
+          "Be a voice, not an echo 🗣️", 
+          "Prove them wrong 💯", 
+          "Less perfection, more authenticity ✨", 
+          "Born to stand out 🌟", 
+          "Die with memories, not dreams 💭", 
+          "Simplicity is the ultimate sophistication 🌿",
+          "My attitude is my unique gift 😎",
+          "Working on myself, for myself 🛠️",
+          "Creating my own sunshine ☀️",
+          "Keep your heels, head, and standards high 👠",
+          "Silent but deadly 🌪️",
+          "Living life on my own terms 📝",
+          "Not lucky, just consistently grinding 🚀"
+        ];
+        quotes.forEach(q => {
+          html += `<div class="tool-list-row"><div class="tool-list-text">${q}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(q)}', 'Quote Copied!')">Copy</button></div>`;
+        });
+      }
+      else if(toolType === 'fonts') {
         title.innerText = "🔤 Fancy Fonts Studio";
         html = `<input type="text" id="modalFontIn" class="modal-input" placeholder="Type name..." value="InstaVibe" oninput="runModalFonts()"><div id="modalFontOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:50vh; padding-right:5px;"></div>`;
       }
@@ -1137,7 +1215,7 @@
         title.innerText = "🦋 Unique Emoji Sets";
         const ems = [...new Set([
           "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", 
-          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂️️💪🔥",
+          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂️💪🔥",
           "🍔🍟🍕", "🌙💫✨", "📸🌍✈️", "🎵🎧🖤", "😈🔥🔪", "🕊️🤍☁️", "⛓🖤🛹", "🧸🤎📜"
         ])]; 
         html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
@@ -1217,54 +1295,16 @@
           `; 
         });
       }
-      /* NEW TOOL 1: NUMBERS */
-      else if(toolType === 'numbers') {
-        title.innerText = "🔢 Stylish Numbers";
-        html = `
-          <input type="number" id="numInput" class="modal-input" placeholder="Type numbers (e.g. 123)..." value="2026" oninput="runNumbers()">
-          <div id="numOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:50vh; padding-right:5px;"></div>
-        `;
-      }
-      /* NEW TOOL 2: BULLETS */
-      else if(toolType === 'bullets') {
-        title.innerText = "🔘 VIP Bullets";
-        const bullets = ["➤", "✦", "✓", "➻", "•", "◈", "❖", "✧", "►", "✰"];
-        html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
-        bullets.forEach(b => { html += `<div class="grid-sym-box" style="font-size:24px;" onclick="copyEncodedText('${encodeURIComponent(b)}', 'Bullet Copied!')">${b}</div>`; });
-        html += '</div>';
-      }
-      /* NEW TOOL 3: QUOTES */
-      else if(toolType === 'quotes') {
-        title.innerText = "💬 Bio Quotes";
-        const quotes = [
-          "Be a voice, not an echo 🗣️", "Prove them wrong 💯", "Less perfection, more authenticity ✨", 
-          "Born to stand out 🌟", "Die with memories, not dreams 💭", "Simplicity is the ultimate sophistication 🌿"
-        ];
-        quotes.forEach(q => {
-          html += `<div class="tool-list-row"><div class="tool-list-text">${q}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(q)}', 'Quote Copied!')">Copy</button></div>`;
-        });
-      }
 
       body.innerHTML = html;
       document.getElementById('toolsModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden'; 
-
+      
       if(toolType === 'fonts') runModalFonts();
       if(toolType === 'gamer') runGamerNames();
       if(toolType === 'wings') runWings();
       if(toolType === 'zalgo') runZalgo();
       if(toolType === 'numbers') runNumbers();
     }
-
-    window.rollNextQuickBio = function() {
-      let bio = getUniqueBio().text;
-      const display = document.getElementById('quickBioDisplay');
-      const copyBtn = document.getElementById('quickBioCopyBtn');
-      if(display && copyBtn) {
-        display.innerHTML = bio.replace(/\\n/g, '<br>');
-        copyBtn.setAttribute('onclick', `copyEncodedText('${encodeURIComponent(bio.replace(/\\n/g, '\n'))}', 'Bio Copied!')`);
-      }
-    };
 
     window.runNumbers = function() {
       const val = document.getElementById('numInput').value || "2026";
@@ -1281,119 +1321,13 @@
         o3 += m3[val[i]] || val[i]; o4 += m4[val[i]] || val[i];
       }
 
-      const styles = [o1, o2, o3, o4, `「${val}」`, `【${val}】`, `[̲̅${val}]`];
+      const styles = [o1, o2, o3, o4, `「${val}」`, `【${val}】`, `[̲̅${val}]`, `( ${val} )`];
       let html = "";
       styles.forEach(s => {
-        html += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:16px;">${s}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(s)}', 'Copied!')">Copy</button></div>`;
+        html += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:18px;">${s}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(s)}', 'Copied!')">Copy</button></div>`;
       });
       outBox.innerHTML = html;
     };
-
-    window.runGamerNames = function() {
-      const val = document.getElementById('gamerInput').value || "Raistar";
-      const topOut = document.getElementById('gamerTopOut');
-      const aesOut = document.getElementById('gamerAesOut');
-
-      const top5 = [`꧁•[ ${val} ]•꧂ 亗`, `乂 ${val} 乂 ☠️`, `๖ۣۜ${val} ࿐`];
-      let htmlTop = "";
-      top5.forEach(name => {
-        htmlTop += `<div style="background:rgba(239,68,68,0.1); border-radius:14px; padding:16px; display:flex; justify-content:space-between; align-items:center;"><div class="colourful-shine" style="font-size:18px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Pro Name Copied!')">Copy</button></div>`;
-      });
-      topOut.innerHTML = htmlTop;
-
-      const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
-      let oG=""; for(let i=0; i<val.length; i++) oG += mG[val[i]] || val[i];
-
-      const tags = [" YT", " ゲーマー", " 😈", " OP", " ࿐", " ッ"];
-      let htmlAes = "";
-      const uniqueAesthetic = new Set();
-      tags.forEach(t => { uniqueAesthetic.add(`【 ${oG} 】${t}`); uniqueAesthetic.add(`★ ${val} ★${t}`); uniqueAesthetic.add(`☠️ ${oG} ☠️${t}`); uniqueAesthetic.add(`『 ${val} 』${t}`); });
-
-      uniqueAesthetic.forEach(name => {
-        htmlAes += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:15px; letter-spacing:1px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Name Copied!')">Copy</button></div>`;
-      });
-      aesOut.innerHTML = htmlAes;
-    };
-
-    window.runModalFonts = function() {
-      const val = document.getElementById('modalFontIn').value || "InstaVibe";
-      const outBox = document.getElementById('modalFontOut');
-      const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
-      let oG=""; for(let i=0; i<val.length; i++) oG += mG[val[i]] || val[i];
-
-      const styles = [...new Set([oG, `亗 ${oG} 亗`, `★彡[ ${val} ]彡★`, `【 ${oG} 】`, `⚡ ${val} ⚡`, `༺ཌ ${val} ད༻`, `🖤 ${oG} 🖤`])];
-      let html = "";
-      styles.forEach(s => {
-        html += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:16px;">${s}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(s)}', 'Font Copied!')">Copy</button></div>`;
-      });
-      outBox.innerHTML = html;
-    };
-
-    window.runWings = function() {
-      const val = document.getElementById('wingInput').value || "Badshah";
-      const outBox = document.getElementById('wingOut');
-      const wings = [...new Set([`꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`, `★·.·´¯\`·.·★ ${val} ★·.·´¯\`·.·★`])];
-      let html = "";
-      wings.forEach(w => {
-        html += `<div class="tool-list-row"><div class="tool-list-text">${w}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(w)}', 'Wing Copied!')">Copy</button></div>`;
-      });
-      outBox.innerHTML = html;
-    };
-
-    window.runZalgo = function() {
-      const val = document.getElementById('zInput').value;
-      const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352'];
-      document.getElementById('zOut').innerText = val.split('').map(c => c + z[Math.floor(Math.random()*z.length)]).join('');
-    };
-
-    window.openPolicyModal = function(type) {
-      const title = document.getElementById('legalModalTitle');
-      const body = document.getElementById('legalModalBody');
-      
-      if(type === 'about') {
-        title.innerText = "About InstaVibe Ultimate";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">Welcome to <strong>InstaVibe Ultimate</strong>, India's most advanced and entirely free Creator Suite.</p>
-          <p style="margin-bottom:15px;"><strong>Our Mission:</strong> We aim to empower millions of social media creators, gamers, and influencers by providing them with premium, 100% unique profile aesthetics without any paywalls or annoying ads.</p>
-          <ul style="margin-left: 20px; margin-bottom: 15px; color:#94a3b8;">
-            <li>🧠 Live Google Gemini AI Integration</li>
-            <li>🔄 Mathematical Zero-Repeat Engine</li>
-            <li>💎 Manually Curated VIP Bios</li>
-          </ul>
-        `;
-      } 
-      else if(type === 'privacy') {
-        title.innerText = "Privacy Policy";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">At InstaVibe Ultimate, your privacy is our top priority. We believe in a transparent and secure user experience.</p>
-          <p style="margin-bottom:10px;"><strong>1. Data Collection:</strong> We do NOT collect, store, or sell any personal data.</p>
-          <p style="margin-bottom:10px;"><strong>2. Analytics:</strong> We use Google Analytics solely to understand general traffic trends to improve our servers.</p>
-          <p style="margin-bottom:10px;"><strong>3. AI Usage:</strong> The keywords you enter into our AI Generator are processed temporarily via secure Cloudflare Workers.</p>
-        `;
-      } 
-      else if(type === 'terms') {
-        title.innerText = "Terms & Conditions";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">By accessing InstaVibe Ultimate, you agree to the following terms of use:</p>
-          <p style="margin-bottom:10px;"><strong>1. Free Usage:</strong> All resources, including VIP Bios, Fonts, Gamer Names, and AI Generations, are 100% free for personal use on Instagram, WhatsApp, Free Fire, BGMI, and other platforms.</p>
-          <p style="margin-bottom:10px;"><strong>2. Prohibited Actions:</strong> You may not use automated scripts or bots to scrape, steal, or bulk-download our database.</p>
-        `;
-      }
-      else if(type === 'contact') {
-        title.innerText = "Contact Us";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">Have questions, feature requests, or want to collaborate for brand deals? We would love to hear from you!</p>
-          <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); margin-bottom:15px;">
-            <p style="color:var(--gold-mid); font-size:11px; margin-bottom:4px; font-weight:800; text-transform:uppercase;">Developer Email</p>
-            <p style="font-size:16px; font-weight:900; color:#fff;">pintu959546@gmail.com</p>
-          </div>
-          <button class="btn-copy" onclick="copyEncodedText('${encodeURIComponent('pintu959546@gmail.com')}', 'Email Copied!')">📋 Copy Email Address</button>
-        `;
-      }
-
-      document.getElementById('legalModal').style.display = 'flex';
-      document.body.style.overflow = 'hidden'; 
-    }
   </script>
 </body>
 </html>
