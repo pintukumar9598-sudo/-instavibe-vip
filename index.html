@@ -16,7 +16,7 @@
   <!-- STRICT SPLASH SCREEN BLOCKER -->
   <script>
     if (localStorage.getItem('instavibe_welcome_done')) {
-      document.write('<style>#grandWelcome { display: none !important; opacity: 0 !important; visibility: hidden !important; }</style>');
+      document.write('<style>#grandWelcome { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }</style>');
     }
   </script>
 
@@ -44,9 +44,9 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
     
-    body { 
+    body, html { 
       background-color: var(--bg-main); color: var(--text-main); 
-      overflow-x: hidden; padding-bottom: 90px; 
+      overflow-x: hidden; height: 100%; 
       scroll-behavior: smooth; overscroll-behavior-y: none;
       -webkit-font-smoothing: antialiased;
     }
@@ -61,13 +61,13 @@
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
     /* ==========================================================================
-       GRAND WELCOME SCREEN WITH 1-TAP SKIP (ONLY CRACKERS/ROCKETS)
+       GRAND WELCOME SCREEN WITH 1-TAP SKIP (NO SOUND)
        ========================================================================== */
     #grandWelcome {
       position: fixed; inset: 0; z-index: 999999; background: #030508;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 80%);
-      transition: opacity 0.4s ease; cursor: pointer;
+      transition: opacity 0.3s ease; cursor: pointer;
     }
     .gw-logo { font-size: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.8)); animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .gw-title { font-family: 'Cinzel', serif; font-size: 32px; font-weight: 900; color: var(--gold-mid); text-align: center; line-height: 1.4; animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -84,25 +84,25 @@
     @keyframes shootRocket { 0% { transform: translateY(100px) scale(0.5); opacity: 1; } 50% { transform: translateY(-300px) scale(1.5); opacity: 1; } 100% { transform: translateY(-400px) scale(2.5); opacity: 0; } }
 
     /* ==========================================================================
-       2. HEADER (FIXED SCROLL DISPLACEMENT ISSUE)
+       2. HEADER
        ========================================================================== */
     .header-master {
       width: 100%; position: fixed; top: 0; left: 0; background: rgba(3, 5, 8, 0.96);
       backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 14px 20px; display: flex; align-items: center;
-      justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+      justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6); transform: translateZ(0);
     }
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
     .brand-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 23px; font-weight: 900; color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
     .brand-title { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; color: #fff; }
     .header-badge { font-size: 11px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 5px 12px; border-radius: 8px; font-weight: 900; text-transform: uppercase; }
 
-    /* Padding top added so content starts below fixed header perfectly */
-    .app-container { max-width: 600px; margin: 0 auto; padding: 0 14px; padding-top: 85px; }
+    /* Main container padding adjusted to prevent displacement */
+    .app-container { max-width: 600px; margin: 0 auto; padding: 10px 14px 100px; padding-top: 85px; }
 
     /* ==========================================================================
        3. COMPACT CREATOR TOOLS GRID 
        ========================================================================== */
-    .section-title { font-size: 19px; font-weight: 900; margin: 10px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
+    .section-title { font-size: 19px; font-weight: 900; margin: 5px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
     
     .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; transform: translateZ(0); }
     
@@ -130,7 +130,7 @@
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
 
     /* ==========================================================================
-       4. ✨ COLOURFUL SHINE EFFECT ✨
+       4. ✨ COLOURFUL & PREMIUM SHINE EFFECT ✨
        ========================================================================== */
     .colourful-shine { 
       background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f);
@@ -146,7 +146,7 @@
     }
     @keyframes smoothGlow { 0% { background-position: 0% center; } 100% { background-position: -300% center; } }
 
-    /* MASTER RIBBONS & BIO FEED */
+    /* MASTER RIBBONS */
     .master-card { background: linear-gradient(135deg, rgba(20,25,35,0.9), rgba(10,12,18,0.95)); border: 1px solid var(--accent); border-radius: 22px; padding: 25px; position: relative; overflow: hidden; margin: 25px 0; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); }
     .master-ribbon { background: var(--accent); color: #000; font-weight: 900; font-size: 11px; text-transform: uppercase; padding: 6px 35px; position: absolute; top: 20px; right: -30px; transform: rotate(45deg); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.6);}
     .master-title { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
@@ -159,17 +159,34 @@
     }
     .master-btn:active, .btn-copy:active, .tool-btn-copy:active { transform: scale(0.97); background: rgba(255,255,255,0.2); }
 
+    /* BIO FEED */
     .bio-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; transform: translateZ(0); }
     .bio-card { background: var(--card-bg); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 20px; padding: 22px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12); }
     .bio-badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .bio-badge { font-size: 10.5px; font-weight: 900; background: rgba(59,130,246,0.15); color: #60a5fa; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.3); text-transform: uppercase; letter-spacing: 1px;}
     .bio-text { font-size: 15px; line-height: 1.7; color: #f1f5f9; white-space: pre-line; background: rgba(0, 0, 0, 0.4); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 18px; font-weight: 600; }
+    .btn-copy { width: 100%; padding: 14px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s; }
+    .btn-copy:active { background: #f1f5f9; color: #000; transform: scale(0.97); }
 
     /* ==========================================================================
-       5. AI CHAT INTERFACE (FIXED KEYBOARD UI OVERLAP)
+       5. AI CHAT INTERFACE (🔥 FLEXBOX 100dvh ENGINE - 0% GLITCH 🔥)
        ========================================================================== */
-    .chat-container { display: flex; flex-direction: column; padding-bottom: 140px; }
-    .chat-box { padding: 15px; display: flex; flex-direction: column; gap: 12px; margin-bottom: 130px;}
+    #view-aichat {
+      display: none;
+      flex-direction: column;
+      height: calc(100dvh - 75px); /* Matches exact screen size minus header */
+      padding: 0 14px;
+      margin: 0 auto;
+      max-width: 600px;
+      padding-top: 85px; /* Offset for fixed header */
+    }
+    #view-aichat.active {
+      display: flex;
+    }
+
+    .chat-container { display: flex; flex-direction: column; flex: 1; overflow: hidden; position: relative; }
+    .chat-box { flex: 1; overflow-y: auto; padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+    
     .msg-wrapper { display: flex; flex-direction: column; }
     .msg-user { align-self: flex-end; background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; font-size: 14.5px; font-weight: 600; line-height: 1.5; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
     .msg-ai { align-self: flex-start; background: rgba(20,25,35,0.9); border: 1px solid var(--card-border); color: #f8fafc; padding: 14px 18px; border-radius: 18px 18px 18px 4px; max-width: 90%; font-size: 14.5px; font-weight: 500; line-height: 1.6; box-shadow: 0 4px 15px rgba(0,0,0,0.4);}
@@ -181,17 +198,35 @@
     .dot:nth-child(2) { animation-delay: -0.16s; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
+    /* Input Box naturally sits at bottom of flex container, NO position fixed jumps! */
+    .chat-input-area { 
+      width: 100%; 
+      display: flex; 
+      flex-direction: column; 
+      background: rgba(3, 5, 8, 0.98); 
+      border-top: 1px solid var(--card-border); 
+      padding-bottom: 75px; /* Space for bottom nav */
+      transition: padding 0.2s ease;
+    }
+    
+    /* Reclaims bottom space when keyboard opens */
+    body.keyboard-open .chat-input-area {
+      padding-bottom: 15px; 
+    }
+
     .ai-chips-wrap { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none;}
     .ai-chips-wrap::-webkit-scrollbar { display: none; }
     .ai-chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
 
-    /* The Chat Input area starts at bottom 70px (above nav), but JS changes it to 0 when typing */
-    .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: rgba(3, 5, 8, 0.98); border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.2s;}
-    @media (min-width: 600px) { .chat-input-area { left: 50%; transform: translateX(-50%); max-width: 600px; } }
-    
-    .chat-input-row { display: flex; gap: 10px; padding: 12px 15px; }
-    .chat-input { flex: 1; padding: 15px 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 25px; color: #fff; font-size: 16px; outline: none; transition: 0.2s; }
+    .chat-input-row { display: flex; gap: 10px; padding: 5px 15px 10px; }
+    .chat-input { 
+      flex: 1; padding: 15px 20px; 
+      background: rgba(255,255,255,0.1); 
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2); 
+      border-radius: 25px; color: #fff; font-size: 16px; outline: none; transition: 0.2s; 
+    }
     .chat-input:focus { border-color: var(--primary); background: rgba(0,0,0,0.8); }
     .chat-send-btn { background: var(--primary); color: #fff; border: none; width: 52px; height: 52px; border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 15px var(--primary-glow); transition: 0.2s; flex-shrink: 0;}
     .chat-send-btn:active { transform: scale(0.9); }
@@ -207,7 +242,7 @@
     .faq-item.open { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
 
     /* ==========================================================================
-       7. MODALS, TOOL ROWS & CONTACT COPY FIX
+       7. MODALS, TOOL ROWS 
        ========================================================================== */
     .modal-veil { position: fixed; inset: 0; background: rgba(5,8,12,0.98); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 15px; }
     .modal-box { background: #0d1220; border: 1px solid var(--card-border); border-radius: 24px; width: 100%; max-width: 480px; padding: 25px 20px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left;}
@@ -217,8 +252,8 @@
 
     .modal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 20px; outline: none; }
     .tool-list-row { background: rgba(255,255,255,0.04); padding: 16px; border-radius: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.06); position: relative;}
-    .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 65%; padding-right: 10px;}
-    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; }
+    .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 65%; padding-right: 10px; word-break: break-word;}
+    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto;}
     
     .grid-syms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .grid-sym-box { background: rgba(255,255,255,0.05); padding: 22px 10px; text-align: center; border-radius: 16px; font-size: 26px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.2s;}
@@ -233,22 +268,30 @@
     .nav-icon { font-size: 22px; filter: grayscale(100%); transition: 0.2s; }
     .nav-tab.active .nav-icon { filter: grayscale(0%); text-shadow: 0 0 10px rgba(255,255,255,0.5);}
 
+    /* Animation Fix - Proper Transition logic */
     .view-page { display: none; }
-    .view-page.active { display: block; animation: fadeIn 0.3s; }
-    #view-aichat.active { animation: fadeInChat 0.3s; } 
+    .view-page.active { display: block; animation: fadeIn 0.3s ease-out; }
+    #view-aichat.active { display: flex; animation: fadeIn 0.3s ease-out; } 
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
-    @keyframes fadeInChat { from{opacity:0;} to{opacity:1;} }
     
     /* FOOTER */
     footer { text-align: center; padding: 20px 10px 40px; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
     .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
     .footer-links span { color: #cbd5e1; font-weight: 800; font-size: 13px; text-decoration: underline; cursor: pointer;}
     .seo-text-block { text-align: left; padding: 22px; font-size: 12.5px; color: #475569; line-height: 1.7; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;}
+
+    /* EMAIL CONTAINER FIX */
+    .email-container {
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.1); margin-top: 10px;
+    }
+    .email-text { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 15px;}
   </style>
 </head>
 <body>
 
-  <!-- 🔥 GRAND WELCOME OVERLAY (CLICK TO SKIP ANYTIME) 🔥 -->
+  <!-- 🔥 GRAND WELCOME OVERLAY (1 TAP SKIP) 🔥 -->
   <div id="grandWelcome" onclick="closeGrandWelcome()">
     <div class="cracker c1">🎇</div>
     <div class="cracker c2">🎆</div>
@@ -264,7 +307,7 @@
       const gw = document.getElementById('grandWelcome');
       if(gw) {
         gw.style.opacity = '0';
-        setTimeout(() => gw.remove(), 400);
+        setTimeout(() => gw.remove(), 300); // Fast skip
         localStorage.setItem('instavibe_welcome_done', 'true');
       }
     }
@@ -273,18 +316,14 @@
       const gw = document.getElementById('grandWelcome');
       if(gw) {
         gw.style.display = 'flex';
-        // Auto hide after 4 seconds if user doesn't tap
         setTimeout(() => { closeGrandWelcome(); }, 4000);
       }
-    } else {
-      const gw = document.getElementById('grandWelcome');
-      if(gw) gw.remove(); 
     }
   </script>
 
   <div class="bg-ambience"></div><div class="glow-orb glow-1"></div><div class="glow-orb glow-2"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER (FIXED TOP) -->
   <header class="header-master">
     <div class="brand-wrap">
       <div class="brand-icon">亗</div>
@@ -299,7 +338,6 @@
     <main id="view-home" class="view-page active">
       <div class="section-title"><span>🛠 Ultimate Creator Tools</span></div>
       
-      <!-- COMPACT TOOLS GRID WITH HIGHLIGHTED CARDS -->
       <div class="tools-grid">
         <div class="tool-card highlight-tool" onclick="switchPage('aichat')">
           <div class="ai-badge">NEW AI</div>
@@ -346,7 +384,7 @@
       </div>
       <div class="bio-feed" id="mainBioFeed"></div>
 
-      <!-- FAQ SECTION (FULLY PRESERVED) -->
+      <!-- FAQ SECTION -->
       <div class="faq-container">
         <div class="section-title">💡 Frequently Asked Questions</div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -367,7 +405,6 @@
         </div>
       </div>
 
-      <!-- FOOTER WITH SEO PARAGRAPH -->
       <footer id="footer-section">
         <div class="footer-links">
           <span onclick="openPolicyModal('about')">About Us</span>
@@ -382,39 +419,7 @@
         </article>
       </footer>
     </main>
-
-    <!-- FULLSCREEN AI CHAT VIEW -->
-    <main id="view-aichat" class="view-page">
-      <div class="section-title" style="margin-top: 10px;">
-        <span style="display:flex; align-items:center; gap:8px;">🧠 InstaVibe AI Assistant</span>
-        <span class="header-badge" style="padding:4px 8px; font-size:9px;">ONLINE</span>
-      </div>
-      
-      <div class="chat-container">
-        <div class="chat-box" id="chatBox">
-          <div class="msg-wrapper">
-            <div class="msg-ai">
-              Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!
-            </div>
-          </div>
-        </div>
-        
-        <div class="chat-input-area">
-          <div class="ai-chips-wrap">
-            <div class="ai-chip" onclick="triggerAiMode('bio', 'Give me a premium VIP bio')">📝 VIP Bio</div>
-            <div class="ai-chip" onclick="triggerAiMode('tags', 'Give me 30 viral Instagram hashtags')">🔥 Viral Tags</div>
-            <div class="ai-chip" onclick="triggerAiMode('names', 'Suggest unique gaming names')">🎮 Pro Names</div>
-            <div class="ai-chip" onclick="triggerAiMode('caption', 'Write a savage attitude caption')">💬 Captions</div>
-            <div class="ai-chip" onclick="triggerAiMode('emojis', 'Give me aesthetic emoji packs')">🦋 Emojis</div>
-          </div>
-          <div class="chat-input-row">
-            <input type="text" id="chatInput" class="chat-input" placeholder="Message InstaVibe AI..." onkeypress="handleEnter(event)">
-            <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
-          </div>
-        </div>
-      </div>
-    </main>
-
+    
     <!-- CATEGORIES VIEW -->
     <main id="view-categories" class="view-page">
       <div id="cat-grid-container">
@@ -444,22 +449,56 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V29 (THE ULTIMATE EDITION)</div>
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with fixed layout engine, perfect keyboard handling, and Tap-to-Skip Welcome.</p>
-        <div style="background:rgba(0,0,0,0.5); border-radius:18px; padding:22px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
-          <div style="font-size:12.5px; color:#94a3b8; font-weight:800; margin-bottom:10px;">👨‍💻 DEVELOPER EMAIL</div>
-          <div style="font-size:16px; font-weight:900; color:#fff; display: flex; justify-content: space-between; align-items: center; gap: 15px; word-break: break-all;">
-             <span>pintu959546@gmail.com</span>
-             <button class="tool-btn-copy" style="padding: 8px 16px; flex-shrink: 0;" onclick="copyEncodedText(encodeURIComponent('pintu959546@gmail.com'), 'Email Copied!')">Copy</button>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V31 (FLEXBOX CHAT ENGINE)</div>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with fixed layout engine, perfect keyboard handling, and 1-Tap Skip Welcome.</p>
+        
+        <!-- 🔥 EMAIL COPY FORMAT FIXED 🔥 -->
+        <div style="background:rgba(0,0,0,0.5); border-radius:18px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
+          <div style="font-size:11px; color:#94a3b8; font-weight:800; margin-bottom:8px; text-transform:uppercase;">👨‍💻 Developer Email</div>
+          <div class="email-container">
+             <span class="email-text">pintu959546@gmail.com</span>
+             <button class="tool-btn-copy" onclick="copyEncodedText(encodeURIComponent('pintu959546@gmail.com'), 'Email Copied!')">Copy</button>
           </div>
         </div>
       </div>
     </main>
 
-  </div>
+  </div> <!-- /app-container -->
+
+  <!-- 🔥 NEW FULLSCREEN AI CHAT VIEW (OUTSIDE CONTAINER FOR 100dvh FLEXBOX) 🔥 -->
+  <main id="view-aichat" class="view-page">
+    <div class="chat-container" id="chatContainerWrapper">
+      <div class="section-title" style="margin-top: 5px; padding: 0 15px;">
+        <span style="display:flex; align-items:center; gap:8px;">🧠 InstaVibe AI Assistant</span>
+        <span class="header-badge" style="padding:4px 8px; font-size:9px;">ONLINE</span>
+      </div>
+      
+      <div class="chat-box" id="chatBox">
+        <div class="msg-wrapper">
+          <div class="msg-ai">
+            Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!
+          </div>
+        </div>
+      </div>
+      
+      <div class="chat-input-area" id="chatInputArea">
+        <div class="ai-chips-wrap">
+          <div class="ai-chip" onclick="triggerAiMode('bio', 'Give me a premium VIP bio')">📝 VIP Bio</div>
+          <div class="ai-chip" onclick="triggerAiMode('tags', 'Give me 30 viral Instagram hashtags')">🔥 Viral Tags</div>
+          <div class="ai-chip" onclick="triggerAiMode('names', 'Suggest unique gaming names')">🎮 Pro Names</div>
+          <div class="ai-chip" onclick="triggerAiMode('caption', 'Write a savage attitude caption')">💬 Captions</div>
+          <div class="ai-chip" onclick="triggerAiMode('emojis', 'Give me aesthetic emoji packs')">🦋 Emojis</div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" class="chat-input" placeholder="Message InstaVibe AI..." onkeypress="handleEnter(event)">
+          <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <!-- 4 TABS BOTTOM NAVIGATION -->
-  <nav class="bottom-nav">
+  <nav class="bottom-nav" id="bottomNav">
     <div class="nav-tab active" id="tab-home" onclick="switchPage('home')">
       <span class="nav-icon">🏠</span><span>Home</span>
     </div>
@@ -495,27 +534,36 @@
 
   <script>
     /* ==========================================================================
-       KEYBOARD UI FIX FOR AI CHAT (HIDES BOTTOM NAV WHEN TYPING)
+       🔥 KEYBOARD UI FIX (Hide Bottom Nav when Typing) 🔥
        ========================================================================== */
-    document.addEventListener("DOMContentLoaded", () => {
-      const chatInputEl = document.getElementById('chatInput');
-      const bottomNavEl = document.querySelector('.bottom-nav');
-      const chatInputAreaEl = document.querySelector('.chat-input-area');
+    const chatInput = document.getElementById('chatInput');
+    const bottomNav = document.getElementById('bottomNav');
 
-      if (chatInputEl && bottomNavEl && chatInputAreaEl) {
-        chatInputEl.addEventListener('focus', () => {
-          bottomNavEl.style.display = 'none';
-          chatInputAreaEl.style.bottom = '0';
-        });
-        chatInputEl.addEventListener('blur', () => {
-          setTimeout(() => {
-            bottomNavEl.style.display = 'flex';
-            chatInputAreaEl.style.bottom = '70px';
-          }, 100);
-        });
+    chatInput.addEventListener('focus', () => {
+      document.body.classList.add('keyboard-open');
+      // Scroll to bottom immediately when keyboard opens
+      setTimeout(() => {
+        const chatBox = document.getElementById('chatBox');
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 300);
+    });
+
+    chatInput.addEventListener('blur', () => {
+      setTimeout(() => { document.body.classList.remove('keyboard-open'); }, 100);
+    });
+
+    // Handle Window Resize for older Androids
+    window.visualViewport.addEventListener("resize", () => {
+      if (window.visualViewport.height < window.innerHeight - 100) {
+        document.body.classList.add('keyboard-open');
+      } else {
+        document.body.classList.remove('keyboard-open');
       }
     });
 
+    /* ==========================================================================
+       UTILITIES & ROUTING
+       ========================================================================== */
     window.closeAllModals = function() {
       const tModal = document.getElementById('toolsModal');
       if(tModal) tModal.style.display = 'none';
@@ -562,7 +610,18 @@
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
       document.getElementById('view-' + pageId).classList.add('active');
       document.getElementById('tab-' + pageId).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      if(pageId !== 'aichat') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Smart Scroll for Chat
+      if(pageId === 'aichat') {
+        setTimeout(() => {
+          const cb = document.getElementById('chatBox');
+          if(cb) cb.scrollTop = cb.scrollHeight;
+        }, 50);
+      }
     }
 
     /* ==========================================================================
@@ -613,11 +672,7 @@
         const res = await fetch(workerUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ 
-            message: text, 
-            history: aiChatMemory,
-            mode: currentAiMode 
-          })
+          body: JSON.stringify({ message: text, history: aiChatMemory, mode: currentAiMode })
         });
         
         if(!res.ok) throw new Error("Network Error");
@@ -679,7 +734,7 @@
     }
 
     /* ==========================================================================
-       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
+       MANUAL DATA ARRAYS
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -702,7 +757,7 @@
       "अकेला चलता हूँ 🚶‍♂️\nशेर की तरह 🦁\nकिसी के बाप का डर नहीं 🚫\nहौसले बुलंद 🦅",
       "शांत हूँ, पर कमज़ोर नहीं 🤫\nवक्त आने पर जवाब दूंगा ⏳\nमेरा ऐटिट्यूड मेरी पहचान 😎\nदुनिया से अलग 🌍",
       "अपनी धुन में मस्त 🎧\nकिसी से कोई मतलब नहीं 🚫\nआवाज़ में दम 🦁\nसीधे रास्ते, टेढ़े लोग 🛤️",
-      "शेर हमेशा अकेला आता है 🦁\nभीड़ तो कुत्तों की होती है 🐕\nअपना रास्ता खुद बनाऊंगा 🛣️️\nमंज़िल दूर है पर मिलेगी ज़रूर 🎯",
+      "शेर हमेशा अकेला आता है 🦁\nभीड़ तो कुत्तों की होती है 🐕\nअपना रास्ता खुद बनाऊंगा 🛣\nमंज़िल दूर है पर मिलेगी ज़रूर 🎯",
       "ज़िद्दी परिंदा 🦅\nउड़ान अभी बाकी है ☁️\nआसमान छूने का इरादा 🌌\nकोई रोक सके तो रोक ले ✋",
       "रॉयल खून 🩸\nनवाबी शौक 🍷\nज़िंदगी अपने उसूलों पर 🔥\nकिसी के आगे झुकना नहीं 🦅",
       "खिलाड़ी हूँ, खेलूंगा तो जीतूंगा 🎲\nहारना मेरी डिक्शनरी में नहीं 🚫\nसिग्मा मेल 🗿\nहसलर 💼"
@@ -715,7 +770,7 @@
       "Not your average girl ⛔\nSavage by nature 😈\nI don't need your approval 💯\nClassy and Fabulous 👠\nCatch flights, not feelings ✈️",
       "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
       "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
-      "Foodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nI need 6 months of vacation 🏖️\nTwice a year 🤪",
+      "Foodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nI need 6 months of vacation 🏖️️\nTwice a year 🤪",
       "Shopping is my cardio 🛍️\nMy bed is my happy place 🛏️\nDon't text, I won't reply 🙅‍♀️\nSingle by choice 😅\nBut not my choice 🤣",
       "Creating my own sunshine ☀️\nPositive Vibes Only ✌\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
       "पापा की परी 🧚‍♀️\nथोड़ी सी नखरेवाली 💅\nDreams big ☁️\nBe yourself ✨",
@@ -735,7 +790,7 @@
       "महाकाल का दीवाना 🔱\nभस्म आरती प्रेमी 💀\nउज्जैन वाले बाबा का आशीर्वाद 🙏\nचिंता नहीं काल की 🕉️\nबम बम भोले 🚩",
       "शिव भक्त ॐ\nत्रिशूल धारी 🔱\nमेरे रोम रोम में शिव हैं 🌿\nदुनिया से कोई मतलब नहीं 🚫\nहर हर महादेव 🙏",
       "काल भी उसका क्या करे ☠️\nजो भक्त हो महाकाल का 👑\nकट्टर हिन्दू 🚩\nशिव की शरण में 🧘‍♂️\nॐ नमः शिवाय ✨",
-      "भोलेनाथ का लाडला ❤️\nशिव शंकर की कृपा 🔱\nजीवन मौत सब勇敢 उनके हाथ ⏳\nजय महाकाल 🙏",
+      "भोलेनाथ का लाडला ❤️\nशिव शंकर की कृपा 🔱\nजीवन मौत सब उनके हाथ ⏳\nजय महाकाल 🙏",
       "शिव ही सत्य है 🕉️\nअघोरी रूप 💀\nत्रिनेत्र धारी 👁️\nबस भोले का नाम काफी है 💯\nहर हर गंगे 🌊",
       "कट्टर हिन्दू 🚩\nदुनिया से कोई मतलब नहीं\nॐ नमः शिवाय 🔱\nजय श्री राम 🙏",
       "भस्म आरती लवर 💀\nकाल भी उसका क्या करे जो भक्त हो महाकाल का\nबम बम भोले 🙏\nमहाकाल सरकार 🔱",
@@ -784,7 +839,7 @@
     ];
 
     const realVipBios = [
-      "Official Account ✔️\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
+      "Official Account ✔\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
       "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
       "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
       "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
@@ -799,25 +854,25 @@
 
     const realLoveBios = [
       "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
-      "Couples Goal 👩‍❤‍‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
+      "Couples Goal 👩‍‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
       "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
       "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
       "❤ Love is Life\nMy heart beats for you 🥰\nAlways together 👫\nForever Mine 💍",
-      "🌍 You are my world\nLost in your eyes 👁️️\nMy happy place is you 💖\nSoulmates 🔗",
-      "तेरा फितूर ❤️\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
+      "🌍 You are my world\nLost in your eyes 👁\nMy happy place is you 💖\nSoulmates 🔗",
+      "तेरा फितूर ❤\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
       "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
       "तू मेरा है, मैं तेरी हूँ 👩‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
-      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁️\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
+      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁️️\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
     ];
 
     const realFilmyBios = [
       "Don ko pakadna mushkil hi nahi, namumkin hai 😎\nDon 🎬\nKing of my own rules 👑\nStay filmy ✨",
       "Rishte mein toh hum tumhare baap lagte hain 😈\nNaam hai Shahenshah 🔥\nLegendary Vibe 🌟",
       "Main apni favorite hoon 💖\nJab We Met 🌸\nSelf-love is the best love ✨\nStay gorgeous 🦋",
-      "Pushpa, I hate tears 🥀\nAmar Prem 🎬\nLiving life king size 👑\nDil se filmy ❤️",
+      "Pushpa, I hate tears 🥀\nAmar Prem 🎬\nLiving life king size 👑\nDil se filmy ❤",
       "Picture abhi baaki hai mere dost 🎥\nOm Shanti Om ✨\nNever give up on dreams 🚀\nBlockbuster life 🌟",
       "Thappad se darr nahi lagta sahab, pyaar se lagta hai 💔\nDabangg 🎬\nSavage soul 🖤",
-      "Jaa Simran jaa, jee le apni zindagi 🕊️️\nDDLJ 💖\nDreamer & Believer ✨",
+      "Jaa Simran jaa, jee le apni zindagi 🕊\nDDLJ 💖\nDreamer & Believer ✨",
       "Babu moshai, zindagi badi honi chahiye, lambi nahi ⏳\nAnand 🎬\nLiving every moment 🌟",
       "Rahul, naam toh suna hoga 😉\nDil To Pagal Hai ❤️\nCharming & Romantic 🌹",
       "Kabhi kabhi jeetne ke liye kuch haarna bhi padta hai 🎲\nBaazigar 🦅\nHustler 💼",
