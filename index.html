@@ -40,7 +40,6 @@
       --accent: #f59e0b; 
       --gold-mid: #fbbf24;
       --text-main: #f8fafc; --text-muted: #94a3b8;
-      --solid-btn: #1a2233; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -48,7 +47,7 @@
     body, html { 
       background-color: var(--bg-main); color: var(--text-main); 
       overflow-x: hidden; height: 100%; 
-      scroll-behavior: smooth; overscroll-behavior-y: none;
+      scroll-behavior: smooth; 
       -webkit-font-smoothing: antialiased;
     }
 
@@ -93,23 +92,23 @@
        2. HEADER
        ========================================================================== */
     .header-master {
-      width: 100%; position: fixed; top: 0; left: 0; background: #030508; 
+      width: 100%; position: fixed; top: 0; left: 0; background: rgba(3, 5, 8, 0.98); 
       padding: 14px 20px; display: flex; align-items: center;
       justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6);
     }
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
     .brand-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 23px; font-weight: 900; color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
-    .brand-title { font-size: 20px; font-weight: 900; letter-spacing: 0.5px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+    .brand-title { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
     .header-badge { font-size: 11px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 5px 12px; border-radius: 8px; font-weight: 900; text-transform: uppercase; white-space: nowrap;}
 
     .app-container { max-width: 600px; margin: 0 auto; padding: 10px 14px 100px; padding-top: 85px; }
 
     /* ==========================================================================
-       3. COMPACT CREATOR TOOLS GRID (15 TOOLS)
+       3. COMPACT CREATOR TOOLS GRID 
        ========================================================================== */
     .section-title { font-size: 19px; font-weight: 900; margin: 5px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
     
-    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; transform: translateZ(0); }
     
     .tool-card {
       background: var(--card-bg); 
@@ -172,7 +171,7 @@
     .btn-copy:active { background: #f1f5f9; color: #000; transform: scale(0.97); }
 
     /* ==========================================================================
-       5. AI CHAT INTERFACE & THINKING DOTS (SMOOTH SCROLL FIXED)
+       5. AI CHAT INTERFACE & THINKING DOTS
        ========================================================================== */
     .chat-header-title {
         display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 15px; padding: 0 5px; flex-wrap: nowrap;
@@ -182,10 +181,7 @@
     }
 
     .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; height: 100%; position: relative;}
-    
-    /* REMOVED scroll-behavior: smooth for flawless real-time typing scroll */
-    .chat-box { padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; margin-bottom: 80px; }
-    
+    .chat-box { padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; margin-bottom: 80px;}
     .msg-wrapper { display: flex; flex-direction: column; }
     .msg-user { align-self: flex-end; background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; font-size: 14.5px; font-weight: 600; line-height: 1.5; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
     
@@ -205,7 +201,7 @@
 
     .ai-chips-wrap { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none;}
     .ai-chips-wrap::-webkit-scrollbar { display: none; }
-    .ai-chip { background: #1a2233; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
+    .ai-chip { background: var(--solid-btn); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
 
     .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
@@ -219,6 +215,7 @@
     .chat-send-btn:active { transform: scale(0.9); }
     .chat-send-btn.stop-mode { background: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
 
+    /* Keyboard open state classes */
     body.keyboard-open .chat-input-area { bottom: 0 !important; }
     body.keyboard-open .bottom-nav { display: none !important; }
 
@@ -244,7 +241,7 @@
     .modal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 20px; outline: none; }
     .tool-list-row { background: var(--solid-btn); padding: 16px; border-radius: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); position: relative;}
     .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 65%; padding-right: 10px; word-break: break-word;}
-    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 10px;}
+    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; cursor: pointer;}
     
     .grid-syms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .grid-sym-box { background: var(--solid-btn); padding: 22px 10px; text-align: center; border-radius: 16px; font-size: 26px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: 0.2s;}
@@ -301,10 +298,11 @@
       const gw = document.getElementById('grandWelcome');
       if(gw) {
         gw.style.opacity = '0';
-        setTimeout(() => gw.remove(), 300);
+        setTimeout(() => gw.remove(), 300); // Fast skip
         localStorage.setItem('instavibe_welcome_done', 'true');
       }
     }
+
     if (!localStorage.getItem('instavibe_welcome_done')) {
       const gw = document.getElementById('grandWelcome');
       if(gw) {
@@ -316,7 +314,7 @@
 
   <div class="bg-ambience"></div><div class="glow-orb glow-1"></div><div class="glow-orb glow-2"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER (FIXED TOP) -->
   <header class="header-master">
     <div class="brand-wrap">
       <div class="brand-icon">亗</div>
@@ -331,57 +329,58 @@
     <main id="view-home" class="view-page active">
       <div class="section-title"><span>🛠 Ultimate Creator Tools</span></div>
       
+      <!-- COMPACT TOOLS GRID WITH 15 TOOLS -->
       <div class="tools-grid">
         <div class="tool-card highlight-tool" onclick="switchPage('aichat')">
           <div class="ai-badge">NEW AI</div>
           <div class="tool-icon">🧠</div><div class="tool-name">AI Assistant</div><div class="tool-sub">Live Talk</div>
         </div>
-        <div class="tool-card highlight-tool" onclick="openToolModal('fonts')">
+        <div class="tool-card highlight-tool" onclick="window.openToolModal('fonts')">
           <div class="tool-icon">🔤</div><div class="tool-name">Fancy Fonts</div><div class="tool-sub">Premium</div>
         </div>
-        <div class="tool-card highlight-tool" onclick="openToolModal('gamer')">
+        <div class="tool-card highlight-tool" onclick="window.openToolModal('gamer')">
           <div class="gamer-tag">PRO</div>
           <div class="tool-icon">🎮</div><div class="tool-name">Gamer Names</div><div class="tool-sub">Zero Repeat</div>
         </div>
         
-        <div class="tool-card" onclick="openToolModal('quickbio')">
+        <div class="tool-card" onclick="window.openToolModal('quickbio')">
           <div class="tool-icon">🎲</div><div class="tool-name">Quick Bio</div><div class="tool-sub">1-Click Fast</div>
         </div>
         <div class="tool-card" onclick="copyEncodedText(encodeURIComponent('ㅤ'), 'Blank Space Copied!')">
           <div class="tool-icon">👻</div><div class="tool-name">Blank Space</div><div class="tool-sub">Invisible Line</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('hashtags')">
+        <div class="tool-card" onclick="window.openToolModal('hashtags')">
           <div class="tool-icon">#️⃣</div><div class="tool-name">Viral Tags</div><div class="tool-sub">Reels Reach</div>
         </div>
 
-        <div class="tool-card" onclick="openToolModal('emojis')">
+        <div class="tool-card" onclick="window.openToolModal('emojis')">
           <div class="tool-icon">🦋</div><div class="tool-name">Aesthetic</div><div class="tool-sub">Unique Emoji</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('symbols')">
+        <div class="tool-card" onclick="window.openToolModal('symbols')">
           <div class="tool-icon">⚔️</div><div class="tool-name">Rare Icons</div><div class="tool-sub">VIP Glyphs</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('dividers')">
+        <div class="tool-card" onclick="window.openToolModal('dividers')">
           <div class="tool-icon">📐</div><div class="tool-name">Bio Dividers</div><div class="tool-sub">Clean Lines</div>
         </div>
 
-        <div class="tool-card" onclick="openToolModal('wings')">
+        <div class="tool-card" onclick="window.openToolModal('wings')">
           <div class="tool-icon">✨</div><div class="tool-name">VIP Wings</div><div class="tool-sub">Name Borders</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('zalgo')">
+        <div class="tool-card" onclick="window.openToolModal('zalgo')">
           <div class="tool-icon">🕷️</div><div class="tool-name">Zalgo Glitch</div><div class="tool-sub">Hacker Text</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('textart')">
+        <div class="tool-card" onclick="window.openToolModal('textart')">
           <div class="tool-icon">🖼️</div><div class="tool-name">Text Arts</div><div class="tool-sub">ASCII Faces</div>
         </div>
 
         <!-- NEW TOOLS -->
-        <div class="tool-card" onclick="openToolModal('numbers')">
+        <div class="tool-card" onclick="window.openToolModal('numbers')">
           <div class="tool-icon">🔢</div><div class="tool-name">VIP Numbers</div><div class="tool-sub">Font Styles</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('bullets')">
+        <div class="tool-card" onclick="window.openToolModal('bullets')">
           <div class="tool-icon">🔘</div><div class="tool-name">Pro Bullets</div><div class="tool-sub">List Makers</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('quotes')">
+        <div class="tool-card" onclick="window.openToolModal('quotes')">
           <div class="tool-icon">💬</div><div class="tool-name">Bio Quotes</div><div class="tool-sub">Best Lines</div>
         </div>
       </div>
@@ -412,13 +411,12 @@
         </div>
       </div>
 
-      <!-- FOOTER LINKS FIXED -->
       <footer id="footer-section">
         <div class="footer-links">
-          <span onclick="openPolicyModal('about')">About Us</span>
-          <span onclick="openPolicyModal('privacy')">Privacy Policy</span>
-          <span onclick="openPolicyModal('terms')">Terms & Conditions</span>
-          <span onclick="openPolicyModal('contact')">Contact Us</span>
+          <span onclick="window.openPolicyModal('about')">About Us</span>
+          <span onclick="window.openPolicyModal('privacy')">Privacy Policy</span>
+          <span onclick="window.openPolicyModal('terms')">Terms & Conditions</span>
+          <span onclick="window.openPolicyModal('contact')">Contact Us</span>
         </div>
         <p>© 2026 InstaVibe Ultimate. All Rights Reserved.</p>
         
@@ -490,7 +488,7 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V36 (THE MASTERPIECE)</div>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V38 (THE MASTERPIECE)</div>
         <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. No repeating bios, fully responsive UI, Smart AI Engine, and 15 Mega Tools.</p>
         
         <div style="background:#0a0d14; border-radius:18px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
@@ -505,7 +503,7 @@
 
   </div> <!-- /app-container -->
 
-  <!-- BOTTOM NAVIGATION -->
+  <!-- 4 TABS BOTTOM NAVIGATION -->
   <nav class="bottom-nav" id="bottomNav">
     <div class="nav-tab active" id="tab-home" onclick="switchPage('home')">
       <span class="nav-icon">🏠</span><span>Home</span>
@@ -521,7 +519,7 @@
     </div>
   </nav>
 
-  <!-- MODALS FOR POLICY & TOOLS -->
+  <!-- MODALS -->
   <div class="modal-veil" id="toolsModal">
     <div class="modal-box">
       <div class="modal-close" onclick="closeAllModals()">✕</div>
@@ -530,7 +528,6 @@
     </div>
   </div>
 
-  <!-- FIXED LEGAL MODAL -->
   <div class="modal-veil" id="legalModal">
     <div class="modal-box">
       <div class="modal-close" onclick="closeAllModals()">✕</div>
@@ -541,7 +538,6 @@
 
   <div class="toast" id="globalToast">Copied!</div>
 
-  <!-- ALL SCRIPTS (NOTHING REMOVED) -->
   <script>
     /* ==========================================================================
        KEYBOARD UI FIX 
@@ -648,7 +644,7 @@
     }
 
     /* ==========================================================================
-       🔥 SMART AI CHATBOT LOGIC (STOP BUTTON + ANIMATED THINKING + REALTIME SCROLL FIX) 🔥
+       🔥 SMART AI CHATBOT LOGIC (LIVE SCROLL & OFFLINE FALLBACK) 🔥
        ========================================================================== */
     let aiChatMemory = []; 
     let currentAiMode = "chat";
@@ -762,13 +758,19 @@
 
       aiAbortController = new AbortController();
 
+      // 🔥 Added Secret Salt in payload to bypass repetition
+      const secretSalt = Math.floor(Math.random() * 99999);
+      const payloadText = text + ` [Secret ID: ${secretSalt} - Generate 100% unique & fresh content]`;
+
+      let aiResponseText = "";
+
       try {
         const workerUrl = "https://divine-bush-fa24.rangiladevi9598.workers.dev/"; 
 
         const res = await fetch(workerUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text, history: aiChatMemory, mode: currentAiMode }),
+          body: JSON.stringify({ message: payloadText, history: aiChatMemory, mode: currentAiMode }),
           signal: aiAbortController.signal
         });
         
@@ -778,79 +780,93 @@
         const data = await res.json();
         if(data.error) throw new Error(data.error);
 
-        let formattedReply = formatChatText(data.reply);
-        let safeB64 = btoa(unescape(encodeURIComponent(data.reply)));
-        
-        let copyBtn = '';
-        if(data.reply.length > 10) {
-            copyBtn = `<div style="margin-top:10px;"><button class="tool-btn-copy" onclick="copyB64Text('${safeB64}', 'Copied!')">📋 Copy Text</button></div>`;
-        }
-
-        const targetDiv = document.getElementById(loadingId);
-        targetDiv.innerHTML = `<div class="msg-ai" id="text-${loadingId}"></div>`;
-        const typeContainer = document.getElementById(`text-${loadingId}`);
-
-        let cursor = 0;
-        let currentHTML = "";
-        
-        // Typing effect with instant auto-scroll
-        function type() {
-            if(!isAiGenerating) return; 
-            
-            if (cursor < formattedReply.length) {
-                let char = formattedReply[cursor];
-                if (char === '<') {
-                    let tagEnd = formattedReply.indexOf('>', cursor);
-                    if (tagEnd !== -1) {
-                        currentHTML += formattedReply.substring(cursor, tagEnd + 1);
-                        cursor = tagEnd + 1;
-                    } else {
-                        currentHTML += char; cursor++;
-                    }
-                    type(); 
-                } else {
-                    currentHTML += char; cursor++;
-                    typeContainer.innerHTML = currentHTML;
-                    // Auto-scroll while typing (Works perfectly without CSS smooth scroll)
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                    typeWriterTimeout = setTimeout(type, 15); 
-                }
-            } else {
-                if (copyBtn) {
-                    typeContainer.innerHTML += copyBtn;
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                }
-                
-                aiChatMemory.push({ role: "user", text: text });
-                aiChatMemory.push({ role: "ai", text: data.reply });
-                if(aiChatMemory.length > 10) aiChatMemory = aiChatMemory.slice(-10);
-                
-                resetAiInputState();
-            }
-        }
-        type();
+        aiResponseText = data.reply;
 
       } catch(e) {
         clearInterval(thinkingInterval);
-        if(e.name === 'AbortError') {
-            console.log('Fetch aborted by user');
+        if(e.name === 'AbortError') return;
+
+        // 🔥 SMART OFFLINE FALLBACK (Prevents Connection Failed Error for tools) 🔥
+        if (currentAiMode === 'tags') {
+           aiResponseText = "🔥 Here are some Viral Tags:\n#viral #reels #explore #trending #instagram #reelsindia #attitude #sigmarule #foryou #foryoupage #viralvideos";
+        } else if (currentAiMode === 'names') {
+           aiResponseText = "🎮 Pro Names for you:\n1. 亗 ＲＯＭＥＯ 亗\n2. 乂 ＫＩＬＬＥＲ 乂\n3. ๖ۣۜD E V I L ࿐\n4. 【 ＰＲＯ 】\n5. ☠️️ ＢＯＳＳ ☠️";
+        } else if (currentAiMode === 'emojis') {
+           aiResponseText = "🦋 Fresh Aesthetic Emojis:\n1. 🧿🤍✨\n2. 🍷🔥👑\n3. 💀🖤⛓️\n4. 🧸🎀💖\n5. 🥂🍾💎";
+        } else if (currentAiMode === 'bio') {
+           aiResponseText = "👑 Premium VIP Bio:\n\nAttitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯\nWelcome to my profile 🖤";
+        } else if (currentAiMode === 'caption') {
+           aiResponseText = "💬 Savage Caption:\n\nSilence is my loudest scream ⚡\nToo glam to give a damn 💅\nHustle hard, shine harder 💎";
         } else {
-            const errorDiv = document.getElementById(loadingId);
-            if(errorDiv) {
-              errorDiv.innerHTML = `
-                <div class="msg-ai error-msg">
-                   ⚠️ Connection failed! Please check your network or try again later.
-                </div>
-              `;
-            }
-            resetAiInputState();
+           const errorDiv = document.getElementById(loadingId);
+           if(errorDiv) {
+             errorDiv.innerHTML = `<div class="msg-ai error-msg">⚠️ Server is busy right now! Please try again later.</div>`;
+           }
+           resetAiInputState();
+           return;
         }
       }
+
+      let formattedReply = formatChatText(aiResponseText);
+      let safeB64 = btoa(unescape(encodeURIComponent(aiResponseText)));
+      
+      let copyBtn = '';
+      if(aiResponseText.length > 10) {
+          copyBtn = `<div style="margin-top:10px;"><button class="tool-btn-copy" onclick="copyB64Text('${safeB64}', 'Copied!')">📋 Copy Text</button></div>`;
+      }
+
+      const targetDiv = document.getElementById(loadingId);
+      targetDiv.innerHTML = `<div class="msg-ai" id="text-${loadingId}"></div>`;
+      const typeContainer = document.getElementById(`text-${loadingId}`);
+
+      let cursor = 0;
+      let currentHTML = "";
+      
+      function type() {
+          if(!isAiGenerating) return; 
+          
+          if (cursor < formattedReply.length) {
+              let char = formattedReply[cursor];
+              if (char === '<') {
+                  let tagEnd = formattedReply.indexOf('>', cursor);
+                  if (tagEnd !== -1) {
+                      currentHTML += formattedReply.substring(cursor, tagEnd + 1);
+                      cursor = tagEnd + 1;
+                  } else {
+                      currentHTML += char; cursor++;
+                  }
+                  type(); 
+              } else {
+                  currentHTML += char; cursor++;
+                  typeContainer.innerHTML = currentHTML;
+                  
+                  // 🔥 FLAWLESS LIVE SCROLL FIX (Using requestAnimationFrame) 🔥
+                  requestAnimationFrame(() => {
+                      chatBox.scrollTop = chatBox.scrollHeight + 100;
+                  });
+
+                  typeWriterTimeout = setTimeout(type, 15); 
+              }
+          } else {
+              if (copyBtn) {
+                  typeContainer.innerHTML += copyBtn;
+                  chatBox.scrollTop = chatBox.scrollHeight;
+              }
+              
+              aiChatMemory.push({ role: "user", text: text });
+              aiChatMemory.push({ role: "ai", text: aiResponseText });
+              if(aiChatMemory.length > 10) aiChatMemory = aiChatMemory.slice(-10);
+              
+              resetAiInputState();
+          }
+      }
+      type();
+
       currentAiMode = "chat"; 
     }
 
     /* ==========================================================================
-       🔥 MASSIVE MANUAL DATA ARRAYS (EXTRA ADDED) 🔥
+       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -858,7 +874,7 @@
       "Attitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯\nWelcome to my profile 🖤",
       "Desi Munda 🔥\nBorn to Express, Not to Impress 💯\nMusic Lover 🎧\nFriends call me Bhai 🤝\nNo DMs without business 📩",
       "I am a winner, not a loser 🏆\nBig Dreamer ☁️\nPhotography is an art 📸\nRespect for all, Fear for none 🦅\nMake your own luck 🎲",
-      "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡\nOfficial Account ✔️️",
+      "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡\nOfficial Account ✔️",
       "Branded Kamina 🔥\nFlirting is my hobby 😉\nStill searching for my Queen 👑\nRule breaker ⛔\nZindagi apne hisaab se jita hu 🍷",
       "Kattar Hindu 🚩\nJai Shree Ram 🙏\nBhagwa Rang 🧡\nRespect Girls 👸\nProud to be Indian 🇮🇳",
       "VIP Profile 💎\nInbuilt Attitude 😎\nBiker Boy 🏍\nLife is a game, I'm the player 🎮\nWatch me win 📈",
@@ -880,7 +896,11 @@
       "Sher ki bhukh aur hamara look... 🦁\nDono jaanlewa hain 🔥\nRules breaker 🚫\nDesi Swag 😎",
       "Hustle daily 💯\nTalk less, act more 🤫\nGym rat 💪\nFocused on my empire 🏰",
       "खेल अपनी जगह है 🎲\nऔर हम अपनी जगह 👑\nजो हमसे टकराएगा 💥\nसीधा चूर हो जाएगा ☠️",
-      "दुश्मन चाहे कितने भी हों 🦅\nरुकना मेरी फितरत में नहीं 🚫\nआग लगा देंगे इस शहर में 🔥\nअगर बात हमारी इज्ज़त पर आई 🩸"
+      "दुश्मन चाहे कितने भी हों 🦅\nरुकना मेरी फितरत में नहीं 🚫\nआग लगा देंगे इस शहर में 🔥\nअगर बात हमारी इज्ज़त पर आई 🩸",
+      "King by blood 🩸\nRule by nature 👑\nSilent killer 🤫\nNever back down 💯",
+      "Aag jalane ka shauk nahi 🔥\nHumari aukaat dekh kar log jal jate hain 😎\nAttitude level: Infinity ♾️",
+      "Game changer 🎲\nRule maker 📝\nHistory creator 📚\nBorn to be wild 🦅",
+      "Sher ka shikar koi nahi kar sakta 🦁\nKutta kabhi sher nahi ban sakta 🐕\nApni duniya ka don 👑"
     ];
 
     const realGirlsBios = [
@@ -905,7 +925,9 @@
       "Sassy but classy 💅\nCaffeine dependent ☕\nShopping is my therapy 🛍️\nNot your babydoll 🙅‍♀️",
       "Makeup & Heels 👠\nDrama queen 👑\nLiving my best life ✨\nToo glam to give a damn 💖",
       "Papa ki pari nahi 🚫\nPapa ki sherni 🦁\nFearless & Flawless 💅\nRule breaker ✨",
-      "Glowing and growing ✨\nFocused on myself 🧘‍♀️\nProtecting my peace 🌿\nBlessed 🙏"
+      "Glowing and growing ✨\nFocused on myself 🧘‍♀️\nProtecting my peace 🌿\nBlessed 🙏",
+      "Elegance is an attitude ✨\nBeauty with brains 🧠\nClassy and fabulous 👠\nNever basic 💅",
+      "Smile is the best makeup 😊\nPositive aura 🌻\nLiving in my own fairytale 🏰\nHappy soul 🦋"
     ];
 
     const realMahakalBios = [
@@ -925,7 +947,9 @@
       "मेरे रक्षक महाकाल 🔱\nमेरे गुरु महादेव 🕉️\nमैं उनका दास 🙏\nहर हर महादेव 🚩",
       "नीलकंठ के पुजारी 🕉️\nशमशान जिनकी बस्ती 💀\nमहाकाल के दीवाने 🔱\nजय भोलेनाथ 🙏",
       "Bholenath ka bhakt 🙏\nMahakal ki kripa 🔱\nBhasm aarti 💀\nHar Har Mahadev 🚩",
-      "Shivansh 🕉️\nKattar Hindu 🚩\nOm Namah Shivay ✨\nMahakal lover 🖤"
+      "Shivansh 🕉️\nKattar Hindu 🚩\nOm Namah Shivay ✨\nMahakal lover 🖤",
+      "भक्ति में ही शक्ति है 🙏\nशिव मेरे प्राण हैं 🔱\nमहाकाल की जय 🚩\nॐ ॐ ॐ ॐ",
+      "ना डर है ना खौफ है 🚫\nमहाकाल का शौक है 💀\nबम भोले बम बम 🔱"
     ];
 
     const realSadBios = [
@@ -944,7 +968,9 @@
       "मुस्कुराना आदत है मेरी 😊\nपर दिल में दर्द छुपा है 🥀\nकोई अपना नहीं 🚫\nसिर्फ तन्हाई 🌌",
       "अधूरे ख्वाब ☁️\nसूनी आँखें 👁️\nदर्द ही अब मेरा साथी है 🖤\nअकेलापन 🥀",
       "जिंदगी एक सज़ा सी बन गई है ⏳\nहर पल एक दर्द है 💔\nखामोशी मेरी भाषा है 🤫\nटूटा हुआ इंसान 🎭",
-      "Dil toota hai, saansein nahi 💔\nSmiling outside, dead inside 🥀\nFake world 🌍\nTrust issues 🚫"
+      "Dil toota hai, saansein nahi 💔\nSmiling outside, dead inside 🥀\nFake world 🌍\nTrust issues 🚫",
+      "Pain is my only friend 🥀\nLost in the darkness 🌑\nBroken pieces 🧩\nSilent sufferer 🤫",
+      "मोहब्बत एक धोखा है 💔\nअब किसी से कोई उम्मीद नहीं 🚫\nअकेलापन ही मेरा सच है 🥀\nदर्द भरी शामें 🌇"
     ];
 
     const realFunnyBios = [
@@ -963,12 +989,13 @@
       "My life is a joke 🤡\nBut I am not laughing 😂\nJust eating and sleeping 🍔\nDon't expect anything from me 🚫",
       "Main itna single hu ki... 🤪\nMeri chai bhi single patti ki hai ☕\nProfessional nalla 😂",
       "Socha tha patla hounga... 🍔\nPar khana bahut tasty tha 🍕\nDieting starts tomorrow 😅",
-      "Study is my passion... 📚\nBut today is Sunday 😴\nNetflix & Chill 📺\nBye world 👋"
+      "Study is my passion... 📚\nBut today is Sunday 😴\nNetflix & Chill 📺\nBye world 👋",
+      "Paida toh main legend hua tha 👑\nPar baad mein aalas aa gaya 😴\nExpert in doing nothing 🏆\nLazy Boy 😂"
     ];
 
     const realVipBios = [
       "Official Account ✔\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
-      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
+      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
       "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
       "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
       "Future Billionaire 💼\nMoney talks, wealth whispers 💸\nLink in bio 🔗\nStay focused 🎯",
@@ -978,7 +1005,8 @@
       "नवाबी शौक 🍷\nशाही अंदाज़ 👑\nपैसे की नहीं, इज़्ज़त की भूख 💯\nमेरा रुतबा मेरी पहचान 🔥",
       "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
       "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚",
-      "CEO 💼\nMaking millions 💸\nHustle 24/7 🚀\nPrivate life, Happy life 🤫"
+      "CEO 💼\nMaking millions 💸\nHustle 24/7 🚀\nPrivate life, Happy life 🤫",
+      "Royal Blood 🩸\nElite Class 👑\nLiving my dreams ☁️\nNo compromise 🚫\nOnly luxury 💎"
     ];
 
     const realLoveBios = [
@@ -991,7 +1019,8 @@
       "तेरा फितूर ❤\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
       "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
       "तू मेरा है, मैं तेरी हूँ 👩‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
-      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
+      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖",
+      "You + Me = Everything 🌍\nLove birds 🕊️\nForever yours 💍\nEndless love ❤️"
     ];
 
     const realFilmyBios = [
@@ -1010,10 +1039,10 @@
       "Mogambo khush hua 😈\nMr. India 🎬\nSpreading smiles 😊",
       "Ek chutki sindoor ki keemat tum kya jano Ramesh babu 💅\nOm Shanti Om ✨\nDrama Queen 👑",
       "All is well 💯\n3 Idiots 🎬\nStaying positive 🌟",
-      "Mogambo khush hua 😈\nFilmy keeda 🍿\nBollywood is life 🎬\nDrama in my veins 🎭"
+      "Mogambo khush hua 😈\nFilmy keeda 🍿\nBollywood is life 🎬\nDrama in my veins 🎭",
+      "Bade bade deshon mein aisi choti choti baatein hoti rehti hain 🌍\nDDLJ 💖\nAlways chill 😎\nRomantic hero 🌹"
     ];
 
-    // NOTE: Strict iteration without loop repetition
     function populateBios(arr, category, isAura = false) {
       arr.forEach(text => masterBiosObj.push({ category: category, text: text, isAura: isAura }));
     }
@@ -1184,7 +1213,7 @@
         title.innerText = "🦋 Unique Emoji Sets";
         const ems = [...new Set([
           "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", 
-          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂💪🔥",
+          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂💪🔥",
           "🍔🍟🍕", "🌙💫✨", "📸🌍✈️", "🎵🎧🖤", "😈🔥🔪", "🕊️🤍☁️", "⛓🖤🛹", "🧸🤎📜"
         ])]; 
         html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
@@ -1211,6 +1240,32 @@
         ])];
         divs.forEach(d => { html += `<div class="tool-list-row" style="flex-direction:column; gap:10px; text-align:center;"><div class="tool-list-text" style="max-width:100%; font-size:16px;">${d}</div><button class="btn-copy" style="padding:10px; background:rgba(255,255,255,0.1); border:none;" onclick="copyEncodedText('${encodeURIComponent(d)}', 'Divider Copied!')">Copy</button></div>`; });
       }
+      else if(toolType === 'captions') {
+        title.innerText = "🔥 Trending Captions Database";
+        const caps = [...new Set([
+          "Silence is my loudest scream ⚡", "Too glam to give a damn 💅", "Hustle hard, shine harder 💎", 
+          "शेर जब शिकार करता है 🦁", "Not lucky, just obsessed 🚀", "अकेला ही काफी हूँ 🚶‍♂️", 
+          "Catch flights, not feelings ✈️", "My vibe is a product of my hustle 💼",
+          "Zindagi jhand ba, fir bhi ghamand ba 🤪", "Success doesn't come from what you do occasionally 📈",
+          "Pain is temporary, Pride is forever 🦁", "We ignore the ones who adore us 🥀",
+          "Creating my own sunshine ☀️", "I am my own biggest competition 🪞", "Focus on goals, not holes 👁️"
+        ])];
+        caps.forEach(c => {
+          html += `<div class="tool-list-row"><div class="tool-list-text">${c}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(c)}', 'Caption Copied!')">Copy</button></div>`;
+        });
+      }
+      else if(toolType === 'wings') {
+        title.innerText = "✨ VIP Name Decorator";
+        html = `<input type="text" id="wingInput" class="modal-input" placeholder="Enter your name..." value="Badshah" oninput="runWings()"><div id="wingOut" style="display:flex; flex-direction:column; gap:10px;"></div>`;
+      }
+      else if(toolType === 'zalgo') {
+        title.innerText = "🕷️ Zalgo Glitch Hacker Text";
+        html = `
+          <input type="text" id="zInput" class="modal-input" placeholder="Type text..." value="Hacker Boy" oninput="runZalgo()">
+          <div id="zOut" style="background:rgba(0,0,0,0.5); padding:20px; border-radius:14px; font-size:28px; text-align:center; text-shadow:2px 0 red, -2px 0 cyan; margin-bottom:15px; font-weight:900;">Hacker Boy</div>
+          <button class="btn-copy" style="background:var(--insta-grad); border:none;" onclick="copyEncodedText(encodeURIComponent(document.getElementById('zOut').innerText), 'Glitch Copied!')">Copy Glitch</button>
+        `;
+      }
       else if(toolType === 'textart') {
         title.innerText = "🖼 ASCII Text Arts";
         const artsData = [
@@ -1221,6 +1276,9 @@
           { a: "o()xxxx[{::::::::::::::::::>", tag: "PRO ⚔️" },
           { a: "      ♡♡♡\n   ♡♡♡♡♡\n   ♡♡♡♡♡\n     ♡♡♡\n       ♡", tag: "PREMIUM ✨" },
           { a: "  |\\__/,|   (`\\\n_.|o o  |_   ) )\n-(((---(((--------", tag: "CUTE 🐈" },
+          { a: " /\\_/\\\n( o.o )\n > ^ <", tag: "KITTEN 🐱" },
+          { a: " ʕ•ᴥ•ʔ", tag: "BEAR 🐻" },
+          { a: " /| ________________\nO|===|* >________________>\n \\|", tag: "SWORD ⚔️" },
           { a: "    /\\\n   /  \\\n  /____\\\n   |  |\n   |__|", tag: "MASTER 🏆" },
           { a: "  █████  \n ██   ██ \n ███████ \n ██   ██ ", tag: "AURA ⚜️" },
           { a: "̿̿ ̿̿ ̿̿ ̿'̿'\\̵͇̿̿\\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿", tag: "GANGSTER 🔥" }
@@ -1251,7 +1309,7 @@
         html = `<div style="color:#94a3b8; font-size:13px; margin-bottom:15px; line-height: 1.5;">Create aesthetic bio lists with these rare bullet points. Tap any to copy!</div>`;
         const bullets = [
           "➤", "✦", "✓", "➻", "•", "◈", "❖", "✧", "►", "✰", "❥", "☠", "⚡", "★", "👑", "🥀", 
-          "❁", "⋆", "✣", "⧪", "⍟", "⊛", "➼", "☙"
+          "❁", "⋆", "✣", "⧪", "⍟", "⊛", "➼", "☙", "↬", "⟡", "⌑", "✿", "❀", "✪", "❂", "✗", "✘", "✔", "✅", "✨"
         ];
         html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
         bullets.forEach(b => { html += `<div class="grid-sym-box" style="font-size:20px;" onclick="copyEncodedText('${encodeURIComponent(b)}', 'Bullet Copied!')">${b}</div>`; });
@@ -1273,7 +1331,11 @@
           "Keep your heels, head, and standards high 👠",
           "Silent but deadly 🌪️",
           "Living life on my own terms 📝",
-          "Not lucky, just consistently grinding 🚀"
+          "Not lucky, just consistently grinding 🚀",
+          "Too glam to give a damn 💅",
+          "I'm not short, I'm concentrated awesome 🍬",
+          "Reality called, so I hung up 📞",
+          "Make them stop and stare 👀"
         ];
         quotes.forEach(q => {
           html += `<div class="tool-list-row"><div class="tool-list-text">${q}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(q)}', 'Quote Copied!')">Copy</button></div>`;
@@ -1290,7 +1352,6 @@
       if(toolType === 'numbers') runNumbers();
     }
 
-    /* 🔥 RESTORED ALL MISSING FUNCTIONS 🔥 */
     window.runNumbers = function() {
       const val = document.getElementById('numInput').value || "2026";
       const outBox = document.getElementById('numOut');
@@ -1357,7 +1418,12 @@
     window.runWings = function() {
       const val = document.getElementById('wingInput').value || "Badshah";
       const outBox = document.getElementById('wingOut');
-      const wings = [...new Set([`꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`, `★·.·´¯\`·.·★ ${val} ★·.·´¯\`·.·★`])];
+      const wings = [
+        `꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, 
+        `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`, `★·.·´¯\`·.·★ ${val} ★·.·´¯\`·.·★`,
+        `╰☆☆ ${val} ☆☆╮`, `＊*•̩̩͙✩•̩̩͙*˚ ${val} ˚*•̩̩͙✩•̩̩͙*＊`, `••¤(\`×[ ${val} ]×´)¤••`, 
+        `—(••÷[ ${val} ]÷••)—`, `░▒▓█ ${val} █▓▒░`
+      ];
       let html = "";
       wings.forEach(w => {
         html += `<div class="tool-list-row"><div class="tool-list-text">${w}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(w)}', 'Wing Copied!')">Copy</button></div>`;
@@ -1367,7 +1433,7 @@
 
     window.runZalgo = function() {
       const val = document.getElementById('zInput').value;
-      const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352'];
+      const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352', '\u033c', '\u0342', '\u030a'];
       document.getElementById('zOut').innerText = val.split('').map(c => c + z[Math.floor(Math.random()*z.length)]).join('');
     };
 
@@ -1417,7 +1483,7 @@
       }
 
       document.getElementById('legalModal').style.display = 'flex';
-    }
+    };
   </script>
 </body>
 </html>
