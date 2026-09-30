@@ -13,6 +13,13 @@
     gtag('config', 'G-7BEYQLMCPF');
   </script>
 
+  <!-- STRICT SPLASH SCREEN BLOCKER -->
+  <script>
+    if (localStorage.getItem('instavibe_welcome_done')) {
+      document.write('<style>#splashScreen { display: none !important; opacity: 0 !important; visibility: hidden !important; }</style>');
+    }
+  </script>
+
   <title>InstaVibe Ultimate 亗 - 5000+ VIP Bios & Live AI Chat</title>
   <meta name="theme-color" content="#030508">
   <meta name="description" content="India's #1 Free Creator Suite: Get 5000+ Unique Instagram VIP Bios, Fancy Fonts, Viral Hashtags, and Gemini AI Chatbot.">
@@ -22,7 +29,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* GLOBAL RESET & VARIABLES */
+    /* ==========================================================================
+       1. GLOBAL RESET & VARIABLES
+       ========================================================================== */
     :root {
       --bg-main: #030508;
       --card-bg: rgba(20, 25, 35, 0.95);
@@ -51,45 +60,71 @@
     .glow-1 { top: -100px; left: -100px; background: var(--primary); }
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
-    /* HEADER */
+    /* ==========================================================================
+       2. HEADER
+       ========================================================================== */
     .header-master {
       width: 100%; position: sticky; top: 0; left: 0; background: rgba(3, 5, 8, 0.96);
-      backdrop-filter: blur(15px); padding: 16px 20px; display: flex; align-items: center;
+      backdrop-filter: blur(15px); padding: 14px 20px; display: flex; align-items: center;
       justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6); transform: translateZ(0);
     }
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
-    .brand-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
+    .brand-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 23px; font-weight: 900; color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
     .brand-title { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; color: #fff; }
-    .header-badge { font-size: 11px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 6px 12px; border-radius: 8px; font-weight: 900; text-transform: uppercase; }
+    .header-badge { font-size: 11px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 5px 12px; border-radius: 8px; font-weight: 900; text-transform: uppercase; }
 
-    .app-container { max-width: 600px; margin: 0 auto; padding: 0 14px; padding-top: 10px; }
+    .app-container { max-width: 600px; margin: 0 auto; padding: 0 14px; padding-top: 4px; }
 
-    /* SPLASH SCREEN */
-    #splashScreen {
-      position: fixed; inset: 0; background: var(--bg-main); z-index: 9999;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.4s ease-out; padding: 0 30px; cursor: pointer;
-      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.12) 0%, #030508 70%);
+    /* ==========================================================================
+       3. COMPACT CREATOR TOOLS GRID & HIGHLIGHTED CARDS
+       ========================================================================== */
+    .section-title { font-size: 19px; font-weight: 900; margin: 10px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
+    
+    .tools-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 10px; 
+      margin-bottom: 24px; 
+      transform: translateZ(0); 
     }
-    .splash-logo { font-size: 70px; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.8)); animation: splashPulse 2s infinite ease-in-out; }
-    #splashText { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900; color: var(--gold-mid); text-align: center; line-height: 1.5; white-space: pre-wrap; }
-    .splash-sub { font-size: 14px; color: #94a3b8; margin-top: 15px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
-    @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-
-    /* TOOLS GRID */
-    .section-title { font-size: 20px; font-weight: 900; margin: 15px 0 20px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
-    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 30px; transform: translateZ(0); }
+    
     .tool-card {
       background: linear-gradient(145deg, rgba(35, 42, 55, 0.6), rgba(20, 25, 35, 0.8)); 
-      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 22px 10px; 
-      display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: transform 0.2s; position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08); 
+      border-radius: 18px; 
+      padding: 16px 8px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+      cursor: pointer; 
+      transition: transform 0.2s, border-color 0.2s; 
+      position: relative;
     }
     .tool-card:active { transform: scale(0.94); border-color: var(--primary); }
-    .tool-icon { font-size: 34px; margin-bottom: 10px; text-shadow: 0 5px 15px rgba(0,0,0,0.6); }
-    .tool-name { font-size: 12.5px; font-weight: 900; color: #fff; margin-bottom: 4px; letter-spacing: 0.5px; }
-    .tool-sub { font-size: 10px; color: var(--text-muted); font-weight: 700; }
+    .tool-icon { font-size: 30px; margin-bottom: 7px; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+    .tool-name { font-size: 12px; font-weight: 900; color: #fff; margin-bottom: 3px; letter-spacing: 0.4px; }
+    .tool-sub { font-size: 9.5px; color: var(--text-muted); font-weight: 700; }
 
-    /* 🔥 NEW COLOURFUL SHINE EFFECT 🔥 */
+    /* 🔥 SPECIAL HIGHLIGHTED CARDS (AI, FONTS, GAMERS) 🔥 */
+    .highlight-tool {
+      padding: 18px 8px;
+      transform: scale(1.04);
+      border-color: rgba(139, 92, 246, 0.5);
+      background: linear-gradient(145deg, rgba(50, 40, 75, 0.7), rgba(22, 20, 36, 0.85));
+      box-shadow: 0 0 18px rgba(139, 92, 246, 0.25);
+      z-index: 2;
+    }
+    .highlight-tool:active { transform: scale(0.98); }
+    .highlight-tool .tool-icon { font-size: 36px; margin-bottom: 8px; }
+
+    .ai-badge { position: absolute; top: -6px; right: -6px; font-size: 9px; background: #8b5cf6; color: #fff; padding: 4px 8px; border-radius: 8px; font-weight: 900; text-transform: uppercase; box-shadow: 0 2px 12px rgba(139,92,246,0.6); animation: blinkFast 2s infinite;}
+    .gamer-tag { position: absolute; top: -6px; right: -6px; font-size: 9px; background: #ef4444; color: #fff; padding: 4px 8px; border-radius: 8px; font-weight: 900; text-transform: uppercase; box-shadow: 0 2px 10px rgba(239,68,68,0.5); }
+    @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
+
+    /* ==========================================================================
+       4. ✨ COLOURFUL SHINE EFFECT ✨
+       ========================================================================== */
     .colourful-shine { 
       background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f);
       background-size: 200% auto; 
@@ -99,6 +134,16 @@
       font-weight: 900; 
     }
     @keyframes rainbowShine { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+
+    .premium-shine { 
+      background: linear-gradient(120deg, #fcd34d 0%, #fffbeb 20%, #f59e0b 50%, #fffbeb 80%, #fcd34d 100%);
+      background-size: 300% auto; 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      animation: smoothGlow 6s linear infinite;
+      font-weight: 900; 
+    }
+    @keyframes smoothGlow { 0% { background-position: 0% center; } 100% { background-position: -300% center; } }
 
     /* MASTER RIBBONS */
     .master-card { background: linear-gradient(135deg, rgba(20,25,35,0.9), rgba(10,12,18,0.95)); border: 1px solid var(--accent); border-radius: 22px; padding: 25px; position: relative; overflow: hidden; margin: 25px 0; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); }
@@ -114,10 +159,13 @@
     .bio-badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .bio-badge { font-size: 10.5px; font-weight: 900; background: rgba(59,130,246,0.15); color: #60a5fa; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.3); text-transform: uppercase; letter-spacing: 1px;}
     .bio-text { font-size: 15px; line-height: 1.7; color: #f1f5f9; white-space: pre-line; background: rgba(0, 0, 0, 0.4); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 18px; font-weight: 600; }
+    
     .btn-copy { width: 100%; padding: 14px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s; }
     .btn-copy:active { background: #f1f5f9; color: #000; transform: scale(0.97); }
 
-    /* AI CHAT INTERFACE */
+    /* ==========================================================================
+       5. AI CHAT INTERFACE & THINKING DOTS
+       ========================================================================== */
     .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; }
     .chat-box { padding: 15px; display: flex; flex-direction: column; gap: 12px; }
     .msg-wrapper { display: flex; flex-direction: column; }
@@ -145,7 +193,9 @@
     .chat-send-btn:active { transform: scale(0.9); }
     .ai-typing { font-style: italic; color: #94a3b8; font-size: 13px; margin-top: 5px; }
 
-    /* Q&A / MODALS / NAV */
+    /* ==========================================================================
+       6. Q&A / FAQ SECTION STYLING
+       ========================================================================== */
     .faq-container { margin: 40px 0 20px; }
     .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; margin-bottom: 14px; overflow: hidden; transition: 0.3s; }
     .faq-q { padding: 18px; font-size: 15px; font-weight: 800; color: #fff; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
@@ -153,13 +203,18 @@
     .faq-item.open .faq-a { display: block; }
     .faq-item.open { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
 
+    /* ==========================================================================
+       7. MODALS & OVERLAP FIX
+       ========================================================================== */
     .modal-veil { position: fixed; inset: 0; background: rgba(5,8,12,0.98); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 15px; }
     .modal-box { background: #0d1220; border: 1px solid var(--card-border); border-radius: 24px; width: 100%; max-width: 480px; padding: 25px 20px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left;}
     .modal-close { position: absolute; top: 18px; right: 18px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-weight: 900; cursor: pointer; color: #fff; z-index: 50;}
+    
     #modalTitle, #legalModalTitle { padding-right: 45px; line-height: 1.3; }
+
     .modal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 20px; outline: none; }
     .tool-list-row { background: rgba(255,255,255,0.04); padding: 16px; border-radius: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.06); position: relative;}
-    .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 100%;}
+    .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 65%; padding-right: 10px;}
     .tool-btn-copy { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); padding: 10px 18px; border-radius: 10px; font-weight: 900; font-size: 13px; cursor: pointer; flex-shrink: 0;}
     
     .grid-syms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -168,6 +223,7 @@
 
     .toast { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 14px 35px; border-radius: 99px; font-weight: 900; font-size: 15px; z-index: 5000; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     
+    /* BOTTOM NAVIGATION */
     .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(3, 5, 8, 0.98); border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-around; padding: 12px 0 20px; z-index: 1000; transform: translateZ(0);}
     .nav-tab { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #64748b; font-size: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.2s; flex: 1; text-align: center;}
     .nav-tab.active { color: #fff; transform: translateY(-4px); }
@@ -178,6 +234,7 @@
     .view-page.active { display: block; }
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
     
+    /* FOOTER */
     footer { text-align: center; padding: 20px 10px 40px; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
     .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
     .footer-links span { color: #cbd5e1; font-weight: 800; font-size: 13px; text-decoration: underline; cursor: pointer;}
@@ -186,7 +243,7 @@
 </head>
 <body>
 
-  <!-- 🔥 SPLASH SCREEN (STRICT SCRIPT ADDED TO PREVENT FLASHING) 🔥 -->
+  <!-- SPLASH SCREEN -->
   <div id="splashScreen">
     <div class="splash-logo">亗</div>
     <div id="splashText"></div>
@@ -196,7 +253,7 @@
   <script>
     if (localStorage.getItem('instavibe_welcome_done')) {
       const sp = document.getElementById('splashScreen');
-      if(sp) sp.remove(); // Direct HTML removal to completely prevent flash
+      if(sp) sp.remove(); 
     } else {
       const textEl = document.getElementById('splashText');
       const fullText = "Welcome to\nInstaVibe Ultimate";
@@ -234,15 +291,16 @@
     <main id="view-home" class="view-page active">
       <div class="section-title"><span>🛠 Ultimate Creator Tools</span></div>
       
+      <!-- COMPACT TOOLS GRID WITH 3 HIGHLIGHTED CARDS -->
       <div class="tools-grid">
-        <div class="tool-card" onclick="switchPage('aichat')">
+        <div class="tool-card highlight-tool" onclick="switchPage('aichat')">
           <div class="ai-badge">NEW AI</div>
           <div class="tool-icon">🧠</div><div class="tool-name">AI Assistant</div><div class="tool-sub">Live Talk</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('fonts')">
+        <div class="tool-card highlight-tool" onclick="openToolModal('fonts')">
           <div class="tool-icon">🔤</div><div class="tool-name">Fancy Fonts</div><div class="tool-sub">Premium</div>
         </div>
-        <div class="tool-card" onclick="openToolModal('gamer')">
+        <div class="tool-card highlight-tool" onclick="openToolModal('gamer')">
           <div class="gamer-tag">PRO</div>
           <div class="tool-icon">🎮</div><div class="tool-name">Gamer Names</div><div class="tool-sub">Zero Repeat</div>
         </div>
@@ -280,7 +338,7 @@
       </div>
       <div class="bio-feed" id="mainBioFeed"></div>
 
-      <!-- FAQ SECTION (FULLY PRESERVED) -->
+      <!-- FAQ SECTION -->
       <div class="faq-container">
         <div class="section-title">💡 Frequently Asked Questions</div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -297,11 +355,11 @@
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q"><span>Can I use these for Free Fire/BGMI?</span><span>▾</span></div>
-          <div class="faq-a">Absolutely. Our 'Pro Gamer Names' tool is specifically built with the 'Knife Shine' effect to generate elite gaming IDs utilizing rare glitches and VIP symbols like 亗.</div>
+          <div class="faq-a">Absolutely. Our 'Pro Gamer Names' tool is specifically built with the 'Colourful Shine' effect to generate elite gaming IDs utilizing rare glitches and VIP symbols like 亗.</div>
         </div>
       </div>
 
-      <!-- FOOTER WITH SEO PARAGRAPH -->
+      <!-- FOOTER -->
       <footer id="footer-section">
         <div class="footer-links">
           <span onclick="openPolicyModal('about')">About Us</span>
@@ -326,11 +384,7 @@
       
       <div class="chat-container">
         <div class="chat-box" id="chatBox">
-          <div class="msg-wrapper">
-            <div class="msg-ai">
-              Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!
-            </div>
-          </div>
+          <!-- Chat messages load here via JS -->
         </div>
         
         <div class="chat-input-area">
@@ -377,8 +431,8 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V24 (THE COLOURFUL UPDATE)</div>
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with 100+ Authentic Desi Bios, Real Live AI Chat with Modes, and Premium Holographic effects.</p>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V24 (SMART HIGHLIGHTS)</div>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with highlighted premium tools, Live AI Chat memory, and flawless copying.</p>
         <div style="background:rgba(0,0,0,0.5); border-radius:18px; padding:22px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:12.5px; color:#94a3b8; font-weight:800; margin-bottom:10px;">👨‍💻 DEVELOPER EMAIL</div>
           <div style="font-size:17px; font-weight:900; color:#fff; display: flex; justify-content: space-between; align-items: center;">
@@ -435,6 +489,9 @@
       document.body.style.overflow = '';
     };
 
+    /* ==========================================================================
+       100% BUG-FREE COPY FUNCTION (STRICT URL ENCODING)
+       ========================================================================== */
     window.copyEncodedText = function(encodedText, msg) {
       const text = decodeURIComponent(encodedText);
       if(navigator.clipboard && window.isSecureContext) {
@@ -472,13 +529,57 @@
       document.getElementById('view-' + pageId).classList.add('active');
       document.getElementById('tab-' + pageId).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Smart Scroll: Jump to latest chat message when opening AI Chat
+      if(pageId === 'aichat') {
+        setTimeout(() => {
+          const cb = document.getElementById('chatBox');
+          if(cb) cb.scrollTop = cb.scrollHeight;
+        }, 50);
+      }
     }
 
     /* ==========================================================================
-       AI CHATBOT LOGIC
+       AI CHATBOT LOGIC WITH MEMORY (1-HOUR AUTO DELETE) & COPY BUG FIX
        ========================================================================== */
     let aiChatMemory = []; 
     let currentAiMode = "chat";
+    const CHAT_EXPIRY = 60 * 60 * 1000; // 1 Hour
+
+    // Load Chat on Startup
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTime = localStorage.getItem('instavibe_chat_time');
+      if (savedTime && (Date.now() - savedTime > CHAT_EXPIRY)) {
+        localStorage.removeItem('instavibe_chat_html');
+        localStorage.removeItem('instavibe_chat_memory');
+        localStorage.removeItem('instavibe_chat_time');
+      } else if (savedTime) {
+        const savedHtml = localStorage.getItem('instavibe_chat_html');
+        const savedMem = localStorage.getItem('instavibe_chat_memory');
+        if (savedHtml && savedMem) {
+          document.getElementById('chatBox').innerHTML = savedHtml;
+          aiChatMemory = JSON.parse(savedMem);
+        }
+      }
+
+      // Default message if empty
+      if(!document.getElementById('chatBox').innerHTML.trim()) {
+        document.getElementById('chatBox').innerHTML = `
+          <div class="msg-wrapper">
+            <div class="msg-ai">
+              Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!
+            </div>
+          </div>
+        `;
+      }
+    });
+
+    function saveChat() {
+      const chatHTML = document.getElementById('chatBox').innerHTML;
+      localStorage.setItem('instavibe_chat_html', chatHTML);
+      localStorage.setItem('instavibe_chat_memory', JSON.stringify(aiChatMemory));
+      localStorage.setItem('instavibe_chat_time', Date.now());
+    }
 
     function formatChatText(text) {
       return text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
@@ -504,6 +605,7 @@
       chatBox.innerHTML += `<div class="msg-wrapper"><div class="msg-user">${text}</div></div>`;
       input.value = '';
       chatBox.scrollTop = chatBox.scrollHeight;
+      saveChat(); // Save user message immediately
 
       const loadingId = 'ai-load-' + Date.now();
       
@@ -534,7 +636,9 @@
         if(data.error) throw new Error(data.error);
 
         let formattedReply = formatChatText(data.reply);
-        let safeTxt = encodeURIComponent(data.reply); 
+        
+        // Strict URL Encode and replace single quotes to fix copy bug
+        let safeTxt = encodeURIComponent(data.reply).replace(/'/g, "%27").replace(/"/g, "%22");
         
         let copyBtn = '';
         if(data.reply.length > 20) {
@@ -570,6 +674,7 @@
                     typeContainer.innerHTML += copyBtn;
                     chatBox.scrollTop = chatBox.scrollHeight;
                 }
+                saveChat(); // Save final AI message and copy button
             }
         }
         type();
@@ -588,7 +693,7 @@
     }
 
     /* ==========================================================================
-       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
+       MANUAL DATA ARRAYS
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -600,7 +705,7 @@
       "Branded Kamina 🔥\nFlirting is my hobby 😉\nStill searching for my Queen 👑\nRule breaker ⛔\nZindagi apne hisaab se jita hu 🍷",
       "Kattar Hindu 🚩\nJai Shree Ram 🙏\nBhagwa Rang 🧡\nRespect Girls 👸\nProud to be Indian 🇮🇳",
       "VIP Profile 💎\nInbuilt Attitude 😎\nBiker Boy 🏍️\nLife is a game, I'm the player 🎮\nWatch me win 📈",
-      "हमसे पंगा मत लेना ⚠️\nइतिहास गवाह है 🦁\nजो टकराया वो चूर हुआ ⚔️\nअपना टाइम खुद लाएंगे ⏳\nनाम और पहचान खुद की 👑",
+      "हमसे पंगा मत लेना ⚠️️\nइतिहास गवाह है 🦁\nजो टकराया वो चूर हुआ ⚔️\nअपना टाइम खुद लाएंगे ⏳\nनाम और पहचान खुद की 👑",
       "नवाबों का शहर 🌆\nखून में उबाल 🩸\nदुश्मनों की महफ़िल में 🔥\nजीते हैं शान से 😎\nWelcome to my Area 🛑",
       "खामोशी से तबाही 🌪️\nशेर को सवा शेर 🦁\nहमसे उलझना मौत को दावत 🗡️\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯",
       "औकात की बात मत कर 🚫\nतेरी सोच से बाहर हूँ मैं 🦅\nबुरे वक्त में भी नवाबी शौक 🍷\nसीधा मौत का खेल ☠️\nअकेला और नवाब 🔥",
@@ -620,7 +725,7 @@
       "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
       "Foodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nI need 6 months of vacation 🏖️\nTwice a year 🤪",
       "Shopping is my cardio 🛍️\nMy bed is my happy place 🛏️\nDon't text, I won't reply 🙅‍♀️\nSingle by choice 😅\nBut not my choice 🤣",
-      "Creating my own sunshine ☀️\nPositive Vibes Only ✌️\nDream big, Work hard ☁️\nEmpowered women empower women 👑\nUnstoppable 🚀",
+      "Creating my own sunshine ☀️\nPositive Vibes Only ✌️\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
       "पापा की परी 🧚‍♀️\nथोड़ी सी नखरेवाली 💅\nDreams big ☁️\nBe yourself ✨",
       "Queen of my own world 👑\nMakeup enthusiast 💄\nHate is blocked 🚫",
       "Soft but strong 🌸\nBooks are my best friends 📚\nDream big ☁️",
@@ -643,9 +748,9 @@
 
     const realSadBios = [
       "Broken Trust 💔\nSmiling outside, Crying inside 🎭\nUsed to love, now I learn 🥀\nFake smiles 😔\nLost in my own thoughts 🌌",
-      "Alone but happy 🚶‍♂️\nNo expectations, no disappointments 🚫\nTears are words the heart can't say 💧\nHealing silently 🩹\nFading away 🌫️",
+      "Alone but happy 🚶‍♂️\nNo expectations, no disappointments 🚫\nTears are words the heart can't say 💧\nHealing silently 🩹\nFading away 🌫️️",
       "Someone's Ex 💔\nPain changed me 🖤\nI gave my all, got nothing back 🥀\nEmpty heart 🕳️\nJust surviving, not living ⏳",
-      "तन्हाई बेहतर है 🥀\nभीड़ में अक्सर लोग खो जाते हैं 🚶‍♂️️\nदिल टूटने की आवाज़ नहीं होती 💔\nखामोश दर्द 🤫\nअधूरा सफर 🛤️",
+      "तन्हाई बेहतर है 🥀\nभीड़ में अक्सर लोग खो जाते हैं 🚶‍♂️\nदिल टूटने की आवाज़ नहीं होती 💔\nखामोश दर्द 🤫\nअधूरा सफर 🛤️️",
       "वक्त ने बता दी सबकी औकात 😔\nवरना हम तो सबको अपना मानते थे 💔\nतेरा नाम था आज किसी अजनबी की जुबान पे 🥀\nदिल ने बुरा मान लिया 🖤",
       "मोहब्बत का शौक किसे था ❤️\nतुम पास आते गए और हमें आदत हो गई 💔",
       "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️\nTrust nobody 🚫",
@@ -672,10 +777,10 @@
 
     const realLoveBios = [
       "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
-      "Couples Goal 👩‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
+      "Couples Goal 👩‍❤️‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
       "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
       "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
-      "❤ Love is Life\nMy heart beats for you 🥰",
+      "❤️ Love is Life\nMy heart beats for you 🥰",
       "🌍 You are my world\nForever Mine 💍",
       "My happy place is you 💖\nAlways together 👫",
       "Lost in your eyes 👁️\nMy forever ❤️",
@@ -713,7 +818,7 @@
     }
 
     /* ==========================================================================
-       TOP 20 MASTER POETRY RIBBONS (NEW COLOURFUL PREMIUM SHINE)
+       TOP 20 MASTER POETRY RIBBONS (WITH COLOURFUL SHINE)
        ========================================================================== */
     const masterPoetry = [
       { tag: "💎 VIP Exclusive", title: "The Sigma Rule", text: "वक्त खराब है इसलिए मौन हूँ 🤫\nबाद में बताऊंगा मैं कौन हूँ 👑\nशेर की चाल 🦁\nअकेला और नवाब 🔥" },
@@ -723,7 +828,7 @@
       { tag: "😈 Attitude", title: "Devil's Mind", text: "सुन बेटा, अपनी औकात में रह ⚠️\nहम वो हैं जो समंदर भी सुखा दें 🌊\nजिगर बड़ा है 🦅\nसीधा मौत का खेल ☠️\nखामोशी से तबाही 🌪️" },
       { tag: "💼 Motivation", title: "Hustle Hard", text: "सफलता एक दिन में नहीं मिलती 📈\nमेहनत इतनी खामोशी से करो 🤫\nकि कामयाबी शोर मचा दे 🏆\nगिरकर उठना मेरी फितरत है 🦅\nFuture Billionaire 💸" },
       { tag: "😂 Comedy", title: "Sarcasm", text: "मैं खुद अपना दिमाग खराब रखता हूँ 🤯\nPaida toh shareef hi hua tha 😇\nFir doston ne sudhar diya 🤪\nZindagi jhand ba 🤦‍♂️\nFir bhi ghamand ba 😎" },
-      { tag: "💎 VIP Exclusive", title: "King's Move", text: "I don't follow the crowd. 🚶‍♂\nI walk alone, I walk fast. ⚡\nBuilding an empire in silence. 🤫\nSuccess is my only noise. 🏆\nRespect the hustle. 💯" },
+      { tag: "💎 VIP Exclusive", title: "King's Move", text: "I don't follow the crowd. 🚶‍♂️\nI walk alone, I walk fast. ⚡\nBuilding an empire in silence. 🤫\nSuccess is my only noise. 🏆\nRespect the hustle. 💯" },
       { tag: "🔥 Masterpiece", title: "Desi Swag", text: "बुरे वक्त में भी नवाबी शौक 🍷\nहमसे उलझना मौत को दावत 🗡️\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯" },
       { tag: "✨ Aesthetic", title: "Stardust", text: "सपनों की दुनिया में खोई हुई 🌙\nकिताबें और कॉफी ☕\nख्वाब बड़े हैं ☁️\nअपनी खुद की परी कथा ✨" },
       { tag: "🔱 Mahakal", title: "Bholenath", text: "ना गिन के दिया ना तोल के दिया 🕉️\nमेरे महाकाल ने जिसे भी दिया 🔱\nदिल खोल के दिया 🙏\nहर हर महादेव 🚩" },
@@ -731,8 +836,8 @@
       { tag: "😈 Attitude", title: "Rule Breaker", text: "My life, my rules 📝\nLove me or hate me 🤷‍♂️\nI am still gonna shine 🌟\nUnapologetically me ☠️" },
       { tag: "👑 Royal", title: "Empire", text: "Official Account ✔️\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆" },
       { tag: "💖 Love", title: "Forever", text: "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍" },
-      { tag: "🌸 Cute", title: "Butterfly", text: "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀\nBooks are my best friends 📚\nBlessed & Grateful 🙏" },
-      { tag: "🔥 Desi", title: "Badmash", text: "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡️\nOfficial Account ✔️" },
+      { tag: "🌸 Cute", title: "Butterfly", text: "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️\nBooks are my best friends 📚\nBlessed & Grateful 🙏" },
+      { tag: "🔥 Desi", title: "Badmash", text: "Badmash Chora 🔫\nAttitude depends on how you treat me ☠\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡️\nOfficial Account ✔️" },
       { tag: "🔱 Shiva", title: "Aghori", text: "शिव ही सत्य है 🕉️\nअघोरी रूप 💀\nत्रिनेत्र धारी 👁️\nबस भोले का नाम काफी है 💯\nहर हर गंगे 🌊" },
       { tag: "💸 VIP", title: "Billionaire", text: "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈" },
       { tag: "💔 Sad", title: "Lost", text: "Alone but happy 🚶‍♂️\nNo expectations, no disappointments 🚫\nTears are words the heart can't say 💧\nHealing silently 🩹\nFading away 🌫️" }
@@ -802,7 +907,7 @@
     }
 
     /* ==========================================================================
-       TOOLS MODAL LOGIC 
+       TOOLS MODAL LOGIC (COLOURFUL SHINE IN PRO GAMERS)
        ========================================================================== */
     function openToolModal(toolType) {
       const title = document.getElementById('modalTitle');
@@ -924,6 +1029,7 @@
 
         artsData.forEach(item => { 
           let badgeHtml = item.tag ? `<div style="position:absolute; top:-8px; right:-8px; background:var(--accent); color:#000; font-size:9px; padding:4px 8px; border-radius:6px; font-weight:900; box-shadow:0 2px 10px rgba(245,158,11,0.6); z-index:2;">${item.tag}</div>` : '';
+          
           html += `
             <div class="tool-list-row" style="position:relative; flex-direction:column; align-items:center; text-align:center;">
               ${badgeHtml}
@@ -962,11 +1068,11 @@
       const top5 = [`꧁•[ ${val} ]•꧂ 亗`, `乂 ${val} 乂 ☠️`, `๖ۣۜ${val} ࿐`];
       let htmlTop = "";
       top5.forEach(name => {
-        htmlTop += `<div style="background:rgba(239,68,68,0.1); border-radius:14px; padding:16px; display:flex; justify-content:space-between;"><div class="knife-shine" style="font-size:18px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Pro Name Copied!')">Copy</button></div>`;
+        htmlTop += `<div style="background:rgba(239,68,68,0.1); border-radius:14px; padding:16px; display:flex; justify-content:space-between; align-items:center;"><div class="colourful-shine" style="font-size:18px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Pro Name Copied!')">Copy</button></div>`;
       });
       topOut.innerHTML = htmlTop;
 
-      const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"t",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
+      const mG={a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"};
       let oG=""; for(let i=0; i<val.length; i++) oG += mG[val[i]] || val[i];
 
       const tags = [" YT", " ゲーマー", " 😈", " OP", " ࿐", " ッ"];
