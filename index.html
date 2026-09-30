@@ -34,19 +34,20 @@
        ========================================================================== */
     :root {
       --bg-main: #030508;
-      --card-bg: rgba(20, 25, 35, 0.95);
+      --card-bg: #111620; 
       --card-border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6; --primary-glow: rgba(59, 130, 246, 0.5);
       --accent: #f59e0b; 
       --gold-mid: #fbbf24;
       --text-main: #f8fafc; --text-muted: #94a3b8;
+      --solid-btn: #1a2233; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
     
-    body { 
+    body, html { 
       background-color: var(--bg-main); color: var(--text-main); 
-      overflow-x: hidden; padding-bottom: 90px; 
+      overflow-x: hidden; height: 100%; 
       scroll-behavior: smooth; 
       -webkit-font-smoothing: antialiased;
     }
@@ -101,7 +102,7 @@
     .brand-title { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
     .header-badge { font-size: 11px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 5px 12px; border-radius: 8px; font-weight: 900; text-transform: uppercase; white-space: nowrap;}
 
-    .app-container { max-width: 600px; margin: 0 auto; padding: 10px 14px; padding-top: 85px; }
+    .app-container { max-width: 600px; margin: 0 auto; padding: 10px 14px 100px; padding-top: 85px; }
 
     /* ==========================================================================
        3. COMPACT CREATOR TOOLS GRID (15 TOOLS)
@@ -111,7 +112,8 @@
     .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; transform: translateZ(0); }
     
     .tool-card {
-      background: #111620; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 16px 8px; 
+      background: var(--card-bg); 
+      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 16px 8px; 
       display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; position: relative;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
@@ -132,7 +134,7 @@
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
 
     /* ==========================================================================
-       4. ✨ COLOURFUL & PREMIUM SHINE EFFECT ✨
+       4. ✨ COLOURFUL EFFECTS & EMOJI FIX ✨
        ========================================================================== */
     .colourful-shine { 
       background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f);
@@ -141,20 +143,32 @@
     }
     @keyframes rainbowShine { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
 
-    /* MASTER RIBBONS & BIO FEED */
-    .master-card { background: linear-gradient(135deg, #111620, #0a0c12); border: 1px solid var(--accent); border-radius: 22px; padding: 25px; position: relative; overflow: hidden; margin: 25px 0; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); }
+    /* MASTER RIBBONS WITH EMOJI-SAFE TEXT */
+    .master-card { 
+      background: linear-gradient(135deg, #111620, #0a0c12); 
+      border: 1px solid var(--accent); border-radius: 22px; padding: 25px; 
+      position: relative; overflow: hidden; margin: 25px 0; 
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); 
+    }
     .master-ribbon { background: var(--accent); color: #000; font-weight: 900; font-size: 11px; text-transform: uppercase; padding: 6px 35px; position: absolute; top: 20px; right: -30px; transform: rotate(45deg); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.6);}
     .master-title { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
-    .master-text { font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px;}
+    
+    /* REMOVED text-fill-color transparent from text so EMOJIS SHOW NATURAL COLORS */
+    .master-text { 
+      font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; 
+      font-weight: 700; letter-spacing: 0.5px; color: #f8fafc;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    }
     
     .master-btn, .btn-copy, .tool-btn-copy { 
-      background: #1a2233; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      background: var(--solid-btn); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       width: 100%; padding: 14px; border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;
     }
     .master-btn:active, .btn-copy:active, .tool-btn-copy:active { transform: scale(0.97); background: #2a3447; }
 
+    /* BIO FEED */
     .bio-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; transform: translateZ(0); }
-    .bio-card { background: #111620; border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 20px; padding: 22px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12); }
+    .bio-card { background: var(--card-bg); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 20px; padding: 22px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12); }
     .bio-badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .bio-badge { font-size: 10.5px; font-weight: 900; background: rgba(59,130,246,0.15); color: #60a5fa; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.3); text-transform: uppercase; letter-spacing: 1px;}
     .bio-text { font-size: 15px; line-height: 1.7; color: #f1f5f9; white-space: pre-line; background: rgba(0, 0, 0, 0.4); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 18px; font-weight: 600; }
@@ -162,13 +176,16 @@
     .btn-copy:active { background: #f1f5f9; color: #000; transform: scale(0.97); }
 
     /* ==========================================================================
-       5. AI CHAT INTERFACE (CLASSIC LAYOUT RESTORED)
+       5. AI CHAT INTERFACE & THINKING DOTS
        ========================================================================== */
-    .chat-container { display: flex; flex-direction: column; padding-bottom: 150px; }
-    .chat-box { padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; }
-    
+    .chat-header-title { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 15px; padding: 0 5px; flex-wrap: nowrap; }
+    .chat-header-text { font-size: 18px; font-weight: 900; display: flex; align-items: center; gap: 8px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%; }
+
+    .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; height: 100%; position: relative;}
+    .chat-box { padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; margin-bottom: 80px;}
     .msg-wrapper { display: flex; flex-direction: column; }
     .msg-user { align-self: flex-end; background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; font-size: 14.5px; font-weight: 600; line-height: 1.5; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
+    
     .msg-ai { align-self: flex-start; background: #111620; border: 1px solid var(--card-border); color: #f8fafc; padding: 14px 18px; border-radius: 18px 18px 18px 4px; max-width: 90%; font-size: 14.5px; font-weight: 500; line-height: 1.6; box-shadow: 0 4px 15px rgba(0,0,0,0.4);}
     .msg-ai.error-msg { border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.05); color: #fca5a5; }
     .msg-ai.stop-msg { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05); color: #fcd34d; }
@@ -188,8 +205,7 @@
     .ai-chip { background: #1a2233; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
 
-    /* Classic Fixed Input Bottom Area */
-    .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.2s ease;}
+    .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
     @media (min-width: 600px) { .chat-input-area { left: 50%; transform: translateX(-50%); max-width: 600px; } }
     .chat-input-row { display: flex; gap: 10px; padding: 5px 15px 15px; }
     .chat-input { flex: 1; padding: 15px 20px; background: #161d29; border: 1px solid rgba(255,255,255,0.15); border-radius: 25px; color: #fff; font-size: 16px; outline: none; transition: 0.2s; }
@@ -200,12 +216,11 @@
     .chat-send-btn:active { transform: scale(0.9); }
     .chat-send-btn.stop-mode { background: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
 
-    /* Keyboard fixes */
     body.keyboard-open .chat-input-area { bottom: 0 !important; }
     body.keyboard-open .bottom-nav { display: none !important; }
 
     /* ==========================================================================
-       6. Q&A / FAQ SECTION STYLING (ALL 5 FAQS RESTORED)
+       6. Q&A / FAQ SECTION STYLING
        ========================================================================== */
     .faq-container { margin: 40px 0 20px; }
     .faq-item { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; margin-bottom: 14px; overflow: hidden; transition: 0.3s; }
@@ -226,7 +241,7 @@
     .modal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 20px; outline: none; }
     .tool-list-row { background: var(--solid-btn); padding: 16px; border-radius: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); position: relative;}
     .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 65%; padding-right: 10px; word-break: break-word;}
-    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 10px;}
+    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; cursor: pointer;}
     
     .grid-syms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .grid-sym-box { background: var(--solid-btn); padding: 22px 10px; text-align: center; border-radius: 16px; font-size: 26px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: 0.2s;}
@@ -241,7 +256,7 @@
     .nav-icon { font-size: 22px; filter: grayscale(100%); transition: 0.2s; }
     .nav-tab.active .nav-icon { filter: grayscale(0%); text-shadow: 0 0 10px rgba(255,255,255,0.5);}
 
-    /* 🔥 THE ORIGINAL TRANSLATE-Y ANIMATION 🔥 */
+    /* Animation Fixes */
     .view-page { display: none; }
     .view-page.active { display: block; animation: fadeIn 0.3s ease-out; }
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
@@ -251,13 +266,7 @@
     .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
     .footer-links span { color: #cbd5e1; font-weight: 800; font-size: 13px; text-decoration: underline; cursor: pointer;}
     .seo-text-block { text-align: left; padding: 22px; font-size: 12.5px; color: #475569; line-height: 1.7; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;}
-
-    /* EMAIL CONTAINER FIX */
-    .email-container {
-      display: flex; justify-content: space-between; align-items: center;
-      background: var(--solid-btn); border-radius: 12px; padding: 12px 16px;
-      border: 1px solid rgba(255,255,255,0.05); margin-top: 10px;
-    }
+    .email-container { display: flex; justify-content: space-between; align-items: center; background: var(--solid-btn); border-radius: 12px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.05); margin-top: 10px; }
     .email-text { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 15px;}
   </style>
 </head>
@@ -307,11 +316,11 @@
 
   <div class="app-container">
 
-    <!-- ===================================== HOME VIEW ===================================== -->
+    <!-- HOME VIEW -->
     <main id="view-home" class="view-page active">
       <div class="section-title"><span>🛠 Ultimate Creator Tools</span></div>
       
-      <!-- ALL 15 TOOLS PRESERVED -->
+      <!-- COMPACT TOOLS GRID WITH 15 TOOLS -->
       <div class="tools-grid">
         <div class="tool-card highlight-tool" onclick="switchPage('aichat')">
           <div class="ai-badge">NEW AI</div><div class="tool-icon">🧠</div><div class="tool-name">AI Assistant</div><div class="tool-sub">Live Talk</div>
@@ -369,9 +378,13 @@
       </div>
       <div class="bio-feed" id="mainBioFeed"></div>
 
-      <!-- FAQ SECTION (ALL 5 FAQs RESTORED) -->
+      <!-- FAQ SECTION -->
       <div class="faq-container">
         <div class="section-title">💡 Frequently Asked Questions</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q"><span>Can I use these gamer names directly in Free Fire, BGMI, and PUBG?</span><span>▾</span></div>
+          <div class="faq-a">Yes! All 250+ Pro Gamer Names and rare VIP symbols (like 亗, ☬, ༒, ࿐) are 100% tested and compatible with Free Fire, BGMI, PUBG Mobile, COD, and Discord nicks. Just click Copy and paste into your Rename Card!</div>
+        </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q"><span>What makes InstaVibe Ultimate unique?</span><span>▾</span></div>
           <div class="faq-a">Every bio, emoji set, and font style is hand-picked and manually curated. Our Zero-Repeat engine ensures you never see the same template twice!</div>
@@ -383,10 +396,6 @@
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q"><span>How do the Master Ribbon Cards work?</span><span>▾</span></div>
           <div class="faq-a">The glowing 'VIP Exclusive' cards are elite poetries and attitude templates found on top influencer profiles, brought directly to you with a 1-click copy feature.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q"><span>Can I use these gamer names directly in Free Fire, BGMI, and PUBG?</span><span>▾</span></div>
-          <div class="faq-a">Yes! All 250+ Pro Gamer Names and rare VIP symbols (like 亗, ☬, ༒, ࿐) are 100% tested and compatible with Free Fire, BGMI, PUBG Mobile, COD, and Discord nicks. Just click Copy and paste into your Rename Card!</div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q"><span>What is the Zero-Repeat engine?</span><span>▾</span></div>
@@ -404,16 +413,16 @@
         <p>© 2026 InstaVibe Ultimate. All Rights Reserved.</p>
         
         <article class="seo-text-block">
-          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
+          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
         </article>
       </footer>
     </main>
 
-    <!-- ===================================== AI CHAT VIEW (CLASSIC LAYOUT RESTORED) ===================================== -->
+    <!-- FULLSCREEN AI CHAT VIEW (CLASSIC LAYOUT RESTORED) -->
     <main id="view-aichat" class="view-page">
-      <div class="section-title" style="margin-top: 10px;">
-        <span style="display:flex; align-items:center; gap:8px;">🧠 InstaVibe AI Assistant</span>
-        <span class="header-badge" style="padding:4px 8px; font-size:9px;">ONLINE</span>
+      <div class="chat-header-title">
+        <div class="chat-header-text">🧠 InstaVibe AI Assistant</div>
+        <span class="header-badge">ONLINE</span>
       </div>
       
       <div class="chat-container">
@@ -435,14 +444,13 @@
           </div>
           <div class="chat-input-row">
             <input type="text" id="chatInput" class="chat-input" placeholder="Message InstaVibe AI..." onkeypress="handleEnter(event)">
-            <!-- dynamic button -->
             <button id="chatSendBtn" class="chat-send-btn" onclick="handleSendOrStop()">➤</button>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- ===================================== CATEGORIES VIEW ===================================== -->
+    <!-- CATEGORIES VIEW -->
     <main id="view-categories" class="view-page">
       <div id="cat-grid-container">
         <div class="section-title" style="margin-top: 10px;">🗂️ Explore Categories</div>
@@ -454,7 +462,9 @@
           <div style="background:linear-gradient(135deg, rgba(239,68,68,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(239,68,68,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Sad & Poetry', 'sad')"><div style="font-size:40px; margin-bottom:12px;">🥀</div><div style="font-weight:900; font-size:18px;">Sad & Poetry</div></div>
           <div style="background:linear-gradient(135deg, rgba(16,185,129,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(16,185,129,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Funny & Crazy', 'funny')"><div style="font-size:40px; margin-bottom:12px;">🤪</div><div style="font-weight:900; font-size:18px;">Funny & Crazy</div></div>
           <div style="background:linear-gradient(135deg, rgba(234,179,8,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(234,179,8,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Bollywood & Filmy', 'filmy')"><div style="font-size:40px; margin-bottom:12px;">🎬</div><div style="font-weight:900; font-size:18px;">Bollywood & Filmy</div></div>
+          <!-- AURA & SHAYARI CATEGORIES -->
           <div style="background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(139,92,246,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Aura & Sigma', 'aura')"><div style="font-size:40px; margin-bottom:12px;">🌌</div><div style="font-weight:900; font-size:18px;">Aura & Sigma</div></div>
+          <div style="background:linear-gradient(135deg, rgba(20,184,166,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(20,184,166,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Shayari & Quotes', 'shayari')"><div style="font-size:40px; margin-bottom:12px;">📜</div><div style="font-weight:900; font-size:18px;">Shayari & Quotes</div></div>
         </div>
       </div>
       <div id="cat-feed-container" style="display:none;">
@@ -466,16 +476,16 @@
       </div>
     </main>
 
-    <!-- ===================================== INFO VIEW ===================================== -->
+    <!-- INFO VIEW -->
     <main id="view-about" class="view-page">
       <div class="section-title" style="margin-top: 10px;"><span>ℹ️ App Info</span></div>
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
         
-        <div style="font-size: 12px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 1.5px;">V43 (THE MASTERPIECE - CLASSIC UI & FLAWLESS EXPERIENCE)</div>
+        <div style="font-size: 12px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 1.5px;">V44 (THE ULTIMATE AURA & SHAYARI UPDATE)</div>
         
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with classic UI, flawless live scrolling, 5 FAQs, 250+ new Bios, and 15 Mega Tools for a smooth premium experience.</p>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with classic UI, flawless live scrolling, 5 FAQs, 250+ Aura/Shayari Bios, and 15 Mega Tools for a smooth premium experience.</p>
         
         <div style="background:#0a0d14; border-radius:18px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:11px; color:#94a3b8; font-weight:800; margin-bottom:8px; text-transform:uppercase;">👨‍💻 Developer Email</div>
@@ -524,9 +534,10 @@
 
   <div class="toast" id="globalToast">Copied!</div>
 
+  <!-- MAIN SCRIPT ENGINE -->
   <script>
     /* ==========================================================================
-       KEYBOARD UI FIX 
+       KEYBOARD UI FIX & SCROLL LOGIC
        ========================================================================== */
     const chatInput = document.getElementById('chatInput');
     const bottomNav = document.getElementById('bottomNav');
@@ -535,7 +546,7 @@
     chatInput.addEventListener('focus', () => {
       document.body.classList.add('keyboard-open');
       setTimeout(() => {
-        // Classic window scroll for chat
+        // Scroll specifically for AI chat box in classic view
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }, 300);
     });
@@ -553,13 +564,19 @@
     });
 
     /* ==========================================================================
-       UTILITIES & ROUTING (CLASSIC ISOLATION LOGIC)
+       UTILITIES & SMART TAB REFRESH MEMORY
        ========================================================================== */
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTab = localStorage.getItem('instavibe_current_tab') || 'home';
+      switchPage(savedTab, true);
+    });
+
     window.closeAllModals = function() {
       const tModal = document.getElementById('toolsModal');
       if(tModal) tModal.style.display = 'none';
       const lModal = document.getElementById('legalModal');
       if(lModal) lModal.style.display = 'none';
+      document.body.style.overflow = '';
     };
 
     window.copyEncodedText = function(encodedText, msg) {
@@ -608,18 +625,23 @@
       setTimeout(() => toast.style.display = 'none', 2000);
     };
 
-    function switchPage(pageId) {
+    function switchPage(pageId, isInitialLoad = false) {
       closeAllModals();
       if(pageId === 'categories') backToCategories();
       
       document.querySelectorAll('.view-page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
       
-      document.getElementById('view-' + pageId).classList.add('active');
-      document.getElementById('tab-' + pageId).classList.add('active');
+      const targetPage = document.getElementById('view-' + pageId);
+      const targetTab = document.getElementById('tab-' + pageId);
       
-      // Jump to top to fix scroll bleed
-      window.scrollTo(0, 0); 
+      if(targetPage) targetPage.classList.add('active');
+      if(targetTab) targetTab.classList.add('active');
+      
+      // Save tab to memory
+      localStorage.setItem('instavibe_current_tab', pageId);
+      
+      if(!isInitialLoad) window.scrollTo(0, 0); // Jump to top on tab switch
       
       if(pageId === 'aichat') {
         setTimeout(() => {
@@ -787,7 +809,7 @@
             "🦋 Set 1:\n1. 🧿🤍✨\n2. 🍷🔥👑\n3. 💀🖤⛓️",
             "🦋 Set 2:\n1. 🧸🎀💖\n2. 🥂🍾💎\n3. 🌙💫✨",
             "🦋 Set 3:\n1. 📸🌍✈️\n2. 😈🔥🔪\n3. 🕊️🤍☁️",
-            "🦋 Set 4:\n1. 🌌🛸✨\n2. 🥀🩸🗡️\n3. 🍂☕📚"
+            "🦋 Set 4:\n1. 🌌🛸✨\n2. 🥀🩸🗡️️\n3. 🍂☕📚"
         ];
         const fallBios = [
             "👑 Premium VIP Bio:\nAttitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯",
@@ -809,7 +831,7 @@
         else if (currentAiMode === 'caption') aiResponseText = fallCaps[Math.floor(Math.random() * fallCaps.length)];
         else {
            const errorDiv = document.getElementById(loadingId);
-           if(errorDiv) errorDiv.innerHTML = `<div class="msg-ai error-msg">⚠️️ Server is busy right now! Please check network or try again.</div>`;
+           if(errorDiv) errorDiv.innerHTML = `<div class="msg-ai error-msg">⚠️ Server is busy right now! Please check network or try again.</div>`;
            resetAiInputState(); return;
         }
       }
@@ -847,7 +869,7 @@
                   currentHTML += char; cursor++;
                   typeContainer.innerHTML = currentHTML;
                   
-                  // LIVE AUTOMATIC SCROLL WITH REQUESTANIMATIONFRAME (Classic Window mode)
+                  // LIVE AUTOMATIC SCROLL WITH REQUESTANIMATIONFRAME (Classic Viewport)
                   requestAnimationFrame(() => {
                       window.scrollTo(0, document.body.scrollHeight);
                   });
@@ -873,7 +895,7 @@
     }
 
     /* ==========================================================================
-       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
+       🔥 MASSIVE MANUAL DATA ARRAYS (200+ NEW ADDED) 🔥
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -920,14 +942,14 @@
       "Not your average girl ⛔\nSavage by nature 😈\nI don't need your approval 💯\nClassy and Fabulous 👠\nCatch flights, not feelings ✈️",
       "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
       "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
-      "Creating my own sunshine ☀️\nPositive Vibes Only ✌\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
+      "Creating my own sunshine ☀️️\nPositive Vibes Only ✌\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
       "पापा की परी 🧚‍♀️\nथोड़ी सी नखरेवाली 💅\nDreams big ☁️\nBe yourself ✨",
       "Queen of my own world 👑\nMakeup enthusiast 💄\nHate is blocked 🚫\nLiving life queen size 🏰",
       "Soft but strong 🌸\nBooks are my best friends 📚\nDream big ☁\nAlways positive ✨",
       "Chubby & Cute 🥺\nFood lover 🍕\nSpread love 💖\nDon't judge me 🚫",
       "Black lover 🖤\nPhotography 📸\nKeep shining 🌟\nAesthetic vibes 🦋",
       "नाखरे मेरे कम नहीं 💅\nस्टाइल में दम है 🔥\nमुझसे पंगा मत लेना ☠\nस्वीट सी लड़की 🍬",
-      "सपनों की उड़ान ☁️\nखुद से प्यार है 💖\nजिंदगी अपने हिसाब से 🦋\nमस्त मौला ✌️️",
+      "सपनों की उड़ान ☁️\nखुद से प्यार है 💖\nजिंदगी अपने हिसाब से 🦋\nमस्त मौला ✌",
       "मेकअप और मैं 💄\nकैमरा मेरी जान 📸\nस्माइल ही काफी है 😊\nसादगी में भी स्वैग है 😎",
       "खूबसूरत दिल 💖\nतीखी ज़ुबान 🌶️\nसुनती सबकी हूँ, करती अपनी हूँ 🎧\nबिंदास लड़की ✌️",
       "गुस्सा नाक पर 😡\nप्यार दिल में ❤️\nथोड़ी सी पगली 🤪\nक्यूट सी स्माइल 😊",
@@ -968,7 +990,7 @@
       "Someone's Ex 💔\nPain changed me 🖤\nI gave my all, got nothing back 🥀\nEmpty heart 🕳\nJust surviving, not living ⏳",
       "तन्हाई बेहतर है 🥀\nभीड़ में अक्सर लोग खो जाते हैं 🚶‍♂️\nदिल टूटने की आवाज़ नहीं होती 💔\nखामोश दर्द 🤫\nअधूरा सफर 🛤",
       "वक्त ने बता दी सबकी औकात 😔\nवरना हम तो सबको अपना मानते थे 💔\nतेरा नाम था आज किसी अजनबी की जुबान पे 🥀\nदिल ने बुरा मान लिया 🖤",
-      "मोहब्बत का शौक किसे था ❤️\nतुम पास आते गए और हमें आदत हो गई 💔\nअब आलम ये है कि तुम्हारे बिना 🥀\nये साँसें भी बोझ सी लगती हैं ⏳",
+      "मोहब्बत का शौक किसे था ❤️️\nतुम पास आते गए और हमें आदत हो गई 💔\nअब आलम ये है कि तुम्हारे बिना 🥀\nये साँसें भी बोझ सी लगती हैं ⏳",
       "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁\nTrust nobody 🚫",
       "Depressed soul 🥀\nHiding the pain with a smile 😊\nNights are the hardest 🌙\nMemories hurt 💭\nWaiting for the end ⏳",
       "हँसते हुए चेहरे के पीछे का दर्द 🎭\nकोई नहीं समझता 💔\nअंदर से टूट चुका हूँ 🥀\nखामोश ज़िन्दगी 🤫",
@@ -1012,37 +1034,6 @@
       "I put the 'elusive' in influencer 👻\nNobody knows me 🤷‍♂️\nBut I act famous 🌟\nFake it till you make it 🎭"
     ];
 
-    const realVipBios = [
-      "Official Account ✔\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
-      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
-      "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
-      "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
-      "Future Billionaire 💼\nMoney talks, wealth whispers 💸\nLink in bio 🔗\nStay focused 🎯",
-      "Corporate Hustler 👔\nBuilding the dream 🏰\nGrinding 24/7 ⏳\nSuccess is the only option 🏆",
-      "CEO Mindset 🧠\nScaling fast 🚀\nLet's connect 🤝\nDM for Collabs 📩",
-      "Empire Builder 👑\nFocus on goals, not holes 👁\nNever bow down 🦅\nStay Royal 👑",
-      "नवाबी शौक 🍷\nशाही अंदाज़ 👑\nपैसे की नहीं, इज़्ज़त की भूख 💯\nमेरा रुतबा मेरी पहचान 🔥",
-      "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
-      "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚",
-      "CEO 💼\nMaking millions 💸\nHustle 24/7 🚀\nPrivate life, Happy life 🤫",
-      "Royal Blood 🩸\nElite Class 👑\nLiving my dreams ☁️\nNo compromise 🚫\nOnly luxury 💎",
-      "Aura level: Unmatchable ✨\nLiving like a King 👑\nHaters make me famous 📈\nStay premium 💎"
-    ];
-
-    const realLoveBios = [
-      "Taken by the best 💍\nMy heart beats for you ❤️️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
-      "Couples Goal 👩‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCant live without you 🥺\nSoulmates 🔗",
-      "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
-      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
-      "❤ Love is Life\nMy heart beats for you 🥰\nAlways together 👫\nForever Mine 💍",
-      "🌍 You are my world\nLost in your eyes 👁\nMy happy place is you 💖\nSoulmates 🔗",
-      "तेरा फितूर ❤\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
-      "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
-      "तू मेरा है, मैं तेरी हूँ 👩‍‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
-      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖",
-      "You + Me = Everything 🌍\nLove birds 🕊️\nForever yours 💍\nEndless love ❤️"
-    ];
-
     const realFilmyBios = [
       "Don ko pakadna mushkil hi nahi, namumkin hai 😎\nDon 🎬\nKing of my own rules 👑\nStay filmy ✨",
       "Rishte mein toh hum tumhare baap lagte hain 😈\nNaam hai Shahenshah 🔥\nLegendary Vibe 🌟",
@@ -1071,13 +1062,44 @@
       "Utha le re baba, utha le... mereko nahi, in dono ko utha le 😂\nHera Pheri 🎬\nComedy King 👑\nAlways laughing 🎭"
     ];
 
+    const realVipBios = [
+      "Official Account ✔\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
+      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
+      "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
+      "Brand Ambassador 🎖️️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
+      "Future Billionaire 💼\nMoney talks, wealth whispers 💸\nLink in bio 🔗\nStay focused 🎯",
+      "Corporate Hustler 👔\nBuilding the dream 🏰\nGrinding 24/7 ⏳\nSuccess is the only option 🏆",
+      "CEO Mindset 🧠\nScaling fast 🚀\nLet's connect 🤝\nDM for Collabs 📩",
+      "Empire Builder 👑\nFocus on goals, not holes 👁\nNever bow down 🦅\nStay Royal 👑",
+      "नवाबी शौक 🍷\nशाही अंदाज़ 👑\nपैसे की नहीं, इज़्ज़त की भूख 💯\nमेरा रुतबा मेरी पहचान 🔥",
+      "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
+      "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚",
+      "CEO 💼\nMaking millions 💸\nHustle 24/7 🚀\nPrivate life, Happy life 🤫",
+      "Royal Blood 🩸\nElite Class 👑\nLiving my dreams ☁️\nNo compromise 🚫\nOnly luxury 💎",
+      "Aura level: Unmatchable ✨\nLiving like a King 👑\nHaters make me famous 📈\nStay premium 💎"
+    ];
+
+    const realLoveBios = [
+      "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️️\nLove is in the air 🌬️\nYou are my world 🌍",
+      "Couples Goal 👩‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
+      "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
+      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
+      "❤ Love is Life\nMy heart beats for you 🥰\nAlways together 👫\nForever Mine 💍",
+      "🌍 You are my world\nLost in your eyes 👁\nMy happy place is you 💖\nSoulmates 🔗",
+      "तेरा फितूर ❤\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
+      "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
+      "तू मेरा है, मैं तेरी हूँ 👩‍‍‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
+      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖",
+      "You + Me = Everything 🌍\nLove birds 🕊️\nForever yours 💍\nEndless love ❤️"
+    ];
+
     const realAuraBios = [
       "Aura level: Infinity ♾️\nMindset of a Conqueror 🧠\nRuling the streets 🛣️\nNo fear 🚫",
       "Zero competition 🏆\nSigma rules apply 💯\nRespect is earned, not given 🤝\nUnbothered 🧘‍♂️",
       "Wolf of my own city 🐺\nBorn leader 👑\nNot a follower 🚶‍♂️\nPure Aura ✨",
       "They hate what they can't be 💯\nWalking masterpiece 🎨\nAura shining bright 🌟\nDifferent breed 🦅",
       "Silent but deadly 🌪️\nActions speak louder 🗣️\nSigma male grindset 💼\nUnstoppable force 🚀",
-      "I am the storm 🌩️️\nChaos in my veins 🩸\nPeace in my mind 🧠\nAura unmatched 🌌",
+      "I am the storm 🌩\nChaos in my veins 🩸\nPeace in my mind 🧠\nAura unmatched 🌌",
       "God complex? No, just superior 👑\nUnapologetically me 💯\nLevels above the rest 📈\nAura out of this world 🛸",
       "Walking with purpose 🚶‍♂️\nEyes on the prize 🏆\nSigma energy ⚡\nUnbreakable 💎",
       "Don't study me, you won't graduate 📚\nLiving paradox 🎭\nHigh frequency aura 📻\nRare breed 🦄",
@@ -1095,8 +1117,21 @@
       "My aura is my armor 🛡️\nProtecting my peace 🌿\nSigma soul 🌌\nUnbothered king 👑",
       "I am a rare element 🧪\nHard to find, impossible to forget 💎\nAura glowing ✨\nSigma male 🗿",
       "I don't seek attention, I command respect 🫡\nAura powerful ⚡\nSigma rules 📜\nTrue leader 👑",
-      "My energy introduces me before I even speak 🗣️️\nAura heavy 🏋️‍♂️\nSigma vibes 💯\nUnmatched 🚀",
+      "My energy introduces me before I even speak 🗣\nAura heavy 🏋️‍♂️\nSigma vibes 💯\nUnmatched 🚀",
       "I am not anti-social, I am selectively social 👥\nSigma circle ⭕\nAura pure ✨\nQuality over quantity 💎"
+    ];
+
+    const realShayariBios = [
+      "वक्त का पासा पलटेगा 🎲\nतब हम बताएंगे हम क्या हैं 🔥\nअभी खामोश हैं 🤫\nबाद में तूफान लाएंगे 🌪️",
+      "हमसे जलने वाले जलते रहें 🔥\nहमारी शान में कोई कमी नहीं 👑\nनवाबी शौक हैं 🍷\nऔर रहेंगे 💯",
+      "शेर की आहट ही काफी है 🦁\nजंगल में खौफ के लिए 🌴\nनाम ही काफी है 📝\nपहचान बनाने के लिए 👑",
+      "दोस्ती और दुश्मनी 🤝\nदोनों में हम बाप हैं 😎\nजिगर बड़ा है 🦅\nहिसाब सीधा करते हैं ⚖️",
+      "मोहब्बत थी इसलिए जाने दिया 💔\nज़िद होती तो बाहों में होती 🥀\nअधूरा इश्क 📖\nपूरी तन्हाई 🌌",
+      "हुकूमत वो ही करता है 👑\nजिसका दिलों पर राज हो ❤️️\nवरना गली के मुर्गों के सर पे भी 🐓\nताज होता है 😂",
+      "किस्मत खराब नहीं 🚫\nबस लोगों की नीयत खराब है 👁️\nवक्त आने दो ⏳\nसबका हिसाब होगा 📝",
+      "रुतबा ऐसा कि दुश्मन भी सलाम करे 🫡\nअंदाज़ ऐसा कि दीवाने भी नाम जपे 👑\nखामोश तबाही 🌪️",
+      "हम बुरे हैं तभी तो जी रहे हैं 😈\nअच्छे होते तो दुनिया जीने नहीं देती 🌍\nकड़वा सच 💯",
+      "दिल में प्यार ❤️\nदिमाग में व्यापार 💼\nयही है अपनी ज़िन्दगी का सार 📝\nहसलर 🚀"
     ];
 
     function populateBios(arr, category, isAura = false) {
@@ -1112,6 +1147,7 @@
     populateBios(realFunnyBios, 'funny');
     populateBios(realFilmyBios, 'filmy');
     populateBios(realAuraBios, 'aura', true); 
+    populateBios(realShayariBios, 'shayari', true); 
 
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -1136,7 +1172,7 @@
       { tag: "💎 VIP Exclusive", title: "The Sigma Rule", text: "वक्त खराब है इसलिए मौन हूँ 🤫\nबाद में बताऊंगा मैं कौन हूँ 👑\nशेर की चाल 🦁\nअकेला और नवाब 🔥" },
       { tag: "🥀 Deep Poetry", title: "Broken Strings", text: "खामोशियाँ बेवजह नहीं होतीं 👁️\nकुछ दर्द आवाज़ छीन लिया करते हैं 🥀\nएक खूबसूरत मगर दर्दनाक कहानी 🖤\nसीख रहा हूँ मुस्कुराना 😊" },
       { tag: "🎬 Filmy Special", title: "Shahenshah Vibe", text: "Rishte mein toh hum tumhare baap lagte hain 😈\nNaam hai Shahenshah 🔥\nApni sharton pe jeene wala 🦁\nLegendary status 🌟" },
-      { tag: "🔥 Masterpiece", title: "Royal Blood", text: "पैदा हुआ हूँ राज करने के लिए 👑\nरगों में रवैया 🩸\nदिल में वफादारी ❤️\nकिसी के आगे झुकता하지 🦅" },
+      { tag: "🔥 Masterpiece", title: "Royal Blood", text: "पैदा हुआ हूँ राज करने के लिए 👑\nरगों में रवैया 🩸\nदिल में वफादारी ❤️\nकिसी के आगे झुकता नहीं 🦅" },
       { tag: "✨ Aesthetic", title: "Moonlight", text: "Chasing sunsets and beautiful dreams 🌇\nअपनी शांति सबसे प्यारी है 🧘‍♀️\nजी रहा हूँ वो पल जो शब्दों में नहीं आते 📸\nसिर्फ सकारात्मक ऊर्जा 🌻" },
       { tag: "😈 Attitude", title: "Devil's Mind", text: "सुन बेटा, अपनी औकात में रह ⚠️\nहम वो हैं जो समंदर भी सुखा दें 🌊\nजिगर बड़ा है 🦅\nसीधा मौत का खेल ☠️" },
       { tag: "💼 Motivation", title: "Hustle Hard", text: "सफलता एक दिन में नहीं मिलती 📈\nमेहनत इतनी खामोशी से करो 🤫\nकि कामयाबी शोर मचा दे 🏆\nFuture Billionaire 💸" },
@@ -1144,11 +1180,13 @@
       { tag: "💎 VIP Exclusive", title: "King's Move", text: "I don't follow the crowd. 🚶‍♂\nI walk alone, I walk fast. ⚡\nBuilding an empire in silence. 🤫\nSuccess is my only noise. 🏆" },
       { tag: "🎬 Filmy Special", title: "Jab We Met", text: "Main apni favorite hoon 💖\nSelf-love is the best love ✨\nStay gorgeous 🦋\nDreamer & Believer 🌟" },
       { tag: "🔥 Masterpiece", title: "Desi Swag", text: "बुरे वक्त में भी नवाबी शौक 🍷\nहमसे उलझना मौत को दावत 🗡\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯" },
-      { tag: "✨ Aesthetic", title: "Stardust", text: "सपनों की दुनिया में खोई हुई 🌙\nकिताबें और कॉफी ☕\nख्वाब बड़े हैं ☁️\nअपनी खुद की परी कथा ✨" },
+      { tag: "✨ Aesthetic", title: "Stardust", text: "सपनों की दुनिया में खोई हुई 🌙\nकिताबें और कॉफी ☕\nख्वाब बड़े हैं ☁️️\nअपनी खुद की परी कथा ✨" },
       { tag: "🔱 Mahakal", title: "Bholenath", text: "ना गिन के दिया ना तोल के दिया 🕉️\nमेरे महाकाल ने जिसे भी दिया 🔱\nदिल खोल के दिया 🙏\nहर हर महादेव 🚩" },
       { tag: "🥀 Deep Poetry", title: "Tears", text: "हँसते हुए चेहरे के पीछे का दर्द 🎭\nप्यार एक धोखा है 💔\nअब किसी पर भरोसा नहीं 🚫\nतन्हाई में सुकून है 🌌" },
       { tag: "🌌 Aura Check", title: "Unmatched Energy", text: "They hate what they can't be 💯\nWalking masterpiece 🎨\nAura shining bright 🌟\nDifferent breed 🦅" },
-      { tag: "💎 VIP Exclusive", title: "God Complex", text: "God complex? No, just superior 👑\nUnapologetically me 💯\nLevels above the rest 📈\nAura out of this world 🛸" }
+      { tag: "💎 VIP Exclusive", title: "God Complex", text: "God complex? No, just superior 👑\nUnapologetically me 💯\nLevels above the rest 📈\nAura out of this world 🛸" },
+      { tag: "📜 Desi Shayari", title: "Waqt ka Pasa", text: "वक्त का पासा पलटेगा 🎲\nतब हम बताएंगे हम क्या हैं 🔥\nअभी खामोश हैं 🤫\nबाद में तूफान लाएंगे 🌪️" },
+      { tag: "👑 Attitude", title: "Hukumat", text: "हुकूमत वो ही करता है 👑\nजिसका दिलों पर राज हो ❤️\nवरना गली के मुर्गों के सर पे भी 🐓\nताज होता है 😂" }
     ];
 
     let poetryCounter = 0;
@@ -1160,7 +1198,7 @@
         <div class="master-card">
           <div class="master-ribbon">${p.tag}</div>
           <div class="master-title colourful-shine">亗 ${p.title}</div>
-          <div class="master-text colourful-shine">${p.text.replace(/\n/g, '<br>')}</div>
+          <div class="master-text">${p.text.replace(/\n/g, '<br>')}</div>
           <button class="master-btn" onclick="copyEncodedText('${safeTxt}', 'Masterpiece Copied!')">📋 Copy Masterpiece</button>
         </div>`;
     }
@@ -1220,7 +1258,7 @@
     }
 
     /* ==========================================================================
-       TOOLS MODAL LOGIC (100+ FONTS, 50 PREMIUM & 200+ AESTHETIC GAMER NAMES)
+       TOOLS MODAL LOGIC
        ========================================================================== */
     window.openToolModal = function(toolType) {
       const title = document.getElementById('modalTitle');
@@ -1275,7 +1313,7 @@
         title.innerText = "🦋 Unique Emoji Sets";
         const ems = [...new Set([
           "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", 
-          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂️💪🔥",
+          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂️💪🔥",
           "🍔🍟🍕", "🌙💫✨", "📸🌍✈️", "🎵🎧🖤", "😈🔥🔪", "🕊️🤍☁️", "⛓🖤🛹", "🧸🤎📜"
         ])]; 
         html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
@@ -1342,7 +1380,7 @@
           { a: " ʕ•ᴥ•ʔ", tag: "BEAR 🐻" },
           { a: " /| ________________\nO|===|* >________________>\n \\|", tag: "SWORD ⚔️" },
           { a: "    /\\\n   /  \\\n  /____\\\n   |  |\n   |__|", tag: "MASTER 🏆" },
-          { a: "  █████  \n ██   ██ \n ███████ \n ██   ██ ", tag: "AURA ⚜️" },
+          { a: "  █████  \n ██   ██ \n ███████ \n ██   ██ ", tag: "AURA ⚜" },
           { a: "̿̿ ̿̿ ̿̿ ̿'̿'\\̵͇̿̿\\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿", tag: "GANGSTER 🔥" }
         ];
 
@@ -1388,7 +1426,7 @@
           "Die with memories, not dreams 💭", 
           "Simplicity is the ultimate sophistication 🌿",
           "My attitude is my unique gift 😎",
-          "Working on myself, for myself 🛠️️",
+          "Working on myself, for myself 🛠️",
           "Creating my own sunshine ☀️",
           "Keep your heels, head, and standards high 👠",
           "Silent but deadly 🌪️",
@@ -1414,9 +1452,89 @@
       if(toolType === 'numbers') runNumbers();
     };
 
-    /* ==========================================================================
-       100+ FONTS ENGINE
-       ========================================================================== */
+    window.runNumbers = function() {
+      // Robust string conversion to prevent crashes
+      const inputEl = document.getElementById('numInput');
+      let val = inputEl ? String(inputEl.value) : "2026";
+      if(!val) val = "2026";
+      const outBox = document.getElementById('numOut');
+      if(!outBox) return;
+      
+      const m1={"0":"𝟎","1":"𝟏","2":"𝟐","3":"𝟑","4":"𝟒","5":"𝟓","6":"𝟔","7":"𝟕","8":"𝟖","9":"𝟗"};
+      const m2={"0":"𝟘","1":"𝟙","2":"𝟚","3":"𝟛","4":"𝟜","5":"𝟝","6":"𝟞","7":"𝟟","8":"𝟠","9":"𝟡"};
+      const m3={"0":"⓪","1":"①","2":"②","3":"③","4":"④","5":"⑤","6":"⑥","7":"⑦","8":"⑧","9":"⑨"};
+      const m4={"0":"⓿","1":"❶","2":"❷","3":"❸","4":"❹","5":"❺","6":"❻","7":"❼","8":"❽","9":"❾"};
+
+      let o1="", o2="", o3="", o4="";
+      for(let i=0; i<val.length; i++) {
+        o1 += m1[val[i]] || val[i]; o2 += m2[val[i]] || val[i];
+        o3 += m3[val[i]] || val[i]; o4 += m4[val[i]] || val[i];
+      }
+
+      const styles = [o1, o2, o3, o4, `「${val}」`, `【${val}】`, `[̲̅${val}]`, `( ${val} )`];
+      let html = "";
+      styles.forEach(s => {
+        html += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:18px;">${s}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(s)}', 'Copied!')">Copy</button></div>`;
+      });
+      outBox.innerHTML = html;
+    };
+
+    window.runGamerNames = function() {
+      const val = document.getElementById('gamerInput').value || "Raistar";
+      const topOut = document.getElementById('gamerTopOut');
+      const aesOut = document.getElementById('gamerAesOut');
+
+      const charMaps = {
+        gothic: {a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"},
+        bold: {a:"𝗮",b:"𝗯",c:"𝗰",d:"𝗱",e:"𝗲",f:"𝗳",g:"𝗴",h:"𝗵",i:"𝗶",j:"𝗷",k:"𝗸",l:"𝗹",m:"𝗺",n:"𝗻",o:"𝗼",p:"𝗽",q:"𝗾",r:"𝗿",s:"𝘀",t:"𝘁",u:"𝘂",v:"𝘃",w:"𝘄",x:"𝘅",y:"𝘆",z:"𝘇",A:"𝗔",B:"𝗕",C:"𝗖",D:"𝗗",E:"𝗘",F:"𝗙",G:"𝗚",H:"𝗛",I:"𝗜",J:"𝗝",K:"𝗞",L:"𝗟",M:"𝗠",N:"𝗡",O:"𝗢",P:"𝗣",Q:"𝗤",R:"𝗥",S:"𝗦",T:"𝗧",U:"𝗨",V:"𝗩",W:"𝗪",X:"𝗫",Y:"𝗬",Z:"𝗭"}
+      };
+      const oG = val.split('').map(c => charMaps.gothic[c] || c).join('');
+      const oB = val.split('').map(c => charMaps.bold[c] || c).join('');
+
+      const premiumNames = [
+        `꧁•[ ${val} ]•꧂ 亗`, `乂 ${val} 乂 ☠️`, `๖ۣۜ${val} ࿐`, `亗 ${oG} 亗`, `⚡ ${oB} ⚡`,
+        `༺ཌ ${val} ད༻ 亗`, `〆 ${val} 〆 𖤍`, `𝕯 ${val} 𝕯 ☠️`, `☬ ${val} ☬ 亗`, `༒ ${val} ༒ ࿐`,
+        `『 ${oB} 』亗`, `【 ${val} 】☠️`, `〖 ${oG} 〗࿐`, `〘 ${val} 〙亗`, `〔 ${val} 〕⚡`,
+        `《 ${oB} 》☠️`, `« ${val} » 亗`, `╰☆☆ ${val} ☆☆╮`, `★彡[ ${val} ]彡★ 亗`, `░▒▓█ ${val} █▓▒░`,
+        `•?((¯°·._.• ${val} •._.·°¯))?• 亗`, `ıllıllı ${val} ıllıllı ☠`, `۞ ${val} ۞ ࿐`, `👑 ${oG} 👑 亗`,
+        `࿐ ${val} ࿐ ☠️`, `ヅ ${val} ヅ 亗`, `✦ ${val} ✦ ⚡`, `✧ ${oB} ✧ 亗`, `ᦗ ${val} ᦗ ☠️`,
+        `𑁍 ${val} 𑁍 ࿐`, `☽ ${val} ☾ 亗`, `⋆ ${oG} ⋆ ☠️`, `•.¸♡ ${val} ♡¸.• 亗`, `★ ${val} ★ ࿐`,
+        `✪ ${oB} ✪ 亗`, `❂ ${val} ❂ ☠️`, `✯ ${val} ✯ 亗`, `✰ ${oG} ✰ ⚡`, `↬ ${val} ↫ 亗`,
+        `⟡ ${val} ⟡ ☠️`, `⌑ ${oB} ⌑ ࿐`, `✿ ${val} ✿ 亗`, `❀ ${val} ❀ ☠️`, `➤ ${oG} ➤ 亗`,
+        `✓ ${val} ✓ ࿐`, `➻ ${val} ➻ 亗`, `◈ ${oB} ◈ ☠️`, `❖ ${val} ❖ 亗`, `► ${val} ► ⚡`, `❥ ${oG} ❥ 亗`
+      ];
+
+      let htmlTop = "";
+      premiumNames.forEach(name => {
+        htmlTop += `<div style="background:rgba(239,68,68,0.1); border-radius:14px; padding:16px; display:flex; justify-content:space-between; align-items:center;"><div class="colourful-shine" style="font-size:16px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Pro Name Copied!')">Copy</button></div>`;
+      });
+      topOut.innerHTML = htmlTop;
+
+      const suffixes = [" YT", " OP", " ࿐", " ッ", " 007", " VIP", " 999", " 444", " GOD", " PRO", " DEVIL", " GHOST", " SHADOW", " TOXIC", " 亗", " ☠️", " ⚡", " 👑", " 🖤", " 💎"];
+      const kanjis = ["神", "鬼", "影", "竜", "侍", "忍", "桜", "狼", "虎", "月"];
+      const frames = [
+        v => `【 ${v} 】`, v => `『 ${v} 』`, v => `〖 ${v} 〗`, v => `〔 ${v} 〕`,
+        v => `《 ${v} 》`, v => `〘 ${v} 〙`, v => `« ${v} »`, v => `[ ${v} ]`,
+        v => `| ${v} |`, v => `★ ${v} ★`, v => `✦ ${v} ✦`, v => `✧ ${v} ✧`,
+        v => `◈ ${v} ◈`, v => `❖ ${v} ❖`, v => `• ${v} •`, v => `~ ${v} ~`,
+        v => `( ${v} )`, v => `乂 ${v} 乂`, v => `〆 ${v} 〆`, v => `† ${v} †`
+      ];
+
+      let aestheticNames = [];
+      frames.forEach(frame => {
+        suffixes.forEach(suffix => { aestheticNames.push(frame(val) + suffix); });
+      });
+      kanjis.forEach(kanji => {
+        suffixes.slice(0, 10).forEach(suffix => { aestheticNames.push(`${kanji}・${val}${suffix}`); });
+      });
+
+      let htmlAes = "";
+      aestheticNames.slice(0, 220).forEach(name => {
+        htmlAes += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:15px; letter-spacing:0.5px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Name Copied!')">Copy</button></div>`;
+      });
+      aesOut.innerHTML = htmlAes;
+    };
+
     window.runModalFonts = function() {
       const val = document.getElementById('modalFontIn').value || "InstaVibe";
       const outBox = document.getElementById('modalFontOut');
@@ -1481,71 +1599,6 @@
       outBox.innerHTML = html;
     };
 
-    /* ==========================================================================
-       PRO GAMER NAMES ENGINE (50 PREMIUM + 200+ AESTHETIC)
-       ========================================================================== */
-    window.runGamerNames = function() {
-      const val = document.getElementById('gamerInput').value || "Raistar";
-      const topOut = document.getElementById('gamerTopOut');
-      const aesOut = document.getElementById('gamerAesOut');
-
-      const charMaps = {
-        gothic: {a:"𝖆",b:"𝖇",c:"𝖈",d:"𝖉",e:"𝖊",f:"𝖋",g:"𝖌",h:"𝖍",i:"𝖎",j:"𝖏",k:"𝖐",l:"𝖑",m:"𝖒",n:"𝖓",o:"𝖔",p:"𝖕",q:"𝖖",r:"𝖗",s:"𝖘",t:"𝖙",u:"𝖚",v:"𝖛",w:"𝖜",x:"𝖝",y:"𝖞",z:"𝖟",A:"𝕬",B:"𝕭",C:"𝕮",D:"𝕯",E:"𝕰",F:"𝕱",G:"𝕲",H:"𝕳",I:"𝕴",J:"𝕵",K:"𝕶",L:"𝕷",M:"𝕸",N:"𝕹",O:"𝕺",P:"𝕻",Q:"𝕼",R:"𝕽",S:"𝕾",T:"𝕿",U:"𝖀",V:"𝖁",W:"𝖂",X:"𝖃",Y:"𝖄",Z:"𝖅"},
-        bold: {a:"𝗮",b:"𝗯",c:"𝗰",d:"𝗱",e:"𝗲",f:"𝗳",g:"𝗴",h:"𝗵",i:"𝗶",j:"𝗷",k:"𝗸",l:"𝗹",m:"𝗺",n:"𝗻",o:"𝗼",p:"𝗽",q:"𝗾",r:"𝗿",s:"𝘀",t:"𝘁",u:"𝘂",v:"𝘃",w:"𝘄",x:"𝘅",y:"𝘆",z:"𝘇",A:"𝗔",B:"𝗕",C:"𝗖",D:"𝗗",E:"𝗘",F:"𝗙",G:"𝗚",H:"𝗛",I:"𝗜",J:"𝗝",K:"𝗞",L:"𝗟",M:"𝗠",N:"𝗡",O:"𝗢",P:"𝗣",Q:"𝗤",R:"𝗥",S:"𝗦",T:"𝗧",U:"𝗨",V:"𝗩",W:"𝗪",X:"𝗫",Y:"𝗬",Z:"𝗭"}
-      };
-      const oG = val.split('').map(c => charMaps.gothic[c] || c).join('');
-      const oB = val.split('').map(c => charMaps.bold[c] || c).join('');
-
-      // 50 PREMIUM NAMES
-      const premiumNames = [
-        `꧁•[ ${val} ]•꧂ 亗`, `乂 ${val} 乂 ☠️`, `๖ۣۜ${val} ࿐`, `亗 ${oG} 亗`, `⚡ ${oB} ⚡`,
-        `༺ཌ ${val} ད༻ 亗`, `〆 ${val} 〆 𖤍`, `𝕯 ${val} 𝕯 ☠️`, `☬ ${val} ☬ 亗`, `༒ ${val} ༒ ࿐`,
-        `『 ${oB} 』亗`, `【 ${val} 】☠️`, `〖 ${oG} 〗࿐`, `〘 ${val} 〙亗`, `〔 ${val} 〕⚡`,
-        `《 ${oB} 》☠️`, `« ${val} » 亗`, `╰☆☆ ${val} ☆☆╮`, `★彡[ ${val} ]彡★ 亗`, `░▒▓█ ${val} █▓▒░`,
-        `•?((¯°·._.• ${val} •._.·°¯))?• 亗`, `ıllıllı ${val} ıllıllı ☠`, `۞ ${val} ۞ ࿐`, `👑 ${oG} 👑 亗`,
-        `࿐ ${val} ࿐ ☠️`, `ヅ ${val} ヅ 亗`, `✦ ${val} ✦ ⚡`, `✧ ${oB} ✧ 亗`, `ᦗ ${val} ᦗ ☠️`,
-        `𑁍 ${val} 𑁍 ࿐`, `☽ ${val} ☾ 亗`, `⋆ ${oG} ⋆ ☠️`, `•.¸♡ ${val} ♡¸.• 亗`, `★ ${val} ★ ࿐`,
-        `✪ ${oB} ✪ 亗`, `❂ ${val} ❂ ☠️`, `✯ ${val} ✯ 亗`, `✰ ${oG} ✰ ⚡`, `↬ ${val} ↫ 亗`,
-        `⟡ ${val} ⟡ ☠️`, `⌑ ${oB} ⌑ ࿐`, `✿ ${val} ✿ 亗`, `❀ ${val} ❀ ☠️`, `➤ ${oG} ➤ 亗`,
-        `✓ ${val} ✓ ࿐`, `➻ ${val} ➻ 亗`, `◈ ${oB} ◈ ☠️`, `❖ ${val} ❖ 亗`, `► ${val} ► ⚡`, `❥ ${oG} ❥ 亗`
-      ];
-
-      let htmlTop = "";
-      premiumNames.forEach(name => {
-        htmlTop += `<div style="background:rgba(239,68,68,0.1); border-radius:14px; padding:16px; display:flex; justify-content:space-between; align-items:center;"><div class="colourful-shine" style="font-size:16px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Pro Name Copied!')">Copy</button></div>`;
-      });
-      topOut.innerHTML = htmlTop;
-
-      // 200+ AESTHETIC NAMES GENERATOR
-      const suffixes = [" YT", " OP", " ࿐", " ッ", " 007", " VIP", " 999", " 444", " GOD", " PRO", " DEVIL", " GHOST", " SHADOW", " TOXIC", " 亗", " ☠️", " ⚡", " 👑", " 🖤", " 💎"];
-      const kanjis = ["神", "鬼", "影", "竜", "侍", "忍", "桜", "狼", "虎", "月"];
-      const frames = [
-        v => `【 ${v} 】`, v => `『 ${v} 』`, v => `〖 ${v} 〗`, v => `〔 ${v} 〕`,
-        v => `《 ${v} 》`, v => `〘 ${v} 〙`, v => `« ${v} »`, v => `[ ${v} ]`,
-        v => `| ${v} |`, v => `★ ${v} ★`, v => `✦ ${v} ✦`, v => `✧ ${v} ✧`,
-        v => `◈ ${v} ◈`, v => `❖ ${v} ❖`, v => `• ${v} •`, v => `~ ${v} ~`,
-        v => `( ${v} )`, v => `乂 ${v} 乂`, v => `〆 ${v} 〆`, v => `† ${v} †`
-      ];
-
-      let aestheticNames = [];
-      frames.forEach(frame => {
-        suffixes.forEach(suffix => {
-          aestheticNames.push(frame(val) + suffix);
-        });
-      });
-      kanjis.forEach(kanji => {
-        suffixes.slice(0, 10).forEach(suffix => {
-          aestheticNames.push(`${kanji}・${val}${suffix}`);
-        });
-      });
-
-      let htmlAes = "";
-      aestheticNames.slice(0, 220).forEach(name => {
-        htmlAes += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:15px; letter-spacing:0.5px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Name Copied!')">Copy</button></div>`;
-      });
-      aesOut.innerHTML = htmlAes;
-    };
-
     window.runWings = function() {
       const val = document.getElementById('wingInput').value || "Badshah";
       const outBox = document.getElementById('wingOut');
@@ -1568,53 +1621,6 @@
       document.getElementById('zOut').innerText = val.split('').map(c => c + z[Math.floor(Math.random()*z.length)]).join('');
     };
 
-    window.openPolicyModal = function(type) {
-      const title = document.getElementById('legalModalTitle');
-      const body = document.getElementById('legalModalBody');
-      
-      if(type === 'about') {
-        title.innerText = "About InstaVibe Ultimate";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">Welcome to <strong>InstaVibe Ultimate</strong>, India's most advanced and entirely free Creator Suite.</p>
-          <p style="margin-bottom:15px;"><strong>Our Mission:</strong> We aim to empower millions of social media creators, gamers, and influencers by providing them with premium, 100% unique profile aesthetics without any paywalls or annoying ads.</p>
-          <ul style="margin-left: 20px; margin-bottom: 15px; color:#94a3b8;">
-            <li>🧠 Live Google Gemini AI Integration</li>
-            <li>🔄 Mathematical Zero-Repeat Engine</li>
-            <li>💎 Manually Curated VIP Bios</li>
-          </ul>
-        `;
-      } 
-      else if(type === 'privacy') {
-        title.innerText = "Privacy Policy";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">At InstaVibe Ultimate, your privacy is our top priority. We believe in a transparent and secure user experience.</p>
-          <p style="margin-bottom:10px;"><strong>1. Data Collection:</strong> We do NOT collect, store, or sell any personal data.</p>
-          <p style="margin-bottom:10px;"><strong>2. Analytics:</strong> We use Google Analytics solely to understand general traffic trends to improve our servers.</p>
-          <p style="margin-bottom:10px;"><strong>3. AI Usage:</strong> The keywords you enter into our AI Generator are processed temporarily via secure Cloudflare Workers.</p>
-        `;
-      } 
-      else if(type === 'terms') {
-        title.innerText = "Terms & Conditions";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">By accessing InstaVibe Ultimate, you agree to the following terms of use:</p>
-          <p style="margin-bottom:10px;"><strong>1. Free Usage:</strong> All resources, including VIP Bios, Fonts, Gamer Names, and AI Generations, are 100% free for personal use on Instagram, WhatsApp, Free Fire, BGMI, and other platforms.</p>
-          <p style="margin-bottom:10px;"><strong>2. Prohibited Actions:</strong> You may not use automated scripts or bots to scrape, steal, or bulk-download our database.</p>
-        `;
-      }
-      else if(type === 'contact') {
-        title.innerText = "Contact Us";
-        body.innerHTML = `
-          <p style="margin-bottom:15px;">Have questions, feature requests, or want to collaborate for brand deals? We would love to hear from you!</p>
-          <div style="background:var(--solid-btn); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.05); margin-bottom:15px;">
-            <p style="color:var(--gold-mid); font-size:11px; margin-bottom:4px; font-weight:800; text-transform:uppercase;">Developer Email</p>
-            <p style="font-size:16px; font-weight:900; color:#fff;">pintu959546@gmail.com</p>
-          </div>
-          <button class="master-btn" style="width: 100%; border-radius: 12px; font-size: 14px;" onclick="copyEncodedText('${encodeURIComponent('pintu959546@gmail.com')}', 'Email Copied!')">📋 Copy Email Address</button>
-        `;
-      }
-
-      document.getElementById('legalModal').style.display = 'flex';
-    };
   </script>
 </body>
 </html>
