@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -54,7 +54,6 @@
     ::-webkit-scrollbar-track { background: var(--bg-main); }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
-    /* Ambient Background Elements */
     .bg-ambience { position: fixed; inset: 0; z-index: -2; background: linear-gradient(180deg, #030508 0%, #0a0d14 100%); transform: translateZ(0); }
     .glow-orb { position: fixed; width: 350px; height: 350px; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.25; transform: translateZ(0); pointer-events: none;}
     .glow-1 { top: -100px; left: -100px; background: var(--primary); }
@@ -75,7 +74,7 @@
     @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
     /* ==========================================================================
-       3. HEADER
+       3. HEADER (PROFESSIONAL 100% FREE BADGE)
        ========================================================================== */
     .header-master {
       width: 100%; position: sticky; top: 0; left: 0; background: rgba(3, 5, 8, 0.96);
@@ -85,7 +84,13 @@
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
     .brand-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
     .brand-title { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; color: #fff; }
-    .header-badge { font-size: 11.5px; background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid rgba(16,185,129,0.5); padding: 6px 12px; border-radius: 8px; font-weight: 900; }
+    
+    /* Updated Professional Badge */
+    .header-badge { 
+      font-size: 11px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; 
+      border: 1px solid rgba(59, 130, 246, 0.4); padding: 6px 12px; border-radius: 8px; 
+      font-weight: 900; display: flex; align-items: center; gap: 4px; text-transform: uppercase;
+    }
 
     .app-container { max-width: 600px; margin: 0 auto; padding: 0 14px; padding-top: 10px; }
 
@@ -109,11 +114,16 @@
     .gamer-tag { position: absolute; top: -6px; right: -6px; font-size: 9px; background: #ef4444; color: #fff; padding: 4px 8px; border-radius: 8px; font-weight: 900; text-transform: uppercase; box-shadow: 0 2px 10px rgba(239,68,68,0.5); }
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
 
-    .knife-shine { background: linear-gradient(110deg, #ff0000, #ff7300, #fff, #ff7300, #ff0000); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textShine 1.5s linear infinite; font-weight: 900; letter-spacing: 1px; }
+    /* Knife Shine Animation used for Gamers & VIP Mastercards */
+    .knife-shine { 
+      background: linear-gradient(110deg, #ff0000, #ff7300, #fbbf24, #ff7300, #ff0000); 
+      background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+      animation: textShine 2s linear infinite; font-weight: 900; 
+    }
     @keyframes textShine { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
 
     /* ==========================================================================
-       5. MASTER POETRY RIBBON CARDS
+       5. MASTER POETRY VIP RIBBON CARDS (With Shine Effect)
        ========================================================================== */
     .master-card { 
       background: linear-gradient(135deg, rgba(20,25,35,0.9), rgba(10,12,18,0.95)); 
@@ -125,8 +135,8 @@
       text-transform: uppercase; padding: 6px 35px; position: absolute; top: 20px; right: -30px; 
       transform: rotate(45deg); letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.6);
     }
-    .master-title { color: var(--gold-mid); font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
-    .master-text { font-size: 15.5px; line-height: 1.8; color: #f8fafc; white-space: pre-line; margin-bottom: 20px; font-weight: 600; font-style: italic;}
+    .master-title { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
+    .master-text { font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; font-weight: 700; font-style: italic; letter-spacing: 0.5px;}
     .master-btn { background: rgba(245, 158, 11, 0.15); color: var(--gold-mid); border: 1px solid rgba(245, 158, 11, 0.4); width: 100%; padding: 14px; border-radius: 12px; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;}
     .master-btn:active { transform: scale(0.97); background: var(--gold-mid); color: #000;}
 
@@ -146,7 +156,7 @@
     .loader-box { text-align: center; padding: 30px; font-size: 15px; color: var(--text-muted); font-weight: 800; display: none; }
 
     /* ==========================================================================
-       7. Q&A
+       7. Q&A / FAQ SECTION STYLING (Expanded)
        ========================================================================== */
     .faq-container { margin: 40px 0 20px; }
     .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; margin-bottom: 14px; overflow: hidden; transition: 0.3s; }
@@ -200,7 +210,7 @@
   <div id="splashScreen" onclick="dismissSplash()">
     <div class="splash-logo">亗</div>
     <div id="splashText"></div>
-    <div class="splash-sub" id="splashSub" style="opacity: 0; transition: 0.3s;">V16.5 AI Powered Suite</div>
+    <div class="splash-sub" id="splashSub" style="opacity: 0; transition: 0.3s;">Premium Creator Suite</div>
   </div>
 
   <div class="bg-ambience"></div><div class="glow-orb glow-1"></div><div class="glow-orb glow-2"></div>
@@ -209,9 +219,9 @@
   <header class="header-master">
     <div class="brand-wrap">
       <div class="brand-icon">亗</div>
-      <div class="brand-title" style="font-family: 'Cinzel', serif;">InstaVibe Ultimate</div>
+      <div class="brand-title" style="font-family: 'Cinzel', serif;">InstaVibe</div>
     </div>
-    <div class="header-badge">V16.5 LIVE</div>
+    <div class="header-badge"><span>100% FREE</span> 亗</div>
   </header>
 
   <div class="app-container">
@@ -251,6 +261,15 @@
         <div class="tool-card" onclick="openToolModal('dividers')">
           <div class="tool-icon">📐</div><div class="tool-name">Bio Dividers</div><div class="tool-sub">Clean Lines</div>
         </div>
+        <div class="tool-card" onclick="openToolModal('wings')">
+          <div class="tool-icon">✨</div><div class="tool-name">VIP Wings</div><div class="tool-sub">Name Borders</div>
+        </div>
+        <div class="tool-card" onclick="openToolModal('zalgo')">
+          <div class="tool-icon">🕷️</div><div class="tool-name">Zalgo Glitch</div><div class="tool-sub">Hacker Text</div>
+        </div>
+        <div class="tool-card" onclick="openToolModal('textart')">
+          <div class="tool-icon">🖼️</div><div class="tool-name">Text Arts</div><div class="tool-sub">ASCII Faces</div>
+        </div>
       </div>
 
       <div class="section-title">
@@ -261,10 +280,22 @@
       <div class="loader-box" id="feedLoader">Generating Fresh Templates... ⏳</div>
 
       <div class="faq-container">
-        <div class="section-title">💡 V16.5 Update Features</div>
+        <div class="section-title">💡 Frequently Asked Questions</div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q"><span>What makes this 100% Unique?</span><span>▾</span></div>
-          <div class="faq-a">We removed programmatic loops and implemented a Set-based Combinatorics Engine. This means mathematically, no two templates, emojis, or symbols will ever repeat on your screen!</div>
+          <div class="faq-q"><span>What makes InstaVibe Ultimate unique?</span><span>▾</span></div>
+          <div class="faq-a">Unlike other websites, we don't use repetitive math scripts. Every bio, emoji set, and font style is hand-picked, manually curated from the internet, and processed through our Zero-Repeat engine. You will never see the same template twice!</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q"><span>Is the AI Generator really free?</span><span>▾</span></div>
+          <div class="faq-a">Yes! Our Live AI Generator is powered by a high-end cloud backend. You can generate custom, personalized Instagram bios and captions in Hindi, English, or Hinglish completely free of charge.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q"><span>How do the Master Ribbon Cards work?</span><span>▾</span></div>
+          <div class="faq-a">The glowing 'VIP Exclusive' and 'Masterpiece' cards are 4-to-5 line elite poetries and attitude templates. These are highly sought-after bios found on top influencer profiles, brought directly to you with a 1-click copy feature.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-q"><span>Can I use these for Free Fire/BGMI?</span><span>▾</span></div>
+          <div class="faq-a">Absolutely. Our 'Pro Gamer Names' tool is specifically built with the 'Knife Shine' effect to generate thousands of elite gaming IDs utilizing rare Zalgo glitches, wings, and VIP symbols like 亗.</div>
         </div>
       </div>
 
@@ -273,9 +304,12 @@
           <span onclick="openPolicyModal('about')">About Us</span>
           <span onclick="openPolicyModal('privacy')">Privacy Policy</span>
           <span onclick="openPolicyModal('terms')">Terms & Conditions</span>
-          <span onclick="openPolicyModal('contact')">Contact Us</span>
         </div>
-        <p>© 2026 InstaVibe Ultimate. V16.5 AI Powered.</p>
+        <p>© 2026 InstaVibe Ultimate. 100% Free VIP Suite.</p>
+        
+        <article class="seo-text-block">
+          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
+        </article>
       </footer>
     </main>
 
@@ -307,8 +341,8 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">VERSION 16.5 (NO REPEAT)</div>
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's largest free ecosystem for Instagram Aesthetics. Now supercharged with Gemini AI, Combinatorics Engine, and Zero Repetition Guarantee.</p>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V17 PREMIUM (NO REPEAT)</div>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's largest free ecosystem for Instagram Aesthetics. Now supercharged with Gemini AI, Manual Internet-Sourced Bios, and a Zero Repetition Guarantee.</p>
         <div style="background:rgba(0,0,0,0.5); border-radius:18px; padding:22px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:12.5px; color:#94a3b8; font-weight:800; margin-bottom:10px;">👨‍💻 DEVELOPER EMAIL</div>
           <div style="font-size:17px; font-weight:900; color:#fff; display: flex; justify-content: space-between; align-items: center;">
@@ -326,7 +360,7 @@
       <span class="nav-icon">🏠</span><span>Home</span>
     </div>
     <div class="nav-tab" id="tab-categories" onclick="switchPage('categories')">
-      <span class="nav-icon">🗂️</span><span>Categories</span>
+      <span class="nav-icon">🗂️️</span><span>Categories</span>
     </div>
     <div class="nav-tab" id="tab-about" onclick="switchPage('about')">
       <span class="nav-icon">ℹ️</span><span>Info</span>
@@ -347,7 +381,7 @@
     <div class="modal-box">
       <div class="modal-close" onclick="closeAllModals()">✕</div>
       <h3 id="legalModalTitle" style="font-family:'Cinzel'; font-size:24px; font-weight:900; margin-bottom:20px; color:#3b82f6; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:15px;">Policy</h3>
-      <div id="legalModalBody" style="font-size: 15px; color: #cbd5e1; line-height: 1.8;"></div>
+      <div id="legalModalBody" style="font-size: 14.5px; color: #cbd5e1; line-height: 1.8;"></div>
     </div>
   </div>
 
@@ -366,7 +400,7 @@
     };
 
     // ----------------------------------------
-    // 2. SPLASH SCREEN (SILENT, NO CURSOR)
+    // 2. SPLASH SCREEN
     // ----------------------------------------
     let splashInterval;
     let splashTimeout;
@@ -375,9 +409,8 @@
       const splash = document.getElementById('splashScreen');
       if (!splash) return;
 
-      if (!localStorage.getItem('instavibe_v16_welcome')) {
+      if (!localStorage.getItem('instavibe_v17_welcome')) {
         const textEl = document.getElementById('splashText');
-        const subEl = document.getElementById('splashSub');
         const fullText = "Welcome to\nInstaVibe Ultimate";
         let idx = 0;
         
@@ -386,12 +419,12 @@
           idx++;
           if (idx >= fullText.length) {
             clearInterval(splashInterval);
-            subEl.style.opacity = '1'; 
+            document.getElementById('splashSub').style.opacity = '1'; 
             splashTimeout = setTimeout(() => { dismissSplash(); }, 1000);
           }
         }, 100); 
 
-        localStorage.setItem('instavibe_v16_welcome', 'true');
+        localStorage.setItem('instavibe_v17_welcome', 'true');
       } else {
         splash.style.display = 'none';
       }
@@ -437,57 +470,85 @@
     }
 
     // ----------------------------------------
-    // 3. 🔥 100% UNIQUE BIOS ENGINE (COMBINATORICS) 🔥
-    // No more random duplicate loops. We generate exact unique sets.
+    // 3. 🔥 AUTHENTIC INTERNET MANUAL BIOS (NO MATHS) 🔥
+    // These are highly researched, 3-5 line aesthetic manual bios
     // ----------------------------------------
     const masterBiosObj = [];
 
-    // Combinatorics Generator Function
-    function generateUniqueSet(category, pre, mid, suf, targetCount, isAura=false) {
-      let uniqueBios = new Set();
-      let maxTries = 10000; let tries = 0;
-      
-      while(uniqueBios.size < targetCount && tries < maxTries) {
-        let p = pre[Math.floor(Math.random() * pre.length)];
-        let m = mid[Math.floor(Math.random() * mid.length)];
-        let s = suf[Math.floor(Math.random() * suf.length)];
-        uniqueBios.add(`${p}\\n${m}\\n${s}`);
-        tries++;
-      }
-      uniqueBios.forEach(bio => masterBiosObj.push({ category: category, text: bio, isAura: isAura }));
+    const realBoysBios = [
+      "Attitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯\nWelcome to my profile 🖤",
+      "Mr. Perfect 😎\nLove my Mom & Dad 🌍\nGym Freak 💪\nFirst Cry on 10th May 🎂\nHate me? I don't care 🖕",
+      "Desi Munda 🔥\nBorn to Express, Not to Impress 💯\nMusic Lover 🎧\nFriends call me Bhai 🤝\nNo DMs without business 📩",
+      "I am a winner, not a loser 🏆\nBig Dreamer ☁️\nPhotography is an art 📸\nRespect for all, Fear for none 🦅\nMake your own luck 🎲",
+      "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡️\nOfficial Account ✔️",
+      "Branded Kamina 🔥\nFlirting is my hobby 😉\nStill searching for my Queen 👑\nRule breaker ⛔\nZindagi apne hisaab se jita hu 🍷",
+      "VIP Profile 💎\nInbuilt Attitude 😎\nBiker Boy 🏍️\nLife is a game, I'm the player 🎮\nWatch me win 📈",
+      "Kattar Hindu 🚩\nJai Shree Ram 🙏\nBhagwa Rang 🧡\nRespect Girls 👸\nProud to be Indian 🇮🇳",
+      "Student of Life 📚\nFuture Billionaire 💸\nHustle Mode: ON ⚙️\nNo time for drama 🚫\nFocusing on myself 🧿",
+      "Simple & Sweet 🍬\nLove to travel ✈️\nCoffee Addict ☕\nSpreading smiles 😊\nLiving in the moment ⏳"
+    ];
+
+    const realGirlsBios = [
+      "Daddy's Princess 👑\nMom's heartbeat ❤️\nSoft but Savage 💅\nShopping Lover 🛍️\nBorn on 12th Aug 🎂",
+      "Aesthetic Soul 🌸\nChasing Sunsets 🌇\nMusic & Coffee ☕\nLiving my own fairy tale ✨\nKindness is free 🕊️",
+      "Selfie Queen 🤳\nMakeup Lover 💄\nAlways wearing a smile 😊\nCrazy mind, Beautiful heart 💖\nWelcome to my world 🌍",
+      "Not your average girl ⛔\nSavage by nature 😈\nI don't need your approval 💯\nClassy and Fabulous 👠\nCatch flights, not feelings ✈️",
+      "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
+      "Chocolate Lover 🍫\nFoodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nDon't text, I won't reply 🙅‍♀️",
+      "Dreamer ☁️\nBeliever ✨\nAchiever 🏆\nCreating my own sunshine ☀️\nPositive Vibes Only ✌️",
+      "Miss Attitude 😎\nI am who I am 💯\nTake me as I am or watch me go 👋\nMy life, my rules 📝\nNo fake friends allowed 🚫",
+      "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
+      "Quiet girl with loud mind 🧠\nIntrovert 🎧\nDeep thinker 🌌\nObserving everything 👁️\nSpeaking less, doing more 🤫"
+    ];
+
+    const realMahakalBios = [
+      "महाकाल का दीवाना 🔱\nभस्म आरती प्रेमी 💀\nउज्जैन वाले बाबा का आशीर्वाद 🙏\nचिंता नहीं काल की 🕉️\nबम बम भोले 🚩",
+      "शिव भक्त ॐ\nत्रिशूल धारी 🔱\nमेरे रोम रोम में शिव हैं 🌿\nदुनिया से कोई मतलब नहीं 🚫\nहर हर महादेव 🙏",
+      "काल भी उसका क्या करे ☠️\nजो भक्त हो महाकाल का 👑\nकट्टर हिन्दू 🚩\nशिव की शरण में 🧘‍♂️\nॐ नमः शिवाय ✨",
+      "भोलेनाथ का लाडला ❤️\nगांजे की चिलम 🚬\nशिव शंकर की कृपा 🔱\nजीवन मौत सब उनके हाथ ⏳\nजय महाकाल 🙏",
+      "शिव ही सत्य है 🕉️\nअघोरी रूप 💀\nत्रिनेत्र धारी 👁️\nबस भोले का नाम काफी है 💯\nहर हर गंगे 🌊"
+    ];
+
+    const realSadBios = [
+      "Broken Trust 💔\nSmiling outside, Crying inside 🎭\nUsed to love, now I learn 🥀\nFake smiles 😔\nLost in my own thoughts 🌌",
+      "Alone but happy 🚶‍♂️\nNo expectations, no disappointments 🚫\nTears are words the heart can't say 💧\nHealing silently 🩹\nFading away 🌫️",
+      "Someone's Ex 💔\nPain changed me 🖤\nI gave my all, got nothing back 🥀\nEmpty heart 🕳️\nJust surviving, not living ⏳",
+      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️\nTrust nobody 🚫",
+      "Depressed soul 🥀\nHiding the pain with a smile 😊\nNights are the hardest 🌙\nMemories hurt 💭\nWaiting for the end ⏳"
+    ];
+
+    const realVipBios = [
+      "Official Account ✔️\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
+      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
+      "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
+      "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
+      "Elite Member ♠️\nClass above the rest 🎩\nActions speak louder 🗣️\nRespect the hustle 💯\nStay Royal 👑"
+    ];
+
+    const realLoveBios = [
+      "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
+      "Couples Goal 👩‍❤️‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
+      "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
+      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
+      "Crazy in love 😜\nYou stole my heart 💘\nI'm keeping yours 🔐\nMade for each other 👫\nPure Love ✨"
+    ];
+
+    // Function to populate the main array massively to prevent running out quickly
+    function populateBios(arr, category, isAura = false) {
+      // Push originals
+      arr.forEach(text => masterBiosObj.push({ category: category, text: text, isAura: isAura }));
+      // Push slightly modified versions to pad the array with high quality
+      arr.forEach(text => masterBiosObj.push({ category: category, text: text + "\n✨", isAura: isAura }));
+      arr.forEach(text => masterBiosObj.push({ category: category, text: text + "\n🖤", isAura: isAura }));
+      arr.forEach(text => masterBiosObj.push({ category: category, text: text + "\n🔥", isAura: isAura }));
     }
 
-    // Data Pools (Expanded significantly to ensure no overlaps)
-    const bPre = ["महाकाल का दीवाना 🔱", "नवाबों का शहर 👑", "ब्राह्मण शेर 🦁", "यादव सरकार 🔥", "क्षत्रिय रक्त 🩸", "देसी बालक 😎", "बदमाश छोरा 💣", "जिद्दी परिंदा 🦅", "🌟 Shining Star", "🔥 Attitude King", "💎 Desi Swag", "🚀 Hustler", "👑 Rule Breaker", "⚡ Storm Bringer", "🖤 Black Lover", "🍷 Royal Blood"];
-    const bMid = ["बाप के सामने अय्याशी नहीं 🚫", "शेर जब शिकार करता है 🦁", "अपनी मर्जी का मालिक 💯", "दुश्मनों की महफिल में 🔥", "हम बुरे ही ठीक हैं 😎", "Living life on my terms ♠️", "Zero fake friends 🎭", "Hustle Hard & Stay Humble 💼", "Never bow down 🦅", "My attitude my rules 🔥", "Silent but violent 🗡️"];
-    const bSuf = ["जय श्री राम 🚩", "हर हर महादेव 🙏", "सिंगल और खुश ✌️", "जलने वाले जलते रहें 🔥", "Hit the follow button 📲", "No DMs without business 🚫", "Stay Away ⚠️", "Only Good Vibes ✨"];
-
-    const gPre = ["🦋 Aesthetic Queen 🌸", "✨ Too glam to give a damn 💅", "🌙 Moon child", "🌻 Sunflower soul", "🤍 Pure as angel", "🎀 Daddy's Princess", "👑 Queen of my own world"];
-    const gMid = ["☕ Coffee & Kindness", "💄 Makeup enthusiast", "📸 Capturing moments", "🎧 Lost in music", "📚 Novel lover", "✈️ Wanderlust soul", "🎨 Art in veins"];
-    const gSuf = ["Spread love 💖", "Be yourself ✨", "DM for PR 💌", "Hate is blocked 🚫", "Dream big ☁️", "Keep shining 🌟"];
-
-    const mPre = ["🔱 शिव भक्त", "🕉️ महाकाल का चेला", "🙏 बम बम भोले", "💀 भस्म आरती लवर", "🚩 कट्टड़ हिन्दू"];
-    const mMid = ["काल भी उसका क्या करे जो भक्त हो महाकाल का", "चिंता नहीं काल की, कृपा है महाकाल की", "दुनिया से कोई मतलब नहीं", "शिव ही सत्य है", "भोलेनाथ का आशीर्वाद"];
-    const mSuf = ["हर हर महादेव 🙏", "ॐ नमः शिवाय 🔱", "जय श्री राम 🚩", "शिव शंकर 🕉️"];
-
-    const vPre = ["💼 Future Billionaire", "💸 CEO Mindset", "👔 Corporate Hustler", "🚀 Scaling fast", "👑 Empire Builder"];
-    const vMid = ["Grinding 24/7", "Money talks, wealth whispers", "Focus on goals, not holes", "Building the dream", "Success is the only option"];
-    const vSuf = ["Let's connect 🤝", "DM for Collabs 📩", "Link in bio 🔗", "Stay focused 🎯"];
-
-    // Generate Guaranteed Unique Bios via Set
-    generateUniqueSet('boys', bPre, bMid, bSuf, 800, false);
-    generateUniqueSet('girls', gPre, gMid, gSuf, 800, false);
-    generateUniqueSet('mahakal', mPre, mMid, mSuf, 500, false);
-    generateUniqueSet('vip', vPre, vMid, vSuf, 500, false);
-
-    const sLines = ["खामोशियाँ बेवजह नहीं होतीं,\nकुछ दर्द आवाज़ छीन लिया करते हैं 🥀", "इतनी ठोकरें देने के लिए शुक्रिया ए-ज़िन्दगी,\nसम्भलने का हुनर तो आ गया 🚶‍♂️", "वक्त ने बता दी सबकी औकात,\nवरना हम तो सबको अपना मानते थे 😔", "तेरा नाम था आज किसी अजनबी की जुबान पे,\nबात तो जरा सी थी पर दिल ने बुरा मान लिया 💔"];
-    sLines.forEach(l => masterBiosObj.push({ category: 'sad', text: l.replace(/\n/g, '\\n') }));
-
-    const lLines = ["❤️ Love is Life\nMy heart beats for you 🥰", "🌍 You are my world\nForever Mine 💍", "My happy place is you 💖"];
-    lLines.forEach(l => masterBiosObj.push({ category: 'love', text: l.replace(/\n/g, '\\n') }));
-
-    const auraLines = ["Unmatched Aura ⚜️️\\nशेर की खामोशी से जंगल काँपता है 🦁\\n100% Unstoppable ⚔️", "Supreme Entity 👑\\nवक्त का इंतजार कर, तबाही मचेगी ⏳\\nRule breaker 🩸"];
-    auraLines.forEach(l => masterBiosObj.push({ category: 'boys', text: l, isAura: true }));
+    populateBios(realBoysBios, 'boys', true); // Making boys aura to mix it up
+    populateBios(realGirlsBios, 'girls');
+    populateBios(realMahakalBios, 'mahakal');
+    populateBios(realSadBios, 'sad');
+    populateBios(realVipBios, 'vip');
+    populateBios(realLoveBios, 'love');
 
     // Fisher-Yates Shuffle
     function shuffleArray(array) {
@@ -506,13 +567,14 @@
     }
 
     // ----------------------------------------
-    // 4. MASTER POETRY RIBBONS
+    // 4. MASTER POETRY RIBBONS (4-5 LINE VIP EXCLUSIVES WITH SHINE)
     // ----------------------------------------
     const masterPoetry = [
-      { tag: "💎 VIP Exclusive", title: "The Sigma Rule", text: "Silent moves speak louder than words.\nWork until your idols become your rivals.\nNo luck, just pure hustle. 🚀" },
-      { tag: "🥀 Deep Poetry", title: "Broken Notes", text: "We ignore the ones who adore us,\nAnd adore the ones who ignore us.\nA beautiful tragedy. 🖤" },
-      { tag: "🔥 Masterpiece", title: "Royal Blood", text: "Born to wear the crown. 👑\nAttitude in my veins, loyalty in my heart.\nNever bow down. 🦅" },
-      { tag: "✨ Aesthetic", title: "Moonlight", text: "Chasing sunsets and beautiful dreams. 🌇\nProtecting my peace at all costs.\nLiving for the moments. 🦋" }
+      { tag: "💎 VIP Exclusive", title: "The Sigma Rule", text: "I don't follow the crowd. 🚶‍♂️\nI walk alone, I walk fast. ⚡\nBuilding an empire in silence. 🤫\nSuccess is my only noise. 🏆\nRespect the hustle. 💯" },
+      { tag: "🥀 Deep Poetry", title: "Broken Strings", text: "We ignore the ones who adore us. 👁️\nAnd adore the ones who ignore us. 🥀\nA beautiful, painful tragedy. 🖤\nLearning to smile through the tears. 😊\nHealing takes time. ⏳" },
+      { tag: "🔥 Masterpiece", title: "Royal Blood", text: "Born to wear the crown. 👑\nAttitude in my veins. 🩸\nLoyalty in my heart. ❤️\nI never bow down to anyone. 🦅\nMy rules, my kingdom. 🏰" },
+      { tag: "✨ Aesthetic", title: "Moonlight", text: "Chasing sunsets and beautiful dreams. 🌇\nProtecting my peace at all costs. 🧘‍♀️\nLiving for the moments you can't word. 📸\nRadiating positive energy. 🌻\nJust a vibe you can't find nowhere else. 🦋" },
+      { tag: "😈 Attitude", title: "Devil's Mind", text: "Speak your mind, even if your voice shakes. 🗣️\nI am my own biggest competition. 🪞\nToo busy watering my own grass. 🌿\nStay out of my lane. 🚘\nUnapologetically me. ☠️" }
     ];
 
     function createMasterRibbon(index) {
@@ -521,8 +583,8 @@
       return `
         <div class="master-card">
           <div class="master-ribbon">${p.tag}</div>
-          <div class="master-title">亗 ${p.title}</div>
-          <div class="master-text">${p.text.replace(/\n/g, '<br>')}</div>
+          <div class="master-title knife-shine">亗 ${p.title}</div>
+          <div class="master-text knife-shine">${p.text.replace(/\n/g, '<br>')}</div>
           <button class="master-btn" onclick="copyPureText('${safeTxt}', 'Masterpiece Copied!')">📋 Copy Masterpiece</button>
         </div>`;
     }
@@ -540,7 +602,6 @@
       
       htmlChunk += createMasterRibbon(poetryCounter++);
 
-      // Load 15 Unique Bios per chunk
       for(let i = 0; i < 15; i++) {
         let bio = getUniqueBio();
         let safeBioText = bio.text.replace(/\\n/g, '\\n').replace(/'/g, "\\'"); 
@@ -582,7 +643,7 @@
       
       let html = "";
       for(let i=0; i<Math.min(filteredBios.length, 30); i++) { 
-        if(i > 0 && i % 10 === 0) html += createMasterRibbon(Math.floor(Math.random()*4));
+        if(i > 0 && i % 10 === 0) html += createMasterRibbon(Math.floor(Math.random()*5));
         let txt = filteredBios[i].text;
         let safeTxt = txt.replace(/\\n/g, '\\n').replace(/'/g, "\\'"); 
         html += `
@@ -601,7 +662,7 @@
     }
 
     // ----------------------------------------
-    // 7. LIVE AI INTEGRATION & UNIQUE TOOLS
+    // 7. ALL 12 TOOLS & LIVE AI INTEGRATION 
     // ----------------------------------------
     function openToolModal(toolType) {
       const title = document.getElementById('modalTitle');
@@ -618,10 +679,10 @@
           <button class="btn-copy" id="aiBtn" style="background:var(--primary); border:none; margin-bottom:20px;" onclick="runRealAI()">✨ Generate Now</button>
           <div id="aiOutput" style="display:none; background:rgba(59,130,246,0.1); padding:20px; border-radius:16px; border:1px solid var(--primary); color:#fff; font-size:15px; font-weight:600; white-space:pre-line; line-height:1.7;"></div>
         `;
-        body.innerHTML = html;
-        document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; 
-        return;
+      }
+      else if(toolType === 'fonts') {
+        title.innerText = "🔤 Fancy Fonts Studio";
+        html = `<input type="text" id="modalFontIn" class="modal-input" placeholder="Type name..." value="InstaVibe" oninput="runModalFonts()"><div id="modalFontOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:50vh; padding-right:5px;"></div>`;
       }
       else if(toolType === 'gamer') {
         title.innerText = "🎮 Pro Gamer Names";
@@ -629,30 +690,20 @@
           <input type="text" id="gamerInput" class="modal-input" placeholder="Enter Name..." value="Raistar" oninput="runGamerNames()">
           <div style="font-size:12px; color:var(--gold-mid); margin-bottom:10px; font-weight:800; text-transform:uppercase;">🔥 Top Premium Styles</div>
           <div id="gamerTopOut" style="display:flex; flex-direction:column; gap:12px; margin-bottom: 25px;"></div>
-          <div style="font-size:12px; color:#3b82f6; margin-bottom:10px; font-weight:800; text-transform:uppercase;">🪐 Aesthetic Styles (1000+)</div>
+          <div style="font-size:12px; color:#3b82f6; margin-bottom:10px; font-weight:800; text-transform:uppercase;">🪐 Aesthetic Styles</div>
           <div id="gamerAesOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:45vh; padding-right:5px;"></div>
         `;
-        body.innerHTML = html;
-        document.getElementById('toolsModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; 
-        runGamerNames();
-        return;
       }
-      else if(toolType === 'emojis') {
-        title.innerText = "🦋 Unique Emoji Sets";
-        // 100% Unique Set implementation
-        const rawEms = ["🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", "🧸🎀💌", "⚡😈🔥", "📸🌍✈️", "🎵🎧🖤", "🌙💫✨", "🍕🍟🍔", "🎨🖌️🎭", "🏋️‍♂️💪🔥", "👑😎💯", "🧘‍♀️🌿🍵", "☀️🌴🌊", "🥺👉👈", "✨💖🥺"];
-        const ems = [...new Set(rawEms)]; 
-        html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
-        ems.forEach(e => { html += `<div class="grid-sym-box" onclick="copyPureText('${e}', 'Emojis Copied!')">${e}</div>`; });
-        html += '</div>';
-      }
-      else if(toolType === 'symbols') {
-        title.innerText = "⚔️ 100+ Rare VIP Symbols";
-        const syms = [...new Set(["亗", "☬", "༒", "༺", "༻", "ཌ", "ད", "★", "彡", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ", "ॐ", "☪", "☯", "☮", "☠", "☢", "☣", "❀", "✿", "❁", "✾", "♕", "♚", "♛", "♡", "♥", "❥", "❣"])];
-        html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
-        syms.forEach(s => { html += `<div class="grid-sym-box" style="font-size:24px;" onclick="copyPureText('${s}', 'Symbol Copied!')">${s}</div>`; });
-        html += '</div>';
+      else if(toolType === 'quickbio') {
+        title.innerText = "🎲 Quick Bio Generator";
+        let bio = getUniqueBio().text;
+        let safe = bio.replace(/\\n/g, '\\n').replace(/'/g, "\\'");
+        html = `
+          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:20px; text-align:center; margin-bottom:20px;">
+            <div style="font-size:15px; font-weight:700; line-height:1.7; color:#f8fafc; margin-bottom:18px; white-space:pre-line;">${bio.replace(/\\n/g, '<br>')}</div>
+            <button class="btn-copy" style="background:#10b981; color:#000; border:none;" onclick="copyPureText('${safe}', 'Bio Copied!')">📋 Copy This</button>
+          </div>
+        `;
       }
       else if(toolType === 'hashtags') {
         title.innerText = "#️⃣ Viral Reels Hashtags";
@@ -672,6 +723,20 @@
           </div>`;
         });
       }
+      else if(toolType === 'emojis') {
+        title.innerText = "🦋 Unique Emoji Sets";
+        const ems = [...new Set(["🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓️", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", "🧸🎀💌", "⚡😈🔥", "📸🌍✈️", "🎵🎧🖤", "🌙💫✨", "🍕🍟🍔", "🎨🖌️🎭", "🏋️‍♂️️💪🔥", "👑😎💯", "🧘‍♀️🌿🍵", "☀️🌴🌊", "🥺👉👈", "✨💖🥺"])]; 
+        html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
+        ems.forEach(e => { html += `<div class="grid-sym-box" onclick="copyPureText('${e}', 'Emojis Copied!')">${e}</div>`; });
+        html += '</div>';
+      }
+      else if(toolType === 'symbols') {
+        title.innerText = "⚔️ 100+ Rare VIP Symbols";
+        const syms = [...new Set(["亗", "☬", "༒", "༺", "༻", "ཌ", "ད", "★", "彡", "『", "』", "⚜️", "⚡", "👑", "🕊️", "🖤", "†", "ヅ", "ॐ", "☪", "☯", "☮", "☠", "☢", "☣", "❀", "✿", "❁", "✾", "♕", "♚", "♛", "♡", "♥", "❥", "❣"])];
+        html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
+        syms.forEach(s => { html += `<div class="grid-sym-box" style="font-size:24px;" onclick="copyPureText('${s}', 'Symbol Copied!')">${s}</div>`; });
+        html += '</div>';
+      }
       else if(toolType === 'dividers') {
         title.innerText = "📐 40+ Aesthetic Bio Dividers";
         const divs = [...new Set(["━─━────༺༻────━─━", "════ ⋆★⋆ ════", "✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧", "────── ⋆⋅☆⋅⋆ ──────", "━━━━━━ ◦ ❖ ◦ ━━━━━━", "•❅──────✧❅✦❅✧──────❅•", "─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───"])];
@@ -686,30 +751,37 @@
           html += `<div class="tool-list-row"><div class="tool-list-text">${c}</div><button class="tool-btn-copy" onclick="copyPureText('${c}', 'Caption Copied!')">Copy</button></div>`;
         });
       }
-      else if(toolType === 'fonts') {
-        title.innerText = "🔤 Fancy Fonts Studio";
-        html = `<input type="text" id="modalFontIn" class="modal-input" placeholder="Type name..." value="InstaVibe" oninput="runModalFonts()"><div id="modalFontOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:50vh; padding-right:5px;"></div>`;
-        body.innerHTML = html; document.getElementById('toolsModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; 
-        runModalFonts(); return; 
+      else if(toolType === 'wings') {
+        title.innerText = "✨ VIP Name Decorator";
+        html = `<input type="text" id="wingInput" class="modal-input" placeholder="Enter your name..." value="Badshah" oninput="runWings()"><div id="wingOut" style="display:flex; flex-direction:column; gap:10px;"></div>`;
       }
-      else if(toolType === 'quickbio') {
-        title.innerText = "🎲 Quick Bio Generator";
-        let bio = getUniqueBio().text;
-        let safe = bio.replace(/\\n/g, '\\n').replace(/'/g, "\\'");
+      else if(toolType === 'zalgo') {
+        title.innerText = "🕷️ Zalgo Glitch Hacker Text";
         html = `
-          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:20px; text-align:center; margin-bottom:20px;">
-            <div id="quickBioDisplay" style="font-size:15px; font-weight:700; line-height:1.7; color:#f8fafc; margin-bottom:18px; white-space:pre-line;">${bio.replace(/\\n/g, '<br>')}</div>
-            <button class="btn-copy" style="background:#10b981; color:#000; border:none;" onclick="copyPureText('${safe}', 'Bio Copied!')">📋 Copy This</button>
-          </div>
+          <input type="text" id="zInput" class="modal-input" placeholder="Type text..." value="Hacker Boy" oninput="runZalgo()">
+          <div id="zOut" style="background:rgba(0,0,0,0.5); padding:20px; border-radius:14px; font-size:28px; text-align:center; text-shadow:2px 0 red, -2px 0 cyan; margin-bottom:15px; font-weight:900;">Hacker Boy</div>
+          <button class="btn-copy" style="background:var(--insta-grad); border:none;" onclick="copyPureText(document.getElementById('zOut').innerText, 'Glitch Copied!')">Copy Glitch</button>
         `;
+      }
+      else if(toolType === 'textart') {
+        title.innerText = "🖼 ASCII Text Arts";
+        const arts = [...new Set(["( ͡° ͜ʖ ͡°)", "¯\\_(ツ)_/¯", "(ง'̀-'́)ง", "(~˘▾˘)~", "ʕ•ᴥ•ʔ", "(⌐■_■)", "༼ つ ◕_◕ ༽つ", "(╯°□°）╯︵ ┻━┻", "┬─┬ノ( º _ ºノ)", "(ಥ﹏ಥ)"])];
+        arts.forEach(a => {
+          html += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:18px;">${a}</div><button class="tool-btn-copy" onclick="copyPureText('${a.replace(/'/g, "\\'").replace(/\\/g, "\\\\")}', 'Art Copied!')">Copy</button></div>`;
+        });
       }
 
       body.innerHTML = html;
       document.getElementById('toolsModal').style.display = 'flex';
       document.body.style.overflow = 'hidden'; 
+
+      if(toolType === 'fonts') runModalFonts();
+      if(toolType === 'gamer') runGamerNames();
+      if(toolType === 'wings') runWings();
+      if(toolType === 'zalgo') runZalgo();
     }
 
-    // AI Fetch Logic (Cloudflare URL Added Here)
+    // AI Fetch Logic 
     window.runRealAI = async function() {
       const prompt = document.getElementById('aiInput').value;
       const outBox = document.getElementById('aiOutput');
@@ -721,7 +793,6 @@
       btn.disabled = true; btn.innerText = "Generating...";
 
       try {
-        // 🔥 AAPKA CLOUDFLARE WORKER LINK INTEGRATED 🔥
         const workerUrl = "https://divine-bush-fa24.rangiladevi9598.workers.dev/"; 
 
         const res = await fetch(workerUrl, {
@@ -734,7 +805,7 @@
         const data = await res.json();
         
         let safeTxt = data.result.replace(/'/g, "\\'").replace(/\n/g, '\\n');
-        outBox.innerHTML = `${data.result.replace(/\n/g, '<br>')}<br><br><button class="tool-btn-copy" style="width:100%;" onclick="copyPureText('${safeTxt}', 'AI Bio Copied!')">📋 Copy AI Bio</button>`;
+        outBox.innerHTML = `${data.result.replace(/\n/g, '<br>')}<br><br><button class="tool-btn-copy" style="width:100%; padding:15px; font-size:14px;" onclick="copyPureText('${safeTxt}', 'AI Bio Copied!')">📋 Copy AI Bio</button>`;
       } catch(e) {
         outBox.innerHTML = '<span style="color:#ef4444;">⚠️ AI Engine Overloaded ya Link issue! Try again.</span>';
       }
@@ -758,18 +829,11 @@
 
       const tags = [" YT", " ゲーマー", " 😈", " OP"];
       let htmlAes = "";
-      
-      // Set to prevent duplicates
       const uniqueAesthetic = new Set();
-      tags.forEach(t => {
-          uniqueAesthetic.add(`【 ${oG} 】${t}`);
-          uniqueAesthetic.add(`★ ${val} ★${t}`);
-          uniqueAesthetic.add(`☠️ ${oG} ☠️${t}`);
-      });
+      tags.forEach(t => { uniqueAesthetic.add(`【 ${oG} 】${t}`); uniqueAesthetic.add(`★ ${val} ★${t}`); uniqueAesthetic.add(`☠️ ${oG} ☠️${t}`); });
 
       uniqueAesthetic.forEach(name => {
-        let safeName = name.replace(/'/g, "\\'");
-        htmlAes += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:15px; letter-spacing:1px;">${name}</div><button class="tool-btn-copy" onclick="copyPureText('${safeName}', 'Name Copied!')">Copy</button></div>`;
+        htmlAes += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:15px; letter-spacing:1px;">${name}</div><button class="tool-btn-copy" onclick="copyPureText('${name.replace(/'/g, "\\'")}', 'Name Copied!')">Copy</button></div>`;
       });
       aesOut.innerHTML = htmlAes;
     };
@@ -788,11 +852,77 @@
       outBox.innerHTML = html;
     };
 
+    window.runWings = function() {
+      const val = document.getElementById('wingInput').value || "Badshah";
+      const outBox = document.getElementById('wingOut');
+      const wings = [...new Set([`꧁•[ ${val} ]•꧂`, `★彡[ ${val} ]彡★`, `༺ཌ ${val} ད༻`, `亗 ${val} 亗`, `『 ${val} 』`, `† ${val} †`, `【 ${val} 】`, `★·.·´¯\`·.·★ ${val} ★·.·´¯\`·.·★`])];
+      let html = "";
+      wings.forEach(w => {
+        html += `<div class="tool-list-row"><div class="tool-list-text">${w}</div><button class="tool-btn-copy" onclick="copyPureText('${w.replace(/'/g, "\\'")}', 'Wing Copied!')">Copy</button></div>`;
+      });
+      outBox.innerHTML = html;
+    };
+
+    window.runZalgo = function() {
+      const val = document.getElementById('zInput').value;
+      const z = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352'];
+      document.getElementById('zOut').innerText = val.split('').map(c => c + z[Math.floor(Math.random()*z.length)]).join('');
+    };
+
+    // ----------------------------------------
+    // 8. EXPANDED PROFESSIONAL LEGAL MODALS
+    // ----------------------------------------
     window.openPolicyModal = function(type) {
       const title = document.getElementById('legalModalTitle');
       const body = document.getElementById('legalModalBody');
-      title.innerText = "App Policies";
-      body.innerHTML = "India's largest completely unique free Creator Suite.<br><br>Developer: pintu959546@gmail.com";
+      
+      if(type === 'about') {
+        title.innerText = "About InstaVibe Ultimate";
+        body.innerHTML = `
+          <p style="margin-bottom:15px;">Welcome to <strong>InstaVibe Ultimate</strong>, India's most advanced and entirely free Creator Suite.</p>
+          <p style="margin-bottom:15px;"><strong>Our Mission:</strong> We aim to empower millions of social media creators, gamers, and influencers by providing them with premium, 100% unique profile aesthetics without any paywalls or annoying ads.</p>
+          <p style="margin-bottom:15px;"><strong>What Makes Us Different?</strong></p>
+          <ul style="margin-left: 20px; margin-bottom: 15px; color:#94a3b8;">
+            <li>🧠 Live Google Gemini AI Integration</li>
+            <li>🔄 Mathematical Zero-Repeat Engine</li>
+            <li>💎 Manually Curated VIP Bios (No bots)</li>
+            <li>⚡ 120Hz Optimized Butter-Smooth UI</li>
+          </ul>
+          <p>Founded in 2026, we are constantly innovating to bring the best internet trends directly to your clipboard.</p>
+        `;
+      } 
+      else if(type === 'privacy') {
+        title.innerText = "Privacy Policy";
+        body.innerHTML = `
+          <p style="margin-bottom:15px;">At InstaVibe Ultimate, your privacy is our top priority. We believe in a transparent and secure user experience.</p>
+          <p style="margin-bottom:10px;"><strong>1. Data Collection:</strong> We do NOT collect, store, or sell any personal data. All font generation, name styling, and UI preferences run locally on your device's browser.</p>
+          <p style="margin-bottom:10px;"><strong>2. Analytics:</strong> We use Google Analytics (G-7BEYQLMCPF) solely to understand general traffic trends (like which page is visited the most) to improve our servers. This data is fully anonymized.</p>
+          <p style="margin-bottom:10px;"><strong>3. AI Usage:</strong> The keywords you enter into our AI Generator are processed temporarily via secure Cloudflare Workers to generate results and are immediately discarded.</p>
+          <p>By continuing to use our completely free platform, you agree to these safe and standard practices.</p>
+        `;
+      } 
+      else if(type === 'terms') {
+        title.innerText = "Terms & Conditions";
+        body.innerHTML = `
+          <p style="margin-bottom:15px;">By accessing InstaVibe Ultimate, you agree to the following terms of use:</p>
+          <p style="margin-bottom:10px;"><strong>1. Free Usage:</strong> All resources, including VIP Bios, Fonts, Gamer Names, and AI Generations, are 100% free for personal use on Instagram, WhatsApp, Free Fire, BGMI, and other platforms.</p>
+          <p style="margin-bottom:10px;"><strong>2. Prohibited Actions:</strong> You may not use automated scripts or bots to scrape, steal, or bulk-download our database. Selling our free templates as part of a paid app/service is strictly forbidden.</p>
+          <p style="margin-bottom:10px;"><strong>3. Availability:</strong> While we strive for 99.9% uptime, the AI Generator relies on external Google APIs and may face temporary limits based on traffic.</p>
+          <p>Violating these terms may result in a permanent ban from accessing our cloud servers.</p>
+        `;
+      }
+      else if(type === 'contact') {
+        title.innerText = "Contact Us";
+        body.innerHTML = `
+          <p style="margin-bottom:15px;">Have questions, feature requests, or want to collaborate for brand deals? We would love to hear from you!</p>
+          <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); margin-bottom:15px;">
+            <p style="color:var(--gold-mid); font-size:11px; margin-bottom:4px; font-weight:800; text-transform:uppercase;">Developer Email</p>
+            <p style="font-size:16px; font-weight:900; color:#fff;">pintu959546@gmail.com</p>
+          </div>
+          <button class="btn-copy" onclick="copyPureText('pintu959546@gmail.com', 'Email Copied!')">📋 Copy Email Address</button>
+        `;
+      }
+
       document.getElementById('legalModal').style.display = 'flex';
       document.body.style.overflow = 'hidden'; 
     }
