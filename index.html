@@ -34,12 +34,13 @@
        ========================================================================== */
     :root {
       --bg-main: #030508;
-      --card-bg: rgba(20, 25, 35, 0.95);
+      --card-bg: #111620; 
       --card-border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6; --primary-glow: rgba(59, 130, 246, 0.5);
       --accent: #f59e0b; 
       --gold-mid: #fbbf24;
       --text-main: #f8fafc; --text-muted: #94a3b8;
+      --solid-btn: #1a2233; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -61,7 +62,7 @@
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
     /* ==========================================================================
-       GRAND WELCOME SCREEN WITH 1-TAP SKIP (NO SOUND)
+       GRAND WELCOME SCREEN (PURE CSS ROCKETS)
        ========================================================================== */
     #grandWelcome {
       position: fixed; inset: 0; z-index: 999999; background: #030508;
@@ -74,14 +75,19 @@
     .gw-subtitle { font-size: 13px; color: #cbd5e1; margin-top: 15px; letter-spacing: 5px; text-transform: uppercase; animation: fadeIn 1.5s ease; font-weight: 800;}
     .gw-tap-text { position: absolute; bottom: 40px; font-size: 12px; color: #64748b; animation: blinkFast 2s infinite; }
     
-    .cracker { position: absolute; font-size: 50px; opacity: 0; pointer-events: none; }
-    .c1 { top: 20%; left: 15%; animation: popCracker 1.2s 0.2s forwards; }
-    .c2 { top: 25%; right: 15%; animation: popCracker 1.2s 0.5s forwards; font-size: 60px;}
-    .c3 { bottom: 10%; left: 45%; font-size: 60px; animation: shootRocket 1.5s ease-in forwards; }
+    .css-rocket { 
+      position: absolute; bottom: -50px; width: 3px; height: 40px; 
+      background: linear-gradient(to top, transparent, #f59e0b, #fff); 
+      border-radius: 50%; opacity: 0; filter: drop-shadow(0 0 8px #f59e0b); 
+    }
+    .r1 { left: 15%; animation: cssShoot 1.2s 0.1s ease-out forwards; }
+    .r2 { left: 50%; animation: cssShoot 1.5s 0.3s ease-out forwards; height: 50px; width: 4px; }
+    .r3 { right: 15%; animation: cssShoot 1.3s 0.5s ease-out forwards; }
+    .r4 { left: 30%; animation: cssShoot 1.4s 0.7s ease-out forwards; }
+    .r5 { right: 30%; animation: cssShoot 1.1s 0.4s ease-out forwards; height: 35px; }
 
     @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-    @keyframes popCracker { 0% { transform: scale(0) translateY(50px); opacity: 1; } 50% { transform: scale(1.5) translateY(0); opacity: 1; } 100% { transform: scale(2) translateY(-20px); opacity: 0; } }
-    @keyframes shootRocket { 0% { transform: translateY(100px) scale(0.5); opacity: 1; } 50% { transform: translateY(-300px) scale(1.5); opacity: 1; } 100% { transform: translateY(-400px) scale(2.5); opacity: 0; } }
+    @keyframes cssShoot { 0% { transform: translateY(0) scale(1); opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(-80vh) scale(0.2); opacity: 0; } }
 
     /* ==========================================================================
        2. HEADER
@@ -99,11 +105,11 @@
     .app-container { max-width: 600px; margin: 0 auto; padding: 10px 14px 100px; padding-top: 85px; }
 
     /* ==========================================================================
-       3. COMPACT CREATOR TOOLS GRID
+       3. COMPACT CREATOR TOOLS GRID (15 TOOLS NOW)
        ========================================================================== */
     .section-title { font-size: 19px; font-weight: 900; margin: 5px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
     
-    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; transform: translateZ(0); }
     
     .tool-card {
       background: var(--card-bg); 
@@ -128,7 +134,7 @@
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
 
     /* ==========================================================================
-       4. ✨ COLOURFUL & PREMIUM SHINE EFFECT ✨
+       4. ✨ COLOURFUL SHINE EFFECT ✨
        ========================================================================== */
     .colourful-shine { 
       background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f);
@@ -151,7 +157,7 @@
     .master-text { font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px;}
     
     .master-btn, .btn-copy, .tool-btn-copy { 
-      background: #1a2233; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      background: var(--solid-btn); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       width: 100%; padding: 14px; border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;
     }
     .master-btn:active, .btn-copy:active, .tool-btn-copy:active { transform: scale(0.97); background: #2a3447; }
@@ -166,7 +172,7 @@
     .btn-copy:active { background: #f1f5f9; color: #000; transform: scale(0.97); }
 
     /* ==========================================================================
-       5. AI CHAT INTERFACE & SMART THINKING ENGINE
+       5. AI CHAT INTERFACE & THINKING DOTS
        ========================================================================== */
     .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; }
     .chat-box { padding: 15px; display: flex; flex-direction: column; gap: 12px; }
@@ -185,7 +191,7 @@
 
     .ai-chips-wrap { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none;}
     .ai-chips-wrap::-webkit-scrollbar { display: none; }
-    .ai-chip { background: #1a2233; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
+    .ai-chip { background: var(--solid-btn); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
 
     .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.2s ease;}
@@ -197,8 +203,8 @@
     
     .chat-send-btn { background: var(--primary); color: #fff; border: none; width: 52px; height: 52px; border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 15px var(--primary-glow); transition: 0.2s; flex-shrink: 0;}
     .chat-send-btn:active { transform: scale(0.9); }
-    /* Dynamic Red Stop Button state */
-    .chat-send-btn.stop-mode { background: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+    /* 🔥 NEW PREMIUM AMBER COLOR FOR STOP BUTTON 🔥 */
+    .chat-send-btn.stop-mode { background: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
 
     /* Keyboard fixes */
     body.keyboard-open .chat-input-area { bottom: 0 !important; }
@@ -241,10 +247,10 @@
     .nav-icon { font-size: 22px; filter: grayscale(100%); transition: 0.2s; }
     .nav-tab.active .nav-icon { filter: grayscale(0%); text-shadow: 0 0 10px rgba(255,255,255,0.5);}
 
-    /* Animation */
+    /* Animation Fix for Tab Switch */
     .view-page { display: none; }
     .view-page.active { display: block; animation: fadeIn 0.3s ease-out; }
-    #view-aichat.active { display: flex; flex-direction: column; animation: fadeInChat 0.3s ease-out; } 
+    #view-aichat.active { display: flex; animation: fadeInChat 0.3s ease-out; } 
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
     @keyframes fadeInChat { from{opacity:0;} to{opacity:1;} }
     
@@ -254,7 +260,7 @@
     .footer-links span { color: #cbd5e1; font-weight: 800; font-size: 13px; text-decoration: underline; cursor: pointer;}
     .seo-text-block { text-align: left; padding: 22px; font-size: 12.5px; color: #475569; line-height: 1.7; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;}
 
-    /* EMAIL CONTAINER */
+    /* EMAIL CONTAINER FIX */
     .email-container {
       display: flex; justify-content: space-between; align-items: center;
       background: var(--solid-btn); border-radius: 12px; padding: 12px 16px;
@@ -267,9 +273,11 @@
 
   <!-- 🔥 GRAND WELCOME OVERLAY (PURE CSS ROCKETS - 1 TAP SKIP) 🔥 -->
   <div id="grandWelcome" onclick="closeGrandWelcome()">
-    <div class="cracker c1">🎇</div>
-    <div class="cracker c2">🎆</div>
-    <div class="cracker c3">🚀</div>
+    <div class="css-rocket r1"></div>
+    <div class="css-rocket r2"></div>
+    <div class="css-rocket r3"></div>
+    <div class="css-rocket r4"></div>
+    <div class="css-rocket r5"></div>
     <div class="gw-logo">亗</div>
     <div class="gw-title">Welcome to<br>InstaVibe Ultimate</div>
     <div class="gw-subtitle">Premium Creator Suite</div>
@@ -281,7 +289,7 @@
       const gw = document.getElementById('grandWelcome');
       if(gw) {
         gw.style.opacity = '0';
-        setTimeout(() => gw.remove(), 300); 
+        setTimeout(() => gw.remove(), 300); // Fast skip
         localStorage.setItem('instavibe_welcome_done', 'true');
       }
     }
@@ -312,6 +320,7 @@
     <main id="view-home" class="view-page active">
       <div class="section-title"><span>🛠 Ultimate Creator Tools</span></div>
       
+      <!-- COMPACT TOOLS GRID WITH 15 TOOLS -->
       <div class="tools-grid">
         <div class="tool-card highlight-tool" onclick="switchPage('aichat')">
           <div class="ai-badge">NEW AI</div>
@@ -324,6 +333,7 @@
           <div class="gamer-tag">PRO</div>
           <div class="tool-icon">🎮</div><div class="tool-name">Gamer Names</div><div class="tool-sub">Zero Repeat</div>
         </div>
+        
         <div class="tool-card" onclick="openToolModal('quickbio')">
           <div class="tool-icon">🎲</div><div class="tool-name">Quick Bio</div><div class="tool-sub">1-Click Fast</div>
         </div>
@@ -333,6 +343,7 @@
         <div class="tool-card" onclick="openToolModal('hashtags')">
           <div class="tool-icon">#️⃣</div><div class="tool-name">Viral Tags</div><div class="tool-sub">Reels Reach</div>
         </div>
+
         <div class="tool-card" onclick="openToolModal('emojis')">
           <div class="tool-icon">🦋</div><div class="tool-name">Aesthetic</div><div class="tool-sub">Unique Emoji</div>
         </div>
@@ -342,6 +353,7 @@
         <div class="tool-card" onclick="openToolModal('dividers')">
           <div class="tool-icon">📐</div><div class="tool-name">Bio Dividers</div><div class="tool-sub">Clean Lines</div>
         </div>
+
         <div class="tool-card" onclick="openToolModal('wings')">
           <div class="tool-icon">✨</div><div class="tool-name">VIP Wings</div><div class="tool-sub">Name Borders</div>
         </div>
@@ -350,6 +362,17 @@
         </div>
         <div class="tool-card" onclick="openToolModal('textart')">
           <div class="tool-icon">🖼️</div><div class="tool-name">Text Arts</div><div class="tool-sub">ASCII Faces</div>
+        </div>
+
+        <!-- NEW TOOLS -->
+        <div class="tool-card" onclick="openToolModal('numbers')">
+          <div class="tool-icon">🔢</div><div class="tool-name">VIP Numbers</div><div class="tool-sub">Font Styles</div>
+        </div>
+        <div class="tool-card" onclick="openToolModal('bullets')">
+          <div class="tool-icon">🔘</div><div class="tool-name">Pro Bullets</div><div class="tool-sub">List Makers</div>
+        </div>
+        <div class="tool-card" onclick="openToolModal('quotes')">
+          <div class="tool-icon">💬</div><div class="tool-name">Bio Quotes</div><div class="tool-sub">Best Lines</div>
         </div>
       </div>
 
@@ -379,7 +402,6 @@
         </div>
       </div>
 
-      <!-- FOOTER -->
       <footer id="footer-section">
         <div class="footer-links">
           <span onclick="openPolicyModal('about')">About Us</span>
@@ -390,12 +412,12 @@
         <p>© 2026 InstaVibe Ultimate. All Rights Reserved.</p>
         
         <article class="seo-text-block">
-          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
+          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
         </article>
       </footer>
     </main>
 
-    <!-- 🔥 FULLSCREEN AI CHAT VIEW (SMART ENGINE) 🔥 -->
+    <!-- FULLSCREEN AI CHAT VIEW -->
     <main id="view-aichat" class="view-page">
       <div class="section-title" style="margin-top: 10px;">
         <span style="display:flex; align-items:center; gap:8px;">🧠 InstaVibe AI Assistant</span>
@@ -421,7 +443,7 @@
           </div>
           <div class="chat-input-row">
             <input type="text" id="chatInput" class="chat-input" placeholder="Message InstaVibe AI..." onkeypress="handleEnter(event)">
-            <!-- Dynamic Send / Stop Button -->
+            <!-- dynamic button -->
             <button id="chatSendBtn" class="chat-send-btn" onclick="handleSendOrStop()">➤</button>
           </div>
         </div>
@@ -453,12 +475,12 @@
 
     <!-- INFO VIEW -->
     <main id="view-about" class="view-page">
-      <div class="section-title" style="margin-top: 10px;"><span>ℹ App Info</span></div>
+      <div class="section-title" style="margin-top: 10px;"><span>ℹ️ App Info</span></div>
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V32 (SMART AI ENGINE)</div>
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with Smart Chat Blocking, Dynamic Thinking UI, and Lag-Free UI fixes.</p>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V33 (THE MASTERPIECE)</div>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. No repeating bios, fully responsive UI, Smart AI Engine, and 15 Mega Tools.</p>
         
         <div style="background:#0a0d14; border-radius:18px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:11px; color:#94a3b8; font-weight:800; margin-bottom:8px; text-transform:uppercase;">👨‍💻 Developer Email</div>
@@ -470,7 +492,7 @@
       </div>
     </main>
 
-  </div> <!-- /app-container -->
+  </div>
 
   <!-- 4 TABS BOTTOM NAVIGATION -->
   <nav class="bottom-nav" id="bottomNav">
@@ -509,7 +531,7 @@
 
   <script>
     /* ==========================================================================
-       🔥 KEYBOARD UI FIX 🔥
+       KEYBOARD UI FIX 
        ========================================================================== */
     const chatInput = document.getElementById('chatInput');
     const bottomNav = document.getElementById('bottomNav');
@@ -630,7 +652,7 @@
     }
 
     function triggerAiMode(mode, presetText) {
-      if(isAiGenerating) return; // Block multiple requests
+      if(isAiGenerating) return; 
       currentAiMode = mode;
       document.getElementById('chatInput').value = presetText;
       handleSendOrStop();
@@ -668,7 +690,6 @@
       const text = input.value.trim();
       if(!text) return;
 
-      // Lock Input & Change Button to STOP
       isAiGenerating = true;
       input.disabled = true;
       const btn = document.getElementById('chatSendBtn');
@@ -683,7 +704,6 @@
 
       const loadingId = 'ai-load-' + Date.now();
       
-      // Smart Thinking UI
       chatBox.innerHTML += `
         <div class="msg-wrapper" id="${loadingId}">
           <div class="msg-ai">
@@ -696,8 +716,7 @@
       `;
       chatBox.scrollTop = chatBox.scrollHeight;
 
-      // Dynamic Thinking Phrases Array
-      const phrases = ["Analyzing your request... 🧠", "Brainstorming ideas... 💡", "Crafting magical words... ✨", "Formatting the output... 📝", "Almost done... 🚀"];
+      const phrases = ["Analyzing your request... 🤔", "Brainstorming ideas... 💡", "Crafting magical words... ✨", "Adding premium aesthetics... 🎨", "Almost done... 🚀"];
       let phraseIndex = 0;
       thinkingInterval = setInterval(() => {
           const statusEl = document.querySelector(`#${loadingId} .ai-typing-status`);
@@ -740,9 +759,8 @@
         let cursor = 0;
         let currentHTML = "";
         
-        // HTML Safe Typewriter
         function type() {
-            if(!isAiGenerating) return; // Prevent typing if stopped mid-way
+            if(!isAiGenerating) return; 
             
             if (cursor < formattedReply.length) {
                 let char = formattedReply[cursor];
@@ -791,7 +809,7 @@
     }
 
     /* ==========================================================================
-       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
+       🔥 RAW MANUAL DATA ARRAYS (NO REPETITION LOGIC) 🔥
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -807,7 +825,7 @@
       "नवाबों का शहर 🌆\nखून में उबाल 🩸\nदुश्मनों की महफ़िल में 🔥\nजीते हैं शान से 😎\nWelcome to my Area 🛑",
       "खामोशी से तबाही 🌪️\nशेर को सवा शेर 🦁\nहमसे उलझना मौत को दावत 🗡️\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯",
       "औकात की बात मत कर 🚫\nतेरी सोच से बाहर हूँ मैं 🦅\nबुरे वक्त में भी नवाबी शौक 🍷\nसीधा मौत का खेल ☠️\nअकेला और नवाब 🔥",
-      "गिरकर उठना मेरी फितरत है 🦅\nसफलता एक दिन में नहीं मिलती 📈\nमेहनत इतनी خामोशी से करो 🤫\nकि कामयाबी शोर मचा दे 🏆\nHustle Hard 💼",
+      "गिरकर उठना मेरी फितरत है 🦅\nसफलता एक दिन में नहीं मिलती 📈\nमेहनत इतनी खामोशी से करो 🤫\nकि कामयाबी शोर मचा दे 🏆\nHustle Hard 💼",
       "Success requires obsession 🧠\nGrinding in the dark 🌑\nShining in the light 🌟\nNo excuses 🚫\nFuture Billionaire 💸",
       "Never give up 🛑\nPain is temporary 🩹\nPride is forever 🦁\nFocused on my goals 🎯\nWatch my journey 📈",
       "सिर्फ नाम ही काफी है 🔥\nदुश्मन भी करते हैं सलाम 👑\nजिगर में आग 🌋\nबाप बाप होता है 😎",
@@ -817,7 +835,9 @@
       "शेर हमेशा अकेला आता है 🦁\nभीड़ तो कुत्तों की होती है 🐕\nअपना रास्ता खुद बनाऊंगा 🛣\nमंज़िल दूर है पर मिलेगी ज़रूर 🎯",
       "ज़िद्दी परिंदा 🦅\nउड़ान अभी बाकी है ☁\nआसमान छूने का इरादा 🌌\nकोई रोक सके तो रोक ले ✋",
       "रॉयल खून 🩸\nनवाबी शौक 🍷\nज़िंदगी अपने उसूलों पर 🔥\nकिसी के आगे झुकना नहीं 🦅",
-      "खिलाड़ी हूँ, खेलूंगा तो जीतूंगा 🎲\nहारना मेरी डिक्शनरी में नहीं 🚫\nसिग्मा मेल 🗿\nहसलर 💼"
+      "खिलाड़ी हूँ, खेलूंगा तो जीतूंगा 🎲\nहारना मेरी डिक्शनरी में नहीं 🚫\nसिग्मा मेल 🗿\nहसलर 💼",
+      "Sher ki bhukh aur hamara look... 🦁\nDono jaanlewa hain 🔥\nRules breaker 🚫\nDesi Swag 😎",
+      "Hustle daily 💯\nTalk less, act more 🤫\nGym rat 💪\nFocused on my empire 🏰"
     ];
 
     const realGirlsBios = [
@@ -825,10 +845,8 @@
       "Aesthetic Soul 🌸\nChasing Sunsets 🌇\nMusic & Coffee ☕\nLiving my own fairy tale ✨\nKindness is free 🕊️",
       "Selfie Queen 🤳\nMakeup Lover 💄\nAlways wearing a smile 😊\nCrazy mind, Beautiful heart 💖\nWelcome to my world 🌍",
       "Not your average girl ⛔\nSavage by nature 😈\nI don't need your approval 💯\nClassy and Fabulous 👠\nCatch flights, not feelings ✈️",
-      "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️️\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
+      "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
       "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
-      "Foodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nI need 6 months of vacation 🏖\nTwice a year 🤪",
-      "Shopping is my cardio 🛍️\nMy bed is my happy place 🛏\nDon't text, I won't reply 🙅‍♀️\nSingle by choice 😅\nBut not my choice 🤣",
       "Creating my own sunshine ☀️\nPositive Vibes Only ✌\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
       "पापा की परी 🧚‍♀️\nथोड़ी सी नखरेवाली 💅\nDreams big ☁️\nBe yourself ✨",
       "Queen of my own world 👑\nMakeup enthusiast 💄\nHate is blocked 🚫\nLiving life queen size 🏰",
@@ -840,13 +858,15 @@
       "मेकअप और मैं 💄\nकैमरा मेरी जान 📸\nस्माइल ही काफी है 😊\nसादगी में भी स्वैग है 😎",
       "खूबसूरत दिल 💖\nतीखी ज़ुबान 🌶️\nसुनती सबकी हूँ, करती अपनी हूँ 🎧\nबिंदास लड़की ✌️",
       "गुस्सा नाक पर 😡\nप्यार दिल में ❤️\nथोड़ी सी पगली 🤪\nक्यूट सी स्माइल 😊",
-      "स्टाइलिश कुड़ी 🎀\nमूड स्विंग्स की क्वीन 👑\nज़िंदगी एक सफर है ✈\nखुश रहना मेरी आदत 😊"
+      "स्टाइलिश कुड़ी 🎀\nमूड स्विंग्स की क्वीन 👑\nज़िंदगी एक सफर है ✈\nखुश रहना मेरी आदत 😊",
+      "Sassy but classy 💅\nCaffeine dependent ☕\nShopping is my therapy 🛍️\nNot your babydoll 🙅‍♀️",
+      "Makeup & Heels 👠\nDrama queen 👑\nLiving my best life ✨\nToo glam to give a damn 💖"
     ];
 
     const realMahakalBios = [
       "महाकाल का दीवाना 🔱\nभस्म आरती प्रेमी 💀\nउज्जैन वाले बाबा का आशीर्वाद 🙏\nचिंता नहीं काल की 🕉️\nबम बम भोले 🚩",
       "शिव भक्त ॐ\nत्रिशूल धारी 🔱\nमेरे रोम रोम में शिव हैं 🌿\nदुनिया से कोई मतलब नहीं 🚫\nहर हर महादेव 🙏",
-      "काल भी उसका क्या करे ☠️\nजो भक्त हो महाकाल का 👑\nकट्टर हिन्दू 🚩\nशिव की शरण में 🧘‍♂️️\nॐ नमः शिवाय ✨",
+      "काल भी उसका क्या करे ☠️\nजो भक्त हो महाकाल का 👑\nकट्टर हिन्दू 🚩\nशिव की शरण में 🧘‍♂️\nॐ नमः शिवाय ✨",
       "भोलेनाथ का लाडला ❤️\nशिव शंकर की कृपा 🔱\nजीवन मौत सब उनके हाथ ⏳\nजय महाकाल 🙏",
       "शिव ही सत्य है 🕉️\nअघोरी रूप 💀\nत्रिनेत्र धारी 👁️\nबस भोले का नाम काफी है 💯\nहर हर गंगे 🌊",
       "कट्टर हिन्दू 🚩\nदुनिया से कोई मतलब नहीं\nॐ नमः शिवाय 🔱\nजय श्री राम 🙏",
@@ -858,7 +878,9 @@
       "देवों के देव महादेव 🙏\nजिनके हाथों में ब्रह्मांड है 🌍\nमैं उनका छोटा सा भक्त हूँ ॐ\nशिव शम्भू 🔱",
       "ना पैसा चाहिए ना प्यार 🚫\nबस महाकाल का दरबार 🙏\nयही मेरी दुनिया 🌍\nॐ नमः शिवाय ✨",
       "मेरे रक्षक महाकाल 🔱\nमेरे गुरु महादेव 🕉️\nमैं उनका दास 🙏\nहर हर महादेव 🚩",
-      "नीलकंठ के पुजारी 🕉️\nशमशान जिनकी बस्ती 💀\nमहाकाल के दीवाने 🔱\nजय भोलेनाथ 🙏"
+      "नीलकंठ के पुजारी 🕉️\nशमशान जिनकी बस्ती 💀\nमहाकाल के दीवाने 🔱\nजय भोलेनाथ 🙏",
+      "Bholenath ka bhakt 🙏\nMahakal ki kripa 🔱\nBhasm aarti 💀\nHar Har Mahadev 🚩",
+      "Shivansh 🕉️\nKattar Hindu 🚩\nOm Namah Shivay ✨\nMahakal lover 🖤"
     ];
 
     const realSadBios = [
@@ -868,7 +890,7 @@
       "तन्हाई बेहतर है 🥀\nभीड़ में अक्सर लोग खो जाते हैं 🚶‍♂️\nदिल टूटने की आवाज़ नहीं होती 💔\nखामोश दर्द 🤫\nअधूरा सफर 🛤",
       "वक्त ने बता दी सबकी औकात 😔\nवरना हम तो सबको अपना मानते थे 💔\nतेरा नाम था आज किसी अजनबी की जुबान पे 🥀\nदिल ने बुरा मान लिया 🖤",
       "मोहब्बत का शौक किसे था ❤️\nतुम पास आते गए और हमें आदत हो गई 💔\nअब आलम ये है कि तुम्हारे बिना 🥀\nये साँसें भी बोझ सी लगती हैं ⏳",
-      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️\nTrust nobody 🚫",
+      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️️\nTrust nobody 🚫",
       "Depressed soul 🥀\nHiding the pain with a smile 😊\nNights are the hardest 🌙\nMemories hurt 💭\nWaiting for the end ⏳",
       "हँसते हुए चेहरे के पीछे का दर्द 🎭\nकोई नहीं समझता 💔\nअंदर से टूट चुका हूँ 🥀\nखामोश ज़िन्दगी 🤫",
       "अब ना किसी की चाहत 🚫\nना किसी की उम्मीद 😔\nअकेला आया था, अकेला जाऊंगा 🚶‍♂️\nटूटा हुआ दिल 💔",
@@ -876,7 +898,8 @@
       "जो अपना था वो पराया हो गया 💔\nप्यार में धोखा मिला 😔\nअब किसी पर भरोसा नहीं 🚫\nअंधेरा ही मेरा साथी है 🌑",
       "मुस्कुराना आदत है मेरी 😊\nपर दिल में दर्द छुपा है 🥀\nकोई अपना नहीं 🚫\nसिर्फ तन्हाई 🌌",
       "अधूरे ख्वाब ☁️\nसूनी आँखें 👁️\nदर्द ही अब मेरा साथी है 🖤\nअकेलापन 🥀",
-      "जिंदगी एक सज़ा सी बन गई है ⏳\nहर पल एक दर्द है 💔\nखामोशी मेरी भाषा है 🤫\nटूटा हुआ इंसान 🎭"
+      "जिंदगी एक सज़ा सी बन गई है ⏳\nहर पल एक दर्द है 💔\nखामोशी मेरी भाषा है 🤫\nटूटा हुआ इंसान 🎭",
+      "Dil toota hai, saansein nahi 💔\nSmiling outside, dead inside 🥀\nFake world 🌍\nTrust issues 🚫"
     ];
 
     const realFunnyBios = [
@@ -892,7 +915,8 @@
       "पढ़ाई लिखाई से कोई वास्ता नहीं 📚\nगेमिंग मेरी जान 🎮\nमम्मी की डांट 🗣️\nयही है मेरी ज़िन्दगी 😂",
       "I am not lazy 😴\nI am just on energy saving mode 🔋\nDo not disturb 🚫\nSleeping is an art 🎨",
       "मैं इतना शरीफ हूँ 😇\nकि खुद से ही डर लगता है 😂\nपागलखाना मेरा दूसरा घर है 🏠\nWelcome to my profile 😜",
-      "My life is a joke 🤡\nBut I am not laughing 😂\nJust eating and sleeping 🍔\nDon't expect anything from me 🚫"
+      "My life is a joke 🤡\nBut I am not laughing 😂\nJust eating and sleeping 🍔\nDon't expect anything from me 🚫",
+      "Main itna single hu ki... 🤪\nMeri chai bhi single patti ki hai ☕\nProfessional nalla 😂"
     ];
 
     const realVipBios = [
@@ -906,7 +930,8 @@
       "Empire Builder 👑\nFocus on goals, not holes 👁\nNever bow down 🦅\nStay Royal 👑",
       "नवाबी शौक 🍷\nशाही अंदाज़ 👑\nपैसे की नहीं, इज़्ज़त की भूख 💯\nमेरा रुतबा मेरी पहचान 🔥",
       "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
-      "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚"
+      "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚",
+      "CEO 💼\nMaking millions 💸\nHustle 24/7 🚀\nPrivate life, Happy life 🤫"
     ];
 
     const realLoveBios = [
@@ -918,7 +943,7 @@
       "🌍 You are my world\nLost in your eyes 👁\nMy happy place is you 💖\nSoulmates 🔗",
       "तेरा फितूर ❤\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
       "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
-      "तू मेरा है, मैं तेरी हूँ 👩‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
+      "तू मेरा है, मैं तेरी हूँ 👩‍‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
       "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
     ];
 
@@ -937,14 +962,13 @@
       "Tareekh pe tareekh, tareekh pe tareekh 📅\nDamini 🎬\nWaiting for success ⏳",
       "Mogambo khush hua 😈\nMr. India 🎬\nSpreading smiles 😊",
       "Ek chutki sindoor ki keemat tum kya jano Ramesh babu 💅\nOm Shanti Om ✨\nDrama Queen 👑",
-      "All is well 💯\n3 Idiots 🎬\nStaying positive 🌟"
+      "All is well 💯\n3 Idiots 🎬\nStaying positive 🌟",
+      "Mogambo khush hua 😈\nFilmy keeda 🍿\nBollywood is life 🎬\nDrama in my veins 🎭"
     ];
 
+    // NOTE: Loop removed completely. Pushing exact individual objects.
     function populateBios(arr, category, isAura = false) {
       arr.forEach(text => masterBiosObj.push({ category: category, text: text, isAura: isAura }));
-      arr.forEach(text => masterBiosObj.push({ category: category, text: text + "\n✨", isAura: isAura }));
-      arr.forEach(text => masterBiosObj.push({ category: category, text: text + "\n🖤", isAura: isAura }));
-      arr.forEach(text => masterBiosObj.push({ category: category, text: text + "\n🔥", isAura: isAura }));
     }
 
     populateBios(realBoysBios, 'boys', true); 
@@ -1061,7 +1085,7 @@
     }
 
     /* ==========================================================================
-       TOOLS MODAL LOGIC 
+       TOOLS MODAL LOGIC (ADDED 3 NEW TOOLS)
        ========================================================================== */
     function openToolModal(toolType) {
       const title = document.getElementById('modalTitle');
@@ -1113,7 +1137,7 @@
         title.innerText = "🦋 Unique Emoji Sets";
         const ems = [...new Set([
           "🧿🤍✨", "🍷🔥👑", "🦋🌸☁️", "💀🖤⛓", "💸🚀💼", "🥀💔🪓", "☕🕯️📖", "🥂🍾💎", 
-          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂️💪🔥",
+          "🎮🎧🔥", "🥺👉👈", "🧸🎀💖", "☀️🌴🌊", "🎨🖌️🎭", "🧘‍♀️🌿🍵", "👑😎💯", "🏋️‍♂️️💪🔥",
           "🍔🍟🍕", "🌙💫✨", "📸🌍✈️", "🎵🎧🖤", "😈🔥🔪", "🕊️🤍☁️", "⛓🖤🛹", "🧸🤎📜"
         ])]; 
         html += '<div class="grid-syms" style="grid-template-columns: repeat(3, 1fr);">';
@@ -1193,6 +1217,33 @@
           `; 
         });
       }
+      /* NEW TOOL 1: NUMBERS */
+      else if(toolType === 'numbers') {
+        title.innerText = "🔢 Stylish Numbers";
+        html = `
+          <input type="number" id="numInput" class="modal-input" placeholder="Type numbers (e.g. 123)..." value="2026" oninput="runNumbers()">
+          <div id="numOut" style="display:flex; flex-direction:column; gap:10px; overflow-y:auto; max-height:50vh; padding-right:5px;"></div>
+        `;
+      }
+      /* NEW TOOL 2: BULLETS */
+      else if(toolType === 'bullets') {
+        title.innerText = "🔘 VIP Bullets";
+        const bullets = ["➤", "✦", "✓", "➻", "•", "◈", "❖", "✧", "►", "✰"];
+        html += '<div class="grid-syms" style="grid-template-columns: repeat(4, 1fr);">';
+        bullets.forEach(b => { html += `<div class="grid-sym-box" style="font-size:24px;" onclick="copyEncodedText('${encodeURIComponent(b)}', 'Bullet Copied!')">${b}</div>`; });
+        html += '</div>';
+      }
+      /* NEW TOOL 3: QUOTES */
+      else if(toolType === 'quotes') {
+        title.innerText = "💬 Bio Quotes";
+        const quotes = [
+          "Be a voice, not an echo 🗣️", "Prove them wrong 💯", "Less perfection, more authenticity ✨", 
+          "Born to stand out 🌟", "Die with memories, not dreams 💭", "Simplicity is the ultimate sophistication 🌿"
+        ];
+        quotes.forEach(q => {
+          html += `<div class="tool-list-row"><div class="tool-list-text">${q}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(q)}', 'Quote Copied!')">Copy</button></div>`;
+        });
+      }
 
       body.innerHTML = html;
       document.getElementById('toolsModal').style.display = 'flex';
@@ -1202,6 +1253,7 @@
       if(toolType === 'gamer') runGamerNames();
       if(toolType === 'wings') runWings();
       if(toolType === 'zalgo') runZalgo();
+      if(toolType === 'numbers') runNumbers();
     }
 
     window.rollNextQuickBio = function() {
@@ -1212,6 +1264,29 @@
         display.innerHTML = bio.replace(/\\n/g, '<br>');
         copyBtn.setAttribute('onclick', `copyEncodedText('${encodeURIComponent(bio.replace(/\\n/g, '\n'))}', 'Bio Copied!')`);
       }
+    };
+
+    window.runNumbers = function() {
+      const val = document.getElementById('numInput').value || "2026";
+      const outBox = document.getElementById('numOut');
+      
+      const m1={"0":"𝟎","1":"𝟏","2":"𝟐","3":"𝟑","4":"𝟒","5":"𝟓","6":"𝟔","7":"𝟕","8":"𝟖","9":"𝟗"};
+      const m2={"0":"𝟘","1":"𝟙","2":"𝟚","3":"𝟛","4":"𝟜","5":"𝟝","6":"𝟞","7":"𝟟","8":"𝟠","9":"𝟡"};
+      const m3={"0":"⓪","1":"①","2":"②","3":"③","4":"④","5":"⑤","6":"⑥","7":"⑦","8":"⑧","9":"⑨"};
+      const m4={"0":"⓿","1":"❶","2":"❷","3":"❸","4":"❹","5":"❺","6":"❻","7":"❼","8":"❽","9":"❾"};
+
+      let o1="", o2="", o3="", o4="";
+      for(let i=0; i<val.length; i++) {
+        o1 += m1[val[i]] || val[i]; o2 += m2[val[i]] || val[i];
+        o3 += m3[val[i]] || val[i]; o4 += m4[val[i]] || val[i];
+      }
+
+      const styles = [o1, o2, o3, o4, `「${val}」`, `【${val}】`, `[̲̅${val}]`];
+      let html = "";
+      styles.forEach(s => {
+        html += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:16px;">${s}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(s)}', 'Copied!')">Copy</button></div>`;
+      });
+      outBox.innerHTML = html;
     };
 
     window.runGamerNames = function() {
@@ -1232,7 +1307,7 @@
       const tags = [" YT", " ゲーマー", " 😈", " OP", " ࿐", " ッ"];
       let htmlAes = "";
       const uniqueAesthetic = new Set();
-      tags.forEach(t => { uniqueAesthetic.add(`【 ${oG} 】${t}`); uniqueAesthetic.add(`★ ${val} ★${t}`); uniqueAesthetic.add(`☠️ ${oG} ☠️️${t}`); uniqueAesthetic.add(`『 ${val} 』${t}`); });
+      tags.forEach(t => { uniqueAesthetic.add(`【 ${oG} 】${t}`); uniqueAesthetic.add(`★ ${val} ★${t}`); uniqueAesthetic.add(`☠️ ${oG} ☠️${t}`); uniqueAesthetic.add(`『 ${val} 』${t}`); });
 
       uniqueAesthetic.forEach(name => {
         htmlAes += `<div class="tool-list-row"><div class="tool-list-text" style="font-size:15px; letter-spacing:1px;">${name}</div><button class="tool-btn-copy" onclick="copyEncodedText('${encodeURIComponent(name)}', 'Name Copied!')">Copy</button></div>`;
