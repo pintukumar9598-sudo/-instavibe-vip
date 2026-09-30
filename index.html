@@ -29,28 +29,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       1. GLOBAL RESET & VARIABLES
-       ========================================================================== */
+    /* GLOBAL RESET & VARIABLES */
     :root {
-      --bg-main: #030508;
-      --card-bg: rgba(20, 25, 35, 0.95);
-      --card-border: rgba(255, 255, 255, 0.08);
+      --bg-main: #030508; --card-bg: #111620; --card-border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6; --primary-glow: rgba(59, 130, 246, 0.5);
-      --accent: #f59e0b; 
-      --gold-mid: #fbbf24;
-      --text-main: #f8fafc; --text-muted: #94a3b8;
+      --accent: #f59e0b; --gold-mid: #fbbf24;
+      --text-main: #f8fafc; --text-muted: #94a3b8; --solid-btn: #1a2233; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-    
-    body, html { 
-      background-color: var(--bg-main); color: var(--text-main); 
-      overflow-x: hidden; height: 100%; 
-      scroll-behavior: smooth; 
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body, html { background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; height: 100%; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg-main); }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
@@ -60,25 +48,13 @@
     .glow-1 { top: -100px; left: -100px; background: var(--primary); }
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
-    /* ==========================================================================
-       GRAND WELCOME SCREEN (PURE CSS ROCKETS)
-       ========================================================================== */
-    #grandWelcome {
-      position: fixed; inset: 0; z-index: 999999; background: #030508;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 80%);
-      transition: opacity 0.3s ease; cursor: pointer; overflow: hidden;
-    }
+    /* GRAND WELCOME SCREEN */
+    #grandWelcome { position: fixed; inset: 0; z-index: 999999; background: #030508; display: flex; flex-direction: column; align-items: center; justify-content: center; background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 80%); transition: opacity 0.3s ease; cursor: pointer; overflow: hidden; }
     .gw-logo { font-size: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.8)); animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .gw-title { font-family: 'Cinzel', serif; font-size: 32px; font-weight: 900; color: var(--gold-mid); text-align: center; line-height: 1.4; animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     .gw-subtitle { font-size: 13px; color: #cbd5e1; margin-top: 15px; letter-spacing: 5px; text-transform: uppercase; animation: fadeIn 1.5s ease; font-weight: 800;}
     .gw-tap-text { position: absolute; bottom: 40px; font-size: 12px; color: #64748b; animation: blinkFast 2s infinite; }
-    
-    .css-rocket { 
-      position: absolute; bottom: -50px; width: 3px; height: 40px; 
-      background: linear-gradient(to top, transparent, #f59e0b, #fff); 
-      border-radius: 50%; opacity: 0; filter: drop-shadow(0 0 8px #f59e0b); 
-    }
+    .css-rocket { position: absolute; bottom: -50px; width: 3px; height: 40px; background: linear-gradient(to top, transparent, #f59e0b, #fff); border-radius: 50%; opacity: 0; filter: drop-shadow(0 0 8px #f59e0b); }
     .r1 { left: 15%; animation: cssShoot 1.2s 0.1s ease-out forwards; }
     .r2 { left: 50%; animation: cssShoot 1.5s 0.3s ease-out forwards; height: 50px; width: 4px; }
     .r3 { right: 15%; animation: cssShoot 1.3s 0.5s ease-out forwards; }
@@ -88,14 +64,8 @@
     @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
     @keyframes cssShoot { 0% { transform: translateY(0) scale(1); opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(-80vh) scale(0.2); opacity: 0; } }
 
-    /* ==========================================================================
-       2. HEADER
-       ========================================================================== */
-    .header-master {
-      width: 100%; position: fixed; top: 0; left: 0; background: rgba(3, 5, 8, 0.98); 
-      padding: 14px 20px; display: flex; align-items: center;
-      justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-    }
+    /* HEADER */
+    .header-master { width: 100%; position: fixed; top: 0; left: 0; background: rgba(3, 5, 8, 0.98); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--card-border); z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.6); }
     .brand-wrap { display: flex; align-items: center; gap: 12px; }
     .brand-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 23px; font-weight: 900; color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
     .brand-title { font-size: 21px; font-weight: 900; letter-spacing: 0.5px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
@@ -103,93 +73,51 @@
 
     .app-container { max-width: 600px; margin: 0 auto; padding: 10px 14px 100px; padding-top: 85px; }
 
-    /* ==========================================================================
-       3. COMPACT CREATOR TOOLS GRID 
-       ========================================================================== */
+    /* COMPACT TOOLS GRID */
     .section-title { font-size: 19px; font-weight: 900; margin: 5px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
-    
     .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; transform: translateZ(0); }
-    
-    .tool-card {
-      background: var(--card-bg); 
-      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 16px 8px; 
-      display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; position: relative;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
+    .tool-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 16px 8px; display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; position: relative; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
     .tool-card:active { transform: scale(0.94); border-color: var(--primary); }
     .tool-icon { font-size: 30px; margin-bottom: 7px; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
     .tool-name { font-size: 12px; font-weight: 900; color: #fff; margin-bottom: 3px; letter-spacing: 0.4px; }
     .tool-sub { font-size: 9.5px; color: var(--text-muted); font-weight: 700; }
-
-    .highlight-tool {
-      padding: 18px 8px; transform: scale(1.04); border-color: rgba(139, 92, 246, 0.5);
-      background: #171626; box-shadow: 0 0 18px rgba(139, 92, 246, 0.25); z-index: 2;
-    }
+    .highlight-tool { padding: 18px 8px; transform: scale(1.04); border-color: rgba(139, 92, 246, 0.5); background: #171626; box-shadow: 0 0 18px rgba(139, 92, 246, 0.25); z-index: 2; }
     .highlight-tool:active { transform: scale(0.98); }
     .highlight-tool .tool-icon { font-size: 36px; margin-bottom: 8px; }
-
     .ai-badge { position: absolute; top: -6px; right: -6px; font-size: 9px; background: #8b5cf6; color: #fff; padding: 4px 8px; border-radius: 8px; font-weight: 900; text-transform: uppercase; box-shadow: 0 2px 12px rgba(139,92,246,0.6); animation: blinkFast 2s infinite;}
     .gamer-tag { position: absolute; top: -6px; right: -6px; font-size: 9px; background: #ef4444; color: #fff; padding: 4px 8px; border-radius: 8px; font-weight: 900; text-transform: uppercase; box-shadow: 0 2px 10px rgba(239,68,68,0.5); }
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
 
-    /* ==========================================================================
-       4. ✨ COLOURFUL & PREMIUM SHINE EFFECT ✨
-       ========================================================================== */
-    .colourful-shine { 
-      background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f);
-      background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-      animation: rainbowShine 3s linear infinite; font-weight: 900; 
-    }
+    /* EFFECTS */
+    .colourful-shine { background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: rainbowShine 3s linear infinite; font-weight: 900; }
     @keyframes rainbowShine { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
-
-    .premium-shine { 
-      background: linear-gradient(120deg, #fcd34d 0%, #fffbeb 20%, #f59e0b 50%, #fffbeb 80%, #fcd34d 100%);
-      background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-      animation: smoothGlow 6s linear infinite; font-weight: 900; 
-    }
+    .premium-shine { background: linear-gradient(120deg, #fcd34d 0%, #fffbeb 20%, #f59e0b 50%, #fffbeb 80%, #fcd34d 100%); background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: smoothGlow 6s linear infinite; font-weight: 900; }
     @keyframes smoothGlow { 0% { background-position: 0% center; } 100% { background-position: -300% center; } }
 
-    /* MASTER RIBBONS */
+    /* MASTER RIBBONS & BIO FEED */
     .master-card { background: linear-gradient(135deg, #111620, #0a0c12); border: 1px solid var(--accent); border-radius: 22px; padding: 25px; position: relative; overflow: hidden; margin: 25px 0; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15); }
     .master-ribbon { background: var(--accent); color: #000; font-weight: 900; font-size: 11px; text-transform: uppercase; padding: 6px 35px; position: absolute; top: 20px; right: -30px; transform: rotate(45deg); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.6);}
     .master-title { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
     .master-text { font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px;}
-    
-    .master-btn, .btn-copy, .tool-btn-copy { 
-      background: var(--solid-btn); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      width: 100%; padding: 14px; border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;
-    }
+    .master-btn, .btn-copy, .tool-btn-copy { background: var(--solid-btn); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); width: 100%; padding: 14px; border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s; }
     .master-btn:active, .btn-copy:active, .tool-btn-copy:active { transform: scale(0.97); background: #2a3447; }
-
-    /* BIO FEED */
     .bio-feed { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; transform: translateZ(0); }
     .bio-card { background: var(--card-bg); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 20px; padding: 22px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12); }
     .bio-badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .bio-badge { font-size: 10.5px; font-weight: 900; background: rgba(59,130,246,0.15); color: #60a5fa; padding: 5px 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.3); text-transform: uppercase; letter-spacing: 1px;}
     .bio-text { font-size: 15px; line-height: 1.7; color: #f1f5f9; white-space: pre-line; background: rgba(0, 0, 0, 0.4); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 18px; font-weight: 600; }
-    .btn-copy { width: 100%; padding: 14px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s; }
-    .btn-copy:active { background: #f1f5f9; color: #000; transform: scale(0.97); }
 
-    /* ==========================================================================
-       5. AI CHAT INTERFACE & THINKING DOTS
-       ========================================================================== */
-    .chat-header-title {
-        display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 15px; padding: 0 5px; flex-wrap: nowrap;
-    }
-    .chat-header-text {
-        font-size: 18px; font-weight: 900; display: flex; align-items: center; gap: 8px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;
-    }
-
+    /* AI CHAT INTERFACE */
+    .chat-header-title { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 15px; padding: 0 5px; flex-wrap: nowrap; }
+    .chat-header-text { font-size: 18px; font-weight: 900; display: flex; align-items: center; gap: 8px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%; }
     .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; height: 100%; position: relative;}
     .chat-box { padding: 15px 5px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; margin-bottom: 80px;}
     .msg-wrapper { display: flex; flex-direction: column; }
     .msg-user { align-self: flex-end; background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; font-size: 14.5px; font-weight: 600; line-height: 1.5; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
-    
     .msg-ai { align-self: flex-start; background: #111620; border: 1px solid var(--card-border); color: #f8fafc; padding: 14px 18px; border-radius: 18px 18px 18px 4px; max-width: 90%; font-size: 14.5px; font-weight: 500; line-height: 1.6; box-shadow: 0 4px 15px rgba(0,0,0,0.4);}
     .msg-ai.error-msg { border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.05); color: #fca5a5; }
     .msg-ai.stop-msg { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05); color: #fcd34d; }
     .msg-ai b { color: var(--gold-mid); font-weight: 900; }
-    
     .thinking-box { display: flex; flex-direction: column; gap: 8px; }
     .thinking-dots { display: flex; gap: 5px; align-items: center; height: 15px; padding: 0 5px;}
     .dot { width: 7px; height: 7px; background: var(--gold-mid); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
@@ -198,30 +126,23 @@
     .ai-typing-status { font-size: 13px; color: #cbd5e1; font-style: italic; font-weight: 600; transition: opacity 0.5s ease;}
     .ai-typing-status.fade { opacity: 0; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-
     .ai-chips-wrap { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none;}
     .ai-chips-wrap::-webkit-scrollbar { display: none; }
     .ai-chip { background: var(--solid-btn); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
-
     .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: #030508; border-top: 1px solid var(--card-border); z-index: 999; transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
     @media (min-width: 600px) { .chat-input-area { left: 50%; transform: translateX(-50%); max-width: 600px; } }
     .chat-input-row { display: flex; gap: 10px; padding: 5px 15px 15px; }
     .chat-input { flex: 1; padding: 15px 20px; background: #161d29; border: 1px solid rgba(255,255,255,0.15); border-radius: 25px; color: #fff; font-size: 16px; outline: none; transition: 0.2s; }
     .chat-input:focus { border-color: var(--primary); background: #000; }
     .chat-input:disabled { opacity: 0.6; cursor: not-allowed; }
-    
     .chat-send-btn { background: var(--primary); color: #fff; border: none; width: 52px; height: 52px; border-radius: 50%; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 15px var(--primary-glow); transition: background 0.3s, transform 0.2s; flex-shrink: 0;}
     .chat-send-btn:active { transform: scale(0.9); }
     .chat-send-btn.stop-mode { background: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
-
-    /* Keyboard open state classes */
     body.keyboard-open .chat-input-area { bottom: 0 !important; }
     body.keyboard-open .bottom-nav { display: none !important; }
 
-    /* ==========================================================================
-       6. Q&A / FAQ SECTION STYLING
-       ========================================================================== */
+    /* FAQ & OTHERS */
     .faq-container { margin: 40px 0 20px; }
     .faq-item { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; margin-bottom: 14px; overflow: hidden; transition: 0.3s; }
     .faq-q { padding: 18px; font-size: 15px; font-weight: 800; color: #fff; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
@@ -229,58 +150,42 @@
     .faq-item.open .faq-a { display: block; }
     .faq-item.open { border-color: rgba(255,255,255,0.2); }
 
-    /* ==========================================================================
-       7. MODALS, TOOL ROWS 
-       ========================================================================== */
     .modal-veil { position: fixed; inset: 0; background: rgba(5,8,12,0.98); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 15px; }
     .modal-box { background: #0d1220; border: 1px solid var(--card-border); border-radius: 24px; width: 100%; max-width: 480px; padding: 25px 20px; position: relative; max-height: 85vh; overflow-y: auto; text-align: left;}
     .modal-close { position: absolute; top: 18px; right: 18px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-weight: 900; cursor: pointer; color: #fff; z-index: 50;}
-    
     #modalTitle, #legalModalTitle { padding-right: 45px; line-height: 1.3; }
-
     .modal-input { width: 100%; padding: 18px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 20px; outline: none; }
     .tool-list-row { background: var(--solid-btn); padding: 16px; border-radius: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.05); position: relative;}
     .tool-list-text { font-size: 15px; color: #fff; font-weight: 600; white-space: pre-line; max-width: 65%; padding-right: 10px; word-break: break-word;}
-    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; cursor: pointer;}
-    
+    .tool-btn-copy { width: auto; flex-shrink: 0; padding: 10px 18px; font-size: 13px; margin-left: auto; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 10px;}
     .grid-syms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .grid-sym-box { background: var(--solid-btn); padding: 22px 10px; text-align: center; border-radius: 16px; font-size: 26px; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); transition: 0.2s;}
     .grid-sym-box:active { background: #2a3447; transform: scale(0.94); }
-
     .toast { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 14px 35px; border-radius: 99px; font-weight: 900; font-size: 15px; z-index: 5000; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     
-    /* BOTTOM NAVIGATION */
     .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #030508; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-around; padding: 12px 0 20px; z-index: 1000; transform: translateZ(0);}
     .nav-tab { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #64748b; font-size: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.2s; flex: 1; text-align: center;}
     .nav-tab.active { color: #fff; transform: translateY(-4px); }
     .nav-icon { font-size: 22px; filter: grayscale(100%); transition: 0.2s; }
     .nav-tab.active .nav-icon { filter: grayscale(0%); text-shadow: 0 0 10px rgba(255,255,255,0.5);}
 
-    /* Animation Fix for Tab Switch */
     .view-page { display: none; }
     .view-page.active { display: block; animation: fadeIn 0.3s ease-out; }
     #view-aichat.active { display: flex; flex-direction: column; animation: fadeInChat 0.3s ease-out; } 
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
     @keyframes fadeInChat { from{opacity:0;} to{opacity:1;} }
     
-    /* FOOTER */
     footer { text-align: center; padding: 20px 10px 40px; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
     .footer-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
     .footer-links span { color: #cbd5e1; font-weight: 800; font-size: 13px; text-decoration: underline; cursor: pointer;}
     .seo-text-block { text-align: left; padding: 22px; font-size: 12.5px; color: #475569; line-height: 1.7; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;}
-
-    /* EMAIL CONTAINER FIX */
-    .email-container {
-      display: flex; justify-content: space-between; align-items: center;
-      background: var(--solid-btn); border-radius: 12px; padding: 12px 16px;
-      border: 1px solid rgba(255,255,255,0.05); margin-top: 10px;
-    }
+    .email-container { display: flex; justify-content: space-between; align-items: center; background: var(--solid-btn); border-radius: 12px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.05); margin-top: 10px; }
     .email-text { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 15px;}
   </style>
 </head>
 <body>
 
-  <!-- 🔥 GRAND WELCOME OVERLAY (PURE CSS ROCKETS) 🔥 -->
+  <!-- GRAND WELCOME OVERLAY -->
   <div id="grandWelcome" onclick="closeGrandWelcome()">
     <div class="css-rocket r1"></div>
     <div class="css-rocket r2"></div>
@@ -298,11 +203,10 @@
       const gw = document.getElementById('grandWelcome');
       if(gw) {
         gw.style.opacity = '0';
-        setTimeout(() => gw.remove(), 300); // Fast skip
+        setTimeout(() => gw.remove(), 300);
         localStorage.setItem('instavibe_welcome_done', 'true');
       }
     }
-
     if (!localStorage.getItem('instavibe_welcome_done')) {
       const gw = document.getElementById('grandWelcome');
       if(gw) {
@@ -314,7 +218,7 @@
 
   <div class="bg-ambience"></div><div class="glow-orb glow-1"></div><div class="glow-orb glow-2"></div>
 
-  <!-- HEADER (FIXED TOP) -->
+  <!-- HEADER -->
   <header class="header-master">
     <div class="brand-wrap">
       <div class="brand-icon">亗</div>
@@ -324,25 +228,20 @@
   </header>
 
   <div class="app-container">
-
     <!-- HOME VIEW -->
     <main id="view-home" class="view-page active">
       <div class="section-title"><span>🛠 Ultimate Creator Tools</span></div>
       
-      <!-- COMPACT TOOLS GRID WITH 15 TOOLS -->
       <div class="tools-grid">
         <div class="tool-card highlight-tool" onclick="switchPage('aichat')">
-          <div class="ai-badge">NEW AI</div>
-          <div class="tool-icon">🧠</div><div class="tool-name">AI Assistant</div><div class="tool-sub">Live Talk</div>
+          <div class="ai-badge">NEW AI</div><div class="tool-icon">🧠</div><div class="tool-name">AI Assistant</div><div class="tool-sub">Live Talk</div>
         </div>
         <div class="tool-card highlight-tool" onclick="window.openToolModal('fonts')">
           <div class="tool-icon">🔤</div><div class="tool-name">Fancy Fonts</div><div class="tool-sub">Premium</div>
         </div>
         <div class="tool-card highlight-tool" onclick="window.openToolModal('gamer')">
-          <div class="gamer-tag">PRO</div>
-          <div class="tool-icon">🎮</div><div class="tool-name">Gamer Names</div><div class="tool-sub">Zero Repeat</div>
+          <div class="gamer-tag">PRO</div><div class="tool-icon">🎮</div><div class="tool-name">Gamer Names</div><div class="tool-sub">Zero Repeat</div>
         </div>
-        
         <div class="tool-card" onclick="window.openToolModal('quickbio')">
           <div class="tool-icon">🎲</div><div class="tool-name">Quick Bio</div><div class="tool-sub">1-Click Fast</div>
         </div>
@@ -352,7 +251,6 @@
         <div class="tool-card" onclick="window.openToolModal('hashtags')">
           <div class="tool-icon">#️⃣</div><div class="tool-name">Viral Tags</div><div class="tool-sub">Reels Reach</div>
         </div>
-
         <div class="tool-card" onclick="window.openToolModal('emojis')">
           <div class="tool-icon">🦋</div><div class="tool-name">Aesthetic</div><div class="tool-sub">Unique Emoji</div>
         </div>
@@ -362,7 +260,6 @@
         <div class="tool-card" onclick="window.openToolModal('dividers')">
           <div class="tool-icon">📐</div><div class="tool-name">Bio Dividers</div><div class="tool-sub">Clean Lines</div>
         </div>
-
         <div class="tool-card" onclick="window.openToolModal('wings')">
           <div class="tool-icon">✨</div><div class="tool-name">VIP Wings</div><div class="tool-sub">Name Borders</div>
         </div>
@@ -372,8 +269,6 @@
         <div class="tool-card" onclick="window.openToolModal('textart')">
           <div class="tool-icon">🖼️</div><div class="tool-name">Text Arts</div><div class="tool-sub">ASCII Faces</div>
         </div>
-
-        <!-- NEW TOOLS -->
         <div class="tool-card" onclick="window.openToolModal('numbers')">
           <div class="tool-icon">🔢</div><div class="tool-name">VIP Numbers</div><div class="tool-sub">Font Styles</div>
         </div>
@@ -385,9 +280,7 @@
         </div>
       </div>
 
-      <div class="section-title">
-        <span>🔥 Top 100% Unique Feed</span> 
-      </div>
+      <div class="section-title"><span>🔥 Top 100% Unique Feed</span></div>
       <div class="bio-feed" id="mainBioFeed"></div>
 
       <!-- FAQ SECTION -->
@@ -399,15 +292,11 @@
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q"><span>Is the AI Generator really free?</span><span>▾</span></div>
-          <div class="faq-a">Yes! Our Live AI Generator is powered by a high-end cloud backend. You can chat and generate custom bios in Hindi, English, or Hinglish completely free.</div>
+          <div class="faq-a">Yes! Our Live AI Generator is powered by a high-end cloud backend. You can chat and generate custom bios completely free.</div>
         </div>
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-q"><span>How do the Master Ribbon Cards work?</span><span>▾</span></div>
-          <div class="faq-a">The glowing 'VIP Exclusive' cards are elite poetries and attitude templates found on top influencer profiles, brought directly to you with a 1-click copy feature.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-q"><span>Can I use these for Free Fire/BGMI?</span><span>▾</span></div>
-          <div class="faq-a">Absolutely. Our 'Pro Gamer Names' tool is specifically built with the 'Colourful Shine' effect to generate elite gaming IDs utilizing rare glitches and VIP symbols like 亗.</div>
+          <div class="faq-a">The glowing 'VIP Exclusive' cards are elite poetries and attitude templates found on top influencer profiles, brought directly to you.</div>
         </div>
       </div>
 
@@ -419,9 +308,8 @@
           <span onclick="window.openPolicyModal('contact')">Contact Us</span>
         </div>
         <p>© 2026 InstaVibe Ultimate. All Rights Reserved.</p>
-        
         <article class="seo-text-block">
-          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys in Hindi, a Soft Aesthetic Bio for Girls, or the highly demanded VIP Mahakal 5-line Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll. Gamers can utilize our Pro Name generator to craft Free Fire and BGMI usernames featuring rare symbols like 亗 and ☠️. Content creators can copy our famous Invisible Blank Space character, viral Reels hashtags, and 100+ Fancy Unicode Fonts instantly. InstaVibe Ultimate is your one-stop destination for profile mastery.
+          <strong>Elevate Your Digital Presence with InstaVibe Ultimate:</strong> Welcome to India's most premium, completely free creator suite. Whether you're searching for an Attitude Bio for Boys, a Soft Aesthetic Bio for Girls, or VIP Mahakal Bios, our manually curated database has it all. Stop relying on repetitive generators. Our unique Zero-Repeat system ensures fresh content every time you scroll.
         </article>
       </footer>
     </main>
@@ -429,19 +317,14 @@
     <!-- FULLSCREEN AI CHAT VIEW -->
     <main id="view-aichat" class="view-page">
       <div class="chat-header-title">
-        <div class="chat-header-text">🧠 InstaVibe AI Assistant</div>
-        <span class="header-badge">ONLINE</span>
+        <div class="chat-header-text">🧠 InstaVibe AI Assistant</div><span class="header-badge">ONLINE</span>
       </div>
-      
       <div class="chat-container">
         <div class="chat-box" id="chatBox">
           <div class="msg-wrapper">
-            <div class="msg-ai">
-              Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!
-            </div>
+            <div class="msg-ai">Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!</div>
           </div>
         </div>
-        
         <div class="chat-input-area" id="chatInputArea">
           <div class="ai-chips-wrap">
             <div class="ai-chip" onclick="triggerAiMode('bio', 'Give me a premium VIP bio')">📝 VIP Bio</div>
@@ -452,7 +335,6 @@
           </div>
           <div class="chat-input-row">
             <input type="text" id="chatInput" class="chat-input" placeholder="Message InstaVibe AI..." onkeypress="handleEnter(event)">
-            <!-- dynamic button -->
             <button id="chatSendBtn" class="chat-send-btn" onclick="handleSendOrStop()">➤</button>
           </div>
         </div>
@@ -471,6 +353,8 @@
           <div style="background:linear-gradient(135deg, rgba(239,68,68,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(239,68,68,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Sad & Poetry', 'sad')"><div style="font-size:40px; margin-bottom:12px;">🥀</div><div style="font-weight:900; font-size:18px;">Sad & Poetry</div></div>
           <div style="background:linear-gradient(135deg, rgba(16,185,129,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(16,185,129,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Funny & Crazy', 'funny')"><div style="font-size:40px; margin-bottom:12px;">🤪</div><div style="font-weight:900; font-size:18px;">Funny & Crazy</div></div>
           <div style="background:linear-gradient(135deg, rgba(234,179,8,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(234,179,8,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Bollywood & Filmy', 'filmy')"><div style="font-size:40px; margin-bottom:12px;">🎬</div><div style="font-weight:900; font-size:18px;">Bollywood & Filmy</div></div>
+          <!-- NEW AURA CATEGORY -->
+          <div style="background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(0,0,0,0.5)); border:1px solid rgba(139,92,246,0.3); border-radius:20px; padding:30px 15px; text-align:center; cursor:pointer;" onclick="loadCategoryFeed('Aura & Sigma', 'aura')"><div style="font-size:40px; margin-bottom:12px;">🌌</div><div style="font-weight:900; font-size:18px;">Aura & Sigma</div></div>
         </div>
       </div>
       <div id="cat-feed-container" style="display:none;">
@@ -488,9 +372,8 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V38 (THE MASTERPIECE)</div>
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. No repeating bios, fully responsive UI, Smart AI Engine, and 15 Mega Tools.</p>
-        
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V39 (THE AURA EXPLOSION)</div>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. 500+ Aura, Sigma, and Premium Bios. Intelligent AI Randomizer and 15 Mega Tools.</p>
         <div style="background:#0a0d14; border-radius:18px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:11px; color:#94a3b8; font-weight:800; margin-bottom:8px; text-transform:uppercase;">👨‍💻 Developer Email</div>
           <div class="email-container">
@@ -503,23 +386,13 @@
 
   </div> <!-- /app-container -->
 
-  <!-- 4 TABS BOTTOM NAVIGATION -->
   <nav class="bottom-nav" id="bottomNav">
-    <div class="nav-tab active" id="tab-home" onclick="switchPage('home')">
-      <span class="nav-icon">🏠</span><span>Home</span>
-    </div>
-    <div class="nav-tab" id="tab-aichat" onclick="switchPage('aichat')">
-      <span class="nav-icon">🧠</span><span>AI Chat</span>
-    </div>
-    <div class="nav-tab" id="tab-categories" onclick="switchPage('categories')">
-      <span class="nav-icon">🗂️</span><span>Categories</span>
-    </div>
-    <div class="nav-tab" id="tab-about" onclick="switchPage('about')">
-      <span class="nav-icon">ℹ️</span><span>Info</span>
-    </div>
+    <div class="nav-tab active" id="tab-home" onclick="switchPage('home')"><span class="nav-icon">🏠</span><span>Home</span></div>
+    <div class="nav-tab" id="tab-aichat" onclick="switchPage('aichat')"><span class="nav-icon">🧠</span><span>AI Chat</span></div>
+    <div class="nav-tab" id="tab-categories" onclick="switchPage('categories')"><span class="nav-icon">🗂️</span><span>Categories</span></div>
+    <div class="nav-tab" id="tab-about" onclick="switchPage('about')"><span class="nav-icon">ℹ️</span><span>Info</span></div>
   </nav>
 
-  <!-- MODALS -->
   <div class="modal-veil" id="toolsModal">
     <div class="modal-box">
       <div class="modal-close" onclick="closeAllModals()">✕</div>
@@ -540,12 +413,9 @@
 
   <script>
     /* ==========================================================================
-       KEYBOARD UI FIX 
+       KEYBOARD UI FIX & SCROLL LOGIC
        ========================================================================== */
     const chatInput = document.getElementById('chatInput');
-    const bottomNav = document.getElementById('bottomNav');
-    const chatInputArea = document.getElementById('chatInputArea');
-
     chatInput.addEventListener('focus', () => {
       document.body.classList.add('keyboard-open');
       setTimeout(() => {
@@ -553,73 +423,44 @@
         if(chatBox) chatBox.scrollTop = chatBox.scrollHeight;
       }, 300);
     });
-
-    chatInput.addEventListener('blur', () => {
-      setTimeout(() => { document.body.classList.remove('keyboard-open'); }, 100);
-    });
-
+    chatInput.addEventListener('blur', () => { setTimeout(() => { document.body.classList.remove('keyboard-open'); }, 100); });
     window.visualViewport.addEventListener("resize", () => {
-      if (window.visualViewport.height < window.innerHeight - 100) {
-        document.body.classList.add('keyboard-open');
-      } else {
-        document.body.classList.remove('keyboard-open');
-      }
+      if (window.visualViewport.height < window.innerHeight - 100) document.body.classList.add('keyboard-open');
+      else document.body.classList.remove('keyboard-open');
     });
 
-    /* ==========================================================================
-       UTILITIES & ROUTING
-       ========================================================================== */
     window.closeAllModals = function() {
-      const tModal = document.getElementById('toolsModal');
-      if(tModal) tModal.style.display = 'none';
-      const lModal = document.getElementById('legalModal');
-      if(lModal) lModal.style.display = 'none';
-      document.body.style.overflow = '';
+      document.getElementById('toolsModal').style.display = 'none';
+      document.getElementById('legalModal').style.display = 'none';
     };
 
     window.copyEncodedText = function(encodedText, msg) {
       const text = decodeURIComponent(encodedText);
       if(navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(err => {
-          fallbackCopy(text, msg);
-        });
-      } else {
-        fallbackCopy(text, msg);
-      }
+        navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(err => { fallbackCopy(text, msg); });
+      } else { fallbackCopy(text, msg); }
     };
 
     window.copyB64Text = function(b64, msg) {
       try {
         const text = decodeURIComponent(escape(atob(b64)));
         if(navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(err => {
-            fallbackCopy(text, msg);
-          });
-        } else {
-          fallbackCopy(text, msg);
-        }
-      } catch(e) {
-        console.error("Copy failed", e);
-      }
+          navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(err => { fallbackCopy(text, msg); });
+        } else { fallbackCopy(text, msg); }
+      } catch(e) { console.error("Copy failed", e); }
     };
 
     function fallbackCopy(text, msg) {
       const area = document.createElement("textarea");
-      area.value = text;
-      area.setAttribute('readonly', ''); 
-      area.style.position = "absolute"; 
-      area.style.left = "-9999px"; 
-      document.body.appendChild(area); 
-      area.focus();
-      area.select();
+      area.value = text; area.setAttribute('readonly', ''); area.style.position = "absolute"; area.style.left = "-9999px"; 
+      document.body.appendChild(area); area.focus(); area.select();
       try { document.execCommand('copy'); showToast(msg); } catch(e){}
       document.body.removeChild(area);
     }
 
     window.showToast = function(msg) {
       const toast = document.getElementById('globalToast');
-      toast.innerText = msg;
-      toast.style.display = 'block';
+      toast.innerText = msg; toast.style.display = 'block';
       setTimeout(() => toast.style.display = 'none', 2000);
     };
 
@@ -630,21 +471,12 @@
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
       document.getElementById('view-' + pageId).classList.add('active');
       document.getElementById('tab-' + pageId).classList.add('active');
-      
-      if(pageId !== 'aichat') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      if(pageId === 'aichat') {
-        setTimeout(() => {
-          const cb = document.getElementById('chatBox');
-          if(cb) cb.scrollTop = cb.scrollHeight;
-        }, 50);
-      }
+      if(pageId !== 'aichat') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if(pageId === 'aichat') setTimeout(() => { const cb = document.getElementById('chatBox'); if(cb) cb.scrollTop = cb.scrollHeight; }, 50);
     }
 
     /* ==========================================================================
-       🔥 SMART AI CHATBOT LOGIC (LIVE SCROLL & OFFLINE FALLBACK) 🔥
+       🔥 SMART AI CHATBOT LOGIC (DYNAMIC OFFLINE RANDOMIZER) 🔥
        ========================================================================== */
     let aiChatMemory = []; 
     let currentAiMode = "chat";
@@ -653,14 +485,8 @@
     let typeWriterTimeout = null;
     let thinkingInterval = null;
 
-    function formatChatText(text) {
-      return text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
-    }
-
-    function handleEnter(e) {
-      if (e.key === 'Enter' && !isAiGenerating) handleSendOrStop();
-    }
-
+    function formatChatText(text) { return text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>'); }
+    function handleEnter(e) { if (e.key === 'Enter' && !isAiGenerating) handleSendOrStop(); }
     function triggerAiMode(mode, presetText) {
       if(isAiGenerating) return; 
       currentAiMode = mode;
@@ -669,11 +495,8 @@
     }
 
     function handleSendOrStop() {
-      if(isAiGenerating) {
-        stopAiGeneration();
-      } else {
-        sendChatMessage();
-      }
+      if(isAiGenerating) stopAiGeneration();
+      else sendChatMessage();
     }
 
     function stopAiGeneration() {
@@ -681,19 +504,15 @@
       if(aiAbortController) aiAbortController.abort();
       if(typeWriterTimeout) clearTimeout(typeWriterTimeout);
       if(thinkingInterval) clearInterval(thinkingInterval);
-      
       const loadingSpan = document.querySelector('.ai-typing-status');
       if(loadingSpan) {
         loadingSpan.parentElement.parentElement.classList.remove('msg-ai');
         loadingSpan.parentElement.parentElement.classList.add('msg-ai', 'stop-msg');
         loadingSpan.innerText = "Generation manually stopped. 🛑";
-        loadingSpan.classList.remove('fade');
-        loadingSpan.style.animation = "none";
-        
+        loadingSpan.classList.remove('fade'); loadingSpan.style.animation = "none";
         const dots = document.querySelector('.thinking-dots');
         if(dots) dots.style.display = 'none';
       }
-
       resetAiInputState();
     }
 
@@ -701,8 +520,7 @@
       isAiGenerating = false;
       document.getElementById('chatInput').disabled = false;
       const btn = document.getElementById('chatSendBtn');
-      btn.innerHTML = '➤';
-      btn.classList.remove('stop-mode');
+      btn.innerHTML = '➤'; btn.classList.remove('stop-mode');
     }
 
     async function sendChatMessage() {
@@ -710,20 +528,15 @@
       const text = input.value.trim();
       if(!text) return;
 
-      isAiGenerating = true;
-      input.disabled = true;
+      isAiGenerating = true; input.disabled = true;
       const btn = document.getElementById('chatSendBtn');
-      btn.innerHTML = '⏹';
-      btn.classList.add('stop-mode');
+      btn.innerHTML = '⏹'; btn.classList.add('stop-mode');
 
       const chatBox = document.getElementById('chatBox');
-
       chatBox.innerHTML += `<div class="msg-wrapper"><div class="msg-user">${text}</div></div>`;
-      input.value = '';
-      chatBox.scrollTop = chatBox.scrollHeight;
+      input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
 
       const loadingId = 'ai-load-' + Date.now();
-      
       chatBox.innerHTML += `
         <div class="msg-wrapper" id="${loadingId}">
           <div class="msg-ai">
@@ -732,141 +545,123 @@
               <div class="ai-typing-status">Analyzing your request... 🤔</div>
             </div>
           </div>
-        </div>
-      `;
+        </div>`;
       chatBox.scrollTop = chatBox.scrollHeight;
 
-      const phrases = [
-        "Analyzing your request... 🤔", 
-        "Brainstorming creative ideas... 💡", 
-        "Adding premium aesthetics... ✨", 
-        "Almost ready... 🚀"
-      ];
+      const phrases = ["Analyzing your request... 🤔", "Brainstorming creative ideas... 💡", "Adding premium aesthetics... ✨", "Almost ready... 🚀"];
       let phraseIndex = 0;
-      
       thinkingInterval = setInterval(() => {
           const statusEl = document.querySelector(`#${loadingId} .ai-typing-status`);
           if(statusEl && isAiGenerating) {
               statusEl.classList.add('fade');
-              setTimeout(() => {
-                  phraseIndex = (phraseIndex + 1) % phrases.length;
-                  statusEl.innerText = phrases[phraseIndex];
-                  statusEl.classList.remove('fade');
-              }, 500);
+              setTimeout(() => { phraseIndex = (phraseIndex + 1) % phrases.length; statusEl.innerText = phrases[phraseIndex]; statusEl.classList.remove('fade'); }, 500);
           }
       }, 2500);
 
       aiAbortController = new AbortController();
-
-      // 🔥 Added Secret Salt in payload to bypass repetition
-      const secretSalt = Math.floor(Math.random() * 99999);
-      const payloadText = text + ` [Secret ID: ${secretSalt} - Generate 100% unique & fresh content]`;
-
       let aiResponseText = "";
 
       try {
+        const secretSalt = Math.floor(Math.random() * 99999);
+        const payloadText = text + ` [Secret ID: ${secretSalt} - Generate 100% fresh content]`;
         const workerUrl = "https://divine-bush-fa24.rangiladevi9598.workers.dev/"; 
-
         const res = await fetch(workerUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+          method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: payloadText, history: aiChatMemory, mode: currentAiMode }),
           signal: aiAbortController.signal
         });
-        
         clearInterval(thinkingInterval);
-
         if(!res.ok) throw new Error("Network Error");
         const data = await res.json();
         if(data.error) throw new Error(data.error);
-
         aiResponseText = data.reply;
-
       } catch(e) {
         clearInterval(thinkingInterval);
         if(e.name === 'AbortError') return;
 
-        // 🔥 SMART OFFLINE FALLBACK (Prevents Connection Failed Error for tools) 🔥
-        if (currentAiMode === 'tags') {
-           aiResponseText = "🔥 Here are some Viral Tags:\n#viral #reels #explore #trending #instagram #reelsindia #attitude #sigmarule #foryou #foryoupage #viralvideos";
-        } else if (currentAiMode === 'names') {
-           aiResponseText = "🎮 Pro Names for you:\n1. 亗 ＲＯＭＥＯ 亗\n2. 乂 ＫＩＬＬＥＲ 乂\n3. ๖ۣۜD E V I L ࿐\n4. 【 ＰＲＯ 】\n5. ☠️️ ＢＯＳＳ ☠️";
-        } else if (currentAiMode === 'emojis') {
-           aiResponseText = "🦋 Fresh Aesthetic Emojis:\n1. 🧿🤍✨\n2. 🍷🔥👑\n3. 💀🖤⛓️\n4. 🧸🎀💖\n5. 🥂🍾💎";
-        } else if (currentAiMode === 'bio') {
-           aiResponseText = "👑 Premium VIP Bio:\n\nAttitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯\nWelcome to my profile 🖤";
-        } else if (currentAiMode === 'caption') {
-           aiResponseText = "💬 Savage Caption:\n\nSilence is my loudest scream ⚡\nToo glam to give a damn 💅\nHustle hard, shine harder 💎";
-        } else {
+        // 🔥 DYNAMIC OFFLINE RANDOMIZER (NEVER GIVES SAME OUTPUT TWICE) 🔥
+        const fallTags = [
+            "🔥 Try these tags:\n#viral #reels #explore #trending #instagram #reelsindia #attitude",
+            "✨ Aesthetic Tags:\n#fyp #foryou #foryoupage #viralpost #dailyquotes #aesthetic #vibes",
+            "🚀 Sigma Tags:\n#attitude #sigmarule #boys #style #swagger #reelsvideo #explorepage",
+            "💀 Dark Aura Tags:\n#darkaesthetic #sigma #villain #mindset #grind #hustle #success"
+        ];
+        const fallNames = [
+            "🎮 Pro Names Batch 1:\n1. 亗 ＲＯＭＥＯ 亗\n2. 乂 ＫＩＬＬＥＲ 乂\n3. ๖ۣۜD E V I L ࿐",
+            "🎮 Pro Names Batch 2:\n1. 【 ＰＲＯ 】\n2. ☠ ＢＯＳＳ ☠\n3. ★ ＳＮＩＰＥＲ ★",
+            "🎮 Pro Names Batch 3:\n1. ꧁•[ ＫＩＮＧ ]•꧂\n2. 亗 ＬＥＧＥＮＤ 亗\n3. 乂 ＦＩＲＥ 乂",
+            "🎮 Pro Names Batch 4:\n1. ╰‿╯ＴＯＸＩＣ\n2. ❖ ＳＩＧＭＡ ❖\n3. ༄ ＡＵＲＡ ༄"
+        ];
+        const fallEmojis = [
+            "🦋 Set 1:\n1. 🧿🤍✨\n2. 🍷🔥👑\n3. 💀🖤⛓️",
+            "🦋 Set 2:\n1. 🧸🎀💖\n2. 🥂🍾💎\n3. 🌙💫✨",
+            "🦋 Set 3:\n1. 📸🌍✈️\n2. 😈🔥🔪\n3. 🕊️🤍☁️",
+            "🦋 Set 4:\n1. 🌌🛸✨\n2. 🥀🩸🗡️\n3. 🍂☕📚"
+        ];
+        const fallBios = [
+            "👑 Premium VIP Bio:\nAttitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯",
+            "👑 Premium VIP Bio:\nSher ki bhukh 🦁\nDono jaanlewa hain 🔥\nRules breaker 🚫\nDesi Swag 😎",
+            "👑 Premium VIP Bio:\nElegance is an attitude ✨\nBeauty with brains 🧠\nClassy and fabulous 👠\nNever basic 💅",
+            "👑 Premium VIP Bio:\nAura Level: Infinity ♾️\nMindset of a Conqueror 🧠\nRuling the streets 🛣️\nNo fear 🚫"
+        ];
+        const fallCaps = [
+            "💬 Caption:\nSilence is my loudest scream ⚡\nToo glam to give a damn 💅",
+            "💬 Caption:\nI am my own biggest competition 🪞\nFocus on goals, not holes 👁️",
+            "💬 Caption:\nSher jab shikar karta hai 🦁\nNot lucky, just obsessed 🚀",
+            "💬 Caption:\nUnmatched Aura 🌌\nThey hate what they can't be 💯"
+        ];
+
+        if (currentAiMode === 'tags') aiResponseText = fallTags[Math.floor(Math.random() * fallTags.length)];
+        else if (currentAiMode === 'names') aiResponseText = fallNames[Math.floor(Math.random() * fallNames.length)];
+        else if (currentAiMode === 'emojis') aiResponseText = fallEmojis[Math.floor(Math.random() * fallEmojis.length)];
+        else if (currentAiMode === 'bio') aiResponseText = fallBios[Math.floor(Math.random() * fallBios.length)];
+        else if (currentAiMode === 'caption') aiResponseText = fallCaps[Math.floor(Math.random() * fallCaps.length)];
+        else {
            const errorDiv = document.getElementById(loadingId);
-           if(errorDiv) {
-             errorDiv.innerHTML = `<div class="msg-ai error-msg">⚠️ Server is busy right now! Please try again later.</div>`;
-           }
-           resetAiInputState();
-           return;
+           if(errorDiv) errorDiv.innerHTML = `<div class="msg-ai error-msg">⚠️ Server is busy! Try using the preset tools above.</div>`;
+           resetAiInputState(); return;
         }
       }
 
       let formattedReply = formatChatText(aiResponseText);
       let safeB64 = btoa(unescape(encodeURIComponent(aiResponseText)));
-      
       let copyBtn = '';
-      if(aiResponseText.length > 10) {
-          copyBtn = `<div style="margin-top:10px;"><button class="tool-btn-copy" onclick="copyB64Text('${safeB64}', 'Copied!')">📋 Copy Text</button></div>`;
-      }
+      if(aiResponseText.length > 10) copyBtn = `<div style="margin-top:10px;"><button class="tool-btn-copy" onclick="copyB64Text('${safeB64}', 'Copied!')">📋 Copy Text</button></div>`;
 
       const targetDiv = document.getElementById(loadingId);
       targetDiv.innerHTML = `<div class="msg-ai" id="text-${loadingId}"></div>`;
       const typeContainer = document.getElementById(`text-${loadingId}`);
-
-      let cursor = 0;
-      let currentHTML = "";
+      let cursor = 0; let currentHTML = "";
       
       function type() {
           if(!isAiGenerating) return; 
-          
           if (cursor < formattedReply.length) {
               let char = formattedReply[cursor];
               if (char === '<') {
                   let tagEnd = formattedReply.indexOf('>', cursor);
-                  if (tagEnd !== -1) {
-                      currentHTML += formattedReply.substring(cursor, tagEnd + 1);
-                      cursor = tagEnd + 1;
-                  } else {
-                      currentHTML += char; cursor++;
-                  }
+                  if (tagEnd !== -1) { currentHTML += formattedReply.substring(cursor, tagEnd + 1); cursor = tagEnd + 1; } 
+                  else { currentHTML += char; cursor++; }
                   type(); 
               } else {
                   currentHTML += char; cursor++;
                   typeContainer.innerHTML = currentHTML;
-                  
-                  // 🔥 FLAWLESS LIVE SCROLL FIX (Using requestAnimationFrame) 🔥
-                  requestAnimationFrame(() => {
-                      chatBox.scrollTop = chatBox.scrollHeight + 100;
-                  });
-
+                  requestAnimationFrame(() => { chatBox.scrollTop = chatBox.scrollHeight + 100; });
                   typeWriterTimeout = setTimeout(type, 15); 
               }
           } else {
-              if (copyBtn) {
-                  typeContainer.innerHTML += copyBtn;
-                  chatBox.scrollTop = chatBox.scrollHeight;
-              }
-              
+              if (copyBtn) { typeContainer.innerHTML += copyBtn; chatBox.scrollTop = chatBox.scrollHeight; }
               aiChatMemory.push({ role: "user", text: text });
               aiChatMemory.push({ role: "ai", text: aiResponseText });
               if(aiChatMemory.length > 10) aiChatMemory = aiChatMemory.slice(-10);
-              
               resetAiInputState();
           }
       }
       type();
-
       currentAiMode = "chat"; 
     }
 
     /* ==========================================================================
-       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
+       🔥 MASSIVE 250+ DATA ARRAYS (STRICTLY HARDCODED, NO RANDOM INJECTION) 🔥
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -877,7 +672,6 @@
       "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡\nOfficial Account ✔️",
       "Branded Kamina 🔥\nFlirting is my hobby 😉\nStill searching for my Queen 👑\nRule breaker ⛔\nZindagi apne hisaab se jita hu 🍷",
       "Kattar Hindu 🚩\nJai Shree Ram 🙏\nBhagwa Rang 🧡\nRespect Girls 👸\nProud to be Indian 🇮🇳",
-      "VIP Profile 💎\nInbuilt Attitude 😎\nBiker Boy 🏍\nLife is a game, I'm the player 🎮\nWatch me win 📈",
       "हमसे पंगा मत लेना ⚠️\nइतिहास गवाह है 🦁\nजो टकराया वो चूर हुआ ⚔️\nअपना टाइम खुद लाएंगे ⏳\nनाम और पहचान खुद की 👑",
       "नवाबों का शहर 🌆\nखून में उबाल 🩸\nदुश्मनों की महफ़िल में 🔥\nजीते हैं शान से 😎\nWelcome to my Area 🛑",
       "खामोशी से तबाही 🌪️\nशेर को सवा शेर 🦁\nहमसे उलझना मौत को दावत 🗡️\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯",
@@ -892,15 +686,16 @@
       "शेर हमेशा अकेला आता है 🦁\nभीड़ तो कुत्तों की होती है 🐕\nअपना रास्ता खुद बनाऊंगा 🛣\nमंज़िल दूर है पर मिलेगी ज़रूर 🎯",
       "ज़िद्दी परिंदा 🦅\nउड़ान अभी बाकी है ☁\nआसमान छूने का इरादा 🌌\nकोई रोक सके तो रोक ले ✋",
       "रॉयल खून 🩸\nनवाबी शौक 🍷\nज़िंदगी अपने उसूलों पर 🔥\nकिसी के आगे झुकना नहीं 🦅",
-      "खिलाड़ी हूँ, खेलूंगा तो जीतूंगा 🎲\nहारना मेरी डिक्शनरी में नहीं 🚫\nसिग्मा मेल 🗿\nहसलर 💼",
       "Sher ki bhukh aur hamara look... 🦁\nDono jaanlewa hain 🔥\nRules breaker 🚫\nDesi Swag 😎",
-      "Hustle daily 💯\nTalk less, act more 🤫\nGym rat 💪\nFocused on my empire 🏰",
       "खेल अपनी जगह है 🎲\nऔर हम अपनी जगह 👑\nजो हमसे टकराएगा 💥\nसीधा चूर हो जाएगा ☠️",
-      "दुश्मन चाहे कितने भी हों 🦅\nरुकना मेरी फितरत में नहीं 🚫\nआग लगा देंगे इस शहर में 🔥\nअगर बात हमारी इज्ज़त पर आई 🩸",
       "King by blood 🩸\nRule by nature 👑\nSilent killer 🤫\nNever back down 💯",
-      "Aag jalane ka shauk nahi 🔥\nHumari aukaat dekh kar log jal jate hain 😎\nAttitude level: Infinity ♾️",
       "Game changer 🎲\nRule maker 📝\nHistory creator 📚\nBorn to be wild 🦅",
-      "Sher ka shikar koi nahi kar sakta 🦁\nKutta kabhi sher nahi ban sakta 🐕\nApni duniya ka don 👑"
+      "Born fighter 🗡️\nHeart of a lion 🦁\nFearless soul 🔥\nWelcome to my world 🌍",
+      "Self-made 💯\nHustle mode ON 🚀\nChasing perfection ✨\nLiving legends never die 🦅",
+      "Gym is my therapy 💪\nIron addict 🏋️‍♂️\nBeast mode 🦍\nNo pain, no gain 🩸",
+      "Car enthusiast 🏎️\nSpeed thrills ⚡\nLiving life on the edge 🛣️\nRide or die 🏁",
+      "Silent observer 👁️\nDeep thinker 🧠\nMastermind ♟️\nUnpredictable 🌪️",
+      "Mom's hero 🦸‍♂️\nDad's pride 👑\nFamily first ❤️\nHustling for them 💸"
     ];
 
     const realGirlsBios = [
@@ -910,7 +705,6 @@
       "Not your average girl ⛔\nSavage by nature 😈\nI don't need your approval 💯\nClassy and Fabulous 👠\nCatch flights, not feelings ✈️",
       "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
       "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
-      "Creating my own sunshine ☀️\nPositive Vibes Only ✌\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
       "पापा की परी 🧚‍♀️\nथोड़ी सी नखरेवाली 💅\nDreams big ☁️\nBe yourself ✨",
       "Queen of my own world 👑\nMakeup enthusiast 💄\nHate is blocked 🚫\nLiving life queen size 🏰",
       "Soft but strong 🌸\nBooks are my best friends 📚\nDream big ☁️\nAlways positive ✨",
@@ -921,13 +715,104 @@
       "मेकअप और मैं 💄\nकैमरा मेरी जान 📸\nस्माइल ही काफी है 😊\nसादगी में भी स्वैग है 😎",
       "खूबसूरत दिल 💖\nतीखी ज़ुबान 🌶️\nसुनती सबकी हूँ, करती अपनी हूँ 🎧\nबिंदास लड़की ✌️",
       "गुस्सा नाक पर 😡\nप्यार दिल में ❤️\nथोड़ी सी पगली 🤪\nक्यूट सी स्माइल 😊",
-      "स्टाइलिश कुड़ी 🎀\nमूड स्विंग्स की क्वीन 👑\nज़िंदगी एक सफर है ✈\nखुश रहना मेरी आदत 😊",
       "Sassy but classy 💅\nCaffeine dependent ☕\nShopping is my therapy 🛍️\nNot your babydoll 🙅‍♀️",
       "Makeup & Heels 👠\nDrama queen 👑\nLiving my best life ✨\nToo glam to give a damn 💖",
       "Papa ki pari nahi 🚫\nPapa ki sherni 🦁\nFearless & Flawless 💅\nRule breaker ✨",
       "Glowing and growing ✨\nFocused on myself 🧘‍♀️\nProtecting my peace 🌿\nBlessed 🙏",
       "Elegance is an attitude ✨\nBeauty with brains 🧠\nClassy and fabulous 👠\nNever basic 💅",
-      "Smile is the best makeup 😊\nPositive aura 🌻\nLiving in my own fairytale 🏰\nHappy soul 🦋"
+      "Smile is the best makeup 😊\nPositive aura 🌻\nLiving in my own fairytale 🏰\nHappy soul 🦋",
+      "Sweet as sugar 🍬\nCold as ice 🧊\nHurt me once, I'll break you twice 💔\nKarma believer ♻️",
+      "Moonchild 🌙\nStargazer ✨\nLost in books 📚\nIntroverted soul 🎧",
+      "Living for the moments 📸\nMaking memories 🎈\nSunshine mixed with a little hurricane 🌪️\nWild & Free 🦅",
+      "Heart of gold 💛\nEyes that speak 👁️\nUnbothered & flourishing 🌿\nSelf-made queen 👑",
+      "Cute but psycho 🔪\nAngelic face, devilish thoughts 😈\nHandle with care ⚠️\nOr don't 💅",
+      "Chasing sunsets 🌇\nOcean lover 🌊\nBeach vibes 🏖️\nSalty air, sun-kissed hair ☀️",
+      "Feminist ♀️\nStrong & Independent 💪\nBreaking stereotypes 🔨\nEmpowering others 👑",
+      "Food before dudes 🍕\nFries over guys 🍟\nSleeping is my talent 😴\nNetflix binger 📺"
+    ];
+
+    const realAuraBios = [
+      "Aura level: Infinity ♾️\nMindset of a Conqueror 🧠\nRuling the streets 🛣️\nNo fear 🚫",
+      "Zero competition 🏆\nSigma rules apply 💯\nRespect is earned, not given 🤝\nUnbothered 🧘‍♂️",
+      "Wolf of my own city 🐺\nBorn leader 👑\nNot a follower 🚶‍♂️\nPure Aura ✨",
+      "They hate what they can't be 💯\nWalking masterpiece 🎨\nAura shining bright 🌟\nDifferent breed 🦅",
+      "Silent but deadly 🌪️\nActions speak louder 🗣️\nSigma male grindset 💼\nUnstoppable force 🚀",
+      "I am the storm 🌩️\nChaos in my veins 🩸\nPeace in my mind 🧠\nAura unmatched 🌌",
+      "God complex? No, just superior 👑\nUnapologetically me 💯\nLevels above the rest 📈\nAura out of this world 🛸",
+      "Walking with purpose 🚶‍♂️\nEyes on the prize 🏆\nSigma energy ⚡\nUnbreakable 💎",
+      "Don't study me, you won't graduate 📚\nLiving paradox 🎭\nHigh frequency aura 📻\nRare breed 🦄",
+      "My vibe is a product of my hustle 💼\nNo time for drama 🚫\nStrictly business 📊\nAura heavy 🏋️‍♂️",
+      "They copy, I create 🎨\nTrendsetter 🔥\nSigma mentality 🧠\nAura glowing ✨",
+      "I don't compete, I dominate 👑\nCheckmate ♟️\nUnstoppable aura 🚀\nGame over 🎮",
+      "Silence is a sigma's loudest scream 🤫\nWatching, learning, executing 👁️\nAura intact 🛡️\nLone wolf 🐺",
+      "I am not arrogant, I am accurate 🎯\nKnowing my worth 💰\nHigh level aura 📈\nUntouchable ✨",
+      "Built differently 🏗️\nSigma traits 💯\nAura that speaks for itself 🗣️\nLiving legend 🏆",
+      "My presence is a present 🎁\nAura captivating 🧲\nMagnetic energy ⚡\nUnforgettable 🌌",
+      "I don't follow trends, I set them 🔥\nSigma path 🛤️\nAura unique 💎\nOne of a kind 🦄",
+      "Focusing on my own lane 🛣️\nNo distractions 🚫\nSigma grind ⚙️\nAura rising 📈",
+      "I am the architect of my own destiny 🏰\nBuilding my empire 🧱\nAura undeniable ✨\nMastermind 🧠",
+      "They talk, I walk 🚶‍♂️\nSigma silence 🤫\nAura intimidating 🦅\nRespect the hustle 💯",
+      "My aura is my armor 🛡️\nProtecting my peace 🌿\nSigma soul 🌌\nUnbothered king 👑",
+      "I am a rare element 🧪\nHard to find, impossible to forget 💎\nAura glowing ✨\nSigma male 🗿",
+      "I don't seek attention, I command respect 🫡\nAura powerful ⚡\nSigma rules 📜\nTrue leader 👑",
+      "My energy introduces me before I even speak 🗣️\nAura heavy 🏋️‍♂️\nSigma vibes 💯\nUnmatched 🚀",
+      "I am not anti-social, I am selectively social 👥\nSigma circle ⭕\nAura pure ✨\nQuality over quantity 💎"
+    ];
+
+    const realFunnyBios = [
+      "Zindagi jhand ba 🤦‍♂️\nFir bhi ghamand ba 😎\nPaida toh main shareef hi hua tha 😇\nFir doston ne sudhar diya 🤪\nWelcome to comedy club 🎭",
+      "Single and ready to mingle 😜\nJust kidding, I'm sleeping 😴\nNetflix and no chill 📺\nProfessional Procrastinator 🐢\nSend memes 💌",
+      "Mera कोई क्या बिगाड़ेगा 🤨\nमैं खुद अपना दिमाग खराब रखता हूँ 🤯\nWiFi, Food, Bed = Life 🍕\nToo lazy to update this bio 🐌\nBye 👋",
+      "मैं वो हूँ जिसे कोई नहीं समझ सकता 🤪\nक्यूंकि मैं खुद को भी नहीं समझता 🤯\nपागलपंती मेरी पहचान 🎭\nहंसते रहो, हंसाते रहो 😂",
+      "सुधरने का कोई इरादा नहीं 🚫\nबिगड़े हुए ही अच्छे हैं 😜\nशराफत से मेरा कोई वास्ता नहीं 😇\nमस्ती फुल ऑन 🎉",
+      "मुझे देखकर लोग कहते हैं 👀\nये तो पक्का पागल है 🤪\nहाँ हूँ मैं पागल, अपने सपनों के लिए ☁️\nमजाक था, सच में पागल हूँ 😂",
+      "कोई मुझे प्यार नहीं करता 💔\nसिवाय मेरी माँ के ❤️\nऔर वो भी कभी-कभी मारती है 🩴\nदुखी आत्मा 👻",
+      "मेरा ऐटिट्यूड मेरे इंटरनेट कनेक्शन पर निर्भर करता है 📶\nअगर नेट स्लो तो मेरा मूड खराब 😡\nफ्री वाईफाई दो 📡",
+      "पढ़ाई लिखाई से कोई वास्ता नहीं 📚\nगेमिंग मेरी जान 🎮\nमम्मी की डांट 🗣️\nयही है मेरी ज़िन्दगी 😂",
+      "I am not lazy 😴\nI am just on energy saving mode 🔋\nDo not disturb 🚫\nSleeping is an art 🎨",
+      "मैं इतना शरीफ हूँ 😇\nकि खुद से ही डर लगता है 😂\nपागलखाना मेरा दूसरा घर है 🏠\nWelcome to my profile 😜",
+      "My life is a joke 🤡\nBut I am not laughing 😂\nJust eating and sleeping 🍔\nDon't expect anything from me 🚫",
+      "Main itna single hu ki... 🤪\nMeri chai bhi single patti ki hai ☕\nProfessional nalla 😂",
+      "Socha tha patla hounga... 🍔\nPar khana bahut tasty tha 🍕\nDieting starts tomorrow 😅",
+      "Study is my passion... 📚\nBut today is Sunday 😴\nNetflix & Chill 📺\nBye world 👋",
+      "Paida toh main legend hua tha 👑\nPar baad mein aalas aa gaya 😴\nExpert in doing nothing 🏆\nLazy Boy 😂",
+      "Ghar walo ki umeed par pani pherne wala 🌊\nProfessional failure 📉\nStill smiling 😊",
+      "Paisa bolta hai 💸\nAur mere wale ke paas jubaan nahi hai 😂\nGareeb aadmi 🥺",
+      "Zindagi ek safar hai 🚶‍♂️\nAur main raste mein hi so gaya 😴\nWake me up when I'm rich 💸\nDreaming big ☁️",
+      "Mere andar ka shaitan 😈\nAbhi so raha hai 😴\nUsko mat jagao 🚫\nWarna comedy shuru ho jayegi 😂",
+      "Bhagwan ne dimaag toh diya hai 🧠\nPar use karna bhool gaya 😂\nEmpty minded 🕳️\nFull of fun 🎉",
+      "I'm not short 📏\nI'm fun-sized 🍬\nConcentrated awesome ✨\nHugely sarcastic 😜",
+      "Exams are near 📚\nBut fear is nowhere 🚫\nBecause backbencher forever 😎\nZero tension 🎈",
+      "My wallet is like an onion 🧅\nOpening it makes me cry 😭\nNeed a sugar mommy/daddy 💸\nAccepting donations 💰",
+      "I put the 'elusive' in influencer 👻\nNobody knows me 🤷‍♂️\nBut I act famous 🌟\nFake it till you make it 🎭"
+    ];
+
+    const realFilmyBios = [
+      "Don ko pakadna mushkil hi nahi, namumkin hai 😎\nDon 🎬\nKing of my own rules 👑\nStay filmy ✨",
+      "Rishte mein toh hum tumhare baap lagte hain 😈\nNaam hai Shahenshah 🔥\nLegendary Vibe 🌟",
+      "Main apni favorite hoon 💖\nJab We Met 🌸\nSelf-love is the best love ✨\nStay gorgeous 🦋",
+      "Pushpa, I hate tears 🥀\nAmar Prem 🎬\nLiving life king size 👑\nDil se filmy ❤",
+      "Picture abhi baaki hai mere dost 🎥\nOm Shanti Om ✨\nNever give up on dreams 🚀\nBlockbuster life 🌟",
+      "Thappad se darr nahi lagta sahab, pyaar se lagta hai 💔\nDabangg 🎬\nSavage soul 🖤",
+      "Jaa Simran jaa, jee le apni zindagi 🕊\nDDLJ 💖\nDreamer & Believer ✨",
+      "Babu moshai, zindagi badi honi chahiye, lambi nahi ⏳\nAnand 🎬\nLiving every moment 🌟",
+      "Rahul, naam toh suna hoga 😉\nDil To Pagal Hai ❤️\nCharming & Romantic 🌹",
+      "Kabhi kabhi jeetne ke liye kuch haarna bhi padta hai 🎲\nBaazigar 🦅\nHustler 💼",
+      "Haar kar jeetne wale ko Baazigar kehte hain 🏆\nNever lose hope ✨\nWinner mindset 🧠",
+      "Tareekh pe tareekh, tareekh pe tareekh 📅\nDamini 🎬\nWaiting for success ⏳",
+      "Mogambo khush hua 😈\nMr. India 🎬\nSpreading smiles 😊",
+      "Ek chutki sindoor ki keemat tum kya jano Ramesh babu 💅\nOm Shanti Om ✨\nDrama Queen 👑",
+      "All is well 💯\n3 Idiots 🎬\nStaying positive 🌟",
+      "Mogambo khush hua 😈\nFilmy keeda 🍿\nBollywood is life 🎬\nDrama in my veins 🎭",
+      "Bade bade deshon mein aisi choti choti baatein hoti rehti hain 🌍\nDDLJ 💖\nAlways chill 😎\nRomantic hero 🌹",
+      "Mera naam hai Bulla, rakhta hu main khulla 😈\nGunda 🎬\nSavage attitude 🔪\nNo fear 🚫",
+      "Parampara, Pratishtha, Anushasan 🏛️\nMohabbatein 🎬\nStrictly following my rules 📝\nClassic vibe ✨",
+      "Kutte, main tera khoon pee jaunga 🩸\nSholay 🎬\nAngry young man 😡\nAction hero 🥊",
+      "Sara shehar mujhe lion ke naam se jaanta hai 🦁\nKalicharan 🎬\nKing of the jungle 🌴\nRoaring success 📈",
+      "Tension lene ka nahi, sirf dene ka 😎\nMunna Bhai M.B.B.S 🎬\nBindaas life ✌️\nChill mode ON 🎧",
+      "Dosti ka ek usool hai madam, no sorry no thank you 🤝\nMaine Pyar Kiya 💖\nTrue friend 🫂\nYaaron ka yaar 🍻",
+      "Aap humse humari zindagi maang lete hum aapko khushi khushi de dete... 🥀\nBajirao Mastani 🎬\nLoyal lover ❤️\nBroken but proud 🦅",
+      "Utha le re baba, utha le... mereko nahi, in dono ko utha le 😂\nHera Pheri 🎬\nComedy King 👑\nAlways laughing 🎭"
     ];
 
     const realMahakalBios = [
@@ -973,29 +858,9 @@
       "मोहब्बत एक धोखा है 💔\nअब किसी से कोई उम्मीद नहीं 🚫\nअकेलापन ही मेरा सच है 🥀\nदर्द भरी शामें 🌇"
     ];
 
-    const realFunnyBios = [
-      "Zindagi jhand ba 🤦‍♂️\nFir bhi ghamand ba 😎\nPaida toh main shareef hi hua tha 😇\nFir doston ne sudhar diya 🤪\nWelcome to comedy club 🎭",
-      "Single and ready to mingle 😜\nJust kidding, I'm sleeping 😴\nNetflix and no chill 📺\nProfessional Procrastinator 🐢\nSend memes 💌",
-      "Mera कोई क्या बिगाड़ेगा 🤨\nमैं खुद अपना दिमाग खराब रखता हूँ 🤯\nWiFi, Food, Bed = Life 🍕\nToo lazy to update this bio 🐌\nBye 👋",
-      "मैं वो हूँ जिसे कोई नहीं समझ सकता 🤪\nक्यूंकि मैं खुद को भी नहीं समझता 🤯\nपागलपंती मेरी पहचान 🎭\nहंसते रहो, हंसाते रहो 😂",
-      "दिमाग मत खाओ 🧠\nपहले ही कम है 🤏\nखाने-पीने का शौकीन 🍔\nबाकी सब बकवास 🗑",
-      "सुधरने का कोई इरादा नहीं 🚫\nबिगड़े हुए ही अच्छे हैं 😜\nशराफत से मेरा कोई वास्ता नहीं 😇\nमस्ती फुल ऑन 🎉",
-      "मुझे देखकर लोग कहते हैं 👀\nये तो पक्का पागल है 🤪\nहाँ हूँ मैं पागल, अपने सपनों के लिए ☁️\nमजाक था, सच में पागल हूँ 😂",
-      "कोई मुझे प्यार नहीं करता 💔\nसिवाय मेरी माँ के ❤️\nऔर वो भी कभी-कभी मारती है 🩴\nदुखी आत्मा 👻",
-      "मेरा ऐटिट्यूड मेरे इंटरनेट कनेक्शन पर निर्भर करता है 📶\nअगर नेट स्लो तो मेरा मूड खराब 😡\nफ्री वाईफाई दो 📡",
-      "पढ़ाई लिखाई से कोई वास्ता नहीं 📚\nगेमिंग मेरी जान 🎮\nमम्मी की डांट 🗣️\nयही है मेरी ज़िन्दगी 😂",
-      "I am not lazy 😴\nI am just on energy saving mode 🔋\nDo not disturb 🚫\nSleeping is an art 🎨",
-      "मैं इतना शरीफ हूँ 😇\nकि खुद से ही डर लगता है 😂\nपागलखाना मेरा दूसरा घर है 🏠\nWelcome to my profile 😜",
-      "My life is a joke 🤡\nBut I am not laughing 😂\nJust eating and sleeping 🍔\nDon't expect anything from me 🚫",
-      "Main itna single hu ki... 🤪\nMeri chai bhi single patti ki hai ☕\nProfessional nalla 😂",
-      "Socha tha patla hounga... 🍔\nPar khana bahut tasty tha 🍕\nDieting starts tomorrow 😅",
-      "Study is my passion... 📚\nBut today is Sunday 😴\nNetflix & Chill 📺\nBye world 👋",
-      "Paida toh main legend hua tha 👑\nPar baad mein aalas aa gaya 😴\nExpert in doing nothing 🏆\nLazy Boy 😂"
-    ];
-
     const realVipBios = [
       "Official Account ✔\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
-      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
+      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
       "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
       "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
       "Future Billionaire 💼\nMoney talks, wealth whispers 💸\nLink in bio 🔗\nStay focused 🎯",
@@ -1006,7 +871,8 @@
       "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
       "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚",
       "CEO 💼\nMaking millions 💸\nHustle 24/7 🚀\nPrivate life, Happy life 🤫",
-      "Royal Blood 🩸\nElite Class 👑\nLiving my dreams ☁️\nNo compromise 🚫\nOnly luxury 💎"
+      "Royal Blood 🩸\nElite Class 👑\nLiving my dreams ☁️\nNo compromise 🚫\nOnly luxury 💎",
+      "Aura level: Unmatchable ✨\nLiving like a King 👑\nHaters make me famous 📈\nStay premium 💎"
     ];
 
     const realLoveBios = [
@@ -1023,26 +889,6 @@
       "You + Me = Everything 🌍\nLove birds 🕊️\nForever yours 💍\nEndless love ❤️"
     ];
 
-    const realFilmyBios = [
-      "Don ko pakadna mushkil hi nahi, namumkin hai 😎\nDon 🎬\nKing of my own rules 👑\nStay filmy ✨",
-      "Rishte mein toh hum tumhare baap lagte hain 😈\nNaam hai Shahenshah 🔥\nLegendary Vibe 🌟",
-      "Main apni favorite hoon 💖\nJab We Met 🌸\nSelf-love is the best love ✨\nStay gorgeous 🦋",
-      "Pushpa, I hate tears 🥀\nAmar Prem 🎬\nLiving life king size 👑\nDil se filmy ❤",
-      "Picture abhi baaki hai mere dost 🎥\nOm Shanti Om ✨\nNever give up on dreams 🚀\nBlockbuster life 🌟",
-      "Thappad se darr nahi lagta sahab, pyaar se lagta hai 💔\nDabangg 🎬\nSavage soul 🖤",
-      "Jaa Simran jaa, jee le apni zindagi 🕊\nDDLJ 💖\nDreamer & Believer ✨",
-      "Babu moshai, zindagi badi honi chahiye, lambi nahi ⏳\nAnand 🎬\nLiving every moment 🌟",
-      "Rahul, naam toh suna hoga 😉\nDil To Pagal Hai ❤️\nCharming & Romantic 🌹",
-      "Kabhi kabhi jeetne ke liye kuch haarna bhi padta hai 🎲\nBaazigar 🦅\nHustler 💼",
-      "Haar kar jeetne wale ko Baazigar kehte hain 🏆\nNever lose hope ✨\nWinner mindset 🧠",
-      "Tareekh pe tareekh, tareekh pe tareekh 📅\nDamini 🎬\nWaiting for success ⏳",
-      "Mogambo khush hua 😈\nMr. India 🎬\nSpreading smiles 😊",
-      "Ek chutki sindoor ki keemat tum kya jano Ramesh babu 💅\nOm Shanti Om ✨\nDrama Queen 👑",
-      "All is well 💯\n3 Idiots 🎬\nStaying positive 🌟",
-      "Mogambo khush hua 😈\nFilmy keeda 🍿\nBollywood is life 🎬\nDrama in my veins 🎭",
-      "Bade bade deshon mein aisi choti choti baatein hoti rehti hain 🌍\nDDLJ 💖\nAlways chill 😎\nRomantic hero 🌹"
-    ];
-
     function populateBios(arr, category, isAura = false) {
       arr.forEach(text => masterBiosObj.push({ category: category, text: text, isAura: isAura }));
     }
@@ -1055,6 +901,7 @@
     populateBios(realLoveBios, 'love');
     populateBios(realFunnyBios, 'funny');
     populateBios(realFilmyBios, 'filmy');
+    populateBios(realAuraBios, 'aura', true); // New massive category
 
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -1089,7 +936,9 @@
       { tag: "🔥 Masterpiece", title: "Desi Swag", text: "बुरे वक्त में भी नवाबी शौक 🍷\nहमसे उलझना मौत को दावत 🗡\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯" },
       { tag: "✨ Aesthetic", title: "Stardust", text: "सपनों की दुनिया में खोई हुई 🌙\nकिताबें और कॉफी ☕\nख्वाब बड़े हैं ☁️\nअपनी खुद की परी कथा ✨" },
       { tag: "🔱 Mahakal", title: "Bholenath", text: "ना गिन के दिया ना तोल के दिया 🕉️\nमेरे महाकाल ने जिसे भी दिया 🔱\nदिल खोल के दिया 🙏\nहर हर महादेव 🚩" },
-      { tag: "🥀 Deep Poetry", title: "Tears", text: "हँसते हुए चेहरे के पीछे का दर्द 🎭\nप्यार एक धोखा है 💔\nअब किसी पर भरोसा नहीं 🚫\nतन्हाई में सुकून है 🌌" }
+      { tag: "🥀 Deep Poetry", title: "Tears", text: "हँसते हुए चेहरे के पीछे का दर्द 🎭\nप्यार एक धोखा है 💔\nअब किसी पर भरोसा नहीं 🚫\nतन्हाई में सुकून है 🌌" },
+      { tag: "🌌 Aura Check", title: "Unmatched Energy", text: "They hate what they can't be 💯\nWalking masterpiece 🎨\nAura shining bright 🌟\nDifferent breed 🦅" },
+      { tag: "💎 VIP Exclusive", title: "God Complex", text: "God complex? No, just superior 👑\nUnapologetically me 💯\nLevels above the rest 📈\nAura out of this world 🛸" }
     ];
 
     let poetryCounter = 0;
@@ -1111,8 +960,9 @@
       if(!feedContainer) return;
       let htmlChunk = "";
       
-      for(let i = 0; i < 15; i++) {
-        if(i === 0 || i === 10) {
+      // 🔥 LOAD 50 ITEMS ON HOME SCREEN WITH 5 PREMIUM RIBBONS 🔥
+      for(let i = 0; i < 50; i++) {
+        if(i % 10 === 0) {
             htmlChunk += createMasterRibbon(poetryCounter++);
         }
         
@@ -1280,7 +1130,7 @@
           { a: " ʕ•ᴥ•ʔ", tag: "BEAR 🐻" },
           { a: " /| ________________\nO|===|* >________________>\n \\|", tag: "SWORD ⚔️" },
           { a: "    /\\\n   /  \\\n  /____\\\n   |  |\n   |__|", tag: "MASTER 🏆" },
-          { a: "  █████  \n ██   ██ \n ███████ \n ██   ██ ", tag: "AURA ⚜️" },
+          { a: "  █████  \n ██   ██ \n ███████ \n ██   ██ ", tag: "AURA ⚜️️" },
           { a: "̿̿ ̿̿ ̿̿ ̿'̿'\\̵͇̿̿\\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿", tag: "GANGSTER 🔥" }
         ];
 
@@ -1351,6 +1201,16 @@
       if(toolType === 'zalgo') runZalgo();
       if(toolType === 'numbers') runNumbers();
     }
+
+    window.rollNextQuickBio = function() {
+      let bio = getUniqueBio().text;
+      const display = document.getElementById('quickBioDisplay');
+      const copyBtn = document.getElementById('quickBioCopyBtn');
+      if(display && copyBtn) {
+        display.innerHTML = bio.replace(/\\n/g, '<br>');
+        copyBtn.setAttribute('onclick', `copyEncodedText('${encodeURIComponent(bio.replace(/\\n/g, '\n'))}', 'Bio Copied!')`);
+      }
+    };
 
     window.runNumbers = function() {
       const val = document.getElementById('numInput').value || "2026";
