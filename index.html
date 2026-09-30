@@ -13,11 +13,25 @@
     gtag('config', 'G-7BEYQLMCPF');
   </script>
 
-  <!-- STRICT SPLASH SCREEN BLOCKER -->
+  <!-- 🔥 NEW STRICT GRAND WELCOME SCRIPT 🔥 -->
   <script>
-    if (localStorage.getItem('instavibe_welcome_done')) {
-      document.write('<style>#splashScreen { display: none !important; opacity: 0 !important; visibility: hidden !important; }</style>');
-    }
+    // This logic ensures the grand welcome runs ONLY once and never flashes on refresh
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!localStorage.getItem('instavibe_grand_welcome_v28')) {
+        const gw = document.getElementById('grandWelcome');
+        if(gw) {
+          gw.style.display = 'flex'; // Show welcome
+          setTimeout(() => {
+            gw.style.opacity = '0';
+            setTimeout(() => gw.remove(), 500);
+            localStorage.setItem('instavibe_grand_welcome_v28', 'true');
+          }, 3500); // Hide after 3.5 seconds
+        }
+      } else {
+        const gw = document.getElementById('grandWelcome');
+        if(gw) gw.remove(); // Instantly destroy if already visited
+      }
+    });
   </script>
 
   <title>InstaVibe Ultimate 亗 - 5000+ VIP Bios & Live AI Chat</title>
@@ -61,6 +75,31 @@
     .glow-2 { bottom: 100px; right: -100px; background: #ec4899; }
 
     /* ==========================================================================
+       GRAND WELCOME SCREEN WITH ROCKET CRACKERS (NEW)
+       ========================================================================== */
+    #grandWelcome {
+      position: fixed; inset: 0; z-index: 999999; background: #030508;
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, #030508 80%);
+      transition: opacity 0.5s ease;
+    }
+    .gw-logo { font-size: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.8)); animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .gw-title { font-family: 'Cinzel', serif; font-size: 32px; font-weight: 900; color: var(--gold-mid); text-align: center; line-height: 1.4; animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .gw-subtitle { font-size: 13px; color: #cbd5e1; margin-top: 15px; letter-spacing: 5px; text-transform: uppercase; animation: fadeIn 1.5s ease; font-weight: 800;}
+    
+    /* Crackers Animation */
+    .cracker { position: absolute; font-size: 50px; opacity: 0; pointer-events: none; }
+    .c1 { top: 20%; left: 15%; animation: popCracker 1.2s 0.2s forwards; }
+    .c2 { top: 25%; right: 15%; animation: popCracker 1.2s 0.5s forwards; font-size: 60px;}
+    .c3 { top: 60%; left: 10%; font-size: 40px; animation: popCracker 1.2s 0.8s forwards; }
+    .c4 { top: 55%; right: 10%; font-size: 45px; animation: popCracker 1.2s 1.1s forwards; }
+    .c5 { bottom: 10%; left: 45%; font-size: 60px; animation: shootRocket 1.5s ease-in forwards; }
+
+    @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes popCracker { 0% { transform: scale(0) translateY(50px); opacity: 1; } 50% { transform: scale(1.5) translateY(0); opacity: 1; } 100% { transform: scale(2) translateY(-20px); opacity: 0; } }
+    @keyframes shootRocket { 0% { transform: translateY(100px) scale(0.5); opacity: 1; } 50% { transform: translateY(-300px) scale(1.5); opacity: 1; } 100% { transform: translateY(-400px) scale(2.5); opacity: 0; } }
+
+    /* ==========================================================================
        2. HEADER
        ========================================================================== */
     .header-master {
@@ -76,7 +115,7 @@
     .app-container { max-width: 600px; margin: 0 auto; padding: 0 14px; padding-top: 25px; }
 
     /* ==========================================================================
-       3. COMPACT CREATOR TOOLS GRID (GLASS EFFECT REMOVED FOR LAG-FREE XP)
+       3. COMPACT CREATOR TOOLS GRID 
        ========================================================================== */
     .section-title { font-size: 19px; font-weight: 900; margin: 10px 0 14px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
     
@@ -88,10 +127,11 @@
       transform: translateZ(0); 
     }
     
-    /* Removed expensive backdrop-filter for smooth scrolling */
     .tool-card {
-      background: linear-gradient(145deg, rgba(35, 42, 55, 0.8), rgba(20, 25, 35, 0.95)); 
-      border: 1px solid rgba(255, 255, 255, 0.1); 
+      background: rgba(30, 35, 45, 0.4); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15); 
       border-radius: 18px; 
       padding: 16px 8px; 
       display: flex; 
@@ -101,7 +141,7 @@
       cursor: pointer; 
       transition: transform 0.2s, border-color 0.2s; 
       position: relative;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     }
     .tool-card:active { transform: scale(0.94); border-color: var(--primary); }
     .tool-icon { font-size: 30px; margin-bottom: 7px; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
@@ -112,7 +152,7 @@
       padding: 18px 8px;
       transform: scale(1.04);
       border-color: rgba(139, 92, 246, 0.5);
-      background: linear-gradient(145deg, rgba(50, 40, 75, 0.9), rgba(22, 20, 36, 0.95));
+      background: rgba(50, 40, 75, 0.5);
       box-shadow: 0 0 18px rgba(139, 92, 246, 0.25);
       z-index: 2;
     }
@@ -124,7 +164,7 @@
     @keyframes blinkFast { 0%, 100% {opacity: 1;} 50% {opacity: 0.6;} }
 
     /* ==========================================================================
-       4. ✨ COLOURFUL SHINE EFFECT ✨
+       4. ✨ COLOURFUL & PREMIUM SHINE EFFECT ✨
        ========================================================================== */
     .colourful-shine { 
       background: linear-gradient(90deg, #ff512f, #dd2476, #3b82f6, #10b981, #f59e0b, #ff512f);
@@ -152,9 +192,10 @@
     .master-title { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
     .master-text { font-size: 15px; line-height: 1.8; white-space: pre-line; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px;}
     
-    /* Removed Glass effect from buttons for speed */
     .master-btn, .btn-copy, .tool-btn-copy { 
       background: rgba(255, 255, 255, 0.1); 
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2); 
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       width: 100%; padding: 14px; border-radius: 12px; color: #fff; font-weight: 900; font-size: 15px; cursor: pointer; transition: 0.2s;
@@ -169,9 +210,9 @@
     .bio-text { font-size: 15px; line-height: 1.7; color: #f1f5f9; white-space: pre-line; background: rgba(0, 0, 0, 0.4); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 18px; font-weight: 600; }
 
     /* ==========================================================================
-       5. AI CHAT INTERFACE (GLITCH FIXED - NO UI JUMPING)
+       5. AI CHAT INTERFACE & THINKING DOTS
        ========================================================================== */
-    .chat-container { display: flex; flex-direction: column; padding-bottom: 140px; }
+    .chat-container { display: flex; flex-direction: column; padding-bottom: 160px; }
     .chat-box { padding: 15px; display: flex; flex-direction: column; gap: 12px; }
     .msg-wrapper { display: flex; flex-direction: column; }
     .msg-user { align-self: flex-end; background: var(--primary); color: #fff; padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 85%; font-size: 14.5px; font-weight: 600; line-height: 1.5; box-shadow: 0 4px 15px rgba(59,130,246,0.3);}
@@ -184,29 +225,20 @@
     .dot:nth-child(2) { animation-delay: -0.16s; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
-    /* FIXED LAYOUT FOR CHAT CHIPS & INPUT */
-    .chat-input-area { 
-      position: fixed; 
-      bottom: 70px; /* Fixed above Bottom Nav */
-      left: 0; 
-      width: 100%; 
-      background: rgba(3, 5, 8, 0.98); 
-      border-top: 1px solid var(--card-border); 
-      z-index: 999; 
-    }
-    @media (min-width: 600px) { .chat-input-area { left: 50%; transform: translateX(-50%); max-width: 600px; } }
-    
     .ai-chips-wrap { display: flex; gap: 10px; padding: 10px 15px; overflow-x: auto; scrollbar-width: none;}
     .ai-chips-wrap::-webkit-scrollbar { display: none; }
     .ai-chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; transition: 0.2s; }
     .ai-chip:active { background: var(--primary); border-color: var(--primary); }
 
-    .chat-input-row { display: flex; gap: 10px; padding: 10px 15px 15px; }
+    .chat-input-area { position: fixed; bottom: 70px; left: 0; width: 100%; display: flex; flex-direction: column; background: rgba(3, 5, 8, 0.98); border-top: 1px solid var(--card-border); z-index: 999; }
+    @media (min-width: 600px) { .chat-input-area { left: 50%; transform: translateX(-50%); max-width: 600px; } }
+    .chat-input-row { display: flex; gap: 10px; padding: 12px 15px; }
     
-    /* Removed Glass Effect from Chat Input */
     .chat-input { 
       flex: 1; padding: 15px 20px; 
       background: rgba(255,255,255,0.1); 
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.2); 
       border-radius: 25px; color: #fff; font-size: 16px; outline: none; transition: 0.2s; 
     }
@@ -252,9 +284,12 @@
     .nav-icon { font-size: 22px; filter: grayscale(100%); transition: 0.2s; }
     .nav-tab.active .nav-icon { filter: grayscale(0%); text-shadow: 0 0 10px rgba(255,255,255,0.5);}
 
-    .view-page { display: none; animation: fadeIn 0.3s; }
-    .view-page.active { display: block; }
+    /* 🔥 GLITCH FIX: SEPARATE ANIMATIONS TO PREVENT CHAT INPUT JUMPING 🔥 */
+    .view-page { display: none; }
+    .view-page.active { display: block; animation: fadeIn 0.3s; }
+    #view-aichat.active { animation: fadeInChat 0.3s; } /* No transform for AI Chat */
     @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeInChat { from{opacity:0;} to{opacity:1;} }
     
     /* FOOTER */
     footer { text-align: center; padding: 20px 10px 40px; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
@@ -265,36 +300,17 @@
 </head>
 <body>
 
-  <!-- SPLASH SCREEN -->
-  <div id="splashScreen">
-    <div class="splash-logo">亗</div>
-    <div id="splashText"></div>
-    <div class="splash-sub" id="splashSub" style="opacity: 0; transition: 0.3s;">Premium Creator Suite</div>
+  <!-- 🔥 NEW GRAND WELCOME OVERLAY WITH CRACKERS (NO SOUND) 🔥 -->
+  <div id="grandWelcome">
+    <div class="cracker c1">🎇</div>
+    <div class="cracker c2">🎆</div>
+    <div class="cracker c3">✨</div>
+    <div class="cracker c4">🌟</div>
+    <div class="cracker c5">🚀</div>
+    <div class="gw-logo">亗</div>
+    <div class="gw-title">Welcome to<br>InstaVibe Ultimate</div>
+    <div class="gw-subtitle">Premium Creator Suite</div>
   </div>
-
-  <script>
-    if (localStorage.getItem('instavibe_welcome_done')) {
-      const sp = document.getElementById('splashScreen');
-      if(sp) sp.remove(); 
-    } else {
-      const textEl = document.getElementById('splashText');
-      const fullText = "Welcome to\nInstaVibe Ultimate";
-      let idx = 0;
-      let splashInterval = setInterval(() => {
-        textEl.textContent = fullText.substring(0, idx + 1);
-        idx++;
-        if (idx >= fullText.length) {
-          clearInterval(splashInterval);
-          document.getElementById('splashSub').style.opacity = '1'; 
-          setTimeout(() => { 
-             const sp = document.getElementById('splashScreen');
-             if(sp) { sp.style.opacity = '0'; setTimeout(()=> sp.remove(), 400); }
-          }, 1000);
-        }
-      }, 100); 
-      localStorage.setItem('instavibe_welcome_done', 'true');
-    }
-  </script>
 
   <div class="bg-ambience"></div><div class="glow-orb glow-1"></div><div class="glow-orb glow-2"></div>
 
@@ -406,6 +422,7 @@
       
       <div class="chat-container">
         <div class="chat-box" id="chatBox">
+          <!-- Permanent Welcome Message -->
           <div class="msg-wrapper">
             <div class="msg-ai">
               Hello! 👋 Main InstaVibe AI hu.<br><br>Aap mujhse <b>Hindi, English, ya Hinglish</b> me baat kar sakte hain. Neeche diye gaye buttons click kariye ya directly message type kariye!
@@ -458,8 +475,8 @@
       <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px 20px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.4);">
         <div class="brand-icon" style="width: 80px; height: 80px; font-size: 40px; margin: 0 auto 15px; border-radius: 22px; box-shadow: 0 0 25px var(--primary-glow);">亗</div>
         <h2 style="font-weight: 900; font-size: 26px; margin-bottom: 5px; font-family:'Cinzel';">InstaVibe Ultimate</h2>
-        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V27 (MASSIVE CONTENT & FIXES)</div>
-        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now featuring 500+ Filmy, Attitude, and VIP templates without any UI lag.</p>
+        <div style="font-size: 13px; color: var(--primary); font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;">V28 (GRAND WELCOME UPDATE)</div>
+        <p style="color:#cbd5e1; font-size:15px; line-height:1.7; margin-bottom:25px;">India's completely unique free Creator Suite. Now with Grand Welcome Screen, flawless AI Chat transitions, and 500+ Authentic Desi Bios.</p>
         <div style="background:rgba(0,0,0,0.5); border-radius:18px; padding:22px; text-align:left; border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:12.5px; color:#94a3b8; font-weight:800; margin-bottom:10px;">👨‍💻 DEVELOPER EMAIL</div>
           <div style="font-size:17px; font-weight:900; color:#fff; display: flex; justify-content: space-between; align-items: center;">
@@ -556,7 +573,7 @@
     }
 
     /* ==========================================================================
-       AI CHATBOT LOGIC (REFRESH = CLEAR)
+       AI CHATBOT LOGIC
        ========================================================================== */
     let aiChatMemory = []; 
     let currentAiMode = "chat";
@@ -615,7 +632,7 @@
         if(data.error) throw new Error(data.error);
 
         let formattedReply = formatChatText(data.reply);
-        let safeTxt = encodeURIComponent(data.reply); 
+        let safeTxt = encodeURIComponent(data.reply).replace(/'/g, "%27").replace(/"/g, "%22"); 
         
         let copyBtn = '';
         if(data.reply.length > 20) {
@@ -669,7 +686,7 @@
     }
 
     /* ==========================================================================
-       🔥 MASSIVE 500+ MANUAL DATA ARRAYS (ATTITUDE, FILMY, FUNNY, MIXED) 🔥
+       🔥 MASSIVE MANUAL DATA ARRAYS 🔥
        ========================================================================== */
     const masterBiosObj = [];
 
@@ -677,7 +694,7 @@
       "Attitude King 👑\nSilence is my best response 🤫\nI don't race, I dictate the pace 🏎️\nSingle & Focused 🎯\nWelcome to my profile 🖤",
       "Desi Munda 🔥\nBorn to Express, Not to Impress 💯\nMusic Lover 🎧\nFriends call me Bhai 🤝\nNo DMs without business 📩",
       "I am a winner, not a loser 🏆\nBig Dreamer ☁️\nPhotography is an art 📸\nRespect for all, Fear for none 🦅\nMake your own luck 🎲",
-      "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡️\nOfficial Account ✔️",
+      "Badmash Chora 🔫\nAttitude depends on how you treat me ☠️\nSimple boy with complex mind 🧠\nCake Murder on 1st Jan 🗡️️\nOfficial Account ✔️",
       "Branded Kamina 🔥\nFlirting is my hobby 😉\nStill searching for my Queen 👑\nRule breaker ⛔\nZindagi apne hisaab se jita hu 🍷",
       "Kattar Hindu 🚩\nJai Shree Ram 🙏\nBhagwa Rang 🧡\nRespect Girls 👸\nProud to be Indian 🇮🇳",
       "VIP Profile 💎\nInbuilt Attitude 😎\nBiker Boy 🏍️\nLife is a game, I'm the player 🎮\nWatch me win 📈",
@@ -690,6 +707,8 @@
       "Never give up 🛑\nPain is temporary 🩹\nPride is forever 🦁\nFocused on my goals 🎯\nWatch my journey 📈",
       "सिर्फ नाम ही काफी है 🔥\nदुश्मन भी करते हैं सलाम 👑\nजिगर में आग 🌋\nबाप बाप होता है 😎",
       "अकेला चलता हूँ 🚶‍♂️\nशेर की तरह 🦁\nकिसी के बाप का डर नहीं 🚫\nहौसले बुलंद 🦅",
+      "शांत हूँ, पर कमज़ोर नहीं 🤫\nवक्त आने पर जवाब दूंगा ⏳\nमेरा ऐटिट्यूड मेरी पहचान 😎\nदुनिया से अलग 🌍",
+      "अपनी धुन में मस्त 🎧\nकिसी से कोई मतलब नहीं 🚫\nआवाज़ में दम 🦁\nसीधे रास्ते, टेढ़े लोग 🛤️",
       "शेर हमेशा अकेला आता है 🦁\nभीड़ तो कुत्तों की होती है 🐕\nअपना रास्ता खुद बनाऊंगा 🛣️\nमंज़िल दूर है पर मिलेगी ज़रूर 🎯",
       "ज़िद्दी परिंदा 🦅\nउड़ान अभी बाकी है ☁️\nआसमान छूने का इरादा 🌌\nकोई रोक सके तो रोक ले ✋",
       "रॉयल खून 🩸\nनवाबी शौक 🍷\nज़िंदगी अपने उसूलों पर 🔥\nकिसी के आगे झुकना नहीं 🦅",
@@ -697,13 +716,13 @@
     ];
 
     const realGirlsBios = [
-      "Daddy's Princess 👑\nMom's heartbeat ❤️\nSoft but Savage 💅\nShopping Lover 🛍️\nBorn on 12th Aug 🎂",
+      "Daddy's Princess 👑\nMom's heartbeat ❤️️\nSoft but Savage 💅\nShopping Lover 🛍️\nBorn on 12th Aug 🎂",
       "Aesthetic Soul 🌸\nChasing Sunsets 🌇\nMusic & Coffee ☕\nLiving my own fairy tale ✨\nKindness is free 🕊️",
       "Selfie Queen 🤳\nMakeup Lover 💄\nAlways wearing a smile 😊\nCrazy mind, Beautiful heart 💖\nWelcome to my world 🌍",
       "Not your average girl ⛔\nSavage by nature 😈\nI don't need your approval 💯\nClassy and Fabulous 👠\nCatch flights, not feelings ✈️",
       "Simple Girl 🦋\nNature Lover 🌿\nFinding peace 🧘‍♀️\nBooks are my best friends 📚\nBlessed & Grateful 🙏",
       "Fashion Enthusiast 👗\nStyling my life 🎀\nTrendsetter 🔥\nConfidence is my makeup 💋\nFollow for aesthetics ✨",
-      "Foodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nI need 6 months of vacation 🏖️️\nTwice a year 🤪",
+      "Foodie forever 🍕\nLazy but cute 😴\nDrama Queen 👑\nI need 6 months of vacation 🏖️\nTwice a year 🤪",
       "Shopping is my cardio 🛍️\nMy bed is my happy place 🛏️\nDon't text, I won't reply 🙅‍♀️\nSingle by choice 😅\nBut not my choice 🤣",
       "Creating my own sunshine ☀️\nPositive Vibes Only ✌\nDream big, Work hard ☁\nEmpowered women empower women 👑\nUnstoppable 🚀",
       "पापा की परी 🧚‍♀️\nथोड़ी सी नखरेवाली 💅\nDreams big ☁️\nBe yourself ✨",
@@ -711,7 +730,7 @@
       "Soft but strong 🌸\nBooks are my best friends 📚\nDream big ☁️\nAlways positive ✨",
       "Chubby & Cute 🥺\nFood lover 🍕\nSpread love 💖\nDon't judge me 🚫",
       "Black lover 🖤\nPhotography 📸\nKeep shining 🌟\nAesthetic vibes 🦋",
-      "नाखरे मेरे कम नहीं 💅\nस्टाइल में दम है 🔥\nमुझसे पंगा मत लेना ☠️️\nस्वीट सी लड़की 🍬",
+      "नाखरे मेरे कम नहीं 💅\nस्टाइल में दम है 🔥\nमुझसे पंगा मत लेना ☠\nस्वीट सी लड़की 🍬",
       "सपनों की उड़ान ☁️\nखुद से प्यार है 💖\nजिंदगी अपने हिसाब से 🦋\nमस्त मौला ✌️",
       "मेकअप और मैं 💄\nकैमरा मेरी जान 📸\nस्माइल ही काफी है 😊\nसादगी में भी स्वैग है 😎",
       "खूबसूरत दिल 💖\nतीखी ज़ुबान 🌶️\nसुनती सबकी हूँ, करती अपनी हूँ 🎧\nबिंदास लड़की ✌️",
@@ -744,7 +763,7 @@
       "तन्हाई बेहतर है 🥀\nभीड़ में अक्सर लोग खो जाते हैं 🚶‍♂️\nदिल टूटने की आवाज़ नहीं होती 💔\nखामोश दर्द 🤫\nअधूरा सफर 🛤",
       "वक्त ने बता दी सबकी औकात 😔\nवरना हम तो सबको अपना मानते थे 💔\nतेरा नाम था आज किसी अजनबी की जुबान पे 🥀\nदिल ने बुरा मान लिया 🖤",
       "मोहब्बत का शौक किसे था ❤️\nतुम पास आते गए और हमें आदत हो गई 💔\nअब आलम ये है कि तुम्हारे बिना 🥀\nये साँसें भी बोझ सी लगती हैं ⏳",
-      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️️\nTrust nobody 🚫",
+      "Silent cries 🤫\nMiss the old me 🔙\nLove is a lie 🤥\nHeartbreak changed my vision 👁️\nTrust nobody 🚫",
       "Depressed soul 🥀\nHiding the pain with a smile 😊\nNights are the hardest 🌙\nMemories hurt 💭\nWaiting for the end ⏳",
       "हँसते हुए चेहरे के पीछे का दर्द 🎭\nकोई नहीं समझता 💔\nअंदर से टूट चुका हूँ 🥀\nखामोश ज़िन्दगी 🤫",
       "अब ना किसी की चाहत 🚫\nना किसी की उम्मीद 😔\nअकेला आया था, अकेला जाऊंगा 🚶‍♂️\nटूटा हुआ दिल 💔",
@@ -760,7 +779,7 @@
       "Single and ready to mingle 😜\nJust kidding, I'm sleeping 😴\nNetflix and no chill 📺\nProfessional Procrastinator 🐢\nSend memes 💌",
       "Mera कोई क्या बिगाड़ेगा 🤨\nमैं खुद अपना दिमाग खराब रखता हूँ 🤯\nWiFi, Food, Bed = Life 🍕\nToo lazy to update this bio 🐌\nBye 👋",
       "मैं वो हूँ जिसे कोई नहीं समझ सकता 🤪\nक्यूंकि मैं खुद को भी नहीं समझता 🤯\nपागलपंती मेरी पहचान 🎭\nहंसते रहो, हंसाते रहो 😂",
-      "दिमाग मत खाओ 🧠\nपहले ही कम है 🤏\nखाने-पीने का शौकीन 🍔\nबाकी सब बकवास 🗑️️",
+      "दिमाग मत खाओ 🧠\nपहले ही कम है 🤏\nखाने-पीने का शौकीन 🍔\nबाकी सब बकवास 🗑",
       "सुधरने का कोई इरादा नहीं 🚫\nबिगड़े हुए ही अच्छे हैं 😜\nशराफत से मेरा कोई वास्ता नहीं 😇\nमस्ती फुल ऑन 🎉",
       "मुझे देखकर लोग कहते हैं 👀\nये तो पक्का पागल है 🤪\nहाँ हूँ मैं पागल, अपने सपनों के लिए ☁️\nमजाक था, सच में पागल हूँ 😂",
       "कोई मुझे प्यार नहीं करता 💔\nसिवाय मेरी माँ के ❤️\nऔर वो भी कभी-कभी मारती है 🩴\nदुखी आत्मा 👻",
@@ -769,6 +788,33 @@
       "I am not lazy 😴\nI am just on energy saving mode 🔋\nDo not disturb 🚫\nSleeping is an art 🎨",
       "मैं इतना शरीफ हूँ 😇\nकि खुद से ही डर लगता है 😂\nपागलखाना मेरा दूसरा घर है 🏠\nWelcome to my profile 😜",
       "My life is a joke 🤡\nBut I am not laughing 😂\nJust eating and sleeping 🍔\nDon't expect anything from me 🚫"
+    ];
+
+    const realVipBios = [
+      "Official Account ✔️\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
+      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
+      "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
+      "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
+      "Future Billionaire 💼\nMoney talks, wealth whispers 💸\nLink in bio 🔗\nStay focused 🎯",
+      "Corporate Hustler 👔\nBuilding the dream 🏰\nGrinding 24/7 ⏳\nSuccess is the only option 🏆",
+      "CEO Mindset 🧠\nScaling fast 🚀\nLet's connect 🤝\nDM for Collabs 📩",
+      "Empire Builder 👑\nFocus on goals, not holes 👁\nNever bow down 🦅\nStay Royal 👑",
+      "नवाबी शौक 🍷\nशाही अंदाज़ 👑\nपैसे की नहीं, इज़्ज़त की भूख 💯\nमेरा रुतबा मेरी पहचान 🔥",
+      "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
+      "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚"
+    ];
+
+    const realLoveBios = [
+      "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
+      "Couples Goal 👩‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
+      "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
+      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
+      "❤ Love is Life\nMy heart beats for you 🥰\nAlways together 👫\nForever Mine 💍",
+      "🌍 You are my world\nLost in your eyes 👁️\nMy happy place is you 💖\nSoulmates 🔗",
+      "तेरा फितूर ❤️\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
+      "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
+      "तू मेरा है, मैं तेरी हूँ 👩‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
+      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁️\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
     ];
 
     const realFilmyBios = [
@@ -787,33 +833,6 @@
       "Mogambo khush hua 😈\nMr. India 🎬\nSpreading smiles 😊",
       "Ek chutki sindoor ki keemat tum kya jano Ramesh babu 💅\nOm Shanti Om ✨\nDrama Queen 👑",
       "All is well 💯\n3 Idiots 🎬\nStaying positive 🌟"
-    ];
-
-    const realVipBios = [
-      "Official Account ✔️\nCEO of my own life 💼\nMaking money, not excuses 💸\nHustling in silence 🤫\nSuccess will make the noise 🏆",
-      "Premium Lifestyle 💎\nLuxury is a habit 🥂\nFlying high ✈️\nMindset of a billionaire 🧠\nExclusive Vibes Only 👑",
-      "Entrepreneur 🚀\nBuilding an empire 🏰\nRisk taker 🎲\nFocus on the vision 👁️\nJoin the journey 📈",
-      "Brand Ambassador 🎖️\nInfluencer 📸\nCollaborations DM 📩\nPublic Figure 🌟\nSetting the standards 🔥",
-      "Future Billionaire 💼\nMoney talks, wealth whispers 💸\nLink in bio 🔗\nStay focused 🎯",
-      "Corporate Hustler 👔\nBuilding the dream 🏰\nGrinding 24/7 ⏳\nSuccess is the only option 🏆",
-      "CEO Mindset 🧠\nScaling fast 🚀\nLet's connect 🤝\nDM for Collabs 📩",
-      "Empire Builder 👑\nFocus on goals, not holes 👁\nNever bow down 🦅\nStay Royal 👑",
-      "नवाबी शौक 🍷\nशाही अंदाज़ 👑\nपैसे की नहीं, इज़्ज़त की भूख 💯\nमेरा रुतबा मेरी पहचान 🔥",
-      "वीआईपी लाइफस्टाइल 💎\nमहंगी गाड़ियाँ 🚘\nबड़े सपने ☁️️\nमेहनत और लगन 💼\nसफलता की सीढ़ी 📈",
-      "ब्रांड खुद में एक ब्रांड है 🎖️\nकिसी की कॉपी नहीं 🚫\nओरिजिनल कंटेंट 🔥\nफॉलो करो और सीखो 📚"
-    ];
-
-    const realLoveBios = [
-      "Taken by the best 💍\nMy heart beats for you ❤️\nForever & Always ♾️\nLove is in the air 🌬️\nYou are my world 🌍",
-      "Couples Goal 👩‍❤‍👨\nTogether we are perfect ✨\nMy happy place 🥰\nCan't live without you 🥺\nSoulmates 🔗",
-      "Love of my life 💖\nEvery love story is beautiful 📖\nBut ours is my favorite 🌹\nYou make me smile 😊\nHold my hand forever 🤝",
-      "Addicted to you 💊\nMy missing piece 🧩\nLove you to the moon and back 🌙\nOur bond is unbreakable ⛓️\nMy everything ❤️",
-      "❤ Love is Life\nMy heart beats for you 🥰\nAlways together 👫\nForever Mine 💍",
-      "🌍 You are my world\nLost in your eyes 👁️\nMy happy place is you 💖\nSoulmates 🔗",
-      "तेरा फितूर ❤️\nमेरी जान है तू 🥰\nतुझसे ही सुबह, तुझसे ही शाम 🌇\nहमेशा तेरे साथ 🤝",
-      "दिल की धड़कन 💖\nतेरा एहसास ✨\nबिना तेरे ज़िन्दगी अधूरी 🥀\nमेरा प्यार सिर्फ तेरे लिए 💍",
-      "तू मेरा है, मैं तेरी हूँ 👩‍❤‍👨\nये रिश्ता जन्मों का है 🔗\nहर पल तेरी यादें 💭\nप्यार ही ज़िन्दगी है ❤️",
-      "तेरी मुस्कान मेरी जान 😊\nतेरी आँखों में डूब जाना है 👁️\nतू ही मेरी मंज़िल 🎯\nसिर्फ तेरा 💖"
     ];
 
     function populateBios(arr, category, isAura = false) {
@@ -848,7 +867,7 @@
     }
 
     /* ==========================================================================
-       TOP MASTER POETRY RIBBONS (WITH FILMY & PREMIUM MIX)
+       TOP MASTER POETRY RIBBONS
        ========================================================================== */
     const masterPoetry = [
       { tag: "🎬 Filmy Special", title: "Don Dialogues", text: "Don ko pakadna mushkil hi nahi, namumkin hai 😎\nLekin hum namumkin ko mumkin banate hain 🚀\nKing of my own rules 👑\nBlockbuster vibe 🔥" },
@@ -862,7 +881,7 @@
       { tag: "😂 Comedy", title: "Sarcasm", text: "मैं खुद अपना दिमाग खराब रखता हूँ 🤯\nPaida toh shareef hi hua tha 😇\nFir doston ne sudhar diya 🤪\nZindagi jhand ba 🤦‍♂️" },
       { tag: "💎 VIP Exclusive", title: "King's Move", text: "I don't follow the crowd. 🚶‍♂\nI walk alone, I walk fast. ⚡\nBuilding an empire in silence. 🤫\nSuccess is my only noise. 🏆" },
       { tag: "🎬 Filmy Special", title: "Jab We Met", text: "Main apni favorite hoon 💖\nSelf-love is the best love ✨\nStay gorgeous 🦋\nDreamer & Believer 🌟" },
-      { tag: "🔥 Masterpiece", title: "Desi Swag", text: "बुरे वक्त में भी नवाबी शौक 🍷\nहमसे उलझना मौत को दावत 🗡️\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯" },
+      { tag: "🔥 Masterpiece", title: "Desi Swag", text: "बुरे वक्त में भी नवाबी शौक 🍷\nहमसे उलझना मौत को दावत 🗡️️\nअपनी दुनिया का राजा 👑\nनो ड्रामा, सिर्फ कर्मा 💯" },
       { tag: "✨ Aesthetic", title: "Stardust", text: "सपनों की दुनिया में खोई हुई 🌙\nकिताबें और कॉफी ☕\nख्वाब बड़े हैं ☁️\nअपनी खुद की परी कथा ✨" },
       { tag: "🔱 Mahakal", title: "Bholenath", text: "ना गिन के दिया ना तोल के दिया 🕉️\nमेरे महाकाल ने जिसे भी दिया 🔱\nदिल खोल के दिया 🙏\nहर हर महादेव 🚩" },
       { tag: "🥀 Deep Poetry", title: "Tears", text: "हँसते हुए चेहरे के पीछे का दर्द 🎭\nप्यार एक धोखा है 💔\nअब किसी पर भरोसा नहीं 🚫\nतन्हाई में सुकून है 🌌" }
@@ -885,14 +904,8 @@
     function renderNextBiosChunk() {
       const feedContainer = document.getElementById('mainBioFeed');
       if(!feedContainer) return;
-      let htmlChunk = "";
-      
-      // Add Premium Ribbon every 10 items logic is handled below in loop
+      let htmlChunk = createMasterRibbon(poetryCounter++); 
       for(let i = 0; i < 15; i++) {
-        if(i === 0 || i === 10) {
-            htmlChunk += createMasterRibbon(poetryCounter++);
-        }
-        
         let bio = getUniqueBio();
         let safeBioText = encodeURIComponent(bio.text.replace(/\\n/g, '\n')); 
         let displayBioText = bio.text.replace(/\\n/g, '<br>');
@@ -1043,10 +1056,8 @@
           <button class="btn-copy" style="background:var(--insta-grad); border:none;" onclick="copyEncodedText(encodeURIComponent(document.getElementById('zOut').innerText), 'Glitch Copied!')">Copy Glitch</button>
         `;
       }
-      // 🔥 MASSIVE & BIG TEXT ARTS WITH PREMIUM RIBBONS 🔥
       else if(toolType === 'textart') {
         title.innerText = "🖼 ASCII Text Arts";
-        
         const artsData = [
           { a: "( ͡° ͜ʖ ͡°)", tag: "" },
           { a: "¯\\_(ツ)_/¯", tag: "" },
